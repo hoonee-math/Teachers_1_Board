@@ -57,7 +57,7 @@ public class CheckEmailServlet extends HttpServlet {
 	    try {
 	        sender.sendEmail(email, subject, content);
 	        request.setAttribute("email", email);
-	        request.getRequestDispatcher("/WEB-INF/views/common/checkEmail.jsp")
+	        request.getRequestDispatcher("/WEB-INF/views/register/checkEmail.jsp")
 	               .forward(request, response);
 	    } catch (Exception e) {
 	        e.printStackTrace();

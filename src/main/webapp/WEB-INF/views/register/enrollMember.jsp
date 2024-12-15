@@ -5,6 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <c:set var="path" value="${pageContext.request.contextPath }"/>
+<script src="${pageContext.request.contextPath }/resources/js/jquery-3.7.1.min.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/enrollMember.css">
 
 <!DOCTYPE html>
@@ -309,7 +310,7 @@
 		const checkEmail = (e) => {
 		    const emailId = $("#emailId").val();
 		    const emailDomain = $("#emailDomain").val();
-		    const fullEmail = emailId + '@' + emailDomain;
+		    const email = emailId + '@' + emailDomain;
 		    
 		    if(emailId.trim() === "" || emailDomain.trim() === "") {
 		        alert("이메일을 입력해주세요.");
@@ -323,7 +324,7 @@
 		    }
 		    
 		    window.open(
-		        "${path}/check/email.do?email=" + fullEmail,
+		        "${path}/check/email.do?email=" + email,
 		        "emailVerify",
 		        "width=400,height=300,left=500,top=200"
 		    );

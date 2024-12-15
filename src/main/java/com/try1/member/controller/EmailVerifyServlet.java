@@ -60,27 +60,11 @@ public class EmailVerifyServlet extends HttpServlet {
 
         if (hashedAuthNumber != null && hashedAuthNumber.equals(hashedInputCode)) {
             // 인증 성공 시
-            String successHtml = """
-                <div style='text-align: center; padding: 20px;'>
-                    <p style='color: green;'>인증 성공!</p>
-                    <button onclick='closeVerifyWindow()'>닫기</button>
-                </div>
-                <script>
-                    function closeVerifyWindow() {
-                        const parentEmail = opener.document.getElementById("email");
-                        parentEmail.readOnly = true;
-                        parentEmail.style.backgroundColor = "lightgray";
-                        
-                        const emailBtn = opener.document.querySelector("input[value='이메일 인증']");
-                        if(emailBtn) emailBtn.disabled = true;
-                        
-                        window.close();
-                    }
-                </script>
-                """;
             clearSession(session);
             session.setAttribute("emailVerified", true);
-            response.getWriter().write(successHtml);
+            request.setAttribute("result", true);  // JSP에서 사용할 결과값
+            request.getRequestDispatcher("/WEB-INF/views/register/checkEmail.jsp")
+                   .forward(request, response);
         } else {
             // 인증 실패 시
             Integer failCount = (Integer) session.getAttribute("failCount");
