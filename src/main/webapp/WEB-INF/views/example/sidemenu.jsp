@@ -15,4 +15,3 @@
             <div class="menu-item">맘스뉴스</div>
             <div class="menu-item">고민상담소</div>
         </section>
-       <div>메롱</div>
