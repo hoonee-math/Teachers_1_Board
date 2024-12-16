@@ -1,4 +1,4 @@
-package com.try1.member.service;
+package com.ttt.service;
 
 import java.io.FileInputStream;
 import java.io.IOException;

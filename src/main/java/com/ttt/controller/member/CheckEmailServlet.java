@@ -1,4 +1,4 @@
-package com.try1.member.controller;
+package com.ttt.controller.member;
 
 import java.io.IOException;
 import java.security.MessageDigest;
@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.try1.member.service.EmailSenderService;
+import com.ttt.service.EmailSenderService;
 
 @WebServlet("/check/email.do")
 // 보안 강화 버전. 회원가입 페이지에서 이메일 인증버튼 클릭을 통해 실행되는 요청

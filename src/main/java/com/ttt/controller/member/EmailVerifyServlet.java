@@ -1,4 +1,4 @@
-package com.try1.member.controller;
+package com.ttt.controller.member;
 
 import java.io.IOException;
 import java.security.MessageDigest;
