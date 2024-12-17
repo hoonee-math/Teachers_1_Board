@@ -59,6 +59,9 @@
     <a href="" class="no-underline">
       <div>고민상담소</div>
     </a>
+    <a href="${path}/common/maincontents.show" class="no-underline">
+      <div>기본틀로 가기</div>
+    </a>
   </div>
   
   
