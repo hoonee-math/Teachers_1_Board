@@ -15,6 +15,13 @@
         margin: 0;
         font-family: Arial, sans-serif;
     }
+    
+    .maincontainer {
+        display: flex; /* 플렉스 박스 설정 */
+        justify-content: flex-start; /* 왼쪽 정렬 */
+        align-items: flex-start; /* 세로 정렬 */
+        padding: 20px;
+    }
 
     /* 전체 컨테이너 */
     #container {

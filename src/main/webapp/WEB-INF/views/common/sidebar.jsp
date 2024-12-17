@@ -7,8 +7,12 @@
 
 <style>
 	.maincontainer {
-	  dispaly : flex;	
-	}
+        display: flex; /* 플렉스 박스 설정 */
+        justify-content: flex-start; /* 왼쪽 정렬 */
+        align-items: flex-start; /* 세로 정렬 */
+        padding: 20px;
+    }
+
     .sidebar {
       width: 200px;
       display: flex;
@@ -56,7 +60,6 @@
       <div>고민상담소</div>
     </a>
   </div>
-</div>
   
   
   

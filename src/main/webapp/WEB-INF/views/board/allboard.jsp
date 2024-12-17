@@ -10,7 +10,7 @@
     rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <style>
+     <style>
         body {
             margin: 0;
             font-family: Arial, sans-serif;
@@ -97,15 +97,15 @@
         #boardBtn {
             margin-left: 10px;  
         }
-    </style>
-</head>
+    </style>       
+ </head>
     <div id="container">
         <!-- 게시판 -->
         <div id="all_board">
             <div class="board-header">
                 <h2>게시판</h2>
                 <button id="boardBtn" class="btn btn-outline-success">글쓰기</button>
-            </div>
+            </div>       
             
             <table id="tbl-board">
                 <tr>
@@ -115,7 +115,7 @@
                     <th>작성일</th>
                     <th>조회수</th>
                 </tr>
-                <tbody>
+               <tbody>
                     <c:if test="${not empty boards}">
                         <c:forEach var="board" items="${boards}">
                             <tr>
@@ -133,21 +133,26 @@
                             </tr>
                         </c:forEach>
                     </c:if>
+                </tbody>        
+                <tbody>
+                	<tr>
+                		<td></td>
+                	</tr>	
                 </tbody>
-            </table>
+            </table>       
             
             <div id="pageBar">
                 ${pageBar}
             </div>
         </div>
-    </div>
- </div>
-
-    <script>
-        document.getElementById("boardBtn").addEventListener("click", () => {
-            location.assign("${path}/board/boardwrite.do");
-        });
+    </div>              
+    
+    
 
     
-    </script>
+    
+
+
+    
+   
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
