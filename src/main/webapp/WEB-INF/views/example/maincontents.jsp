@@ -233,7 +233,7 @@ h3 {
 }
 </style>
 <!-- 메인 콘텐츠 영역 -->
-<section class="main-content">
+<section class="main-content col-9">
 	<h2>메인 콘텐츠 영역</h2>
 
 	<!-- 1행: 전체 너비 게시판 -->
@@ -243,7 +243,7 @@ h3 {
 			<div class="board-content">게시판 내용이 들어갈 영역입니다.</div>
 		</div>
 	</div>
-
+	
 	<!-- 2행: 2단 분할 (1:1) -->
 	<div class="row two-columns">
 		<div class="col-6">
@@ -366,5 +366,7 @@ h3 {
 	</div>
 
 </section>
+
+        <section class="right-box col-1"></section>
 </main>
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
