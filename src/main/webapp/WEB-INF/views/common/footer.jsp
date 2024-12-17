@@ -5,6 +5,7 @@
 
 
 <style>
+
 /* body에 height 관련 속성만 추가 */
 body {
     min-height: 100vh; /* 최소 높이를 뷰포트 높이로 설정 */
@@ -31,7 +32,6 @@ footer p {
 <footer>
 	<p>© 2024 맘스티쳐 | 이용 약관 | 개인정보 보호 정책 | 청소년 보호 정책</p>
 </footer>
-</div>
 
 </body>
 </html>

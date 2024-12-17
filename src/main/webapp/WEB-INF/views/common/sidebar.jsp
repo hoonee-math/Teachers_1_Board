@@ -6,22 +6,26 @@
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 
 <style>
-	.maincontainer {
-        display: flex; /* 플렉스 박스 설정 */
-        justify-content: flex-start; /* 왼쪽 정렬 */
-        align-items: flex-start; /* 세로 정렬 */
-        padding: 20px;
-    }
+/* layout.css */
+.container {
+	display: flex;
+	max-width: 100%; /* 1800px 고정값에서 100%로 수정 */
+	min-width: 1200px;
+	margin: 10px 0;
+	padding: 0 20px;
+	gap: 20px;
+}
 
-    .sidebar {
+/* 사이드 메뉴 스타일링 */
+.side-menu {
       width: 200px;
       display: flex;
       flex-direction: column;
       padding: 20px;
-      margin-left: 100px;
-    }
+/*       margin-left: 100px; */
+}
 
-    .sidebar div {
+.menu-item {
       margin-bottom: 10px;
       padding: 10px;
       border: 1px solid #FFB6C1;
@@ -32,39 +36,24 @@
       color: #FF69B4;
       font-weight: bold;
       transition: background-color 0.3s;
-    }
+}
 
-    .sidebar div:hover {
+.menu-item:hover {
       background-color: #FFB6C1;
       color: #ffffff;
-    }
-     .no-underline {
-  	  text-decoration: none;
-  	  }
-  </style>
-<div class="maincontainer">
-  <div class="sidebar">
-    <a href="${path}/allboard.main" class="no-underline">
-      <div>전체글 게시판</div>
-    </a>
-    <a href="/recommendboard.main" class="no-underline">
-      <div>추천글 게시판</div>
-    </a>
-    <a href="" class="no-underline">
-      <div>공지사항</div>
-    </a>
-    <a href="" class="no-underline">
-      <div>맘스뉴스</div>
-    </a>
-    <a href="" class="no-underline">
-      <div>고민상담소</div>
-    </a>
-    <a href="${path}/common/maincontents.show" class="no-underline">
-      <div>기본틀로 가기</div>
-    </a>
-  </div>
-  
-  
+}
+</style>
+     
+    <main class="container">
+        <!-- 사이드 메뉴 영역 -->
+        <section class="left-box col-1"></section>
+        <section class="side-menu col-1">
+            <div class="menu-item">전체글 게시판</div>
+            <div class="menu-item">추천글 게시판</div>
+            <div class="menu-item">공지사항</div>
+            <div class="menu-item">맘스뉴스</div>
+            <div class="menu-item">고민상담소</div>
+        </section>
   
   
 
