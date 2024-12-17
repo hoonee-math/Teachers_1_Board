@@ -1,87 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<c:set var="path" value="${pageContext.request.contextPath}" />
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 <jsp:include page="/WEB-INF/views/common/sidebar.jsp"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/post/uploadPost.css">
-
-<!--     <style>
-        body {
-          font-family: Arial, sans-serif;
-          margin: 20px;
-        }
-        div#post-container {
-        	display: flex;
-        	flex-direction: column;
-      		justify-content: center;
-          	gap: 10px;
-          	margin: 0 auto;
-          	padding: 20px;
-        }
-        .dropdown {
-          display: flex;
-          gap: 10px;
-        }
-        select {
-          padding: 5px;
-          font-size: 16px;
-        }
-        #sido {
-            width: 125px;
-            border: 1px solid #FFB6C1;
-		    border-radius: 5px;
-		    background-color: #ffffff;
-		    color: #FF69B4;
-        }
-        #gungu {
-            width: 125px;
-            border: 1px solid #FFB6C1;
-		    border-radius: 5px;
-		    background-color: #ffffff;
-		    color: #FF69B4;
-        }
-        #school-name {
-            width: 225px;
-            border: 1px solid #FFB6C1;
-		    border-radius: 5px;
-		    background-color: #ffffff;
-		    color: #FF69B4;
-        }
-        
-        #category {
-        	display: flex;
-        	align-items: center;
-          	gap: 10px;
-        }
-       	#category select {
-       		width: 430px;
-       		border: 1px solid #FFB6C1;
-		    border-radius: 5px;
-		    background-color: #ffffff;
-		    color: #FF69B4;
-       	}
-
-        div#board-container {
-            display: flex;
-            flex-direction: column;
-        }
-        div#board-container div {
-        	display: flex;
-        	flex-direction: row;
-        }
-        div#button-container{
-        	display: flex;
-        	justify-content: space-between;
-        	
-        }
-        div#button-container button {
-        	border: 1px solid #FFB6C1;
-		    border-radius: 5px;
-		    background-color: #ffffff;
-		    color: #FF69B4;
-        }
-      </style> -->
 </head>
 <body>
+<section class="main-content col-9">
 	<div id="post-container">
 		<h2>게시글 작성</h2>
 	    
@@ -147,4 +75,6 @@
 		    </div>
 	    </div>
 	 </div>
+</section>
+<section class="right-box col-1"></section>
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
