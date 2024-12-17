@@ -12,7 +12,7 @@
 		<h2>게시글 작성</h2>
 	    
 	    <div id='board-container'>
-	    	<form action='' >
+	    	<form action='${path }/uploadpost.do' method="post" enctype="multipart/form-data" >
 	    		<table>
 	    			<tr id="school-container">
 	    				<td>
