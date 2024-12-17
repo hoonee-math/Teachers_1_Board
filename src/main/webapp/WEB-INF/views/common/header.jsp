@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<c:set var="path" value="${pageContext.request.contextPath}" />
+<script	src="${pageContext.request.contextPath }/resources/js/jquery-3.7.1.min.js"></script>
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,8 +58,8 @@
 			<div class="flex-spacer"></div>
 			<!-- 계정 섹션 -->
 			<div class="account-section">
-				<button class="account-button">로그인</button>
-				<button class="account-button">회원가입</button>
+				<button id="btn_login" class="account-button">로그인</button>
+				<button id="btn_enroll" class="account-button">회원가입</button>
 			</div>
 		</div>
 	</header>
@@ -69,4 +74,19 @@
     gradeBoard.addEventListener('mouseout', () => {
       
     });
+    
+    $(".logo-text").click(function() {
+        location.assign("${path}");
+	});
+	//로그인 버튼 연결 링크
+	$(".account-section .account-button:nth-child(1)").click(function() {
+        location.assign("${path}/member/enrollmember.do");
+	});
+	//회원가입 버튼 연결 링크
+	$("#btn_enroll").click(function() {
+        location.assign("${path}/member/enrollmember.do");
+	});
   </script>
+  
+  
+  

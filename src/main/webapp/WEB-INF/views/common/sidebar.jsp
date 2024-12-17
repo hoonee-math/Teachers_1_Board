@@ -8,12 +8,11 @@
 
 <style>
 /* layout.css */
-.container {
+.main-container {
 	display: flex;
-	max-width: 100%; /* 1800px 고정값에서 100%로 수정 */
-	min-width: 1200px;
-	margin: 10px 0;
-	padding: 0 20px;
+	max-width: 2000px; /* 1800px 고정값에서 100%로 수정 */
+	min-width: 1600px;
+	margin: 0 auto;/* 10px 0; */
 	gap: 20px;
 }
 
@@ -45,9 +44,8 @@
 }
 </style>
 
-<main class="container">
+<main class="main-container">
 	<!-- 사이드 메뉴 영역 -->
-	<section class="left-box col-1"></section>
 	<section class="side-menu col-1">
 		<div class="menu-item">전체글 게시판</div>
 		<div class="menu-item">추천글 게시판</div>
@@ -55,15 +53,19 @@
 		<div class="menu-item">맘스뉴스</div>
 		<div class="menu-item">고민상담소</div>
 		<div class="menu-item">예시 페이지 연결</div>
+		<div class="menu-item">temp 글쓰기</div>
 	</section>
 
 
 
 	<script>
-		$('.side-menu .menu-item:nth-child(2)').click(function() {
+		$('.side-menu .menu-item:nth-child(1)').click(function() {
 	        location.assign("${path}/allboard.main");
 		});
 		$('.side-menu .menu-item:nth-child(6)').click(function() {
 	        location.assign("${path}/common/maincontents.show");
+		});
+		$('.side-menu .menu-item:nth-child(7)').click(function() {
+	        location.assign("${path}/common/temp/post");
 		});
 	</script>
