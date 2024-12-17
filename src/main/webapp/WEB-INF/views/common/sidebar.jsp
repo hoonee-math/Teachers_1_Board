@@ -60,7 +60,7 @@
 
 
 	<script>
-		$('.side-menu .menu-item:nth-child(2)').click(function() {
+		$('.side-menu .menu-item:nth-child(1)').click(function() {
 	        location.assign("${path}/allboard.main");
 		});
 		$('.side-menu .menu-item:nth-child(6)').click(function() {

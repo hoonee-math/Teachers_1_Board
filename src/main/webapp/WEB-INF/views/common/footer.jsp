@@ -5,7 +5,7 @@
 
 
 <style>
-
+*{border:1px solid pink;}
 /* body에 height 관련 속성만 추가 */
 body {
     min-height: 100vh; /* 최소 높이를 뷰포트 높이로 설정 */
