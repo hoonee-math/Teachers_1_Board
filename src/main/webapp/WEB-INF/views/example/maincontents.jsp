@@ -367,6 +367,6 @@ h3 {
 
 </section>
 
-        <section class="right-box col-1"></section>
+        <!-- <section class="right-box col-1"></section> -->
 </main>
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
