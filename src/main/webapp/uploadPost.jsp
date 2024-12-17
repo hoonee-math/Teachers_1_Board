@@ -7,8 +7,6 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 <jsp:include page="/WEB-INF/views/common/sidebar.jsp"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/post/uploadPost.css">
-</head>
-<body>
 <section class="main-content col-9">
 	<div id="post-container">
 		<h2>게시글 작성</h2>
@@ -77,4 +75,5 @@
 	 </div>
 </section>
 <section class="right-box col-1"></section>
-    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+</main>
+<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
