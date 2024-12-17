@@ -75,6 +75,9 @@
       
     });
     
+    $(".logo-text").click(function() {
+        location.assign("${path}");
+	});
 	//로그인 버튼 연결 링크
 	$(".account-section .account-button:nth-child(1)").click(function() {
         location.assign("${path}/member/enrollmember.do");
