@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/common/temp/post.do")
+@WebServlet("/common/temp/post")
 public class TempPostServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -16,7 +16,7 @@ public class TempPostServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/uploadPost.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/views/post/uploadPost.jsp").forward(request, response);
 
 	}
 
