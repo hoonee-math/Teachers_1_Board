@@ -15,6 +15,76 @@
 <head>
 <meta charset="UTF-8">
 <title>맘스티쳐</title>
+
+<style>
+
+/* 입력 필드 공통 스타일 */
+input {
+    vertical-align: middle;
+}
+
+input[type=text] {
+    -webkit-appearance: none;
+    border-radius: 0;
+}
+
+/* 입력 필드 초기화 */
+button, input, select, textarea {
+    margin: 0;
+    padding: 0;
+}
+
+/* 입력 필드 텍스트 스타일 */
+button, input, select, td, textarea, th {
+    font-size: 14px;
+    line-height: 1.5;
+    font-family: 'Malgun Gothic','맑은 고딕',sans-serif;
+    color: #222;
+}
+
+/* IE 브라우저 clear 버튼 숨김 */
+input[type=text]::-ms-clear {
+    display: none;
+}
+
+/* 입력 필드 검색 취소 버튼 숨김 */
+input[type=search]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+}
+
+/* 우편번호 입력 필드 */
+#sample4_postcode {
+    width: 100px;  /* 우편번호는 짧게 */
+    height: 30px;
+}
+
+/* 우편번호 찾기 버튼 */
+input[type="button"] {
+    width: 100px;
+    height: 30px;
+}
+
+/* 도로명주소와 지번주소 입력 필드 */
+#sample4_roadAddress,
+#sample4_jibunAddress {
+    width: 300px;  /* 주소는 길게 */
+    height: 30px;
+}
+
+/* 상세주소 입력 필드 */
+#sample4_detailAddress {
+    width: 200px;
+    height: 30px;
+}
+
+/* 참고항목 입력 필드 */
+#sample4_extraAddress {
+    width: 150px;
+    height: 30px;
+}
+
+</style>
+
 </head>
 <body>
 	<div class="menu">
