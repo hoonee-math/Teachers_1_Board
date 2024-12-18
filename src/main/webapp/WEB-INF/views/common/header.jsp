@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<c:set var="path" value="${pageContext.request.contextPath}" /> <!-- header 에만 선언하고 계속 path로 사용가능 -->
+<c:set var="path" value="${pageContext.request.contextPath}" />
 <script	src="${pageContext.request.contextPath }/resources/js/jquery-3.7.1.min.js"></script> <!-- header 에만 부여해도 되는 속성 -->
 <!DOCTYPE html>
 <html>

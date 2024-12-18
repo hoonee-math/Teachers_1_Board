@@ -40,11 +40,11 @@
 	background: #F9F9F9;
 }
 
-.main-content h2 {
+.main-title {
 	color: #FF69B4;
 	margin-bottom: 20px;
 	padding-bottom: 10px;
-	border-bottom: 2px solid #FFE4E1;
+	border-bottom: 3px solid #FFE4E1;
 }
 
 .content-box {
