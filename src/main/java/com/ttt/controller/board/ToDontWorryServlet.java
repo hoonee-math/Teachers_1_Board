@@ -37,7 +37,7 @@ public class ToDontWorryServlet extends HttpServlet {
             
             Post1 post = Post1.builder()
                 .postNo(i)
-                .postTitle("미해결 게시글 dsafasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf" + i)
+                .postTitle("이것은 더미 데이터 미해결 게시글 dsafasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf" + i)
                 .member(Member1.builder().memberNick("작성자"+i).build())
                 .viewCount(10+i)
                 .createdDate(new Date(Timestamp.valueOf(postTime).getTime()))
