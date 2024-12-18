@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Post {
+public class Post1 {
 	private int postNo;
 	private Member1 member;
 	private String postTitle;
