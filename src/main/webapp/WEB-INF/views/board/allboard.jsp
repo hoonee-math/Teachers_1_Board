@@ -128,100 +128,86 @@ th {
 		</div>
 		<div class="board-body">
 			<div class="row full-width">
-			    <table>
-			        <thead>
-			            <tr>
-			                <th>번호</th>
-			                <th>카테고리</th>
-			                <th>제목</th>
-			                <th>작성자</th>
-			                <th>조회수</th>
-			                <th>시간</th>
-			            </tr>
-			        </thead>
-			        <tbody>
-			            <tr>
-			                <td>1</td>
-			                <td class="category">고민</td>
-			                <td class="title">
-			                    <a href="#">고민이 있어요 도와주세요</a> 
-			                    <span class="highlight">2</span>
-			                </td>
-			                <td>알이랑</td>
-			                <td class="view-count">870</td>
-			                <td class="time">00:15</td>
-			            </tr>
-			            <tr>
-			                <td>2</td>
-			                <td class="category">고민</td>
-			                <td class="title">
-			                    <a href="#">우리아이 어쩌면 좋을까요..?</a> 
-			                    <span class="highlight">2</span>
-			                </td>
-			                <td>newgooday</td>
-			                <td class="view-count">412</td>
-			                <td class="time">00:15</td>
-			            </tr>
-			            <tr>
-			                <td>3</td>
-			                <td class="category">일반</td>
-			                <td class="title">
-			                    <a href="#">상쾌한 아침산책</a> 
-			                    <span class="highlight">1</span>
-			                </td>
-			                <td>Santorini</td>
-			                <td class="view-count">59</td>
-			                <td class="time">00:14</td>
-			            </tr>
-			            <tr>
-			                <td>4</td>
-			                <td class="category">일반</td>
-			                <td class="title">
-			                    <a href="#">패딩 추천부탁드립니다~</a> 
-			                    <span class="highlight">4</span>
-			                </td>
-			                <td>t.t</td>
-			                <td class="view-count">779</td>
-			                <td class="time">00:13</td>
-			            </tr>
-			            <tr>
-			                <td>5</td>
-			                <td class="category">일반</td>
-			                <td class="title">
-			                    <a href="#">패딩 추천부탁드립니다~</a> 
-			                    <span class="highlight">4</span>
-			                </td>
-			                <td>t.t</td>
-			                <td class="view-count">779</td>
-			                <td class="time">00:13</td>
-			            </tr>
-			            <tr>
-			                <td>6</td>
-			                <td class="category">일반</td>
-			                <td class="title">
-			                    <a href="#">패딩 추천부탁드립니다~</a> 
-			                    <span class="highlight">4</span>
-			                </td>
-			                <td>t.t</td>
-			                <td class="view-count">779</td>
-			                <td class="time">00:13</td>
-			            </tr>
-			        </tbody>
-			    </table>
-						</div>
-					</div>	
-				</div>
-				<div class="pagebar">
-					<button class="pagebar-start">이전</button>
-					<button class="pagebar-number">1</button>
-					<button class="pagebar-number">2</button>
-					<button class="pagebar-number">3</button>
-					<button class="pagebar-number">4</button>
-					<button class="pagebar-number">5</button>
-					<button class="pagebar-end">다음</button>
-				</div>          
-			
-			
+				<table>
+					<thead>
+						<tr>
+							<th>번호</th>
+							<th>카테고리</th>
+							<th>제목</th>
+							<th>작성자</th>
+							<th>조회수</th>
+							<th>시간</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td class="category">고민</td>
+							<td class="title"><a href="#">고민이 있어요 도와주세요</a> <span
+								class="highlight">2</span></td>
+							<td>알이랑</td>
+							<td class="view-count">870</td>
+							<td class="time">00:15</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td class="category">고민</td>
+							<td class="title"><a href="#">우리아이 어쩌면 좋을까요..?</a> <span
+								class="highlight">2</span></td>
+							<td>newgooday</td>
+							<td class="view-count">412</td>
+							<td class="time">00:15</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td class="category">일반</td>
+							<td class="title"><a href="#">상쾌한 아침산책</a> <span
+								class="highlight">1</span></td>
+							<td>Santorini</td>
+							<td class="view-count">59</td>
+							<td class="time">00:14</td>
+						</tr>
+						<tr>
+							<td>4</td>
+							<td class="category">일반</td>
+							<td class="title"><a href="#">패딩 추천부탁드립니다~</a> <span
+								class="highlight">4</span></td>
+							<td>t.t</td>
+							<td class="view-count">779</td>
+							<td class="time">00:13</td>
+						</tr>
+						<tr>
+							<td>5</td>
+							<td class="category">일반</td>
+							<td class="title"><a href="#">패딩 추천부탁드립니다~</a> <span
+								class="highlight">4</span></td>
+							<td>t.t</td>
+							<td class="view-count">779</td>
+							<td class="time">00:13</td>
+						</tr>
+						<tr>
+							<td>6</td>
+							<td class="category">일반</td>
+							<td class="title"><a href="#">패딩 추천부탁드립니다~</a> <span
+								class="highlight">4</span></td>
+							<td>t.t</td>
+							<td class="view-count">779</td>
+							<td class="time">00:13</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div class="pagebar">
+		<button class="pagebar-start">이전</button>
+		<button class="pagebar-number">1</button>
+		<button class="pagebar-number">2</button>
+		<button class="pagebar-number">3</button>
+		<button class="pagebar-number">4</button>
+		<button class="pagebar-number">5</button>
+		<button class="pagebar-end">다음</button>
+	</div>
 </section>
-</main>
+
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
