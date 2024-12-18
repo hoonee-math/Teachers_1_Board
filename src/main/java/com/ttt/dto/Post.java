@@ -23,5 +23,7 @@ public class Post {
 	private int status;
 	private int isNotsecret;
 	private int isNotice;
-
+	private int commentCount;
+	private String oriname;
+	private String rename;
 }
