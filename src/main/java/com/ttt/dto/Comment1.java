@@ -1,4 +1,8 @@
-package com.ttt.dao;
+package com.ttt.dto;
+
+import com.ttt.dao.Date;
+import com.ttt.dao.Member1;
+import com.ttt.dao.Post1;
 
 public class Comment1 {
 	private int commentNo;
