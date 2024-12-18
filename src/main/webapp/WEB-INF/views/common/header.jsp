@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
-<script	src="${pageContext.request.contextPath }/resources/js/jquery-3.7.1.min.js"></script>
+<script	src="${pageContext.request.contextPath }/resources/js/jquery-3.7.1.min.js"></script> <!-- header 에만 부여해도 되는 속성 -->
 <!DOCTYPE html>
 <html>
 <head>
