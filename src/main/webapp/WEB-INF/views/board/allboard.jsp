@@ -107,61 +107,27 @@
 					<button class="pagebar-number">4</button>
 					<button class="pagebar-number">5</button>
 					<button class="pagebar-end">다음</button>
-				</div>
+				</div>          
+			
+			
 </section>
 
 <style>
-	.pagebar-number {
-		margin-left : 1px;
-		margin-right : 1px;
-		width : 2%
-		
-	}
-	.pagebar {
-		display : flex;
-		text-align: center;
-		justify-content : center;
-		margin-top : 15px;
-
-	}
-
-	.board-btn {
-		padding: 8px 16px;
-		background-color: #FF69B4;
-		border: none;
-		border-radius: 6px;
-		font-weight: 600;
-		cursor: pointer;
-		transition: background-color 0.2s ease;
-		color : white;
-	}
-	.board-btn-write { 
-		float: right; /* 오른쪽으로 위치 */
-  		margin-right: 10px; /* 오른쪽 여백 */
-  		padding: 8px 16px;
-		background-color: #FF69B4;
-		border: none;
-		border-radius: 6px;
-		color: white;
-		font-weight: 600;
-		cursor: pointer;
-		transition: background-color 0.2s ease;
-	}
-	.board-explain {
-		color : black;
-		
-	}
-	.board-header {
-		padding : 20px;
-		margin-left : 0px;
-		color: #FF69B4;
-	  <%--  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 쉐도우 효과 */ --%>
-	}
-		
-	.board-container {
-		
-	}
-	body {
+	
+		.board-explain {
+			color : black;
+			
+		}
+		.board-header {
+			padding : 20px;
+			margin-left : 0px;
+			color: #FF69B4;
+		}
+			
+		.board-container {
+			
+		}
+		body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
@@ -211,6 +177,42 @@
             font-size: 12px;
             color: #888;
         }
+  <%--      .pagebar-number {
+		margin-left : 1px;
+		margin-right : 1px;
+		width : 2%
+		
+		}
+		.pagebar {
+			display : flex;
+			text-align: center;
+			justify-content : center;
+			margin-top : 15px;
+	
+		}
+	
+		.board-btn {
+			padding: 8px 16px;
+			background-color: #FF69B4;
+			border: none;
+			border-radius: 6px;
+			font-weight: 600;
+			cursor: pointer;
+			transition: background-color 0.2s ease;
+			color : white;
+		}
+		.board-btn-write { 
+			float: right; /* 오른쪽으로 위치 */
+	  		margin-right: 10px; /* 오른쪽 여백 */
+	  		padding: 8px 16px;
+			background-color: #FF69B4;
+			border: none;
+			border-radius: 6px;
+			color: white;
+			font-weight: 600;
+			cursor: pointer;
+			transition: background-color 0.2s ease;
+		}       --%>
 </style>
 <section class="right-box col-1"></section>
 </main>
