@@ -16,7 +16,7 @@ public class ToDontWorryServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/views/board/dontworry2.jsp");
+		request.getRequestDispatcher("/WEB-INF/views/board/dontworry3.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
