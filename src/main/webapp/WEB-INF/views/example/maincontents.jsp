@@ -10,8 +10,8 @@
 /* layout.css */
 .container {
 	display: flex;
-	max-width: 1800px;
-	min-width: 1200px;
+	max-width: 1400px;
+	min-width: 1000px;
 	margin: 20px auto;
 	padding: 0 20px;
 	gap: 20px;
@@ -26,6 +26,7 @@
 }
 
 .menu-item {
+	background: #fff;
 	margin: 10px 0;
 	padding: 10px;
 	border: 1px solid #FFE4E1;
