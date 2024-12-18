@@ -11,22 +11,22 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <style>
-    body {
+/*     body {
         margin: 0;
         font-family: Arial, sans-serif;
-    }
+    } */
     
-    .maincontainer {
-        display: flex; /* 플렉스 박스 설정 */
-        justify-content: flex-start; /* 왼쪽 정렬 */
-        align-items: flex-start; /* 세로 정렬 */
-        padding: 20px;
-    }
-
-    /* 전체 컨테이너 */
-    #container {
+/*     .maincontainer {
         display: flex;
-        justify-content: space-between;  /* 게시판을 양옆으로 배치 */
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 20px;
+    } */
+    
+   	
+     #container {
+        display: flex;
+        justify-content: space-between; 
         padding: 20px;
     }
 
