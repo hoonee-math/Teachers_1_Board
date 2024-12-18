@@ -4,7 +4,7 @@
 <jsp:include page="/WEB-INF/views/common/sidebar.jsp"/>
 
 <!-- 메인 콘텐츠 영역 시작 지검 -->
-<section class="main-content col-11">
+<section class="main-content col-10">
 
 
 </section>

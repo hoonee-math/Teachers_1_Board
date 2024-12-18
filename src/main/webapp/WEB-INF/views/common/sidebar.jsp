@@ -47,7 +47,7 @@
 
 
 	<!-- 사이드 메뉴 영역 -->
-	<section class="side-menu col-1">
+	<section class="side-menu col-2">
 		<div class="menu-item">전체글 게시판</div>
 		<div class="menu-item">추천글 게시판</div>
 		<div class="menu-item">공지사항</div>
