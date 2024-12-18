@@ -5,8 +5,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 <jsp:include page="/WEB-INF/views/common/sidebar.jsp" />
-<script
-	src="${pageContext.request.contextPath }/resources/js/jquery-3.7.1.min.js"></script>
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <style>
 /* 게시판 레이아웃 */
