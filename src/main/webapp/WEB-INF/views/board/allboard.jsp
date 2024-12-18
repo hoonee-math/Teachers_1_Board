@@ -52,18 +52,12 @@
 .board-header {
 	padding: 20px;
 	margin-left: 0px;
-	color: #FF69B4; 
+	color: #FF69B4;
 	/* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */ /* 쉐도우 효과 */
 }
 
-body {
-	font-family: Arial, sans-serif;
-	margin: 0;
-	padding: 0;
-}
-
 table {
-	width: 80%;
+	width: 100%;
 	border-collapse: collapse;
 }
 
@@ -103,12 +97,6 @@ th {
 	color: #FF69B4;
 }
 
-.icon-img {
-	width: 20px;
-	height: 20px;
-	vertical-align: middle;
-}
-
 .view-count {
 	color: gray;
 }
@@ -119,86 +107,90 @@ th {
 }
 </style>
 <section class="main-content col-9">
-	<div class="board-container">
-		<div class="board-header">
-			<h2>전체글 게시판</h2>
+	<h2>전체글 게시판</h2>
+
+	<!-- 1행: 전체 너비 게시판 -->
+	<div class="row full-width">
+		<div>
 			<p class="board-explain">맘스티쳐 전체 게시글 모음입니다 :)</p>
 			<button class="board-btn">등록일순</button>
 			<button class="board-btn-write">글쓰기</button>
 		</div>
-		<div class="board-body">
-			<div class="row full-width">
-				<table>
-					<thead>
-						<tr>
-							<th>번호</th>
-							<th>카테고리</th>
-							<th>제목</th>
-							<th>작성자</th>
-							<th>조회수</th>
-							<th>시간</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>1</td>
-							<td class="category">고민</td>
-							<td class="title"><a href="#">고민이 있어요 도와주세요</a> <span
-								class="highlight">2</span></td>
-							<td>알이랑</td>
-							<td class="view-count">870</td>
-							<td class="time">00:15</td>
-						</tr>
-						<tr>
-							<td>2</td>
-							<td class="category">고민</td>
-							<td class="title"><a href="#">우리아이 어쩌면 좋을까요..?</a> <span
-								class="highlight">2</span></td>
-							<td>newgooday</td>
-							<td class="view-count">412</td>
-							<td class="time">00:15</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td class="category">일반</td>
-							<td class="title"><a href="#">상쾌한 아침산책</a> <span
-								class="highlight">1</span></td>
-							<td>Santorini</td>
-							<td class="view-count">59</td>
-							<td class="time">00:14</td>
-						</tr>
-						<tr>
-							<td>4</td>
-							<td class="category">일반</td>
-							<td class="title"><a href="#">패딩 추천부탁드립니다~</a> <span
-								class="highlight">4</span></td>
-							<td>t.t</td>
-							<td class="view-count">779</td>
-							<td class="time">00:13</td>
-						</tr>
-						<tr>
-							<td>5</td>
-							<td class="category">일반</td>
-							<td class="title"><a href="#">패딩 추천부탁드립니다~</a> <span
-								class="highlight">4</span></td>
-							<td>t.t</td>
-							<td class="view-count">779</td>
-							<td class="time">00:13</td>
-						</tr>
-						<tr>
-							<td>6</td>
-							<td class="category">일반</td>
-							<td class="title"><a href="#">패딩 추천부탁드립니다~</a> <span
-								class="highlight">4</span></td>
-							<td>t.t</td>
-							<td class="view-count">779</td>
-							<td class="time">00:13</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
+	</div>
+	<!-- 1행: 전체 너비 게시판 -->
+	<div class="row full-width">
+	<div>
+		<table>
+			<thead>
+				<tr>
+					<th>번호</th>
+					<th>카테고리</th>
+					<th>제목</th>
+					<th>작성자</th>
+					<th>조회수</th>
+					<th>시간</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td class="category">고민</td>
+					<td class="title"><a href="#">고민이 있어요 도와주세요</a> <span
+						class="highlight">2</span></td>
+					<td>알이랑</td>
+					<td class="view-count">870</td>
+					<td class="time">00:15</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td class="category">고민</td>
+					<td class="title"><a href="#">우리아이 어쩌면 좋을까요..?</a> <span
+						class="highlight">2</span></td>
+					<td>newgooday</td>
+					<td class="view-count">412</td>
+					<td class="time">00:15</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td class="category">일반</td>
+					<td class="title"><a href="#">상쾌한 아침산책</a> <span
+						class="highlight">1</span></td>
+					<td>Santorini</td>
+					<td class="view-count">59</td>
+					<td class="time">00:14</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td class="category">일반</td>
+					<td class="title"><a href="#">패딩 추천부탁드립니다~</a> <span
+						class="highlight">4</span></td>
+					<td>t.t</td>
+					<td class="view-count">779</td>
+					<td class="time">00:13</td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td class="category">일반</td>
+					<td class="title"><a href="#">패딩 추천부탁드립니다~</a> <span
+						class="highlight">4</span></td>
+					<td>t.t</td>
+					<td class="view-count">779</td>
+					<td class="time">00:13</td>
+				</tr>
+				<tr>
+					<td>6</td>
+					<td class="category">일반</td>
+					<td class="title"><a href="#">패딩 추천부탁드립니다~</a> <span
+						class="highlight">4</span></td>
+					<td>t.t</td>
+					<td class="view-count">779</td>
+					<td class="time">00:13</td>
+				</tr>
+			</tbody>
+		</table>
 		</div>
 	</div>
+
 	<div class="pagebar">
 		<button class="pagebar-start">이전</button>
 		<button class="pagebar-number">1</button>
@@ -209,5 +201,6 @@ th {
 		<button class="pagebar-end">다음</button>
 	</div>
 </section>
+</main>
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />

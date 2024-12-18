@@ -63,8 +63,8 @@
 			</div>
 		</div>
 	</header>
-
-	<script>
+	<main class="main-container"> <!-- main 끝 태그 : footer 제일 위에 위치 -->
+<script>
     const gradeBoard = document.getElementById('grade-board');
 
     gradeBoard.addEventListener('mouseover', () => {

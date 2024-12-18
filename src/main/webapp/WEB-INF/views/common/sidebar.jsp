@@ -10,9 +10,9 @@
 /* layout.css */
 .main-container {
 	display: flex;
-	max-width: 2000px; /* 1800px 고정값에서 100%로 수정 */
-	min-width: 1600px;
-	margin: 0 auto;/* 10px 0; */
+	max-width: 1600px; /* 1800px 고정값에서 100%로 수정 */
+	min-width: 1400px;
+	margin: 20px auto;/* 10px 0; */
 	gap: 20px;
 }
 
@@ -26,11 +26,12 @@
 }
 
 .menu-item {
-	margin-bottom: 10px;
-	padding: 10px;
+	margin-top: 0;
+	margin-bottom: 20px;
+	padding: 13px;
 	border: 1px solid #FFB6C1;
 	border-radius: 5px;
-	background-color: #ffffff;
+	background-color: #F9F9F9;
 	cursor: pointer;
 	text-align: center;
 	color: #FF69B4;
@@ -44,7 +45,7 @@
 }
 </style>
 
-<main class="main-container">
+
 	<!-- 사이드 메뉴 영역 -->
 	<section class="side-menu col-1">
 		<div class="menu-item">전체글 게시판</div>
@@ -61,6 +62,9 @@
 	<script>
 		$('.side-menu .menu-item:nth-child(1)').click(function() {
 	        location.assign("${path}/board/allboard");
+		});
+		$('.side-menu .menu-item:nth-child(5)').click(function() {
+	        location.assign("${path}/board/dontworry");
 		});
 		$('.side-menu .menu-item:nth-child(6)').click(function() {
 	        location.assign("${path}/common/maincontents.show");
