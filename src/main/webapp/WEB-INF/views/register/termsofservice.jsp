@@ -4,7 +4,7 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 <<style>
 	#terms-body {
-		
+		display : flex;
 	}
 
 </style>

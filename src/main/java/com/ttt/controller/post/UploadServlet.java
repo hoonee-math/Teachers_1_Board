@@ -10,24 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 import com.ttt.dto.Post;
 import com.ttt.service.PostService;
 
-/**
- * Servlet implementation class UploadServlet
- */
-@WebServlet("/uploadpost.do")
+@WebServlet("/post/uploadpost")
 public class UploadServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public UploadServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String path = getServletContext().getRealPath("/resources/upload/post");
 //		MultipartRequest mr = new MultipartRequest(
@@ -43,7 +33,6 @@ public class UploadServlet extends HttpServlet {
 				.build();
 		
 		int result = new PostService().uploadPost(p);
-		
 		String msg, loc;
 		if (result>0) {
 			msg = "게시글 등록 성공!";
@@ -58,11 +47,7 @@ public class UploadServlet extends HttpServlet {
 		request.getRequestDispatcher("/WEB-INF/views/post/uploadPost.jsp").forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
