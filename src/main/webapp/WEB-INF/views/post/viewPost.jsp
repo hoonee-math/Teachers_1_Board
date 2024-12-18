@@ -11,24 +11,24 @@
 <section class="main-content col-10">
 	<section id="post-container">
 		<table id="post-tbl">
-			<tr>
-				<td>categoryName</td>
+			<tr class="category-name">
+				<td colspan="2">categoryName</td>
 			</tr>
-			<tr>
-				<td>postName</td>
+			<tr class="post-title">
+				<td colspan="2"><h3>postTitle</h3></td>
 			</tr>
-			<tr>
-				<td>viewCount</td>
+			<tr class="info">
+				<td><img src="https://img.icons8.com/?size=100&id=30M9wv1iFkcH&format=png&color=000000" width="10px">  viewCount  |</td>
 				<td>createDate</td>
 			</tr>
-			<tr>
-				<td>memberName</td>
+			<tr class="member-name">
+				<td colspan="2">memberName</td>
 			</tr>
-			<tr>
-				<td>if test orifile!=null -> file.png</td>
+			<tr class="file">
+				<td colspan="2">if test orifile!=null -> file.png</td>
 			</tr>
-			<tr>
-				<td>postContent</td>
+			<tr class="content">
+				<td colspan="2">postContent</td>
 			</tr>
 		</table>
 	</section>
