@@ -128,6 +128,7 @@ th {
 		</div>
 		<div class="board-body">
 			<div class="row full-width">
+
 				<table>
 					<thead>
 						<tr>
