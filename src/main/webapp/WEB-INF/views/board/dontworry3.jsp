@@ -11,9 +11,10 @@
 .mini-board {
 	background: none;
 	border: none;
-	padding: 5px;
+	padding: 0 20px 0 12px; /* 12px은 col-6의 margin값 -12를 맞춰주기 위함 값. */
 	border-radius: 8px;
 }
+
 /* 게시판 컨테이너 */
 .board-container {
 	width: 48%; /* 두 개의 게시판이 나란히 배치될 수 있도록 너비를 설정 */
@@ -26,18 +27,18 @@
 	justify-content: space-between;
 	align-items: center;
 	margin-bottom: 10px;
-	padding: 15px; /* 내부 여백 */
-	background: #f8f9fa; /* 배경색 */
-	border-radius: 4px; /* 모서리 둥글게 */
+	/* padding: 15px; */ /* 내부 여백 */
+	/* background: #f8f9fa; */ /* 배경색 */
+	/* border-radius: 4px; */ /* 모서리 둥글게 */
 }
 
 .board-header h2 {
 	margin: 0;
-	font-size: 1.25rem; /* 제목 크기 */
-	color: #212529; /* 제목 색상 */
+	/* font-size: 1.25rem; */ /* 제목 크기 */
+	/* color: #212529; */ /* 제목 색상 */
 }
 
-/* 게시판 테이블 */
+/* 우측 게시판 테이블 */
 #tbl-board {
 	width: 100%;
 	border: 1px solid black;
@@ -113,9 +114,9 @@
 		<!-- 첫 번째 게시판 -->
 		<div class="col-6">
 			<div class="mini-board">
-				<div class="board-header">
+				<div class="main-title board-header">
 					<h2>미해결 게시판</h2>
-					<button id="boardBtn1" class="btn btn-outline-success">글쓰기</button>
+					<button id="btn-post" class="account-button">글쓰기</button>
 				</div>
 
 				<!-- 게시판 테이블 대신 리스트 형태로 변경 -->
@@ -203,13 +204,9 @@
 </section>
 
 <script>
-    document.getElementById("boardBtn1").addEventListener("click", () => {
-        location.assign("${path}/board/boardwrite.do?boardType=1");
-    });
-
-    document.getElementById("boardBtn2").addEventListener("click", () => {
-        location.assign("${path}/board/boardwrite.do?boardType=2");
-    });
+	$('#btn-post').click(function() {
+	    location.assign("${path}/common/temp/post");
+	});
 </script>
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
