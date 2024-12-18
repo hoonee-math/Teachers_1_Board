@@ -1,6 +1,8 @@
 package com.ttt.dto;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,17 +15,18 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Post {
 	private int postNo;
-	private String postWriter;
+	private Member1 member;
 	private String postTitle;
 	private String postContent;
-	private int view_count;
-	private int like_count;
+	private int viewCount;
+	private int likeCount;
 	private Date createdDate;
 	private Date updateDate;
 	private int status;
-	private int isNotsecret;
+	private int isPublic;
 	private int isNotice;
 	private int commentCount;
-	private String oriname;
-	private String rename;
+	private List<Image1> images;
+	private School12 school;
+	private List<Comment1> comments;
 }

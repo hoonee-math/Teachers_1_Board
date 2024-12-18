@@ -33,7 +33,6 @@ public class UploadServlet extends HttpServlet {
 				.build();
 		
 		int result = new PostService().uploadPost(p);
-		
 		String msg, loc;
 		if (result>0) {
 			msg = "게시글 등록 성공!";
