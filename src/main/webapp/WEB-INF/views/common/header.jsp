@@ -19,8 +19,8 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
 	crossorigin="anonymous"></script>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/resources/css/common/header.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common/header.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common/bootStrapEdit.css">
 </head>
 <body>
 	<header class="header">
