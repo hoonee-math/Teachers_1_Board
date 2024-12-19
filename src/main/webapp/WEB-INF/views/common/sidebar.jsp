@@ -28,7 +28,7 @@
 	margin-top: 0;
 	margin-bottom: 20px;
 	padding: 13px;
-	border: 1px solid #FFB6C1;
+	border: 1px solid #F4D2CA;
 	border-radius: 5px;
 	background-color: #F9F9F9;
 	cursor: pointer;
@@ -39,7 +39,7 @@
 }
 
 .menu-item:hover {
-	background-color: #FFB6C1;
+	background-color: #F4D2CA;
 	color: #ffffff;
 }
 </style>

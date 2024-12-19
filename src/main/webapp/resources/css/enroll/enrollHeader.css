@@ -20,7 +20,8 @@ body {
 	justify-content: center;
 	align-items: center;
 	padding: 10px 20px;
-	background-color: #FFE4E1;
+	background-color: #FFF9F4;
+	border-bottom: 1px solid rgba(217, 119, 106, 0.3);
 }
 
 .menu .logo-container {
@@ -28,7 +29,6 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background-color: #FFE4E1;
 	border-radius: 5px;
 }
 
@@ -54,7 +54,7 @@ body {
 .menu .left-section div {
 	cursor: pointer;
 	padding: 10px 15px;
-	border: 1px solid #FFB6C1;
+	border: 1px solid #F4D2CA;
 	border-radius: 5px;
 	background-color: #ffffff;
 	color: #D9776A;
@@ -64,7 +64,7 @@ body {
 }
 
 .menu .left-section div:hover {
-	background-color: #FFB6C1;
+	background-color: #F4D2CA;
 	color: #ffffff;
 }
 
@@ -79,7 +79,7 @@ body {
 .search-box {
 	display: flex;
 	align-items: center;
-	border: 1px solid #FFB6C1;
+	border: 1px solid #F4D2CA;
 	border-radius: 5px;
 	background-color: #ffffff;
 	padding: 5px 30px;
@@ -94,7 +94,7 @@ body {
 	padding: 5px;
 	font-size: 16px;
 }
-
+/* 
 #register-button {
 	margin-left: 1px;
 	padding: 5px 15px;
@@ -108,5 +108,5 @@ body {
 }
 
 #register-button:hover {
-	background-color: #FFB6C1;
-}
+	background-color: #F4D2CA;
+} */

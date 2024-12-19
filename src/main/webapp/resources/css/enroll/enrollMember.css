@@ -112,7 +112,8 @@ input[type="reset"] {
 }
 
 input[type="submit"]:hover {
-    background-color: #FFB6C1;
+    background-color: #C0655D;
+    font-weight: bold;
 }
 
 input[type="reset"]:hover {

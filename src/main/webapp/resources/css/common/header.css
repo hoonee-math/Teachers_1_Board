@@ -81,16 +81,16 @@ body {
 .nav-button {
 	padding: 8px 12px;
 	background-color: white;
-	border: 1px solid #FFB6C1;
+	border: 1px solid #F4D2CA;
 	border-radius: 6px;
-	color: #FF69B4;
+	color: #D9776A;
 	font-weight: 600;
 	cursor: pointer;
 	transition: all 0.2s ease;
 }
 
 .nav-button:hover {
-	background-color: #FFB6C1;
+	background-color: #F4D2CA;
 	color: white;
 }
 
@@ -114,7 +114,7 @@ body {
 	display: flex;
 	align-items: center;
 	background-color: white;
-	border: 1px solid #FFB6C1;
+	border: 1px solid #F4D2CA;
 	border-radius: 20px;
 	padding: 8px 16px;
 }
@@ -158,5 +158,6 @@ body {
 }
 
 .account-button:hover {
-	background-color: #FFB6C1;
+	background-color: #C0655D;
+	font-weight: bold;
 }

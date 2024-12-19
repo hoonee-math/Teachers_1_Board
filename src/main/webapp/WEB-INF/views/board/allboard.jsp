@@ -32,6 +32,11 @@
 	color: white;
 }
 
+.board-btn:hover {
+	background-color: #C0655D;
+	font-weight: 900;
+}
+
 .board-btn-write {
 	float: right; /* 오른쪽으로 위치 */
 	margin-right: 10px; /* 오른쪽 여백 */
@@ -114,7 +119,7 @@ th {
 		<div>
 			<p class="board-explain">맘스티쳐 전체 게시글 모음입니다 :)</p>
 			<button class="board-btn">등록일순</button>
-			<button id="btn-post" class="board-btn-write">글쓰기</button>
+			<button id="btn-post" class="board-btn board-btn-write">글쓰기</button>
 		</div>
 	</div>
 	<!-- 1행: 전체 너비 게시판 -->
