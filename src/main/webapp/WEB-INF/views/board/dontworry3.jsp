@@ -101,6 +101,7 @@
 }
 
 .post-stats {
+    flex-shrink: 0;   
     color: #6c757d;                  /* 통계 정보 색상 */
     font-size: 0.85rem;              /* 통계 정보 크기 */
 }
@@ -131,7 +132,7 @@
 					                <!-- 좋아요, 댓글 수 정보 -->
 					                <span class="post-stats">
 					                    <i class="bi bi-suit-heart-fill"></i> ${post.likeCount}
-					                    <i class="bi bi-chat-left-heart-fill"></i> ${post.commentCount}
+					                    <i class="bi bi-chat-left-heart-fill"></i> ${post.commentCount+300}
 					                </span>
 								</div>
 								<div class="post-info"> 
