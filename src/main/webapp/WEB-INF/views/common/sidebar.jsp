@@ -54,6 +54,7 @@
 		<div class="menu-item">고민상담소</div>
 		<div class="menu-item">예시 페이지 연결</div>
 		<div class="menu-item">temp 글쓰기</div>
+		<div class="menu-item">temp 글쓰기2</div>
 	</section>
 
 
@@ -69,6 +70,9 @@
 	        location.assign("${path}/common/maincontents.show");
 		});
 		$('.side-menu .menu-item:nth-child(7)').click(function() {
-	        location.assign("${path}/common/temp/post");
+	        location.assign("${path}/post/uploadpost");
+		});
+		$('.side-menu .menu-item:nth-child(8)').click(function() {
+	        location.assign("${path}/post/uploadpost2");
 		});
 	</script>

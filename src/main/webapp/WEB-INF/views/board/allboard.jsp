@@ -35,14 +35,14 @@
 .board-btn-write {
 	float: right; /* 오른쪽으로 위치 */
 	margin-right: 10px; /* 오른쪽 여백 */
-	padding: 8px 16px;
-	background-color: #FF69B4;
-	border: none;
-	border-radius: 6px;
-	color: white;
-	font-weight: 600;
-	cursor: pointer;
-	transition: background-color 0.2s ease;
+	/* padding: 8px 16px; */  /* header의 account-btn 과 통일시키기 */
+	/* background-color: #FF69B4; */  /* header의 account-btn 과 통일시키기 */
+	/* border: none;  */ /* header의 account-btn 과 통일시키기 */
+	/* border-radius: 6px; */  /* header의 account-btn 과 통일시키기 */
+	/* color: white; */  /* header의 account-btn 과 통일시키기 */
+	/* font-weight: 600; */ /* header의 account-btn 과 통일시키기 */
+	/* cursor: pointer; */ /* header의 account-btn 과 통일시키기 */
+	/* transition: background-color 0.2s ease; */ /* header의 account-btn 과 통일시키기 */
 }
 
 .board-explain {
@@ -114,7 +114,7 @@ th {
 		<div>
 			<p class="board-explain">맘스티쳐 전체 게시글 모음입니다 :)</p>
 			<button class="board-btn">등록일순</button>
-			<button class="board-btn-write">글쓰기</button>
+			<button id="btn-post" class="board-btn-write">글쓰기</button>
 		</div>
 	</div>
 	<!-- 1행: 전체 너비 게시판 -->
@@ -201,6 +201,10 @@ th {
 		<button class="pagebar-end">다음</button>
 	</div>
 </section>
-</main>
+<script>
+	$('#btn-post').click(function() {
+	    location.assign("${path}/common/temp/post");
+	});
+</script>
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
