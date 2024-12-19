@@ -46,11 +46,6 @@ input[type=search]::-webkit-search-cancel-button {
     width: 100px;  /* 우편번호는 짧게 */
 }
 
-/* 우편번호 찾기 버튼 */
-input[type="button"] {
-    width: 100px;
-}
-
 </style>
 
 </head>
@@ -59,10 +54,7 @@ input[type="button"] {
 		<div class="logo-container">
 			<jsp:include page="/WEB-INF/views/common/logo.jsp"/>
 			<span class="logo-text">맘스티쳐</span>
-		</div>
-		<div class="left-section"></div>
-		<div class="right-section">
-			<button id="register-button">회원가입</button>
+			<jsp:include page="/WEB-INF/views/common/logo.jsp"/>
 		</div>
 	</div>
 
@@ -154,8 +146,9 @@ input[type="button"] {
 					</td>
 				</tr> -->
 			</table>
-			<input type="submit" value="가입"> <input type="reset"
-				value="취소">
+			<div class="enrollsubmit">
+				<input type="submit" value="가입"> <input type="reset" value="취소">
+			</div>
 		</form>
 	</section>
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
