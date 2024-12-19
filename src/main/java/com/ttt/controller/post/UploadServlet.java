@@ -63,6 +63,7 @@ public class UploadServlet extends HttpServlet {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				String region = rs.getString("REGION");
+				System.out.println("rs : " + rs);
 				result.add(region);
 			}
 		} catch (Exception e) {
@@ -71,7 +72,7 @@ public class UploadServlet extends HttpServlet {
 			try {
 				if(rs!=null && !rs.isClosed()) rs.close();
 				if(pstmt!=null && !pstmt.isClosed()) pstmt.close();
-//				if(conn!=null && !conn.isClosed()) conn.close();
+				if(conn!=null && !conn.isClosed()) conn.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

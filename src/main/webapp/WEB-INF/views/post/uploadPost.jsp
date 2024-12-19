@@ -20,21 +20,25 @@
 	    				<td>
 	    					<select id="region">
 	          					<option value="">전체지역</option>
-	       					 </select>
-	    				</td>
-	    				<td>
-	    					<select id="district">
-	          					<option value="">구/군</option>
 	          					<%
-	          					List<String> regions = (List<String>) request.getAttribute("regions");
+	          					System.out.println(request.getAttribute("regions"));
+	          					List<String> regions = Arrays.asList((String)request.getAttribute("regions"));
+	          					System.out.println("regions : " + regions);
 	          					if(regions != null) {
 	          						for (String region : regions) {
+	    	          					System.out.println("region : " + region);
+
 	          					%>
 	          							<option value="<%= region %>"><%= region %></option>
 	          					<%
 	          						}
 	          					}
 	          					%>
+	       					 </select>
+	    				</td>
+	    				<td>
+	    					<select id="district">
+	          					<option value="">구/군</option>
 	        				</select>
 	    				</td>
 	    				<td>
