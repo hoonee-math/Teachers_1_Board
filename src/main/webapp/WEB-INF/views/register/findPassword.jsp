@@ -23,7 +23,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common/bootStrapEdit.css">
-</head>
+
 <style>
 	body {
       font-family: 'Arial', sans-serif;
@@ -48,6 +48,7 @@
     .logo-container {
       display: flex;
       align-items: center;
+      cursor:pointer;
     }
     .logo-svg {
       width: 60px;
@@ -124,7 +125,8 @@
       text-decoration: none;
     }
 </style>
-
+</head>
+<body>
 <section id="findInfo-container">
 	<div class="find-page">
     <header>
@@ -141,6 +143,7 @@
       </div>
       <p class="slogan">함께하는 부모들의 공간</p>
     </header>
+    </div>
     <main>
       <div class="find-box">
         <h2>비밀번호 찾기</h2>
@@ -156,12 +159,16 @@
           <button type="submit" class="find-button">본인인증</button>
         </form>
         <div class="links">
-          <a href="#">회원가입</a>
+          <a href="${path}/member/termsofservice">회원가입</a>
         </div>
       </div>
 </section>
 	<script>
     document.getElementById('find-form').addEventListener('submit', function (e) {
+    });
+  //로고에 메인 홈으로 이동하는 링크 추가
+    $(".logo-container").click(function() {
+    	location.assign("${path}/main");
     });
   </script>
 

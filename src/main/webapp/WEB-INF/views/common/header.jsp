@@ -82,7 +82,7 @@
 	});
 	//로그인 버튼 연결 링크
 	$(".account-section .account-button:nth-child(1)").click(function() {
-        location.assign("${path}/member/termsofservice");
+        location.assign("${path}/member/login");
 	});
 	//회원가입 버튼 연결 링크
 	$("#btn_enroll").click(function() {

@@ -1,5 +1,6 @@
 package com.ttt.controller.post;
 
+import java.io.Console;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -64,6 +65,7 @@ public class UploadServlet extends HttpServlet {
 			while (rs.next()) {
 				String region = rs.getString("REGION");
 				result.add(region);
+				System.out.println(region);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -76,7 +78,7 @@ public class UploadServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-		
+		System.out.println(result);
 		request.setAttribute("regions", result);
 		
 		request.getRequestDispatcher("/WEB-INF/views/post/uploadPost.jsp").forward(request, response);
