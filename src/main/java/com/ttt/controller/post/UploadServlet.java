@@ -71,13 +71,13 @@ public class UploadServlet extends HttpServlet {
 			try {
 				if(rs!=null && !rs.isClosed()) rs.close();
 				if(pstmt!=null && !pstmt.isClosed()) pstmt.close();
-				if(conn!=null && !conn.isClosed()) conn.close();
+//				if(conn!=null && !conn.isClosed()) conn.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
 		
-		request.setAttribute("SCHOOL12", result);
+		request.setAttribute("regions", result);
 		
 		request.getRequestDispatcher("/WEB-INF/views/post/uploadPost.jsp").forward(request, response);
 	}
