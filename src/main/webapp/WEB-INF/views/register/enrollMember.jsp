@@ -17,17 +17,6 @@
 <title>맘스티쳐</title>
 
 <style>
-
-/* 입력 필드 공통 스타일 */
-input {
-    vertical-align: middle;
-}
-
-input[type=text] {
-    -webkit-appearance: none;
-    border-radius: 0;
-}
-
 /* 입력 필드 초기화 */
 button, input, select, textarea {
     margin: 0;
@@ -55,32 +44,11 @@ input[type=search]::-webkit-search-cancel-button {
 /* 우편번호 입력 필드 */
 #sample4_postcode {
     width: 100px;  /* 우편번호는 짧게 */
-    height: 30px;
 }
 
 /* 우편번호 찾기 버튼 */
 input[type="button"] {
     width: 100px;
-    height: 30px;
-}
-
-/* 도로명주소와 지번주소 입력 필드 */
-#sample4_roadAddress,
-#sample4_jibunAddress {
-    width: 300px;  /* 주소는 길게 */
-    height: 30px;
-}
-
-/* 상세주소 입력 필드 */
-#sample4_detailAddress {
-    width: 200px;
-    height: 30px;
-}
-
-/* 참고항목 입력 필드 */
-#sample4_extraAddress {
-    width: 150px;
-    height: 30px;
 }
 
 </style>
@@ -108,18 +76,17 @@ input[type="button"] {
 			<table>
 				<tr>
 					<th>이메일</th>
-					<td><input type="text" name="emailId" id="emailId"
-						style="width: 150px;"> @ <input type="text"
-						name="emailDomain" id="emailDomain" style="width: 150px;">
-						<select name="emailSelect" id="emailSelect"
-						onchange="handleEmailSelect()">
+					<td>
+						<input type="text" name="emailId" id="emailId" style="width: 150px;"> 
+						@ <input type="text" name="emailDomain" id="emailDomain" style="width: 150px;">
+						<select name="emailSelect" id="emailSelect" onchange="handleEmailSelect()">
 							<option value="">직접입력</option>
 							<option value="gmail.com">gmail.com</option>
 							<option value="naver.com">naver.com</option>
 							<option value="daum.net">daum.net</option>
 							<option value="hanmail.net">hanmail.net</option>
 							<option value="nate.com">nate.com</option>
-					</select> <input type="button" value="이메일 인증" onclick="checkEmail()">
+						</select> <input type="button" value="이메일 인증" onclick="checkEmail()">
 					</td>
 				</tr>
 				<tr>
@@ -130,7 +97,7 @@ input[type="button"] {
 				</tr>
 				<tr>
 					<th>패스워드</th>
-					<td><input type="password" name="password" id="password_"><br>
+					<td><input type="password" name="password" id="password_" placeholder="대소문자, 숫자, 특수문자 포함"><br>
 					</td>
 				</tr>
 				<tr>
@@ -157,18 +124,13 @@ input[type="button"] {
 				<tr>
 					<th>주소</th>
 					<td>
-						<!-- <input type="text" placeholder="" name="address"
-						id="address"><br><input type="button" value="주소 검색"
-						onclick="findAddress()"> -->
 						<input type="text" id="sample4_postcode" placeholder="우편번호">
 						<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-						<input type="text" id="sample4_roadAddress" placeholder="도로명주소">
-						<input type="text" id="sample4_jibunAddress" placeholder="지번주소">
+						<input type="text" id="sample4_roadAddress" placeholder="도로명주소" style="width: 300px;">
+						<!-- <input type="text" id="sample4_jibunAddress" placeholder="지번주소" style="width: 300px;"> -->
 						<span id="guide" style="color:#999;display:none"></span>
-						<input type="text" id="sample4_detailAddress" placeholder="상세주소">
-						<input type="text" id="sample4_extraAddress" placeholder="참고항목">
-						
-						
+						<input type="text" id="sample4_detailAddress" placeholder="상세주소" style="width: 200px;">
+						<!-- <input type="text" id="sample4_extraAddress" placeholder="참고항목" style="width: 150px;"> -->
 					</td>
 				</tr>
 				<tr>
@@ -177,17 +139,16 @@ input[type="button"] {
 						<label for="gender0">남</label> <input type="radio" name="gender"
 						id="gender1" value="F"> <label for="gender1">여</label></td>
 				</tr>
-				<tr>
+				<!-- <tr>
 					<th>취미</th>
-					<td><input type="checkbox" name="hobby" id="hobby0" value="운동"><label
-						for="hobby0">운동</label> <input type="checkbox" name="hobby"
-						id="hobby1" value="등산"><label for="hobby1">등산</label> <input
-						type="checkbox" name="hobby" id="hobby2" value="독서"><label
-						for="hobby2">독서</label><br /> <input type="checkbox" name="hobby"
-						id="hobby3" value="게임"><label for="hobby3">게임</label> <input
-						type="checkbox" name="hobby" id="hobby4" value="여행"><label
-						for="hobby4">여행</label><br /></td>
-				</tr>
+					<td>
+						<input type="checkbox" name="hobby" id="hobby0" value="운동"><label for="hobby0">운동</label> 
+						<input type="checkbox" name="hobby" id="hobby1" value="등산"><label for="hobby1">등산</label> 
+						<input type="checkbox" name="hobby" id="hobby2" value="독서"><label for="hobby2">독서</label><br/> 
+						<input type="checkbox" name="hobby" id="hobby3" value="게임"><label for="hobby3">게임</label> 
+						<input type="checkbox" name="hobby" id="hobby4" value="여행"><label for="hobby4">여행</label><br />
+					</td>
+				</tr> -->
 			</table>
 			<input type="submit" value="가입"> <input type="reset"
 				value="취소">

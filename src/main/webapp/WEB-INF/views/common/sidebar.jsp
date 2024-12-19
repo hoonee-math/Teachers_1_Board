@@ -63,6 +63,15 @@
 		$('.side-menu .menu-item:nth-child(1)').click(function() {
 	        location.assign("${path}/board/allboard");
 		});
+		$('.side-menu .menu-item:nth-child(2)').click(function() {
+	        location.assign("${path}/board/allboard");
+		});
+		$('.side-menu .menu-item:nth-child(3)').click(function() {
+	        location.assign("${path}/board/dontworry");
+		});
+		$('.side-menu .menu-item:nth-child(4)').click(function() {
+	        location.assign("${path}/board/allboard");
+		});
 		$('.side-menu .menu-item:nth-child(5)').click(function() {
 	        location.assign("${path}/board/dontworry");
 		});
