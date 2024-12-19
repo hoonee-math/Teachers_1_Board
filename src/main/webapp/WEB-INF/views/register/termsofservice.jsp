@@ -4,7 +4,7 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 <<style>
 	#terms-body {
-		display : flex;
+		d-flex;
 	}
 
 </style>
@@ -12,10 +12,12 @@
 	<div id="terms-header">
 		<h2>회원 가입 약관</h2>
 	</div>
-	<div class="row full-width" id="terms-body">
-		<div id="termsofagree">이용약관 동의</div>
-		<div id="agreecolor">(필수)</div>
-		<button id="termsofbtn">동의</button>
+	<div class="row full-width">
+		<div id="terms-body">
+			<div id="termsofagree">이용약관 동의</div>
+			<div id="agreecolor">(필수)</div>
+			<button id="termsofbtn">동의</button>
+		</div>
 	</div>
 	
 
