@@ -58,12 +58,15 @@ input[type="number"] {
     background-color:#F9F9F9;
 }
 
+#userId_, #password_, #password_2, #userName, #age, #phone {
+	max-width: 325px;
+}
+
 input[type=text] {
     -webkit-appearance: none;
 }
 
 input[type="button"] {
-    width: 100px;
     padding: 8px 12px;
     border: 2px solid #ddd;
     cursor: pointer;
@@ -99,7 +102,7 @@ input[type="reset"] {
 }
 
 input[type="submit"] {
-    background-color: #4CAF50;
+    background-color: #FF69B4;
     color: white;
 }
 
@@ -109,7 +112,7 @@ input[type="reset"] {
 }
 
 input[type="submit"]:hover {
-    background-color: #45a049;
+    background-color: #FFB6C1;
 }
 
 input[type="reset"]:hover {
@@ -121,6 +124,12 @@ input[type="reset"]:hover {
     font-size: 12px;
     margin-top: 5px;
     display: block;
+}
+
+.enrollsubmit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* 반응형 디자인 */
