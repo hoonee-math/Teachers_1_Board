@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
-<script	src="${pageContext.request.contextPath }/resources/js/jquery-3.7.1.min.js"></script>
+<script	src="${pageContext.request.contextPath }/resources/js/jquery-3.7.1.min.js"></script> <!-- header 에만 부여해도 되는 속성 -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,8 +19,10 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
 	crossorigin="anonymous"></script>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/resources/css/common/header.css">
+<!-- Bootstrap Icons을 추가하기 위한 태그 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common/header.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common/bootStrapEdit.css">
 </head>
 <body>
 	<header class="header">
@@ -63,8 +65,8 @@
 			</div>
 		</div>
 	</header>
-
-	<script>
+	<main class="main-container"> <!-- main 끝 태그 : footer 제일 위에 위치 -->
+<script>
     const gradeBoard = document.getElementById('grade-board');
 
     gradeBoard.addEventListener('mouseover', () => {

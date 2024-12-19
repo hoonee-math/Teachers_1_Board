@@ -29,6 +29,7 @@ footer p {
 }
 </style>
 
+</main> <!-- main 시작 태그 : header 끝에 위치-->
 <footer>
 	<p>© 2024 맘스티쳐 | 이용 약관 | 개인정보 보호 정책 | 청소년 보호 정책</p>
 </footer>
