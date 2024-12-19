@@ -30,7 +30,7 @@
 	margin: 10px 0;
 	padding: 10px;
 	border: 1px solid #FFE4E1;
-	color: #FF69B4;
+	color: #D9776A;
 	cursor: pointer;
 	font-weight: bold;
 	text-align: center;
@@ -49,7 +49,7 @@
 }
 
 .main-content h2 {
-	color: #FF69B4;
+	color: #D9776A;
 	margin-bottom: 20px;
 	padding-bottom: 10px;
 	border-bottom: 2px solid #FFE4E1;
@@ -95,7 +95,7 @@
 }
 
 h3 {
-	color: #FF69B4;
+	color: #D9776A;
 	margin-bottom: 15px;
 	padding-bottom: 10px;
 	border-bottom: 1px solid #FFE4E1;
@@ -211,12 +211,12 @@ h3 {
 }
 
 .radio-item input[type="radio"]:checked+.radio-label {
-	color: #FF69B4;
+	color: #D9776A;
 	font-weight: bold;
 }
 
 .radio-item input[type="radio"]:checked+.radio-label::before {
-	border-color: #FF69B4;
+	border-color: #D9776A;
 }
 
 .radio-label {
@@ -230,7 +230,7 @@ h3 {
 }
 
 .radio-item input[type="radio"]:checked+span {
-	color: #FF69B4;
+	color: #D9776A;
 }
 </style>
 <!-- 메인 콘텐츠 영역 -->

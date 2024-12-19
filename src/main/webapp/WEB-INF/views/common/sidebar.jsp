@@ -33,7 +33,7 @@
 	background-color: #F9F9F9;
 	cursor: pointer;
 	text-align: center;
-	color: #FF69B4;
+	color: #D9776A;
 	font-weight: bold;
 	transition: background-color 0.3s;
 }

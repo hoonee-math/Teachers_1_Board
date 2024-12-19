@@ -23,7 +23,7 @@
 
 .board-btn {
 	padding: 8px 16px;
-	background-color: #FF69B4;
+	background-color: #D9776A;
 	border: none;
 	border-radius: 6px;
 	font-weight: 600;
@@ -36,7 +36,7 @@
 	float: right; /* 오른쪽으로 위치 */
 	margin-right: 10px; /* 오른쪽 여백 */
 	/* padding: 8px 16px; */  /* header의 account-btn 과 통일시키기 */
-	/* background-color: #FF69B4; */  /* header의 account-btn 과 통일시키기 */
+	/* background-color: #D9776A; */  /* header의 account-btn 과 통일시키기 */
 	/* border: none;  */ /* header의 account-btn 과 통일시키기 */
 	/* border-radius: 6px; */  /* header의 account-btn 과 통일시키기 */
 	/* color: white; */  /* header의 account-btn 과 통일시키기 */
@@ -52,7 +52,7 @@
 .board-header {
 	padding: 20px;
 	margin-left: 0px;
-	color: #FF69B4;
+	color: #D9776A;
 	/* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */ /* 쉐도우 효과 */
 }
 
@@ -94,7 +94,7 @@ th {
 
 .highlight {
 	font-weight: bold;
-	color: #FF69B4;
+	color: #D9776A;
 }
 
 .view-count {

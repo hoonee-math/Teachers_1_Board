@@ -41,7 +41,7 @@
 }
 
 .main-title {
-	color: #FF69B4;
+	color: #D9776A;
 	margin-bottom: 20px;
 	padding-bottom: 10px;
 	border-bottom: 3px solid #FFE4E1;
@@ -91,7 +91,7 @@
 }
 
 h3 {
-	color: #FF69B4;
+	color: #D9776A;
 	margin-bottom: 15px;
 	padding-bottom: 10px;
 	border-bottom: 1px solid #FFE4E1;
@@ -171,7 +171,7 @@ h3 {
 
 .custom-select:focus {
 	outline: none;
-	border-color: #FF69B4;
+	border-color: #D9776A;
 }
 
 /* 라디오 버튼 그룹 스타일 */
@@ -207,12 +207,12 @@ h3 {
 }
 
 .radio-item input[type="radio"]:checked+.radio-label {
-	color: #FF69B4;
+	color: #D9776A;
 	font-weight: bold;
 }
 
 .radio-item input[type="radio"]:checked+.radio-label::before {
-	border-color: #FF69B4;
+	border-color: #D9776A;
 }
 
 .radio-label {
@@ -226,5 +226,5 @@ h3 {
 }
 
 .radio-item input[type="radio"]:checked+span {
-	color: #FF69B4;
+	color: #D9776A;
 }
