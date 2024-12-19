@@ -99,7 +99,7 @@
 		<div id="agree-header">
 			<div id="termsofagree">이용약관 동의</div>
 			<div id="agreecolor">(필수)</div>
-			<input type="checkbox" id="termsofbtn">동의</input>	
+			<input type="checkbox" name="sign2" id="termsofbtn">동의</input>	
 		</div>
 		<div id="terms-content">
 			<pre id=terms-contentbox>
@@ -159,9 +159,9 @@
 본 약관은 2024년 12월 19일부터 적용됩니다.</pre>
 		</div>
 		<div id="agree-header2">
-			<div id="termsofagree2">개인정보 수정 및 동의</div>
+			<div id="termsofagree2">개인정보 수집 및 동의</div>
 			<div id="agreecolor2">(필수)</div>
-			<input type="checkbox" id="termsofbtn2">동의</input>	
+			<input type="checkbox" name="sign"id="termsofbtn2">동의</input>	
 		</div>
 		<div id="terms-content2">
 			<div id=terms-contentbox2>
