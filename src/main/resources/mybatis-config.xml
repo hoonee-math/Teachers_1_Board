@@ -19,8 +19,8 @@
 	
 	
 	<!-- DB정보 작성 : DB 보안 정보는 driver.properties에 개별 작성 -->
-	<environments default="web">
-		<environment id="web">
+	<environments default="teachers">
+		<environment id="teachers">
 			<transactionManager type="JDBC"/>
 			<dataSource type="POOLED">
 				<property name="driver" value="${driver}"/>
@@ -33,6 +33,7 @@
 	
 	<!-- 생성한 Mapper 를 전역에서 접근하도록 설정 -->
 	<mappers>
+		<mapper resource="post-mapper.xml"/>
 	</mappers>
 	
 </configuration>

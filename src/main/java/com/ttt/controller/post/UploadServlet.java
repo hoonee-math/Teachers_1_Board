@@ -1,16 +1,8 @@
 package com.ttt.controller.post;
 
-import java.io.Console;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,10 +10,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.ibatis.session.SqlSession;
+
+import com.ttt.common.SqlSessionTemplate;
+
 @WebServlet("/post/uploadpost")
 public class UploadServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	
     public UploadServlet() {
         super();
     }
@@ -51,39 +47,54 @@ public class UploadServlet extends HttpServlet {
 //		request.setAttribute("msg", msg);
 //		request.setAttribute("loc", loc);
 		
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		String sql = "SELECT DISTINCT REGION FROM SCHOOL12";
+		response.setContentType("text/html;charset=UTF-8");
+		
 		List<String> result = new ArrayList<>();
 		
-		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			conn = DriverManager.getConnection("jdbc:oracle:thin:@3.34.104.219:8877:xe","teachers","tryteam");
-
-            // 연결 상태 확인
-            System.out.println("DB 연결 상태: " + (!conn.isClosed() ? "성공" : "실패"));
-			pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			System.out.println("1");
-			while (rs.next()) {
-				String region = rs.getString("REGION");
-				System.out.println("rs : " + rs);
-				result.add(region);
-				System.out.println(region);
-			}
+		try (SqlSession session = SqlSessionTemplate.getSession()) {
+			result = session.selectList("post.selectRegion");
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			try {
-				if(rs!=null && !rs.isClosed()) rs.close();
-				if(pstmt!=null && !pstmt.isClosed()) pstmt.close();
-				if(conn!=null && !conn.isClosed()) conn.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
 		}
-		System.out.println(result);
+		
+		
+		
+		
+		
+		
+//		Connection conn = null;
+//		PreparedStatement pstmt = null;
+//		ResultSet rs = null;
+//		String sql = "SELECT DISTINCT REGION FROM SCHOOL12";
+////		List<String> result = new ArrayList<>();
+//		
+//		try {
+//			Class.forName("oracle.jdbc.driver.OracleDriver");
+//			conn = DriverManager.getConnection("jdbc:oracle:thin:@3.34.104.219:8877:xe","teachers","tryteam");
+
+            // 연결 상태 확인
+//            System.out.println("DB 연결 상태: " + (!conn.isClosed() ? "성공" : "실패"));
+//			pstmt = conn.prepareStatement(sql);
+//			rs = pstmt.executeQuery();
+//			System.out.println("1");
+//			while (rs.next()) {
+//				String region = rs.getString("REGION");
+//				System.out.println("rs : " + rs);
+//				result.add(region);
+//				System.out.println(region);
+//			}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		} finally {
+//			try {
+//				if(rs!=null && !rs.isClosed()) rs.close();
+//				if(pstmt!=null && !pstmt.isClosed()) pstmt.close();
+//				if(conn!=null && !conn.isClosed()) conn.close();
+//			} catch (SQLException e) {
+//				e.printStackTrace();
+//			}
+//		}
+		System.out.println("Retry" + result);
 		request.setAttribute("regions", result);
 		
 		request.getRequestDispatcher("/WEB-INF/views/post/uploadPost.jsp").forward(request, response);
