@@ -70,7 +70,7 @@
 	        location.assign("${path}/board/dontworry");
 		});
 		$('.side-menu .menu-item:nth-child(4)').click(function() {
-	        location.assign("${path}/board/allboard");
+	        location.assign("${path}/member/login");
 		});
 		$('.side-menu .menu-item:nth-child(5)').click(function() {
 	        location.assign("${path}/board/dontworry");

@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>맘스티쳐 비밀번호 찾기</title>
+<title>맘스티쳐 로그인</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -25,13 +25,13 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common/bootStrapEdit.css">
 </head>
 <style>
-	body {
+    body {
       font-family: 'Arial', sans-serif;
       background-color: #FFF9F4;
       margin: 0;
       padding: 0;
     } 
-    .find-page {
+    .login-page {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -63,7 +63,7 @@
       font-size: 20px;
       color: #A37B6E;
     }
-    .find-box {
+    .login-box {
       background: #fff;
       padding: 45px 30px;
       border-radius: 15px;
@@ -98,7 +98,7 @@
       border-color: #D9776A;
       box-shadow: 0 0 0 2px rgba(217, 119, 106, 0.3);
     }
-    .find-button {
+    .login-button {
       background-color: #D9776A;
       color: #fff;
       border: none;
@@ -109,24 +109,27 @@
       cursor: pointer;
       margin-top: 15px;
     }
-    .find-button:hover {
+    .login-button:hover {
       background-color: #C0655D;
     }
     .links {
       margin-top: 20px;
       font-size: 16px;
       display: flex;
-      justify-content : end;
-     
+      justify-content: space-around;
     }
     .links a {
       color: #D9776A;
       text-decoration: none;
     }
-</style>
-
-<section id="findInfo-container">
-	<div class="find-page">
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 14px;
+      color: #A37B6E;
+    }
+  </style>
+  <div class="login-page">
     <header>
       <div class="logo-container">
         <svg class="logo-svg" viewBox="0 0 300 200">
@@ -142,27 +145,35 @@
       <p class="slogan">함께하는 부모들의 공간</p>
     </header>
     <main>
-      <div class="find-box">
-        <h2>비밀번호 찾기</h2>
-        <form id="find-form">
+      <div class="login-box">
+        <h2>로그인</h2>
+        <form id="login-form">
           <div class="input-group">
-            <label for="email">이름</label>
-            <input type="email" id="name" name="name" placeholder="이름을 입력하세요" required>
+            <label for="email">이메일</label>
+            <input type="email" id="email" name="email" placeholder="이메일을 입력하세요" required>
           </div>
           <div class="input-group">
-            <label for="text">이메일</label>
-            <input type="text" id="email" name="email" placeholder="이메일을 입력하세요" required>
+            <label for="password">비밀번호</label>
+            <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요" required>
           </div>
-          <button type="submit" class="find-button">본인인증</button>
+          <button type="submit" class="login-button">로그인</button>
         </form>
         <div class="links">
+          <a href="#">비밀번호를 잊으셨나요?</a>
           <a href="#">회원가입</a>
         </div>
       </div>
-</section>
-	<script>
-    document.getElementById('find-form').addEventListener('submit', function (e) {
+  </div>
+  <script>
+    document.getElementById('login-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      if (email && password) {
+        alert(`환영합니다, ${email}님!`);
+      } else {
+        alert('이메일과 비밀번호를 입력해주세요.');
+      }
     });
   </script>
-
-<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+  <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
