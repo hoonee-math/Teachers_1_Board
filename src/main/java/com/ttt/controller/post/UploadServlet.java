@@ -3,11 +3,13 @@ package com.ttt.controller.post;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -48,30 +50,35 @@ public class UploadServlet extends HttpServlet {
 //		request.setAttribute("msg", msg);
 //		request.setAttribute("loc", loc);
 		
-		List<String> regions = new ArrayList<>();
-		String url = "jdbc:oracle:thin:@3.34.104.219:8877:xe";
-		String id = "teachers";
-		String pw = "tryteam";
 		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT DISTINCT REGION FROM SCHOOL12";
+		List<String> result = new ArrayList<>();
 		
-		try{
-			
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			conn = DriverManager.getConnection(url, id, pw);
-//		
-//			 Statement stmt = conn.createStatement();
-//			 ResultSet rs = stmt.executeQuery("SELECT DISTINCT REGION_CONDE FROM SCHOOL12"); {
-//			
-//			while(rs.next()) {
-//				String region = rs.getString("REGION_CODE");
-//			}
-		} catch (SQLException e) {
+		try {
+			Class.forName("session에서 driver 가져오기 ");
+			conn = DriverManager.getConnection("session에서 url 가져오기 ","user","pw");
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				String region = rs.getString("REGION");
+				result.add(region);
+			}
+		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
-			conn.close();
+		} finally {
+			try {
+				if(rs!=null && !rs.isClosed()) rs.close();
+				if(pstmt!=null && !pstmt.isClosed()) pstmt.close();
+				if(conn!=null && !conn.isClosed()) conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		
-		request.setAttribute("regions", regions);
+		request.setAttribute("SCHOOL12", result);
+		
 		request.getRequestDispatcher("/WEB-INF/views/post/uploadPost.jsp").forward(request, response);
 	}
 
