@@ -124,13 +124,17 @@ input[type="button"] {
 				<tr>
 					<th>주소</th>
 					<td>
+						<div style="margin-bottom:10px">
 						<input type="text" id="sample4_postcode" placeholder="우편번호">
 						<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
+						</div>
+						<div>
 						<input type="text" id="sample4_roadAddress" placeholder="도로명주소" style="width: 300px;">
 						<!-- <input type="text" id="sample4_jibunAddress" placeholder="지번주소" style="width: 300px;"> -->
 						<span id="guide" style="color:#999;display:none"></span>
 						<input type="text" id="sample4_detailAddress" placeholder="상세주소" style="width: 200px;">
 						<!-- <input type="text" id="sample4_extraAddress" placeholder="참고항목" style="width: 150px;"> -->
+						</div>
 					</td>
 				</tr>
 				<tr>

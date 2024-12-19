@@ -3,10 +3,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<script	src="${pageContext.request.contextPath }/resources/js/jquery-3.7.1.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/post/uploadPost.css">
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 <jsp:include page="/WEB-INF/views/common/sidebar.jsp"/>
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/post/uploadPost.css">
 <section class="main-content col-9">
 	<div id="post-container" class="col-12">
 		<h2>게시글 작성</h2>
