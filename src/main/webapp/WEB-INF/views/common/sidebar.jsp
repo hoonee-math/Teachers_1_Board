@@ -54,13 +54,22 @@
 		<div class="menu-item">고민상담소</div>
 		<div class="menu-item">예시 페이지 연결</div>
 		<div class="menu-item">temp 글쓰기</div>
-		<div class="menu-item">temp 글쓰기2</div>
+		<div class="menu-item">temp 글 확인</div>
 	</section>
 
 
 
 	<script>
 		$('.side-menu .menu-item:nth-child(1)').click(function() {
+	        location.assign("${path}/board/allboard");
+		});
+		$('.side-menu .menu-item:nth-child(2)').click(function() {
+	        location.assign("${path}/board/allboard");
+		});
+		$('.side-menu .menu-item:nth-child(3)').click(function() {
+	        location.assign("${path}/board/dontworry");
+		});
+		$('.side-menu .menu-item:nth-child(4)').click(function() {
 	        location.assign("${path}/board/allboard");
 		});
 		$('.side-menu .menu-item:nth-child(5)').click(function() {
@@ -70,9 +79,9 @@
 	        location.assign("${path}/common/maincontents.show");
 		});
 		$('.side-menu .menu-item:nth-child(7)').click(function() {
-	        location.assign("${path}/post/uploadpost");
+	        location.assign("${path}/common/temp/post");
 		});
 		$('.side-menu .menu-item:nth-child(8)').click(function() {
-	        location.assign("${path}/post/uploadpost2");
+	        location.assign("${path}/post/viewpost");
 		});
 	</script>

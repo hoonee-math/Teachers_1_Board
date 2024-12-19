@@ -101,6 +101,7 @@
 }
 
 .post-stats {
+    flex-shrink: 0;   
     color: #6c757d;                  /* 통계 정보 색상 */
     font-size: 0.85rem;              /* 통계 정보 크기 */
 }
@@ -131,7 +132,7 @@
 					                <!-- 좋아요, 댓글 수 정보 -->
 					                <span class="post-stats">
 					                    <i class="bi bi-suit-heart-fill"></i> ${post.likeCount}
-					                    <i class="bi bi-chat-left-heart-fill"></i> ${post.commentCount}
+					                    <i class="bi bi-chat-left-heart-fill"></i> ${post.commentCount+300}
 					                </span>
 								</div>
 								<div class="post-info"> 
@@ -163,41 +164,52 @@
 		<!-- 두 번째 게시판 -->
 		<div class="col-6">
 			<div class="mini-board">
-				<div class="board-header">
-					<h2>해결된 게시판</h2>
-					<button id="boardBtn2" class="btn btn-outline-success">글쓰기</button>
+				<div class="main-title board-header">
+					<h2>미해결 게시판</h2>
+					<button id="btn-post" class="account-button">글쓰기</button>
 				</div>
 
-				<table id="tbl-board">
-					<tr>
-						<th>번호</th>
-						<th>제목</th>
-						<th>작성자</th>
-						<th>조회수</th>
-						<th>댓글수</th>
-					</tr>
-					<tbody>
-						<c:if test="${empty solvedPosts}">
-							<tr>
-								<td colspan="5">등록된 게시글이 없습니다.</td>
-							</tr>
-						</c:if>
-						<c:if test="${not empty solvedPosts}">
-							<c:forEach var="post" items="${solvedPosts}">
-								<tr>
-									<td>${post.postNo}</td>
-									<td><a
-										href="${path}/board/postview.do?postNo=${post.postNo}">
-											${post.postTitle} </a></td>
-									<td>${post.member.memberNick}</td>
-									<td>${post.viewCount}</td>
-									<td>${post.commentCount}</td>
-								</tr>
-							</c:forEach>
-						</c:if>
-					</tbody>
-				</table>
-
+				<!-- 게시판 테이블 대신 리스트 형태로 변경 -->
+				<div class="board-list">
+					<c:forEach var="post" items="${solvedPosts}">
+						<div class="post-row">
+							<div class="d-flex justify-content-between align-items-center">
+								<div>
+									<!-- 게시글 제목 -->
+									<a href="${path}/board/postview.do?postNo=${post.postNo}"
+										class="post-title"> ${post.postTitle} </a> 
+					                <!-- 좋아요, 댓글 수 정보 -->
+					                <span class="post-stats">
+					                    <i class="bi bi-suit-heart-fill"></i> ${post.likeCount}
+					                    <i class="bi bi-chat-left-heart-fill"></i> ${post.commentCount+300}
+					                </span>
+								</div>
+								<div class="post-info"> 
+									<c:set var="postTime" value="${post.createdDate.time}" />
+									<c:set var="currentTime" value="${currentTime}" />
+									<c:set var="timeDiff" value="${(currentTime - postTime) / (1000 * 60)}" />
+									<c:choose>
+										<c:when test="${timeDiff < 6}">
+								            방금 전
+								        </c:when>
+										<c:when test="${timeDiff < 60}">
+											<fmt:parseNumber value="${timeDiff}" integerOnly="true" />분 전
+								        </c:when>
+										<c:when test="${timeDiff < 1440}">
+											<fmt:parseNumber value="${timeDiff/60}" integerOnly="true" />시간 전
+								        </c:when>
+										<c:when test="${timeDiff < 1440}">
+											<fmt:parseNumber value="${timeDiff/1440}" integerOnly="true" />일 전
+								        </c:when>
+										<c:otherwise>
+											<fmt:formatDate value="${post.createdDate}" pattern="MM/dd" />
+										</c:otherwise>
+									</c:choose>
+								</div>
+							</div>
+						</div>
+					</c:forEach>
+				</div>
 			</div>
 		</div>
 	</div>
