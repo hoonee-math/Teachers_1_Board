@@ -20,7 +20,7 @@
 /* 사이드 메뉴 스타일링 */
 .side-menu {
 	flex: 0 0 240px;
-	border: 2px solid #FFB6C1;
+	border: 2px solid #F4D2CA;
 	padding: 20px;
 	background: #fff;
 }
@@ -30,7 +30,7 @@
 	margin: 10px 0;
 	padding: 10px;
 	border: 1px solid #FFE4E1;
-	color: #FF69B4;
+	color: #D9776A;
 	cursor: pointer;
 	font-weight: bold;
 	text-align: center;
@@ -43,13 +43,13 @@
 /* 메인 콘텐츠 영역 */
 .main-content {
 	flex: 1;
-	border: 2px solid #FFB6C1;
+	border: 2px solid #F4D2CA;
 	padding: 20px;
 	background: #fff;
 }
 
 .main-content h2 {
-	color: #FF69B4;
+	color: #D9776A;
 	margin-bottom: 20px;
 	padding-bottom: 10px;
 	border-bottom: 2px solid #FFE4E1;
@@ -58,7 +58,7 @@
 .content-box {
 	min-height: 400px;
 	padding: 20px;
-	border: 1px dashed #FFB6C1;
+	border: 1px dashed #F4D2CA;
 	background-color: #FFF5F5;
 }
 
@@ -89,13 +89,13 @@
 .board-container, .video-container, .quick-links, .mini-board,
 	.image-gallery, .side-board {
 	background: white;
-	border: 1px solid #FFB6C1;
+	border: 1px solid #F4D2CA;
 	padding: 5px;
 	border-radius: 8px;
 }
 
 h3 {
-	color: #FF69B4;
+	color: #D9776A;
 	margin-bottom: 15px;
 	padding-bottom: 10px;
 	border-bottom: 1px solid #FFE4E1;
@@ -127,7 +127,7 @@ h3 {
 .gallery-item {
 	aspect-ratio: 16/9;
 	background: #FFF5F5;
-	border: 1px dashed #FFB6C1;
+	border: 1px dashed #F4D2CA;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -137,7 +137,7 @@ h3 {
 .video-content {
 	aspect-ratio: 16/9;
 	background: #FFF5F5;
-	border: 1px dashed #FFB6C1;
+	border: 1px dashed #F4D2CA;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -147,14 +147,14 @@ h3 {
 .board-content {
 	min-height: 150px;
 	background: #FFF5F5;
-	border: 1px dashed #FFB6C1;
+	border: 1px dashed #F4D2CA;
 	padding: 10px;
 }
 
 /* 드롭다운 스타일 */
 .dropdown-container {
 	background: white;
-	border: 1px solid #FFB6C1;
+	border: 1px solid #F4D2CA;
 	padding: 15px;
 	border-radius: 8px;
 }
@@ -170,7 +170,7 @@ h3 {
 }
 
 .custom-select:hover {
-	border-color: #FFB6C1;
+	border-color: #F4D2CA;
 }
 
 .custom-select:focus {
@@ -181,7 +181,7 @@ h3 {
 /* 라디오 버튼 그룹 스타일 */
 .radio-container {
 	background: white;
-	border: 1px solid #FFB6C1;
+	border: 1px solid #F4D2CA;
 	padding: 15px;
 	border-radius: 8px;
 }
@@ -211,12 +211,12 @@ h3 {
 }
 
 .radio-item input[type="radio"]:checked+.radio-label {
-	color: #FF69B4;
+	color: #D9776A;
 	font-weight: bold;
 }
 
 .radio-item input[type="radio"]:checked+.radio-label::before {
-	border-color: #FF69B4;
+	border-color: #D9776A;
 }
 
 .radio-label {
@@ -230,7 +230,7 @@ h3 {
 }
 
 .radio-item input[type="radio"]:checked+span {
-	color: #FF69B4;
+	color: #D9776A;
 }
 </style>
 <!-- 메인 콘텐츠 영역 -->

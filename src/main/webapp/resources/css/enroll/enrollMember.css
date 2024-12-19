@@ -102,7 +102,7 @@ input[type="reset"] {
 }
 
 input[type="submit"] {
-    background-color: #FF69B4;
+    background-color: #D9776A;
     color: white;
 }
 
@@ -112,7 +112,8 @@ input[type="reset"] {
 }
 
 input[type="submit"]:hover {
-    background-color: #FFB6C1;
+    background-color: #C0655D;
+    font-weight: bold;
 }
 
 input[type="reset"]:hover {

@@ -23,7 +23,7 @@
 
 .board-btn {
 	padding: 8px 16px;
-	background-color: #FF69B4;
+	background-color: #D9776A;
 	border: none;
 	border-radius: 6px;
 	font-weight: 600;
@@ -32,11 +32,16 @@
 	color: white;
 }
 
+.board-btn:hover {
+	background-color: #C0655D;
+	font-weight: 900;
+}
+
 .board-btn-write {
 	float: right; /* 오른쪽으로 위치 */
 	margin-right: 10px; /* 오른쪽 여백 */
 	/* padding: 8px 16px; */  /* header의 account-btn 과 통일시키기 */
-	/* background-color: #FF69B4; */  /* header의 account-btn 과 통일시키기 */
+	/* background-color: #D9776A; */  /* header의 account-btn 과 통일시키기 */
 	/* border: none;  */ /* header의 account-btn 과 통일시키기 */
 	/* border-radius: 6px; */  /* header의 account-btn 과 통일시키기 */
 	/* color: white; */  /* header의 account-btn 과 통일시키기 */
@@ -52,7 +57,7 @@
 .board-header {
 	padding: 20px;
 	margin-left: 0px;
-	color: #FF69B4;
+	color: #D9776A;
 	/* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */ /* 쉐도우 효과 */
 }
 
@@ -94,7 +99,7 @@ th {
 
 .highlight {
 	font-weight: bold;
-	color: #FF69B4;
+	color: #D9776A;
 }
 
 .view-count {
@@ -114,7 +119,7 @@ th {
 		<div>
 			<p class="board-explain">맘스티쳐 전체 게시글 모음입니다 :)</p>
 			<button class="board-btn">등록일순</button>
-			<button id="btn-post" class="board-btn-write">글쓰기</button>
+			<button id="btn-post" class="board-btn board-btn-write">글쓰기</button>
 		</div>
 	</div>
 	<!-- 1행: 전체 너비 게시판 -->
