@@ -13,7 +13,7 @@
 		<h2>게시글 작성</h2>
 	    
 	    <div id='board-container'>
-	    	<form action='${path }/uploadpost.do' method="post" enctype="multipart/form-data" >
+	    	<form action='${path }/post/uploadpost' method="post" enctype="multipart/form-data" >
 	    		<table>
 	    			<tr id="school-container">
 	    				<td>
@@ -89,17 +89,12 @@
 				const path = e.target.result;
 				const $img = $("<img>").attr({
 					src:path,
-					height:"200px"
+					height:"400px",
 				});
 				$("#preview").append($img);
 			}
 		})
-		const formdata = new FormData();
-		let count=0;
-		for(let file of $("#upfile")[0].files){
-			formdata.append("upfile"+ ++count,file);
-		};
-		formdata.append("name")
 	});
+
 </script>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
