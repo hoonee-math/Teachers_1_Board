@@ -15,7 +15,8 @@ body {
 
 .menu {
 	display: flex;
-	justify-content: space-between;
+	width: 100%;
+	justify-content: center;
 	align-items: center;
 	padding: 10px 20px;
 	background-color: #FFE4E1;
@@ -24,6 +25,7 @@ body {
 .menu .logo-container {
 	display: flex;
 	align-items: center;
+	justify-content: center;
 	padding: 10px;
 	background-color: #FFE4E1;
 	border-radius: 5px;

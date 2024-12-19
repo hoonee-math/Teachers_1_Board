@@ -64,7 +64,7 @@
 <style>
 /* 게시글 목록 관련 스타일 */
 .post-row {
-    padding: 12px 15px;              /* 내부 여백 */
+    padding: 20px 15px;              /* 내부 여백 */
     border-bottom: 1px solid #dee2e6; /* 구분선 */
     transition: background-color 0.2s; /* 호버 효과 전환 */
 }

@@ -46,11 +46,6 @@ input[type=search]::-webkit-search-cancel-button {
     width: 100px;  /* 우편번호는 짧게 */
 }
 
-/* 우편번호 찾기 버튼 */
-input[type="button"] {
-    width: 100px;
-}
-
 </style>
 
 </head>
@@ -59,10 +54,7 @@ input[type="button"] {
 		<div class="logo-container">
 			<jsp:include page="/WEB-INF/views/common/logo.jsp"/>
 			<span class="logo-text">맘스티쳐</span>
-		</div>
-		<div class="left-section"></div>
-		<div class="right-section">
-			<button id="register-button">회원가입</button>
+			<jsp:include page="/WEB-INF/views/common/logo.jsp"/>
 		</div>
 	</div>
 
@@ -124,13 +116,17 @@ input[type="button"] {
 				<tr>
 					<th>주소</th>
 					<td>
+						<div style="margin-bottom:10px">
 						<input type="text" id="sample4_postcode" placeholder="우편번호">
 						<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
+						</div>
+						<div>
 						<input type="text" id="sample4_roadAddress" placeholder="도로명주소" style="width: 300px;">
 						<!-- <input type="text" id="sample4_jibunAddress" placeholder="지번주소" style="width: 300px;"> -->
 						<span id="guide" style="color:#999;display:none"></span>
 						<input type="text" id="sample4_detailAddress" placeholder="상세주소" style="width: 200px;">
 						<!-- <input type="text" id="sample4_extraAddress" placeholder="참고항목" style="width: 150px;"> -->
+						</div>
 					</td>
 				</tr>
 				<tr>
@@ -150,8 +146,9 @@ input[type="button"] {
 					</td>
 				</tr> -->
 			</table>
-			<input type="submit" value="가입"> <input type="reset"
-				value="취소">
+			<div class="enrollsubmit">
+				<input type="submit" value="가입"> <input type="reset" value="취소">
+			</div>
 		</form>
 	</section>
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

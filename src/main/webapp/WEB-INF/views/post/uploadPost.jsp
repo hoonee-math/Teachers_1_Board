@@ -3,16 +3,17 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<script	src="${pageContext.request.contextPath }/resources/js/jquery-3.7.1.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/post/uploadPost.css">
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 <jsp:include page="/WEB-INF/views/common/sidebar.jsp"/>
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/post/uploadPost.css">
 <section class="main-content col-9">
 	<div id="post-container" class="col-12">
 		<h2>게시글 작성</h2>
 	    
 	    <div id='board-container'>
-	    	<form action='${path }/uploadpost.do' method="post" enctype="multipart/form-data" >
+	    	<form action='${path }/post/uploadpost' method="post" enctype="multipart/form-data" >
 	    		<table>
 	    			<tr id="school-container">
 	    				<td>
@@ -55,7 +56,8 @@
 	    			<tr>
 	    				<th>첨부파일</th>
 	    				<td colspan="2">
-	    					<input type="file" name="upfile"/>
+	    					<input type="file" id="upfile" multiple accept="image/*"/>
+	    					<div id="preview"></div>
 	    				</td>
 	    			</tr>
 	    			<tr>
@@ -76,4 +78,23 @@
 <section class="right-box col-1"></section>
 </section>
 </main>
+
+<script>
+	$("#upfile").change(e=>{
+		$("preview").html('');
+		$.each($(e.target)[0].files,(i,file)=>{
+			const fileReader = new FileReader();
+			fileReader.readAsDataURL(file);
+			fileReader.onload=e=>{
+				const path = e.target.result;
+				const $img = $("<img>").attr({
+					src:path,
+					height:"400px",
+				});
+				$("#preview").append($img);
+			}
+		})
+	});
+
+</script>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
