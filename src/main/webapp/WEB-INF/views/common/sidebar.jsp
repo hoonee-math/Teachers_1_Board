@@ -79,7 +79,7 @@
 	        location.assign("${path}/common/maincontents.show");
 		});
 		$('.side-menu .menu-item:nth-child(7)').click(function() {
-	        location.assign("${path}/common/temp/post");
+	        location.assign("${path}/post/uploadpost");
 		});
 		$('.side-menu .menu-item:nth-child(8)').click(function() {
 	        location.assign("${path}/post/viewpost");

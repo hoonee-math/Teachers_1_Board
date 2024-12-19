@@ -60,8 +60,12 @@ public class UploadServlet extends HttpServlet {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection("jdbc:oracle:thin:@3.34.104.219:8877:xe","teachers","tryteam");
+
+            // 연결 상태 확인
+            System.out.println("DB 연결 상태: " + (!conn.isClosed() ? "성공" : "실패"));
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
+			System.out.println("1");
 			while (rs.next()) {
 				String region = rs.getString("REGION");
 				System.out.println("rs : " + rs);
