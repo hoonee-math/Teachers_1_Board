@@ -64,7 +64,7 @@
 	        location.assign("${path}/board/allboard");
 		});
 		$('.side-menu .menu-item:nth-child(2)').click(function() {
-	        location.assign("${path}/board/allboard");
+	        location.assign("${path}/member/findinfo");
 		});
 		$('.side-menu .menu-item:nth-child(3)').click(function() {
 	        location.assign("${path}/board/dontworry");
