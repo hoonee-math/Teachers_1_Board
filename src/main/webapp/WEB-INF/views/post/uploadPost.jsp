@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.*" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -17,13 +18,23 @@
 	    		<table>
 	    			<tr id="school-container">
 	    				<td>
-	    					<select id="sido">
+	    					<select id="region">
 	          					<option value="">전체지역</option>
 	       					 </select>
 	    				</td>
 	    				<td>
-	    					<select id="gungu">
+	    					<select id="district">
 	          					<option value="">구/군</option>
+	          					<%
+	          					List<String> regions = (List<String>) request.getAttribute("regions");
+	          					if(regions != null) {
+	          						for (String region : regions) {
+	          					%>
+	          							<option value="<%= region %>"><%= region %></option>
+	          					<%
+	          						}
+	          					}
+	          					%>
 	        				</select>
 	    				</td>
 	    				<td>
