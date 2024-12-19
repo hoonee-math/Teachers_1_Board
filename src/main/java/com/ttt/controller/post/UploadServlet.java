@@ -26,7 +26,7 @@ public class UploadServlet extends HttpServlet {
 		String postContent = request.getParameter("postContent");
 		String postWriter = request.getParameter("postWriter");
 		
-		Post p = Post.builder()
+		Post1 p = Post.builder()
 				.postTitle(postTitle)
 				.postContent(postContent)
 				.postWriter(postWriter)

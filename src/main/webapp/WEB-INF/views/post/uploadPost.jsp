@@ -55,7 +55,8 @@
 	    			<tr>
 	    				<th>첨부파일</th>
 	    				<td colspan="2">
-	    					<input type="file" name="upfile"/>
+	    					<input type="file" id="upfile" multiple accept="image/*"/>
+	    					<div id="preview"></div>
 	    				</td>
 	    			</tr>
 	    			<tr>
@@ -76,4 +77,28 @@
 <section class="right-box col-1"></section>
 </section>
 </main>
+
+<script>
+	$("#upfile").change(e=>{
+		$("preview").html('');
+		$.each($(e.target)[0].files,(i,file)=>{
+			const fileReader = new FileReader();
+			fileReader.readAsDataURL(file);
+			fileReader.onload=e=>{
+				const path = e.target.result;
+				const $img = $("<img>").attr({
+					src:path,
+					height:"200px"
+				});
+				$("#preview").append($img);
+			}
+		})
+		const formdata = new FormData();
+		let count=0;
+		for(let file of $("#upfile")[0].files){
+			formdata.append("upfile"+ ++count,file);
+		};
+		formdata.append("name")
+	});
+</script>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
