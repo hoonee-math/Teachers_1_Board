@@ -56,6 +56,9 @@ td{
 	vertical-align: top;
 	border-bottom: 1px solid #f0f0f0;
 }
+th {
+	padding: 20px;
+}
 td>input, td>textarea {
 	width: 100%;
 	padding: 8px 12px;
