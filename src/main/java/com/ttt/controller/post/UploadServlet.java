@@ -57,8 +57,8 @@ public class UploadServlet extends HttpServlet {
 		List<String> result = new ArrayList<>();
 		
 		try {
-			Class.forName("session에서 driver 가져오기 ");
-			conn = DriverManager.getConnection("session에서 url 가져오기 ","user","pw");
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@3.34.104.219:8877:xe","teachers","tryteam");
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
