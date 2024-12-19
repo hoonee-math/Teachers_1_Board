@@ -13,7 +13,8 @@ body {
 	display: none;
 }
 
-.menu {
+.menu {	
+	height: 60px;
 	display: flex;
 	width: 100%;
 	justify-content: center;
@@ -23,10 +24,10 @@ body {
 }
 
 .menu .logo-container {
+	gap: 20px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	padding: 10px;
 	background-color: #FFE4E1;
 	border-radius: 5px;
 }
@@ -38,7 +39,7 @@ body {
 
 .menu .logo-text {
 	margin-left: 10px;
-	font-size: 20px;
+	font-size: 24px;
 	font-weight: bold;
 	color: #FF69B4;
 }

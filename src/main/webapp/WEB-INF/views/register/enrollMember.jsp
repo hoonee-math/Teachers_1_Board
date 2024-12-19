@@ -52,9 +52,9 @@ input[type=search]::-webkit-search-cancel-button {
 <body>
 	<div class="menu">
 		<div class="logo-container">
-			<jsp:include page="/WEB-INF/views/common/logo.jsp"/>
+			<jsp:include page="/WEB-INF/views/common/logo2.jsp"/>
 			<span class="logo-text">맘스티쳐</span>
-			<jsp:include page="/WEB-INF/views/common/logo.jsp"/>
+			<jsp:include page="/WEB-INF/views/common/logo2.jsp"/>
 		</div>
 	</div>
 
@@ -153,6 +153,10 @@ input[type=search]::-webkit-search-cancel-button {
 	</section>
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script>
+		$(".logo-container").click(function() {
+			location.assign("${path}");
+		})
+	
     	document.getElementById("register-button").addEventListener("click",()=>{
     		location.assign("${path}/member/enrollmember.do")
     	})
