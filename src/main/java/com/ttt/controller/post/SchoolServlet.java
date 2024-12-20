@@ -2,7 +2,9 @@ package com.ttt.controller.post;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,30 +18,35 @@ import com.google.gson.Gson;
 import com.ttt.common.SqlSessionTemplate;
 
 /**
- * Servlet implementation class DistrictServlet
+ * Servlet implementation class SchoolServlet
  */
-@WebServlet("/post/district")
-public class DistrictServlet extends HttpServlet {
+@WebServlet("/post/school")
+public class SchoolServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	public DistrictServlet() {
+       
+    public SchoolServlet() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String region = request.getParameter("region");
-		List<String> districts = new ArrayList<>();
+		String district = request.getParameter("district");
+		String schoolType = request.getParameter("schoolType");
+		
+		Map<String, String> params = new HashMap<>();
+		params.put("district", district);
+		params.put("schoolType", schoolType);
+		
+		List<String> schools = new ArrayList<>();
 		
 		try {
 			SqlSession session = SqlSessionTemplate.getSession();
-			districts = session.selectList("post.selectDistrict",region);
-			
+			schools = session.selectList("post.selectSchool",params);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		response.setContentType("application/json;charset=UTF-8");
-		new Gson().toJson(districts, response.getWriter());
+		new Gson().toJson(schools, response.getWriter());
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
