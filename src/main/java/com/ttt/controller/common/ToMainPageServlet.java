@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.ttt.dto.Member1;
 import com.ttt.dto.Post1;
 
-@WebServlet("/")
+@WebServlet("/home")
 public class ToMainPageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
