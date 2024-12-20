@@ -50,8 +50,10 @@ public class UploadServlet extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		
 		List<String> result = new ArrayList<>();
-		
-		try (SqlSession session = SqlSessionTemplate.getSession()) {
+	
+		try {
+			SqlSession session = SqlSessionTemplate.getSession();
+			System.out.println(session);
 			result = session.selectList("post.selectRegion");
 		} catch (Exception e) {
 			e.printStackTrace();

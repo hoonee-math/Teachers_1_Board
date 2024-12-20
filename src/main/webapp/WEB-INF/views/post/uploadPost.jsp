@@ -22,8 +22,8 @@
 	          					<option value="">전체지역</option>
 	          					<%
 	          					System.out.println("Attribute regions : " + request.getAttribute("regions"));
-	          					List<String> regions = Arrays.asList((String)request.getAttribute("regions"));
-	          					//List<String> regions = (List<String>)request.getAttribute("regions");
+	          					//List<String> regions = Arrays.asList((String)request.getAttribute("regions"));
+	          					List<String> regions = (List<String>)request.getAttribute("regions");
 	          					System.out.println("regions : " + regions);
 	          					if(regions != null) {
 	          						for (String region : regions) {
