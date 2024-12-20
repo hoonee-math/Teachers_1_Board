@@ -86,7 +86,7 @@
 	});
 	//회원가입 버튼 연결 링크
 	$("#btn_enroll").click(function() {
-        location.assign("${path}/member/enrollmember.do");
+        location.assign("${path}/member/termsofservice");
 	});
   </script>
   
