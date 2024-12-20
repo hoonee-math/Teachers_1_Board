@@ -2,7 +2,9 @@ package com.ttt.controller.post;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,11 +30,17 @@ public class SchoolServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String district = request.getParameter("district");
+		String schoolType = request.getParameter("schoolType");
+		
+		Map<String, String> params = new HashMap<>();
+		params.put("district", district);
+		params.put("schoolType", schoolType);
+		
 		List<String> schools = new ArrayList<>();
 		
 		try {
 			SqlSession session = SqlSessionTemplate.getSession();
-			schools = session.selectList("post.selectSchool",district);
+			schools = session.selectList("post.selectSchool",params);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

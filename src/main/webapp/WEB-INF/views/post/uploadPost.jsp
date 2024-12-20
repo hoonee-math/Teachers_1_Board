@@ -16,7 +16,7 @@
 	    <div id='board-container'>
 	    	<form action='${path }/post/uploadpost' method="post" enctype="multipart/form-data" >
 	    		<table>
-	    			<tr id="school-container">
+	    			<tr id="region-container">
 	    				<td>
 	    					<select name="region" id="region" onchange="districtSearch(event);">
 								<option value=''>전체지역</option>
@@ -44,6 +44,15 @@
 	          					<option value=''>구/군</option>
 	        				</select>
 	    				</td>
+	    			</tr>
+	    			<tr id="school-container">
+	    				<td>
+	    					<select id="school-type" onchange="schoolSearch({target:document.getElementById('district')});">
+	    						<option value="">초중고</option>
+	    						<option value="초등학교">초등학교</option>
+	    						<option value="중학교">중학교</option>
+	    						<option value="고등학교">고등학교</option>
+	    					</select>
 	    				<td>
 	    					<select id="school-name">
 	          					<option value="">학교명</option>
@@ -135,7 +144,8 @@
 		const select = document.getElementById("school-name");
 		select.innerHTML="<option value=''>학교명</option>";
 		const district = e.target.value;
-		fetch("${path}/post/school?district=" + district)
+		const schoolType = document.getElementById("school-type").value;
+		fetch("${path}/post/school?district=" + district + "&schoolType=" + schoolType)
 			.then(response => response.json())
 			.then(data => {
 				data.forEach(school => {
