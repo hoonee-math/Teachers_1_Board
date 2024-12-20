@@ -1,95 +1,104 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/enroll/enrollMember.css">
-<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="path" value="${pageContext.request.contextPath}" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/resources/css/enroll/enrollMember.css">
+<jsp:include page="/WEB-INF/views/common/header.jsp" />
 <style>
-	#agree-header {
-		display: flex;
-		align-items: center;
-		justify-content: flex-start;
-		margin-top : 20px;
-	}
-	#termsofbtn {
-		margin-left: auto;
-	}
-	#agreecolor {
-		color : red;
-	}
-	#terms-contentbox {
-		max-width : 550px;
-		max-height : 300px;
-		color : grey;
-		font-size : 12px;
-	}
-	#terms-content>pre {
-		overflow-y: scroll;
-	}
+#agree-header {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	margin-top: 20px;
+}
 
-	#terms-content{
-		margin-top : 20px; 	
-		display : flex;
-		justify-content: center;
-		align-items: center;
-		width:100%;
-		
-	}
-	#agree-header2 {
-		margin-top : 30px;
-		display: flex;
-		align-items: center;
-		justify-content: flex-start;
-	}
-	#termsofbtn2 {
-		margin-left: auto;
-	}
-	#agreecolor2 {
-		color : red;
-	}
-	#termsofbtn2 {
-		margin-left: auto;
-	}
-	#terms-content2{
-		margin-top : 20px; 	
-		display : flex;
-		justify-content: center;
-		align-items: center;
-		width:100%;
-		
-	}
-	#terms-content2>pre {
-		overflow-y: scroll;
-	}
-	#terms-contentbox2 {
-		max-width : 525px;
-		max-height : 300px;
-		color : grey;
-		font-size : 12px;
-		white-space: pre-line;
-		overflow : auto;
-	}
-	#agree-button {
-		display : flex;
-		justify-content:center;
-		margin-top : 20px;
-		padding : 20px;
-		gap : 30px;
-	}
-	#cancle, #join {
-		padding : 20px;
-		font-size : 20px;
-		background-color : lightbrown;
-		border-radius: 5px;
-		border : none;
-	}
-	 #join:hover {
-   		background-color: #45a049;  
-	}
-	#cancle:hover {
-		background-color: red;
-	}
+#termsofbtn {
+	margin-left: auto;
+}
 
-	
+#agreecolor {
+	color: red;
+}
 
+#terms-contentbox {
+	max-width: 550px;
+	max-height: 300px;
+	color: grey;
+	font-size: 12px;
+}
+
+#terms-content>pre {
+	overflow-y: scroll;
+}
+
+#terms-content {
+	margin-top: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+
+#agree-header2 {
+	margin-top: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+#termsofbtn2 {
+	margin-left: auto;
+}
+
+#agreecolor2 {
+	color: red;
+}
+
+#termsofbtn2 {
+	margin-left: auto;
+}
+
+#terms-content2 {
+	margin-top: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+
+#terms-contentbox2 {
+	max-width: 525px;
+	max-height: 300px;
+	color: grey;
+	font-size: 12px;
+	white-space: pre-line;
+	overflow: auto;
+}
+
+#agree-button {
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+	padding: 20px;
+	gap: 30px;
+}
+
+#cancle, #join {
+	padding: 20px;
+	font-size: 20px;
+	background-color: lightbrown;
+	border-radius: 5px;
+	border: none;
+}
+
+#join:hover {
+	background-color: #45a049;
+}
+
+#cancle:hover {
+	background-color: #45a049;
+}
 </style>
 <section id="enroll-container">
 	<div id="terms-header">
@@ -99,7 +108,7 @@
 		<div id="agree-header">
 			<div id="termsofagree">이용약관 동의</div>
 			<div id="agreecolor">(필수)</div>
-			<input type="checkbox" name="sign2" id="termsofbtn">동의</input>	
+			<input type="checkbox" name="sign2" id="termsofbtn">동의
 		</div>
 		<div id="terms-content">
 			<pre id=terms-contentbox>
@@ -161,11 +170,11 @@
 		<div id="agree-header2">
 			<div id="termsofagree2">개인정보 수집 및 동의</div>
 			<div id="agreecolor2">(필수)</div>
-			<input type="checkbox" name="sign"id="termsofbtn2">동의</input>	
+			<input type="checkbox" name="sign" id="termsofbtn2">동의</input>
 		</div>
 		<div id="terms-content2">
 			<div id=terms-contentbox2>
-				개인정보처리방침
+개인정보처리방침
 
 [차례]
 1. 총칙
@@ -300,27 +309,28 @@
 
 현 개인정보처리방침은 2017년 9월 22일에 제정되었으며, 정부 및 회사의 정책 또는 보안기술의 변경에 따라 내용의 추가, 삭제 및 수정이 있을 경우에는 개정 최소 7일 전부터 ‘공지사항’란을 통해 고지하며, 본 정책은 시행 일자에 시행됩니다.
 1) 공고일자 : 2018년 05월 01일
-2) 시행일자 : 2018년 05월 01일 
-			</div>
+2) 시행일자 : 2018년 05월 01일 </div>
 		</div>
 		<div class="row full-width">
 			<div id="agree-button">
-				<div id="canclediv"><button id="cancle">메인으로</button></div>
-				<div id="joindiv"><button id="join">회원가입</button></div>
+				<div id="canclediv">
+					<button id="cancle">메인으로</button>
+				</div>
+				<div id="joindiv">
+					<button id="join">회원가입</button>
+				</div>
 			</div>
 		</div>
 	</div>
-	
-
-
-
-
-
-
-
-
 </section>
+</main>
+<script>
+	//회원가입 정보입력 창으로 이동
+	$("#join").click(function() {
+		location.assign("${path}/member/enrollmember.do");
+	});
+</script>
 
 
 
-<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+<jsp:include page="/WEB-INF/views/common/footer.jsp" />

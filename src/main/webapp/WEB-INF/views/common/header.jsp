@@ -78,7 +78,7 @@
     });
     
     $(".logo-text").click(function() {
-        location.assign("${path}");
+        location.assign("${path}/");
 	});
 	//로그인 버튼 연결 링크
 	$(".account-section .account-button:nth-child(1)").click(function() {
@@ -86,7 +86,7 @@
 	});
 	//회원가입 버튼 연결 링크
 	$("#btn_enroll").click(function() {
-        location.assign("${path}/member/enrollmember.do");
+        location.assign("${path}/member/termsofservice");
 	});
   </script>
   
