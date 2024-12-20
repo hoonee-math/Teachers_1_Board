@@ -61,19 +61,19 @@
 
 	<script>
 		$('.side-menu .menu-item:nth-child(1)').click(function() {
-	        location.assign("${path}/board/allboard");
+	        location.assign("${path}/board/allboard?type=all");
 		});
 		$('.side-menu .menu-item:nth-child(2)').click(function() {
-	        location.assign("${path}/member/findinfo");
+	        location.assign("${path}/board/allboard?type=recommend");
 		});
 		$('.side-menu .menu-item:nth-child(3)').click(function() {
-	        location.assign("${path}/board/dontworry");
+	        location.assign("${path}/board/dontworry?type=dontworry");
 		});
 		$('.side-menu .menu-item:nth-child(4)').click(function() {
-	        location.assign("${path}/member/login");
+	        location.assign("${path}/board/allboard?type=news");
 		});
 		$('.side-menu .menu-item:nth-child(5)').click(function() {
-	        location.assign("${path}/board/dontworry");
+	        location.assign("${path}/board/dontworry?type=dontworry");
 		});
 		$('.side-menu .menu-item:nth-child(6)').click(function() {
 	        location.assign("${path}/common/maincontents.show");

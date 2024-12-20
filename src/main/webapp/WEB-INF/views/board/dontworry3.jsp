@@ -15,12 +15,6 @@
 	border-radius: 8px;
 }
 
-/* 게시판 컨테이너 */
-.board-container {
-	width: 48%; /* 두 개의 게시판이 나란히 배치될 수 있도록 너비를 설정 */
-	margin-right: 10px; /* 오른쪽 여백 추가 */
-}
-
 /* 게시판 헤더 */
 .board-header {
 	display: flex;
