@@ -78,7 +78,7 @@
     });
     
     $(".logo-text").click(function() {
-        location.assign("${path}/");
+        location.assign("${path}/home");
 	});
 	//로그인 버튼 연결 링크
 	$(".account-section .account-button:nth-child(1)").click(function() {

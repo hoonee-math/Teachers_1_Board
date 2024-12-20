@@ -67,7 +67,7 @@
 	        location.assign("${path}/board/allboard?type=recommend");
 		});
 		$('.side-menu .menu-item:nth-child(3)').click(function() {
-	        location.assign("${path}/board/dontworry?type=dontworry");
+	        location.assign("${path}/home");
 		});
 		$('.side-menu .menu-item:nth-child(4)').click(function() {
 	        location.assign("${path}/board/allboard?type=news");
