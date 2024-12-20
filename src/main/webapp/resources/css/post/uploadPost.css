@@ -25,7 +25,6 @@
 
 div#post-container {
 	width: 1000px;
-	margin: 10px 10px !important;
 	padding: 20px;
 	box-shadow: 0 0 10px rgba(0,0,0,0.1);
 	border-radius: 8px;
@@ -51,12 +50,17 @@ table {
 	/* border-collapse: collapse; */
 	margin-bottom:30px;
 }
+#school-container>td:first-child,
+#category>th {
+	width: 100px;
+}
 td{
 	padding: 15px;
 	vertical-align: top;
 	border-bottom: 1px solid #f0f0f0;
 }
 th {
+	width: 20%;
 	padding: 20px;
 }
 td>input, td>textarea {
