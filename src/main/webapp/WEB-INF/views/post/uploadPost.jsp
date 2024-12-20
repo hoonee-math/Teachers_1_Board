@@ -18,7 +18,27 @@
 	    		<table>
 	    			<tr id="school-container">
 	    				<td>
-	    					<select id="region">
+	    					<select name=“region” id=“region” onchange=“districtSearch(this.value);”>
+								<option value>전체지역</option>
+								<option value=“서울”>서울</option>
+								<option value=“경기”>경기</option>
+								<option value=“인천”>인천</option>
+								<option value=“부산”>부산</option>
+								<option value=“세종”>세종</option>
+								<option value=“광주”>광주</option>
+								<option value=“대구”>대구</option>
+								<option value=“대전”>대전</option>
+								<option value=“울산”>울산</option>
+								<option value=“강원”>강원</option>
+								<option value=“충남”>충남</option>
+								<option value=“충북”>충북</option>
+								<option value=“경남”>경남</option>
+								<option value=“경북”>경북</option>
+								<option value=“전남”>전남</option>
+								<option value=“전북”>전북</option>
+								<option value=“제주”>제주</option>
+							</select>
+	    					<%-- <select id="region">
 	          					<option value="">전체지역</option>
 	          					<%
 	          					System.out.println("Attribute regions : " + request.getAttribute("regions"));
@@ -35,11 +55,11 @@
 	          						}
 	          					}
 	          					%>
-	       					 </select>
+	       					 </select> --%>
 	    				</td>
 	    				<td>
 	    					<select id="district">
-	          					<option value="">구/군</option>
+	          					<option value=''>구/군</option>
 	        				</select>
 	    				</td>
 	    				<td>
@@ -111,6 +131,24 @@
 			}
 		})
 	});
+	
+	function districtSearch(region) {
+		console.log(region);
+		const select = document.getElementById(“district”);
+		select.innerHTML="<option value=''>구/군</option>";
+		if(!region) return;
 
+		fetch("${path}/post/district?region=" + region)
+			.then(response => response.json())
+			.then(data => {
+				data.forEach(district => {
+					const option = document.createElement("option");
+					option.value = district;
+					option.textContent = district;
+					select.appendChild(option);
+				});
+			})
+			.catch(errer => console.error("Error : ",error));
+	}
 </script>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
