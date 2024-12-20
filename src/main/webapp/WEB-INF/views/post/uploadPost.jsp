@@ -32,7 +32,7 @@
 	    					</select>
 	    				</td>
 	    			</tr>
-	    			<tr id="region-container">
+	    			<tr id="region-container" class="hidden">
 	    				<td>
 	    					<select name="region" id="region" onchange="districtSearch(event);">
 								<option value=''>전체지역</option>
@@ -61,7 +61,7 @@
 	        				</select>
 	    				</td>
 	    			</tr>
-	    			<tr id="school-container">
+	    			<tr id="school-container" class="hidden">
 	    				<td>
 	    					<select id="school-type" onchange="schoolSearch({target:document.getElementById('district')});">
 	    						<option value="">초중고</option>
@@ -77,27 +77,27 @@
 	    			</tr>
 	    			<tr>
 	    				<th>제목</th>
-	    				<td colspan="2">
+	    				<td>
 	    					<input type="text" name="boardTitle"/>
 	    				</td>
 	    			</tr>
 	    			<tr>
 	    				<th>작성자</th>
-	    				<td colspan="2">
+	    				<td>
 	    					<input type="text" name="boardWriter"
 									value="${sessionScope.loginMember.userNick }" readOnly/>
 	    				</td>
 	    			</tr>
 	    			<tr>
 	    				<th>첨부파일</th>
-	    				<td colspan="2">
+	    				<td>
 	    					<input type="file" id="upfile" multiple accept="image/*"/>
 	    					<div id="preview"></div>
 	    				</td>
 	    			</tr>
 	    			<tr>
 	    				<th>내용</th>
-	    				<td colspan="2">
+	    				<td>
 	    					<textarea  rows="5" name="boardContent" style="resize:none"></textarea>
 	    				</td>
 	    			</tr>
@@ -172,13 +172,15 @@
 	
 	selector.addEventListener("change", function() {
 		const val = selector.value;
-		if(val!="region" && val!="school") {
-			$("#region-container").hide();
-			$("#school-container").hide();
+		if(val==="region") {
+			$("#region-container").removeClass("hidden");
+			$("#school-container").addClass("hidden");
 		} else if (val==="school") {
-			
+			$("#school-container").removeClass("hidden");
+			$("#region-container").removeClass("hidden");
 		} else {
-			$("#school-container").hide();
+			$("#region-container").addClass("hidden");
+			$("#school-container").addClass("hidden");
 		}
 	})
 </script>
