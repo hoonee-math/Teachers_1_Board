@@ -53,12 +53,13 @@ public class UploadServlet extends HttpServlet {
 	
 		try {
 			SqlSession session = SqlSessionTemplate.getSession();
-			System.out.println(session);
 			result = session.selectList("post.selectRegion");
+			session.commit();
+			session.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+		 
 		
 		
 		

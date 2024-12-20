@@ -33,7 +33,7 @@
 	
 	<!-- 생성한 Mapper 를 전역에서 접근하도록 설정 -->
 	<mappers>
-		<mapper resource="post-mapper.xml"/>
+		<mapper resource="/mappers/post-mapper.xml"/>
 	</mappers>
 	
 </configuration>
