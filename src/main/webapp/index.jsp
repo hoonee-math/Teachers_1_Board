@@ -17,18 +17,157 @@
 			</div>
 		</div>
 		<div class="col-6">
-			<div class="quick-links">
-				<h3>바로가기</h3>
-				<div class="links-grid">
-					<div class="link-item">학교검색</div>
-					<div class="link-item">선생님찾기</div>
-					<div class="link-item">과목정보</div>
-					<div class="link-item">수업후기</div>
+			<div class="mini-board">
+				<div class="main-title board-header">
+					<h2>추천글</h2>
+					<!-- <button id="btn-post" class="account-button">글쓰기</button> -->
 				</div>
+
+				<!-- 게시판 테이블 대신 리스트 형태로 변경 -->
+				<div class="board-list">
+					<c:forEach var="post" items="${unsolvedPosts}">
+						<div class="post-row">
+							<div class="d-flex justify-content-between align-items-center">
+								<div>
+									<!-- 게시글 제목 -->
+									<a href="${path}/board/postview.do?postNo=${post.postNo}"
+										class="post-title"> ${post.postTitle} </a> 
+					                <!-- 좋아요, 댓글 수 정보 -->
+					                <span class="post-stats">
+					                    <i class="bi bi-suit-heart-fill"></i> ${post.likeCount}
+					                    <i class="bi bi-chat-left-heart-fill"></i> ${post.commentCount+300}
+					                </span>
+								</div>
+								<div class="post-info"> 
+									<c:set var="postTime" value="${post.createdDate.time}" />
+									<c:set var="currentTime" value="${currentTime}" />
+									<c:set var="timeDiff" value="${(currentTime - postTime) / (1000 * 60)}" />
+									<c:choose>
+										<c:when test="${timeDiff < 6}">
+								            방금 전
+								        </c:when>
+										<c:when test="${timeDiff < 60}">
+											<fmt:parseNumber value="${timeDiff}" integerOnly="true" />분 전
+								        </c:when>
+										<c:when test="${timeDiff < 1440}">
+											<fmt:parseNumber value="${timeDiff/60}" integerOnly="true" />시간 전
+								        </c:when>
+										<c:otherwise>
+											<fmt:formatDate value="${post.createdDate}" pattern="MM/dd" />
+										</c:otherwise>
+									</c:choose>
+								</div>
+							</div>
+						</div>
+					</c:forEach>
+				</div>
+
 			</div>
 		</div>
 	</div>
 
+	<div class="row two-columns">
+		<!-- 첫 번째 게시판 -->
+		<div class="col-6">
+			<div class="mini-board">
+				<div class="main-title board-header">
+					<h2>학년별(로그인한 정보)</h2>
+					<!-- <button id="btn-post" class="account-button">글쓰기</button> -->
+				</div>
+
+				<!-- 게시판 테이블 대신 리스트 형태로 변경 -->
+				<div class="board-list">
+					<c:forEach var="post" items="${unsolvedPosts}">
+						<div class="post-row">
+							<div class="d-flex justify-content-between align-items-center">
+								<div>
+									<!-- 게시글 제목 -->
+									<a href="${path}/board/postview.do?postNo=${post.postNo}"
+										class="post-title"> ${post.postTitle} </a> 
+					                <!-- 좋아요, 댓글 수 정보 -->
+					                <span class="post-stats">
+					                    <i class="bi bi-suit-heart-fill"></i> ${post.likeCount}
+					                    <i class="bi bi-chat-left-heart-fill"></i> ${post.commentCount+300}
+					                </span>
+								</div>
+								<div class="post-info"> 
+									<c:set var="postTime" value="${post.createdDate.time}" />
+									<c:set var="currentTime" value="${currentTime}" />
+									<c:set var="timeDiff" value="${(currentTime - postTime) / (1000 * 60)}" />
+									<c:choose>
+										<c:when test="${timeDiff < 6}">
+								            방금 전
+								        </c:when>
+										<c:when test="${timeDiff < 60}">
+											<fmt:parseNumber value="${timeDiff}" integerOnly="true" />분 전
+								        </c:when>
+										<c:when test="${timeDiff < 1440}">
+											<fmt:parseNumber value="${timeDiff/60}" integerOnly="true" />시간 전
+								        </c:when>
+										<c:otherwise>
+											<fmt:formatDate value="${post.createdDate}" pattern="MM/dd" />
+										</c:otherwise>
+									</c:choose>
+								</div>
+							</div>
+						</div>
+					</c:forEach>
+				</div>
+
+			</div>
+		</div>
+		<!-- 두 번째 게시판 -->
+		<div class="col-6">
+			<div class="mini-board">
+				<div class="main-title board-header">
+					<h2>고민상담</h2>
+					<!-- <button id="btn-post" class="account-button">글쓰기</button> -->
+				</div>
+
+				<!-- 게시판 테이블 대신 리스트 형태로 변경 -->
+				<div class="board-list">
+					<c:forEach var="post" items="${solvedPosts}">
+						<div class="post-row">
+							<div class="d-flex justify-content-between align-items-center">
+								<div>
+									<!-- 게시글 제목 -->
+									<a href="${path}/board/postview.do?postNo=${post.postNo}"
+										class="post-title"> ${post.postTitle} </a> 
+					                <!-- 좋아요, 댓글 수 정보 -->
+					                <span class="post-stats">
+					                    <i class="bi bi-suit-heart-fill"></i> ${post.likeCount}
+					                    <i class="bi bi-chat-left-heart-fill"></i> ${post.commentCount+300}
+					                </span>
+								</div>
+								<div class="post-info"> 
+									<c:set var="postTime" value="${post.createdDate.time}" />
+									<c:set var="currentTime" value="${currentTime}" />
+									<c:set var="timeDiff" value="${(currentTime - postTime) / (1000 * 60)}" />
+									<c:choose>
+										<c:when test="${timeDiff < 6}">
+								            방금 전
+								        </c:when>
+										<c:when test="${timeDiff < 60}">
+											<fmt:parseNumber value="${timeDiff}" integerOnly="true" />분 전
+								        </c:when>
+										<c:when test="${timeDiff < 1440}">
+											<fmt:parseNumber value="${timeDiff/60}" integerOnly="true" />시간 전
+								        </c:when>
+										<c:when test="${timeDiff < 1440}">
+											<fmt:parseNumber value="${timeDiff/1440}" integerOnly="true" />일 전
+								        </c:when>
+										<c:otherwise>
+											<fmt:formatDate value="${post.createdDate}" pattern="MM/dd" />
+										</c:otherwise>
+									</c:choose>
+								</div>
+							</div>
+						</div>
+					</c:forEach>
+				</div>
+			</div>
+		</div>
+	</div>
 </section>
 <!-- 메인 콘텐츠 영역 종료 -->
 
