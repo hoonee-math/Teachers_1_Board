@@ -16,6 +16,22 @@
 	    <div id='board-container'>
 	    	<form action='${path }/post/uploadpost' method="post" enctype="multipart/form-data" >
 	    		<table>
+	    			<tr id="category">
+	    				<th>카테고리</th>
+	    				<td colspan="2">
+	    					<select id="selector">
+	    						<option value="">카테고리 선택</option>
+	    						<option value="news">맘스뉴스</option>
+	    						<option value="dontworry">고민상담소</option>
+	    						<option value="elementary">초등 게시판</option>
+	    						<option value="middle">중등 게시판</option>
+	    						<option value="high">고등 게시판</option>
+	    						<option value="senior">고3/n수생 게시판</option>
+	    						<option value="region">지역별 게시판</option>
+	    						<option value="school">학교별 게시판</option>
+	    					</select>
+	    				</td>
+	    			</tr>
 	    			<tr id="region-container">
 	    				<td>
 	    					<select name="region" id="region" onchange="districtSearch(event);">
@@ -57,14 +73,6 @@
 	    					<select id="school-name">
 	          					<option value="">학교명</option>
 	        				</select>
-	    				</td>
-	    			</tr>
-	    			<tr id="category">
-	    				<th>카테고리</th>
-	    				<td colspan="2">
-	    					<select>
-	    						<option value="">카테고리 선택</option>
-	    					</select>
 	    				</td>
 	    			</tr>
 	    			<tr>
@@ -157,5 +165,21 @@
 			})
 			.catch(error => console.error("Error : ",error));
 	}
+	
+	const selector = document.getElementById("selector");
+	//const region = document.getElementById("region-container");
+	//const school = document.getElementById("school-container");
+	
+	selector.addEventListener("change", function() {
+		const val = selector.value;
+		if(val!="region" && val!="school") {
+			$("#region-container").hide();
+			$("#school-container").hide();
+		} else if (val==="school") {
+			
+		} else {
+			$("#school-container").hide();
+		}
+	})
 </script>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
