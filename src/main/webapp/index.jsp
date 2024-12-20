@@ -5,14 +5,91 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 <jsp:include page="/WEB-INF/views/common/sidebar.jsp"/>
+<c:set var="path" value="${pageContext.request.contextPath}" />
+
+<style>
+/* 게시판 레이아웃 */
+.mini-board, .video-container{
+	background: none;
+	border: none;
+	padding: 0 20px 0 12px; /* 12px은 col-6의 margin값 -12를 맞춰주기 위함 값. */
+	border-radius: 8px;
+}
+/* 게시판 헤더 */
+.board-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 10px;
+	/* padding: 15px; */ /* 내부 여백 */
+	/* background: #f8f9fa; */ /* 배경색 */
+	/* border-radius: 4px; */ /* 모서리 둥글게 */
+}
+
+.board-header h2 {
+	margin: 0;
+	/* font-size: 1.25rem; */ /* 제목 크기 */
+	/* color: #212529; */ /* 제목 색상 */
+}
+/* 게시글 목록 관련 스타일 */
+.post-row {
+    padding: 20px 15px;              /* 내부 여백 */
+    border-bottom: 1px solid #dee2e6; /* 구분선 */
+    transition: background-color 0.2s; /* 호버 효과 전환 */
+}
+
+/* 제목과 통계를 감싸는 컨테이너 */
+.post-row .d-flex > div:first-child {
+    flex: 1;                        /* 남은 공간 모두 사용 */
+    min-width: 0;                   /* 말줄임이 제대로 작동하게 함 */
+    display: flex;                  /* 내부 요소 정렬을 위한 flex */
+    align-items: center;            /* 수직 가운데 정렬 */
+    gap: 8px;                       /* 내부 요소 간격 */
+}
+
+.post-row:hover {
+    background-color: #f8f9fa;       /* 호버시 배경색 */
+}
+
+.post-title {
+    text-decoration: none;
+    color: #212529;                  /* 글자색 */
+    font-size: 0.95rem;              /* 글자 크기 */
+    font-weight: 500;                /* 글자 굵기 */
+    white-space: nowrap;             /* 줄바꿈 방지 */
+    overflow: hidden;                /* 넘치는 텍스트 숨김 */
+    text-overflow: ellipsis;         /* 말줄임(...) 표시 */
+    max-width: 360px;                /* 최대 너비 설정 */
+    display: inline-block;           /* 인라인 블록 요소로 변경 */
+}
+
+.post-info {
+    font-size: 0.8rem;               /* 시간 정보 글자 크기 */
+    color: #6c757d;                  /* 시간 정보 색상 */
+    margin-left: 8px;                /* 왼쪽 여백 */
+}
+
+.post-stats {
+    flex-shrink: 0;   
+    color: #6c757d;                  /* 통계 정보 색상 */
+    font-size: 0.85rem;              /* 통계 정보 크기 */
+}
+
+.post-stats i {
+    margin: 0 2px 0 8px;             /* 아이콘 여백 */
+}
+</style>
 
 <!-- 메인 콘텐츠 영역 시작 지검 -->
-<section class="main-content col-10">
+<section class="main-content col-9">
 	<!-- 2행: 2단 분할 (1:1) -->
 	<div class="row two-columns">
 		<div class="col-6">
 			<div class="video-container">
-				<h3>추천 동영상</h3>
+				<div class="main-title board-header">
+					<h2>추천 동영상</h2>
+					<!-- <button id="btn-post" class="account-button">글쓰기</button> -->
+				</div>
 				<div class="video-content">16:9 비율의 동영상이 들어갈 영역입니다.</div>
 			</div>
 		</div>
