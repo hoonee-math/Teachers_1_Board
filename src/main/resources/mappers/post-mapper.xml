@@ -31,4 +31,10 @@
 		END
 		ORDER BY DISTRICT
 	</select>
+	
+	<select id="selectSchool" parameterType="string" resultType="string">
+		SELECT DISTINCT SCHOOL_NAME
+		FROM SCHOOL12
+		WHERE DISTRICT = #{district}
+	</select>
 </mapper>
