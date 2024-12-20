@@ -12,33 +12,33 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.google.gson.Gson;
 import com.ttt.common.SqlSessionTemplate;
 
-@WebServlet("/post/uploadpost")
-public class UploadServlet extends HttpServlet {
+/**
+ * Servlet implementation class DistrictServlet
+ */
+@WebServlet("/post/district")
+public class DistrictServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-    public UploadServlet() {
+
+	public DistrictServlet() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html;charset=UTF-8");
+		String region = request.getParameter("region");
+		List<String> districts = new ArrayList<>();
 		
-		List<String> result = new ArrayList<>();
-	
 		try {
 			SqlSession session = SqlSessionTemplate.getSession();
-			result = session.selectList("post.selectRegion");
-			session.commit();
-			session.close();
+			districts = session.selectList("post.selectDistrict",region);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		request.setAttribute("regions", result);
-		
-		request.getRequestDispatcher("/WEB-INF/views/post/uploadPost.jsp").forward(request, response);
+		response.setContentType("application/json;charset=UTF-8");
+		new Gson().toJson(districts, response.getWriter());
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
