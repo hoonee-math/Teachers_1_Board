@@ -143,6 +143,45 @@ input[type=search]::-webkit-search-cancel-button {
 						<label for="gender0">남</label> <input type="radio" name="gender"
 						id="gender1" value="F"> <label for="gender1">여</label></td>
 				</tr>
+				<tr>
+				    <th>자녀 학교</th>
+				    <td>
+				        <div style="margin-bottom:10px">
+				            <select class="child_school" name="region" id="region" onchange="districtSearch(event);" style="width:108px">
+				                <option value=''>전체지역</option>
+				                <option value="서울">서울</option>
+				                <option value="경기">경기</option>
+								<option value="인천">인천</option>
+								<option value="부산">부산</option>
+								<option value="세종">세종</option>
+								<option value="광주">광주</option>
+								<option value="대구">대구</option>
+								<option value="대전">대전</option>
+								<option value="울산">울산</option>
+								<option value="강원">강원</option>
+								<option value="충남">충남</option>
+								<option value="충북">충북</option>
+								<option value="경남">경남</option>
+								<option value="경북">경북</option>
+								<option value="전남">전남</option>
+								<option value="전북">전북</option>
+								<option value="제주">제주</option>
+				            </select>
+				            <select class="child_school" id="district" onchange="schoolSearch(event);" style="width:88px">
+				                <option value=''>구/군</option>
+				            </select>
+				            <select class="child_school" id="school-type" onchange="schoolSearch({target:document.getElementById('district')});" style="width:108px">
+				                <option value="">초중고</option>
+				                <option value="초등학교">초등학교</option>
+				                <option value="중학교">중학교</option>
+				                <option value="고등학교">고등학교</option>
+				            </select>
+				            <select class="child_school" id="school-name" name="schoolName"  style="width:186px">
+				                <option value="">학교명</option>
+				            </select>
+				        </div>
+				    </td>
+				</tr>
 			</table>
 			<div class="enrollsubmit">
 				<input type="submit" value="가입"> <input type="reset" value="취소">

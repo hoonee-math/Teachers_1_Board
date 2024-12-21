@@ -136,3 +136,60 @@ function sample4_execDaumPostcode() {
         }
     }).open();
 }
+
+
+/* 지역 선택시 해당 지역의 구/군 목록을 가져오는 함수 */
+function districtSearch(e) {
+    const select = $("#district");
+    select.html("<option value=''>구/군</option>");
+    const region = $(e.target).val();
+    
+    if(!region) return;
+    
+    $.ajax({
+        url: `${contextPath}/post/district`,
+        type: "GET",
+        data: { region: region },
+        success: function(data) {
+            data.forEach(district => {
+                const option = $("<option>")
+                    .val(district)
+                    .text(district);
+                select.append(option);
+            });
+        },
+        error: function(error) {
+            console.error("Error: ", error);
+        }
+    });
+}
+
+/* 구/군 선택시 해당 지역의 학교 목록을 가져오는 함수 */
+function schoolSearch(e) {
+    const select = $("#school-name");
+    select.html("<option value=''>학교명</option>");
+    const district = $(e.target).val();
+    const schoolType = $("#school-type").val();
+    
+    if(!district || !schoolType) return;
+    
+    $.ajax({
+        url: `${contextPath}/post/school`,
+        type: "GET",
+        data: { 
+            district: district,
+            schoolType: schoolType 
+        },
+        success: function(data) {
+            data.forEach(school => {
+                const option = $("<option>")
+                    .val(school)
+                    .text(school);
+                select.append(option);
+            });
+        },
+        error: function(error) {
+            console.error("Error: ", error);
+        }
+    });
+}

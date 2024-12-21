@@ -159,7 +159,7 @@ input[type="reset"]:hover {
 }
 
 /* 이메일 입력 관련 스타일 추가 */
-#emailSelect {
+#emailSelect, .child_school {
     width: 120px;
     padding: 6px 12px 11px 12px;
     border: 2px solid #ddd;
@@ -170,29 +170,21 @@ input[type="reset"]:hover {
 	background-color: #F9F9F9;
 }
 
-#emailSelect:focus {
+#emailSelect:focus, .child_school:focus{
     outline: none;
-    border-color: #4CAF50;
+    border-color: #C0655D;
 }
 
 /* 읽기 전용 상태의 도메인 입력 필드 스타일 */
-#emailDomain[readonly] {
+#emailDomain[readonly], .child_school[readonly]{
     background-color: #f8f9fa;
 }
 
 /* 이메일 입력 필드 간격 조정 */
-#emailId, #emailDomain {
+#emailId, #emailDomain, .child_school{
     width: 150px;
 }
 
-/* 모바일 반응형 처리 */
-@media screen and (max-width: 600px) {
-    #emailId, #emailDomain, #emailSelect {
-        width: 100%;
-        margin: 5px 0;
-    }
-    
-    #emailSelect {
-        margin-left: 0;
-    }
+.child_school {
+	margin-left:0;
 }
