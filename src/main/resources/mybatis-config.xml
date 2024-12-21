@@ -15,6 +15,8 @@
 	
 	<!-- 클래스 타입의 별칭 부여하기 -->
 	<typeAliases>
+		<typeAlias type="com.ttt.dto.Post1" alias="post1"/>
+		<typeAlias type="com.ttt.dto.School12" alias="sho"/>
 	</typeAliases>
 	
 	
@@ -34,6 +36,7 @@
 	<!-- 생성한 Mapper 를 전역에서 접근하도록 설정 -->
 	<mappers>
 		<mapper resource="/mappers/post-mapper.xml"/>
+		<mapper resource="/mappers/school-mapper.xml"/>
 	</mappers>
 	
 </configuration>
