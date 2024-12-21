@@ -170,21 +170,25 @@ function schoolSearch(e) {
     select.html("<option value=''>학교명</option>");
     const district = $(e.target).val();
     const schoolType = $("#school-type").val();
+	
+	console.log(district,schoolType);
     
     if(!district || !schoolType) return;
     
     $.ajax({
-        url: `${contextPath}/post/school`,
+        url: `${contextPath}/school/selectchildschool`,
         type: "GET",
         data: { 
             district: district,
             schoolType: schoolType 
         },
         success: function(data) {
+			console.log('Received data:', data);  // 데이터 구조 확인
             data.forEach(school => {
+				// option의 value는 standardCode, 화면에 표시되는 텍스트는 schoolName
                 const option = $("<option>")
-                    .val(school)
-                    .text(school);
+					.val(school.standardCode)  // 실제 서버에 전송될 값 학교 코드를 value로
+					.text(school.schoolName);  // 사용자에게 보여질 텍스트 학교 이름을 표시 텍스트로
                 select.append(option);
             });
         },

@@ -175,8 +175,10 @@ input[type=search]::-webkit-search-cancel-button {
 				                <option value="초등학교">초등학교</option>
 				                <option value="중학교">중학교</option>
 				                <option value="고등학교">고등학교</option>
+				                <option value="고등학교">기타학교</option>
 				            </select>
-				            <select class="child_school" id="school-name" name="schoolName"  style="width:186px">
+				            <!-- name에 standardCode 를 입력하여 회원정보에는 학교 코드가 저장되도록 설정 -->
+				            <select class="child_school" id="school-name" name="standardCode" style="width:186px">
 				                <option value="">학교명</option>
 				            </select>
 				        </div>
