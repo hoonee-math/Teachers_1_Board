@@ -327,7 +327,7 @@
 <script>
 	//회원가입 정보입력 창으로 이동
 	$("#join").click(function() {
-		location.assign("${path}/member/enrollmember.do");
+		location.assign("${path}/member/enroll");
 	});
 </script>
 

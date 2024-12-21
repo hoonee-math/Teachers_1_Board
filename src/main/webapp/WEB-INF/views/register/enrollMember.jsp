@@ -49,7 +49,7 @@ input[type=search]::-webkit-search-cancel-button {
 	<!-- 다음 우편번호 서비스 -->
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<!-- path 변수 이용 -->
-	<%-- <c:set var="path" value="${pageContext.request.contextPath }" /> //사용불가능..--%>
+	<c:set var="path" value="${pageContext.request.contextPath }" />
 	<script> const contextPath = "${pageContext.request.contextPath}";	</script>
 	<!-- 사용자 정의 JS 파일 로드 -->
 	<script src="${pageContext.request.contextPath}/resources/js/enroll/enrollMember.js"></script>
@@ -71,7 +71,7 @@ input[type=search]::-webkit-search-cancel-button {
 		<h2>회원 가입 정보 입력</h2>
 		<!-- onsubmit 발생했을 때 action 속성을 이용해 enrollmemberend.do 로 post 요청. onsubmit 속성을 통해 유효성검사 실시-->
 		<!-- onsubmit 값의 return 값이 true 일때 post 로 요청! -->
-		<form action="${path}/member/enrollmemberend.do" method="post"
+		<form action="${path}/member/enrollend" method="post"
 			onsubmit="return fn_invalidate();">
 			<table>
 				<tr>
@@ -126,9 +126,9 @@ input[type=search]::-webkit-search-cancel-button {
 					</td>
 				</tr>
 				<tr>
-					<th>회원구분</th>
+					<th>회원구분 *</th>
 					<td>
-						<input type="radio" name="memberType" id="parents" value="1">
+						<input type="radio" name="memberType" id="parents" value="1" required>
 						<label for="parents">학부모</label>
 						<input type="radio" name="memberType" id="teacher" value="2">
 						<label for="teacher">교사</label>

@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/member/enrollmember.do")
+@WebServlet("/member/enroll")
 // 회원가입 버튼 클릭시 회원 가입 화면을 출력해주는 서블릿
 public class MemberEnrollServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
