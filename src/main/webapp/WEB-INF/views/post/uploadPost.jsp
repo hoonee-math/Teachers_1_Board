@@ -115,6 +115,7 @@
 </main>
 
 <script>
+	/* 파일 업로드시, 프리뷰 사진 출력 */
 	$("#upfile").change(e=>{
 		$("preview").html('');
 		$.each($(e.target)[0].files,(i,file)=>{
@@ -130,7 +131,7 @@
 			}
 		})
 	});
-	
+	/* 전체지역 선택시 선택값에 맞는 학교명 출력 */
 	function districtSearch(e) {
 		const select = document.getElementById("district");
 		select.innerHTML="<option value=''>구/군</option>";
@@ -147,7 +148,7 @@
 			})
 			.catch(error => console.error("Error : ",error));
 	}
-	
+	/* 구/군 및 초중고 선택시, 선택값에 맞는 학교명 출력 */
 	function schoolSearch(e) {
 		const select = document.getElementById("school-name");
 		select.innerHTML="<option value=''>학교명</option>";
@@ -165,10 +166,8 @@
 			})
 			.catch(error => console.error("Error : ",error));
 	}
-	
+	/* 카테고리 선택에 따라 지역,학교 선택칸 출력 */
 	const selector = document.getElementById("selector");
-	//const region = document.getElementById("region-container");
-	//const school = document.getElementById("school-container");
 	
 	selector.addEventListener("change", function() {
 		const val = selector.value;
