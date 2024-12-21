@@ -14,6 +14,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class Post1 {
+	private String category;
 	private int postNo;
 	private Member1 member;
 	private String postTitle;
