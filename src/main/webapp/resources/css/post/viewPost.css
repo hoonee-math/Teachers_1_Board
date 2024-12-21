@@ -6,24 +6,20 @@
 	gap: 0px;
 }
 
-.col-2, .col-4, .col-6, .col-8, .col-10, .col-12 {
+.col-4, .col-6, .col-8, .col-12 {
 	padding: 0;
 }
 /* 열 너비 설정 */
-.col-2 {
-	flex: 0 0 16.666%;
-}
 .col-4 {
 	flex: 0 0 33.333%;
 }
+
 .col-6 {
 	flex: 0 0 50%;
 }
+
 .col-8 {
 	flex: 0 0 66.666%;
-}
-.col-10 {
-	flex: 0 0 83.333%;
 }
 
 section#post-container {
