@@ -131,7 +131,7 @@
 			}
 		})
 	});
-	/* 전체지역 선택시 선택값에 맞는 학교명 출력 */
+	/* 전체지역 선택시 선택값에 맞는 구/군 출력 */
 	function districtSearch(e) {
 		const select = document.getElementById("district");
 		select.innerHTML="<option value=''>구/군</option>";
@@ -153,8 +153,8 @@
 		const select = document.getElementById("school-name");
 		select.innerHTML="<option value=''>학교명</option>";
 		const district = e.target.value;
-		const schoolType = document.getElementById("school-type").value;
-		fetch("${path}/post/school?district=" + district + "&schoolType=" + schoolType)
+		const schoolName = document.getElementById("school-type").value;
+		fetch("${path}/post/school?district=" + district + "&schoolType=" + schoolName)
 			.then(response => response.json())
 			.then(data => {
 				data.forEach(school => {
