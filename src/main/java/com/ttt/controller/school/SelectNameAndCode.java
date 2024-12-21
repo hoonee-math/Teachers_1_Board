@@ -1,7 +1,6 @@
 package com.ttt.controller.school;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +15,8 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.google.gson.Gson;
 import com.ttt.common.SqlSessionTemplate;
+import com.ttt.dto.School12;
+import com.ttt.service.SchoolService;
 
 @WebServlet("/school/selectchildschool")
 public class SelectNameAndCode extends HttpServlet {
@@ -27,20 +28,20 @@ public class SelectNameAndCode extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String district = request.getParameter("district");
-		String schoolType = request.getParameter("schoolType");
+		String strSchoolType = request.getParameter("schoolType");
+		int schoolType=0;
+		switch(strSchoolType) {
+			case "초등학교": schoolType=1; break;
+			case "중학교": schoolType=2; break;
+			case "고등학교": schoolType=3; break;
+			case "기타학교": schoolType=4; break;
+		}
 		
-		Map<String, String> params = new HashMap<>();
+		Map<String, Object> params = new HashMap<>();
 		params.put("district", district);
 		params.put("schoolType", schoolType);
 		
-		List<String> schools = new ArrayList<>();
-		
-		try {
-			SqlSession session = SqlSessionTemplate.getSession();
-			schools = session.selectList("post.selectSchool",params);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		List<School12> schools = new SchoolService().selectNameAndCode(params);
 		
 		response.setContentType("application/json;charset=UTF-8");
 		new Gson().toJson(schools, response.getWriter());

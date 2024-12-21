@@ -1,5 +1,7 @@
 package com.ttt.service;
 
+import static com.ttt.common.SqlSessionTemplate.getSession;
+
 import java.util.List;
 import java.util.Map;
 
@@ -12,9 +14,9 @@ public class SchoolService {
 
 	private SchoolDao dao=new SchoolDao();
 	
-	public List<School12> selectNameAndCode(Map<String,Integer> param) {
+	public List<School12> selectNameAndCode(Map<String,Object> inputSchoolInfo) {
 		SqlSession session=getSession();
-		List<School12> result=dao.selectBoardLsit(session,param);
+		List<School12> result=dao.selectNameAndCode(session,inputSchoolInfo);
 		session.close();
 		return result;
 		
