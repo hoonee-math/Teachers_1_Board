@@ -19,9 +19,4 @@ public class PostService {
 		session.close();
 		return result;
 	}
-	
-	public int selectPostCount() {
-		SqlSession session = getSession();
-		
-	}
 }
