@@ -7,7 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/member/enrollmemberend.do")
+// memberEnroll 네이밍을 통해 password 필터처리
+@WebServlet(name="memberEnroll", urlPatterns="/member/enrollmemberend.do")
 // enrollMember.jsp 로부터 회원가입 form 작성이 끝난후 회원가입 요청을 처리하는 servlet
 public class MemberEnrollEndServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -32,6 +33,9 @@ public class MemberEnrollEndServlet extends HttpServlet {
 		
 		int memberType=Integer.parseInt(request.getParameter("memberType")); // 0:관리자 1:학부모 2:교사 
 		int standardCode=Integer.parseInt(request.getParameter("standardCode")); // 자녀 학교 정보 or 교사 소속 학교
+		
+		
+		
 		
 		//db에 저장
 		//mybatis 설정하기!

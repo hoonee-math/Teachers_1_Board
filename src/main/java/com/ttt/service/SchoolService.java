@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.ttt.dao.SchoolDao;
 import com.ttt.dto.School12;
 
+/* Connection 과 dao 객체를 만들어서 서버와 db 서버가 서로 통신할 수 있게 서비스를 제공하는 클래스 */
 public class SchoolService {
 
 	private SchoolDao dao=new SchoolDao();
