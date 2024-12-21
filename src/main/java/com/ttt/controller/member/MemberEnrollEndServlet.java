@@ -19,28 +19,21 @@ public class MemberEnrollEndServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-		String userId=request.getParameter("userId");
-		String password=request.getParameter("password"); // 이때 바로 암호화하면 더이상 처리해줄 필요도 없음 // 얘는 HTTPServlet 메소드.. HTTPServlet 객체를 재정의 할 수 있음! wrapper 클래스 이용! 재정의 해서 사용
-		String userName=request.getParameter("userName");
-		int age;
-		try {
-			age=Integer.parseInt(request.getParameter("age"));
-		} catch(NumberFormatException e) {
-			age=0;
-		}
-		String email=request.getParameter("email");
-		String gender=request.getParameter("gender");
-		String[] hobby=request.getParameterValues("hobby");
-		String address=request.getParameter("address");
-		String phone=request.getParameter("phone");
+		String emailId=request.getParameter("emailId");
+		String emailDomain=request.getParameter("emailDomain");
+		String memberPw=request.getParameter("memberPw"); // 이때 바로 암호화하면 더이상 처리해줄 필요도 없음 // 얘는 HTTPServlet 메소드.. HTTPServlet 객체를 재정의 할 수 있음! wrapper 클래스 이용! 재정의 해서 사용
+		String memberName=request.getParameter("memberName");
+		String memberNick=request.getParameter("memberNick");
 		
-		/*
-		 * Member m=Member.builder() .userId(userId) .password(password)
-		 * .userName(userName) .gender(gender) .age(age) .email(email) .phone(phone)
-		 * .hobby(hobby) .phone(address) .build();
-		 */
+		String addressNo=request.getParameter("addressNo");
+		String addressRoad=request.getParameter("addressRoad");
+		String addressDetail=request.getParameter("addressDetail");
+		String address="("+addressNo+") "+addressRoad+" "+addressDetail;
 		
-		//db에 저장. web 계쩡의 member 테이블에 저장
+		int memberType=Integer.parseInt(request.getParameter("memberType")); // 0:관리자 1:학부모 2:교사 
+		int standardCode=Integer.parseInt(request.getParameter("standardCode")); // 자녀 학교 정보 or 교사 소속 학교
+		
+		//db에 저장
 		//mybatis 설정하기!
 		String msg,loc="/";
 		

@@ -75,11 +75,11 @@ input[type=search]::-webkit-search-cancel-button {
 			onsubmit="return fn_invalidate();">
 			<table>
 				<tr>
-					<th>이메일</th>
+					<th>이메일 *</th>
 					<td>
-						<input type="text" name="emailId" id="emailId" style="width: 150px;"> 
-						@ <input type="text" name="emailDomain" id="emailDomain" style="width: 150px;">
-						<select name="emailSelect" id="emailSelect" onchange="handleEmailSelect()">
+						<input type="text" name="emailId" id="emailId" style="width: 150px;" required> 
+						@ <input type="text" name="emailDomain" id="emailDomain" style="width: 150px;" required>
+						<select id="emailSelect" onchange="handleEmailSelect()">
 							<option value="">직접입력</option>
 							<option value="gmail.com">gmail.com</option>
 							<option value="naver.com">naver.com</option>
@@ -90,58 +90,49 @@ input[type=search]::-webkit-search-cancel-button {
 					</td>
 				</tr>
 				<tr>
-					<th>아이디</th>
-					<td><input type="text" placeholder="4글자이상" name="userId"
-						id="userId_"> <input type="button" value="중복확인"
-						id="btn_checkDuplicate"></td>
-				</tr>
-				<tr>
-					<th>패스워드</th>
-					<td><input type="password" name="password" id="password_" placeholder="대소문자, 숫자, 특수문자 포함"><br>
+					<th>패스워드 *</th>
+					<td><input type="password" name="memberPw" id="password_" placeholder="대소문자, 숫자, 특수문자 포함" required><br>
 					</td>
 				</tr>
 				<tr>
-					<th>패스워드확인</th>
-					<td><input type="password" id="password_2"><br>
+					<th>패스워드확인 *</th>
+					<td><input type="password" id="password_2" required><br>
 						<span id="checkResult"></span></td>
 				</tr>
 				<tr>
-					<th>이름</th>
-					<td><input type="text" name="userName" id="userName"><br>
+					<th>이름 *</th>
+					<td><input type="text" name="memberName" id="userName" required><br>
 					</td>
 				</tr>
 				<tr>
-					<th>나이</th>
-					<td><input type="number" name="age" id="age"><br>
-					</td>
-				</tr>
-				<tr>
-					<th>휴대폰</th>
-					<td><input type="tel" placeholder="(-없이)01012345678"
-						name="phone" id="phone" maxlength="11" required><br>
+					<th>닉네임</th>
+					<td><input type="text" name="memberNick" id="memberNick" placeholder="다른 사용자에게 보여줄 닉네임을 입력하세요."><br>
 					</td>
 				</tr>
 				<tr>
 					<th>주소</th>
 					<td>
 						<div style="margin-bottom:10px">
-						<input type="text" id="sample4_postcode" placeholder="우편번호">
+						<input type="text" id="sample4_postcode" name="addressNo" placeholder="우편번호">
 						<input type="button" id="postcodeFindBtn" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
 						</div>
 						<div>
-						<input type="text" id="sample4_roadAddress" placeholder="도로명주소" style="width: 300px;">
+						<input type="text" id="sample4_roadAddress" name="addressRoad" placeholder="도로명주소" style="width: 300px;">
 						<!-- <input type="text" id="sample4_jibunAddress" placeholder="지번주소" style="width: 300px;"> -->
 						<span id="guide" style="color:#999;display:none"></span>
-						<input type="text" id="sample4_detailAddress" placeholder="상세주소" style="width: 200px;">
+						<input type="text" id="sample4_detailAddress" name="addressDetail" placeholder="상세주소" style="width: 200px;">
 						<!-- <input type="text" id="sample4_extraAddress" placeholder="참고항목" style="width: 150px;"> -->
 						</div>
 					</td>
 				</tr>
 				<tr>
-					<th>성별</th>
-					<td><input type="radio" name="gender" id="gender0" value="M">
-						<label for="gender0">남</label> <input type="radio" name="gender"
-						id="gender1" value="F"> <label for="gender1">여</label></td>
+					<th>회원구분</th>
+					<td>
+						<input type="radio" name="memberType" id="parents" value="1">
+						<label for="parents">학부모</label>
+						<input type="radio" name="memberType" id="teacher" value="2">
+						<label for="teacher">교사</label>
+					</td>
 				</tr>
 				<tr>
 				    <th>자녀 학교</th>
