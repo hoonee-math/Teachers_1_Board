@@ -1,4 +1,4 @@
-package com.ttt.controller.member;
+package com.ttt.controller.school;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,11 +17,11 @@ import org.apache.ibatis.session.SqlSession;
 import com.google.gson.Gson;
 import com.ttt.common.SqlSessionTemplate;
 
-@WebServlet("/member/selectchildschool")
-public class SelectChildSchoolServlet extends HttpServlet {
+@WebServlet("/school/selectchildschool")
+public class SelectNameAndCode extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public SelectChildSchoolServlet() {
+    public SelectNameAndCode() {
         super();
     }
 
