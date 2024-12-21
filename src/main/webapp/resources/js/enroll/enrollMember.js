@@ -9,7 +9,7 @@ $(document).ready(function() {
 // 모든 이벤트 리스너 초기화
 function initializeEventListeners() {
     $(".logo-container").click(() => location.assign(contextPath));
-    $("#register-button").click(() => location.assign(`${contextPath}/member/enrollmember.do`));
+    $("#register-button").click(() => location.assign(`${contextPath}/member/enroll`));
     $("#emailSelect").change(handleEmailSelect);
     $("#btn_checkDuplicate").click(checkDuplicate);
     $("#password_2").keyup(validatePasswordMatch);

@@ -16,12 +16,12 @@ public class PasswordEncoding extends HttpServletRequestWrapper {
 	
 	@Override
 	public String getParameter(String name) {
-		String oriVal=super.getParameter(name); // super는 위에서 request를 변환한 값을 가져오기 때문에! key값으로 받아온 값을 저장시킴!
-		if(name.equals("password")) {
-			String encStr=getSHA512(oriVal);
-			return encStr;
+		String originPw=super.getParameter(name); // super는 위에서 request를 변환한 값을 가져오기 때문에! key값으로 받아온 값을 저장시킴!
+		if(name.equals("memberPw")) {
+			String enocodingPw=getSHA512(originPw);
+			return enocodingPw;
 		}
-		return oriVal;
+		return originPw;
 	}
 	
 	private String getSHA512(String orival) {
@@ -34,11 +34,11 @@ public class PasswordEncoding extends HttpServletRequestWrapper {
 		}catch(NoSuchAlgorithmException e) {
 			e.printStackTrace();
 		}
-		byte[] orivalByte=orival.getBytes();
-		md.update(orivalByte);
-		byte[] encByte=md.digest();
-		String encStr=Base64.getEncoder().encodeToString(encByte);
-		return encStr;
+		byte[] originPwByte=orival.getBytes();
+		md.update(originPwByte);
+		byte[] enocodingPwByte=md.digest();
+		String enocodingPw=Base64.getEncoder().encodeToString(enocodingPwByte);
+		return enocodingPw;
 	}
 	
 }
