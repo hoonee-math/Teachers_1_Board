@@ -19,7 +19,7 @@
 	    			<tr id="category">
 	    				<th>카테고리</th>
 	    				<td colspan="2">
-	    					<select id="selector">
+	    					<select name="category" id="selector">
 	    						<option value="">카테고리 선택</option>
 	    						<option value="news">맘스뉴스</option>
 	    						<option value="dontworry">고민상담소</option>
@@ -56,7 +56,7 @@
 							</select>
 	    				</td>
 	    				<td>
-	    					<select id="district" onchange="schoolSearch(event);">
+	    					<select name="district" id="district" onchange="schoolSearch(event);">
 	          					<option value=''>구/군</option>
 	        				</select>
 	    				</td>
@@ -70,7 +70,7 @@
 	    						<option value="고등학교">고등학교</option>
 	    					</select>
 	    				<td>
-	    					<select id="school-name">
+	    					<select name="schoolName" id="school-name">
 	          					<option value="">학교명</option>
 	        				</select>
 	    				</td>
@@ -78,13 +78,13 @@
 	    			<tr>
 	    				<th>제목</th>
 	    				<td>
-	    					<input type="text" name="boardTitle"/>
+	    					<input type="text" name="postTitle"/>
 	    				</td>
 	    			</tr>
 	    			<tr>
 	    				<th>작성자</th>
 	    				<td>
-	    					<input type="text" name="boardWriter"
+	    					<input type="text" name="postWriter"
 									value="${sessionScope.loginMember.userNick }" readOnly/>
 	    				</td>
 	    			</tr>
@@ -98,7 +98,7 @@
 	    			<tr>
 	    				<th>내용</th>
 	    				<td>
-	    					<textarea  rows="5" name="boardContent" style="resize:none"></textarea>
+	    					<textarea  rows="10" name="postContent" style="resize:none"></textarea>
 	    				</td>
 	    			</tr>
 	    		</table>
@@ -131,7 +131,7 @@
 			}
 		})
 	});
-	/* 전체지역 선택시 선택값에 맞는 학교명 출력 */
+	/* 전체지역 선택시 선택값에 맞는 구/군 출력 */
 	function districtSearch(e) {
 		const select = document.getElementById("district");
 		select.innerHTML="<option value=''>구/군</option>";
@@ -153,8 +153,8 @@
 		const select = document.getElementById("school-name");
 		select.innerHTML="<option value=''>학교명</option>";
 		const district = e.target.value;
-		const schoolType = document.getElementById("school-type").value;
-		fetch("${path}/post/school?district=" + district + "&schoolType=" + schoolType)
+		const schoolName = document.getElementById("school-type").value;
+		fetch("${path}/post/school?district=" + district + "&schoolType=" + schoolName)
 			.then(response => response.json())
 			.then(data => {
 				data.forEach(school => {

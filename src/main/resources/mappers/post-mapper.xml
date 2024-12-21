@@ -36,7 +36,7 @@
 		SELECT DISTINCT SCHOOL_NAME
 		FROM SCHOOL12
 		WHERE DISTRICT = #{district}
-		AND SCHOOL_NAME LIKE '%' || #{schoolType}
+		AND SCHOOL_NAME LIKE '%' || #{schoolName}
 		ORDER BY SCHOOL_NAME
 	</select>
 </mapper>
