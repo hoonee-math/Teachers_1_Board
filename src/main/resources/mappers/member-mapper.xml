@@ -41,4 +41,8 @@
 		SELECT * FROM MEMBER1 WHERE EMAIL=#{email}
 	</select>
 	
+	<select id="selectMemberByNameAndEmail" parameterType="member1" resultMap="memberMap">
+		SELECT * FROM MEMBER1 WHERE EMAIL=#{email} AND MEMBER_NAME=#{memberName}
+	</select>
+	
 </mapper>

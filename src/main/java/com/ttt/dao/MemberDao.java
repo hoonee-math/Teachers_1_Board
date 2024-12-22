@@ -14,4 +14,8 @@ public class MemberDao {
 	public Member1 selectMemberById(SqlSession session, String email) {
 		return session.selectOne("member.selectMemberById",email);
 	}
+	
+	public Member1 selectMemberByNameAndEmail(SqlSession session, Member1 m) {
+		return session.selectOne("member.selectMemberByNameAndEmail",m);
+	}
 }

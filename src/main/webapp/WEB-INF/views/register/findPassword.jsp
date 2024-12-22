@@ -166,11 +166,11 @@ input:focus {
 				<h2>비밀번호 찾기</h2>
 				<form id="find-form">
 					<div class="input-group">
-						<label for="email">이름</label> <input type="email" id="name"
-							name="name" placeholder="이름을 입력하세요" required>
+						<label for="text">이름</label> <input type="text" id="memberName"
+							name="memberName" placeholder="이름을 입력하세요" required>
 					</div>
 					<div class="input-group">
-						<label for="text">이메일</label> <input type="text" id="email"
+						<label for="email">이메일</label> <input type="email" id="email"
 							name="email" placeholder="이메일을 입력하세요" required>
 					</div>
 					<button type="submit" class="find-button">본인인증</button>
@@ -184,7 +184,39 @@ input:focus {
 	<script>
 		document.getElementById('find-form').addEventListener('submit',
 				function(e) {
-				});
+	        		console.log("Form submit event fired");
+			        e.preventDefault(); // 폼 기본 제출 동작 방지
+			        
+			        const memberName = $("#memberName").val();
+			        const email = $("#email").val();
+			        
+			        // 회원 존재 여부 확인
+			        $.ajax({
+			            url: '${path}/member/findpassword.do',
+			            type: "POST",
+			            data: {
+			                memberName: memberName,
+			                email: email
+			            },
+			            success: function(response) {
+			                if(response.exists) {
+			                    // 회원이 존재하면 이메일 인증 창 오픈
+			                    window.open(
+		                            '${path}/check/email.do?email=' + encodeURIComponent(email),
+			                        "emailVerify",
+			                        "width=400,height=300,left=500,top=200"
+			                    );
+			                } else {
+			                    alert("일치하는 회원 정보가 없습니다.");
+			                }
+			            },
+			            error: function(xhr, status, error) {
+			                alert("서버 통신 중 오류가 발생했습니다.");
+			                console.error("Error:", error);
+			            }
+			        });
+	        	}
+		);
 		//로고에 메인 홈으로 이동하는 링크 추가
 		$(".logo-container").click(function() {
 			location.assign("${path}/main");
