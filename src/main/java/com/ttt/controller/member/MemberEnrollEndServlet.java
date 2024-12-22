@@ -24,6 +24,9 @@ public class MemberEnrollEndServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String emailId=request.getParameter("emailId");
 		String emailDomain=request.getParameter("emailDomain");
@@ -78,10 +81,7 @@ public class MemberEnrollEndServlet extends HttpServlet {
 		request.setAttribute("loc", loc);
 		
 		request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp").forward(request, response);
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		/* doGet(request, response); */
 	}
 
 }

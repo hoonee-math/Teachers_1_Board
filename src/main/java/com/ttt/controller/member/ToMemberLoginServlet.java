@@ -9,11 +9,11 @@ import javax.servlet.http.HttpServletResponse;
 
 
 @WebServlet("/member/login")
-public class MemberLoginServlet extends HttpServlet {
+public class ToMemberLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
-    public MemberLoginServlet() {
+    public ToMemberLoginServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
