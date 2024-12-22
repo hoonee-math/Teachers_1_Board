@@ -10,22 +10,31 @@
 		<result column="member_pw" property="memberPw"/>
 		<result column="member_nick" property="memberNick"/>
 		<result column="member_type" property="memberType"/>
-		<result column="school_no" property="childSchool"/> <!-- 현재 입력받는 정보는 학교 고유 코드를 저장하게 됨...-->
+		<result column="school_no" property="childSchool.schoolNo"/> <!-- 현재 입력받는 정보는 학교 고유 코드를 저장하게 됨...-->
 		<result column="enroll_date" property="enrollDate"/>
 	</resultMap>
 
 	
 	<insert id="insertMember" parameterType="member1">
-		INSERT INTO MEMBER VALUES(
-			#{memberNo},
-			#{memberName},
-			#{email},
-			#{memberPw},
-			#{memberNick},
-			SYSDATE,
-			#{memberType},
-			#{childSchool},
-		)
+	    INSERT INTO MEMBER1 (
+	        MEMBER_NO,
+	        MEMBER_NAME,
+	        EMAIL,
+	        MEMBER_PW,
+	        MEMBER_NICK,
+	        MEMBER_TYPE,
+	        SCHOOL_NO,
+	        ENROLL_DATE
+	    ) VALUES (
+	        MEMBER_SEQ.NEXTVAL,
+	        #{memberName},
+	        #{email},
+	        #{memberPw},
+	        #{memberNick},
+	        #{memberType},
+	        #{childSchool.schoolNo},  <!--매개변수 타입 선언에 의해 childSchool 객체-->
+	        SYSDATE
+	    )
 	</insert>   
 	
 </mapper>

@@ -14,7 +14,21 @@ public class MemberService {
 	
 	public int insertMember(Member1 m) {
 		SqlSession session=getSession();
-		int result=dao.insertMember(session,m);
+	    int result = 0;
+	    try {
+	        result = dao.insertMember(session, m);
+	        if(result > 0) {
+	            session.commit();
+	        } else {
+	            session.rollback();
+	        }
+	    } catch(Exception e) {
+	        e.printStackTrace();
+	        session.rollback();
+	        throw e;
+	    } finally {
+	        session.close();
+	    }
 		return result;
 	}
 }

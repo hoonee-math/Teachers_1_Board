@@ -53,7 +53,7 @@
 	
 	<!-- 매개변수를 map으로 받아옴. mybatis에 의해 값을 일부만 넣어도 객체로 만들어줌. -->
 	<select id="selectNameAndCode" parameterType="map" resultMap="schoolMap">
-		SELECT SCHOOL_NAME, STANDARD_CODE, REGION_CODE
+		SELECT SCHOOL_NO, SCHOOL_NAME, STANDARD_CODE, REGION_CODE
 		FROM SCHOOL12
 		WHERE DISTRICT = #{district}
 		AND SCHOOL_TYPE = #{schoolType}

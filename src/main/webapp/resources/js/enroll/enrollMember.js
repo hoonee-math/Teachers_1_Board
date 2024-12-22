@@ -187,7 +187,7 @@ function schoolSearch(e) {
             data.forEach(school => {
 				// option의 value는 standardCode, 화면에 표시되는 텍스트는 schoolName
                 const option = $("<option>")
-					.val(school.standardCode)  // 실제 서버에 전송될 값 학교 코드를 value로
+					.val(school.schoolNo)  // 실제 서버에 전송될 값 학교 코드를 value로
 					.text(school.schoolName);  // 사용자에게 보여질 텍스트 학교 이름을 표시 텍스트로
                 select.append(option);
             });

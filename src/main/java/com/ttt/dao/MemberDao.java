@@ -8,6 +8,6 @@ import com.ttt.dto.Member1;
 public class MemberDao {
 
 	public int insertMember(SqlSession session, Member1 m) {
-		return session.insert("member,insertMember",m);
+		return session.insert("member.insertMember",m);
 	}
 }
