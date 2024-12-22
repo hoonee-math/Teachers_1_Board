@@ -1,0 +1,230 @@
+@charset "UTF-8";
+/* layout.css */
+.container {
+	display: flex;
+	max-width: 1400px;
+	min-width: 1200px;
+	margin: 20px auto;
+	padding: 0 20px;
+	gap: 20px;
+}
+
+/* 사이드 메뉴 스타일링 */
+.side-menu {
+	flex: 0 0 220px;
+	/* border: 2px solid #F4D2CA; */
+	padding: 10px;
+	/* background: #F9F9F9; */
+}
+
+.menu-item {
+	background-color: #F9F9F9;
+	margin: 10px 0;
+	padding: 10px;
+	border: 1px solid #FFE4E1;
+	color: #F9F9F9;
+	cursor: pointer;
+	font-weight: bold;
+	text-align: center;
+}
+
+.menu-item:hover {
+	background-color: #FFE4E1;
+}
+
+/* 메인 콘텐츠 영역 */
+.main-content {
+	flex: 1;
+	/* border: 2px solid #F4D2CA; */
+	padding: 20px;
+	background: #F9F9F9;
+}
+
+.main-title {
+	color: #D9776A;
+	margin-bottom: 20px;
+	padding-bottom: 10px;
+	border-bottom: 3px solid #FFE4E1;
+}
+
+.content-box {
+	min-height: 400px;
+	padding: 20px;
+	border: 1px dashed #F4D2CA;
+	background-color: #FFF5F5;
+}
+
+/* 그리드 레이아웃 스타일 */
+.row {
+	margin-bottom: 20px;
+	display: flex;
+	gap: 0px;
+}
+
+.col-2, .col-4, .col-6, .col-8, .col-10, .col-12 {
+	padding: 0;
+}
+/* 열 너비 설정 */
+.col-2 {
+	flex: 0 0 16.666%;
+}
+.col-4 {
+	flex: 0 0 33.333%;
+}
+.col-6 {
+	flex: 0 0 50%;
+}
+.col-8 {
+	flex: 0 0 66.666%;
+}
+.col-10 {
+	flex: 0 0 83.333%;
+}
+
+/* 공통 컨테이너 스타일 */
+.board-container, .video-container, .quick-links, .mini-board,
+	.image-gallery, .side-board {
+	background: white;
+	border: 1px solid #F4D2CA;
+	padding: 5px;
+	border-radius: 8px;
+}
+
+h3 {
+	color: #D9776A;
+	margin-bottom: 15px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #FFE4E1;
+}
+
+/* 바로가기 그리드 */
+.links-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 10px;
+}
+
+.link-item {
+	background: #FFF5F5;
+	border: 1px solid #FFE4E1;
+	padding: 15px;
+	text-align: center;
+	border-radius: 6px;
+	cursor: pointer;
+}
+
+/* 이미지 갤러리 그리드 */
+.gallery-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 10px;
+}
+
+.gallery-item {
+	aspect-ratio: 16/9;
+	background: #FFF5F5;
+	border: 1px dashed #F4D2CA;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* 동영상 컨테이너 */
+.video-content {
+	aspect-ratio: 16/9;
+	background: #FFF5F5;
+	border: 1px dashed #FFB6C1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* 게시판 콘텐츠 */
+.board-content {
+	min-height: 150px;
+	background: #FFF5F5;
+	border: 1px dashed #F4D2CA;
+	padding: 10px;
+}
+
+/* 드롭다운 스타일 */
+.dropdown-container {
+	background: white;
+	border: 1px solid #F4D2CA;
+	padding: 15px;
+	border-radius: 8px;
+}
+
+.custom-select {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #FFE4E1;
+	border-radius: 4px;
+	color: #666;
+	background-color: white;
+	cursor: pointer;
+}
+
+.custom-select:hover {
+	border-color: #F4D2CA;
+}
+
+.custom-select:focus {
+	outline: none;
+	border-color: #D9776A;
+}
+
+/* 라디오 버튼 그룹 스타일 */
+.radio-container {
+	background: white;
+	border: 1px solid #F4D2CA;
+	padding: 15px;
+	border-radius: 8px;
+}
+
+.radio-group {
+	display: flex;
+	gap: 20px;
+	padding: 10px;
+}
+
+.radio-item {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	padding: 10px 20px;
+	border: 1px solid #FFE4E1;
+	border-radius: 20px;
+	transition: all 0.2s ease;
+}
+
+.radio-item:hover {
+	background-color: #FFF5F5;
+}
+
+.radio-item input[type="radio"] {
+	display: none;
+}
+
+.radio-item input[type="radio"]:checked+.radio-label {
+	color: #D9776A;
+	font-weight: bold;
+}
+
+.radio-item input[type="radio"]:checked+.radio-label::before {
+	border-color: #D9776A;
+}
+
+.radio-label {
+	color: #666;
+	padding: 5px;
+}
+
+/* 선택된 라디오 버튼 스타일 */
+.radio-item input[type="radio"]:checked {
+	background-color: #FFE4E1;
+}
+
+.radio-item input[type="radio"]:checked+span {
+	color: #D9776A;
+}

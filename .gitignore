@@ -28,9 +28,9 @@ Thumbs.db       # Windows
 Desktop.ini     # Windows
 
 # 현재 설정에서 누락된 웹 관련
-*/web-resources/
-**/WEB-INF/classes/
-**/WEB-INF/lib/
+#*/web-resources/
+#**/WEB-INF/classes/
+#**/WEB-INF/lib/
 
 # Server 설정 파일
 Servers/

@@ -1,0 +1,163 @@
+@charset "UTF-8";
+
+/* 기본 스타일 리셋 */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	/* font-family: Arial, sans-serif; */
+	background-color: #f9f9f9;
+	min-width: 1200px; /* 페이지 전체의 최소 너비 설정 */
+}
+
+/* 전체 헤더 영역 */
+.header {
+	width: 100%;
+	height: 80px;
+	background-color: #FFF9F4;
+	border-bottom: 1px solid rgba(217,119,106,0.3);
+}
+
+/* 헤더 컨테이너 */
+.header-container {
+	/* min-width: 1200px; */ /* 최소 너비 설정 - 이보다 작아지면 스크롤 생성 */
+	position: relative;
+	max-width: 1800px;
+	height: 100%;
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	padding: 0 20px;
+	/* gap: 40px */; /* 섹션 간의 기본 간격 설정 */
+	/* justify-content: space-between 제거 */
+}
+
+/* 로고 섹션 
+ * - gap: 로고와 텍스트 사이 간격 (12px 값 조절)
+ */
+.logo-section {
+  	margin: 0 clamp(0px, 5%, 10px); /* 최소 10px, 기본 5%, 최대 40px */
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	flex-shrink: 0; /* 크기 고정 */
+}
+
+/* 로고 이미지 래퍼 
+ * - width/height: 로고 크기 (60px 값을 조절하여 로고 크기 변경)
+ */
+.logo-wrapper {
+	width: 60px;
+	height: 60px;
+	display: flex;
+	align-items: center;
+}
+
+/* 로고 이미지 자체 */
+.logo-wrapper .logo {
+	width: 100%;
+	height: 100%;
+}
+
+.logo-text {
+	font-size: 24px;
+	font-weight: bold;
+	color: #D9776A;
+	margin: 0;
+}
+
+/* nav 섹션 */
+.nav-section {
+	gap: 10px;
+	flex-shrink: 0; /* nav 영역 크기 고정 */
+	display: flex;
+  	margin: 0 clamp(10px, 5%, 20px); /* 최소 10px, 기본 5%, 최대 40px */
+}
+
+/* 네비게이션 버튼 */
+.nav-button {
+	padding: 8px 12px;
+	background-color: white;
+	border: 1px solid #F4D2CA;
+	border-radius: 6px;
+	color: #D9776A;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
+
+.nav-button:hover {
+	background-color: #F4D2CA;
+	color: white;
+}
+
+.search-icon {
+	width: 20px;
+	height: 20px;
+	margin-right: 8px;
+	color: #D9776A;
+}
+
+.search-section {
+	width: 400px;
+	min-width: 200px;
+	flex-shrink: 1; /* 0 : 크기 고정, 1: 필요하다면 줄어들 수 있도록 설정 */
+	margin: 0 clamp(10px, 2.9%, 80px); /* 최소 10px, 기본 5%, 최대 40px */
+	justify-content: center; /* 가운데 정렬 */
+}
+/* 검색창 */
+.search-box {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	background-color: white;
+	border: 1px solid #F4D2CA;
+	border-radius: 20px;
+	padding: 8px 16px;
+}
+
+/* 검색 입력창 */
+.search-box input {
+	width: 100%;
+	border: none;
+	outline: none;
+	font-size: 14px;
+	color: #333;
+}
+
+.search-box input::placeholder {
+	color: #999;
+}
+
+/* 빈 공간을 만드는 추가 div 생성 */
+.flex-spacer {
+	flex: 1; /* flex-grow: 1, flex-shrink: 1, flex-basis: 0% */
+	min-width: 0px; /* 최소 너비 50px */
+	max-width: 400px; /* 선택사항: 너무 넓어지는 것 방지 */
+}
+
+/* 계정 섹션 */
+.account-section {
+	display: flex;
+	gap: 12px;
+	flex-shrink: 0; /* 크기 고정 */
+}
+
+.account-button {
+	padding: 8px 16px;
+	background-color: #D9776A;
+	border: none;
+	border-radius: 6px;
+	color: white;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background-color 0.2s ease;
+}
+
+.account-button:hover {
+	background-color: #C0655D;
+	font-weight: bold;
+}

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="member">
+
+	<!-- school12 타입과 연결시켜주기 DB 컬럼명을 연결시켜주기 위한 resultMap. config에 type명 선언해서 사용 -->
+	<resultMap id="memberMap" type="member1">
+		<id column="member_no" property="memberNo"/>
+		<result column="memberName" property="memberName"/>
+		<result column="email" property="email"/>
+		<result column="member_pw" property="memberPw"/>
+		<result column="member_nick" property="memberNick"/>
+		<result column="member_type" property="memberType"/>
+		<result column="school_no" property="childSchool.schoolNo"/> <!-- 현재 입력받는 정보는 학교 고유 코드를 저장하게 됨...-->
+		<result column="enroll_date" property="enrollDate"/>
+	</resultMap>
+
+	
+	<insert id="insertMember" parameterType="member1">
+	    INSERT INTO MEMBER1 (
+	        MEMBER_NO,
+	        MEMBER_NAME,
+	        EMAIL,
+	        MEMBER_PW,
+	        MEMBER_NICK,
+	        MEMBER_TYPE,
+	        SCHOOL_NO,
+	        ENROLL_DATE
+	    ) VALUES (
+	        MEMBER_SEQ.NEXTVAL,
+	        #{memberName},
+	        #{email},
+	        #{memberPw},
+	        #{memberNick},
+	        #{memberType},
+	        #{childSchool.schoolNo},  <!--매개변수 타입 선언에 의해 childSchool 객체-->
+	        SYSDATE
+	    )
+	</insert>   
+	
+	<select id="selectMemberById" parameterType="string" resultMap="memberMap">
+		SELECT * FROM MEMBER1 WHERE EMAIL=#{email}
+	</select>
+	
+</mapper>

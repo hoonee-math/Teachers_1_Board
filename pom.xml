@@ -58,11 +58,24 @@
 	    <artifactId>cos</artifactId>
 	    <version>05Nov2002</version>
 	</dependency>
+	<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+	<dependency>
+	    <groupId>com.google.code.gson</groupId>
+	    <artifactId>gson</artifactId>
+	    <version>2.10.1</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple -->
+	<dependency>
+	    <groupId>com.googlecode.json-simple</groupId>
+	    <artifactId>json-simple</artifactId>
+	    <version>1.1.1</version>
+	</dependency>
+
   </dependencies>
   <build>
 	<!--패키징시 이름 설정 -> war 파일 이름이 contextPath가 됨! -->
 	<!--war 파일 패키징-->
-	<finalName>HelloMVC2</finalName>
+	<finalName>teachers</finalName>
 	<plugins>
 		<plugin>
 			<groupId>org.apache.maven.plugins</groupId>

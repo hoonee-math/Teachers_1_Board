@@ -1,0 +1,84 @@
+@charset "UTF-8";
+
+/* 그리드 레이아웃 스타일 */
+.row {
+	margin-bottom: 20px;
+	display: flex;
+	gap: 0px;
+}
+
+.col-4, .col-6, .col-8, .col-12 {
+	padding: 0;
+}
+/* 열 너비 설정 */
+.col-4 {
+	flex: 0 0 33.333%;
+}
+
+.col-6 {
+	flex: 0 0 50%;
+}
+
+.col-8 {
+	flex: 0 0 66.666%;
+}
+.hidden {
+	display: none;
+}
+div#post-container {
+	width: 1000px;
+	padding: 20px;
+	box-shadow: 0 0 10px rgba(0,0,0,0.1);
+	border-radius: 8px;
+	background-color: #f9f9f9;
+}
+#post-container h2 {
+	text-align: center;
+	color: 333;
+	margin-bottom: 30px;
+	padding-bottom: 15px;
+	border-bottom:2px solid #f0f0f0;
+}
+select{
+	width: 100%;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	font-size: 14px;
+	padding: 8px;
+	background-color: #f9f9f9;
+}
+table {
+	width:100%;
+	/* border-collapse: collapse; */
+	margin-bottom:30px;
+}
+#school-container>td:first-child,
+#category>th {
+	width: 100px;
+}
+td{
+	padding: 15px;
+	vertical-align: top;
+	border-bottom: 1px solid #f0f0f0;
+}
+th {
+	width: 20%;
+	padding: 20px;
+}
+td>input, td>textarea {
+	width: 100%;
+	padding: 8px 12px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	font-size: 14px;
+	background-color: #f9f9f9;
+}
+div>input {
+	width: 15%;
+	background-color: white;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	padding: 8px;
+	background-color: #f9f9f9;
+}
+        
