@@ -37,4 +37,8 @@
 	    )
 	</insert>   
 	
+	<select id="selectMemberById" parameterType="string" resultMap="memberMap">
+		SELECT * FROM MEMBER1 WHERE EMAIL=#{email}
+	</select>
+	
 </mapper>

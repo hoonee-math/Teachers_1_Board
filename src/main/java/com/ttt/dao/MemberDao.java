@@ -10,4 +10,8 @@ public class MemberDao {
 	public int insertMember(SqlSession session, Member1 m) {
 		return session.insert("member.insertMember",m);
 	}
+	
+	public Member1 selectMemberById(SqlSession session, String email) {
+		return session.selectOne("member.selectMemberById",email);
+	}
 }

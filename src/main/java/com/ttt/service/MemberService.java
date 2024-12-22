@@ -31,4 +31,9 @@ public class MemberService {
 	    }
 		return result;
 	}
+	
+	public Member1 selectMemberById(String email) {
+		SqlSession session=getSession();
+		return dao.selectMemberById(session, email);
+	}
 }

@@ -159,14 +159,14 @@ input:focus {
 		</header>
 		<div class="login-box">
 			<h2>로그인</h2>
-			<form id="login-form">
+			<form action="${path}/member/login.do" method="post" id="login-form">
 				<div class="input-group">
 					<label for="email">이메일</label> <input type="email" id="email"
 						name="email" placeholder="이메일을 입력하세요" required>
 				</div>
 				<div class="input-group">
 					<label for="password">비밀번호</label> <input type="password"
-						id="password" name="password" placeholder="비밀번호를 입력하세요" required>
+						id="password" name="memberPw" placeholder="비밀번호를 입력하세요" required>
 				</div>
 				<button type="submit" class="login-button">로그인</button>
 			</form>
@@ -181,7 +181,7 @@ input:focus {
 		integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
 		crossorigin="anonymous"></script>
 	<script>
-		document.getElementById('login-form').addEventListener('submit',
+		/* document.getElementById('login-form').addEventListener('submit',
 				function(e) {
 					e.preventDefault();
 					const email = document.getElementById('email').value;
@@ -191,7 +191,7 @@ input:focus {
 					} else {
 						alert('이메일과 비밀번호를 입력해주세요.');
 					}
-				});
+				}); */
 
 		//로고에 메인 홈으로 이동하는 링크 추가
 		$(".logo-container").click(function() {
