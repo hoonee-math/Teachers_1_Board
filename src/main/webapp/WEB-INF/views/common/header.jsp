@@ -60,8 +60,19 @@
 			<div class="flex-spacer"></div>
 			<!-- 계정 섹션 -->
 			<div class="account-section">
-				<button id="btn_login" class="account-button">로그인</button>
-				<button id="btn_enroll" class="account-button">회원가입</button>
+				<c:if test="${sessionScope.loginMember == null}">
+	        		<!-- 로그인하지 않은 경우 -->
+					<button id="btn_login" class="account-button">로그인</button>
+					<button id="btn_enroll" class="account-button">회원가입</button>
+			    </c:if>
+			    <c:if test="${sessionScope.loginMember != null}">
+			        <!-- 로그인한 경우 -->
+			        <div class="user-info">
+			            <span class="welcome-message" style="font-size: calc(.7rem + .7vw) !important;">${loginMember.memberName}님 환영합니다</span>
+		                <i class="bi bi-person-heart" style="cursor:pointer; font-size: calc(1.325rem + .9vw) !important; color: #D9776A;" ></i>
+			        	<i class="bi bi-box-arrow-right" style="cursor:pointer; font-size: calc(1.325rem + .9vw) !important; color: #D9776A;"></i>
+			        </div>
+			    </c:if>
 			</div>
 		</div>
 	</header>
