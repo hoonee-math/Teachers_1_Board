@@ -96,7 +96,7 @@
 	background-color: #D9776A;
 }
 #agecheckcontainer {
-	margin-top : 20px;
+	margin-top : 40px;
 	display : flex;
 }
 #agecheck {
@@ -107,11 +107,12 @@
 	<div id="terms-header">
 		<h2>회원 가입 약관</h2>
 	</div>
+	<form action="${path}/member/enroll" method="post" onsubmit="return fn_invalidate();">
 	<div class="row full-width">
 		<div id="agree-header">
 			<div id="termsofagree">이용약관 동의</div>
 			<div id="agreecolor">(필수)</div>
-			<input type="checkbox" name="sign2" id="termsofbtn" required>동의
+			<input type="checkbox" name="sign" id="termsofbtn" value="동의" required>동의
 		</div>
 		<div id="terms-content">
 			<pre id=terms-contentbox>
@@ -173,7 +174,7 @@
 		<div id="agree-header2">
 			<div id="termsofagree2">개인정보 수집 및 동의</div>
 			<div id="agreecolor2">(필수)</div>
-			<input type="checkbox" name="sign" id="termsofbtn2" required>동의</input>
+			<input type="checkbox" name="sign2" id="termsofbtn2" value="동의" required>동의
 		</div>
 		<div id="terms-content2">
 			<div id=terms-contentbox2>
@@ -317,7 +318,7 @@
 		<div id="agecheckcontainer">
 			<div id="askage">만 19세 이상인가요?</div>
 			<div id="agreecolor3">(필수)</div>
-			<input type="checkbox" id="agecheck" required>동의
+			<input type="checkbox" name="sign3" id="agecheck" value="동의" required>동의
 		</div>
 		<div class="row full-width">
 			<div id="agree-button">
@@ -330,6 +331,7 @@
 			</div>
 		</div>
 	</div>
+	</form>
 </section>
 </main>
 <script>
@@ -337,10 +339,26 @@
 	$("#cancle").click(function() {
 		location.assign("${path}/home");
 	});
+	
 	//회원가입 정보입력 창으로 이동
-	$("#join").click(function() {
+	/* $("#join").click(function() {
 		location.assign("${path}/member/enroll");
-	});
+	}); */
+	
+	// 동의 항목 체크 여부 확인
+	function fn_invalidate() {
+        var sign1 = document.getElementByName("sign");
+        var sign2 = document.getElementByName("sign2");
+        var sign3 = document.getElementByName("sign3");
+        
+        // 에러 메시지 표시
+        if (!sign1 || !sign2 || !sign3) {
+            var errorMessage = "모든 동의 항목에 동의해야 합니다.";
+            alert(errorMessage); // 브라우저 기본 알림창을 띄움
+            return false; // 폼 제출을 막음
+        }
+        return true; // 모든 항목에 동의하면 폼 제출 허용
+    }
 </script>
 
 
