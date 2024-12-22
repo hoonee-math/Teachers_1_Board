@@ -97,7 +97,7 @@ label {
 	color: #6B4F45;
 }
 
-input {
+#email, #password {
 	width: 100%;
 	padding: 12px;
 	border: 2px solid #ECD7C5;

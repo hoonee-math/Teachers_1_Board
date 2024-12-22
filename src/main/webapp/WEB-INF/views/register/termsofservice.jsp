@@ -17,7 +17,7 @@
 	margin-left: auto;
 }
 
-#agreecolor {
+#agreecolor, #agreecolor2, #agreecolor3 {
 	color: red;
 }
 
@@ -49,10 +49,6 @@
 
 #termsofbtn2 {
 	margin-left: auto;
-}
-
-#agreecolor2 {
-	color: red;
 }
 
 #termsofbtn2 {
@@ -93,11 +89,18 @@
 }
 
 #join:hover {
-	background-color: #45a049;
+	background-color: #D9776A;
 }
 
 #cancle:hover {
-	background-color: #45a049;
+	background-color: #D9776A;
+}
+#agecheckcontainer {
+	margin-top : 20px;
+	display : flex;
+}
+#agecheck {
+	margin-left : auto;
 }
 </style>
 <section id="enroll-container">
@@ -108,7 +111,7 @@
 		<div id="agree-header">
 			<div id="termsofagree">이용약관 동의</div>
 			<div id="agreecolor">(필수)</div>
-			<input type="checkbox" name="sign2" id="termsofbtn">동의
+			<input type="checkbox" name="sign2" id="termsofbtn" required>동의
 		</div>
 		<div id="terms-content">
 			<pre id=terms-contentbox>
@@ -170,7 +173,7 @@
 		<div id="agree-header2">
 			<div id="termsofagree2">개인정보 수집 및 동의</div>
 			<div id="agreecolor2">(필수)</div>
-			<input type="checkbox" name="sign" id="termsofbtn2">동의</input>
+			<input type="checkbox" name="sign" id="termsofbtn2" required>동의</input>
 		</div>
 		<div id="terms-content2">
 			<div id=terms-contentbox2>
@@ -311,6 +314,11 @@
 1) 공고일자 : 2018년 05월 01일
 2) 시행일자 : 2018년 05월 01일 </div>
 		</div>
+		<div id="agecheckcontainer">
+			<div id="askage">만 19세 이상인가요?</div>
+			<div id="agreecolor3">(필수)</div>
+			<input type="checkbox" id="agecheck" required>동의
+		</div>
 		<div class="row full-width">
 			<div id="agree-button">
 				<div id="canclediv">
@@ -325,6 +333,10 @@
 </section>
 </main>
 <script>
+	//메인으로 버튼 클릭시 메인페이지로 이동
+	$("#cancle").click(function() {
+		location.assign("${path}/home");
+	});
 	//회원가입 정보입력 창으로 이동
 	$("#join").click(function() {
 		location.assign("${path}/member/enroll");
