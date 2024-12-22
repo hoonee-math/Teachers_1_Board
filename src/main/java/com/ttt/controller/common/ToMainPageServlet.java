@@ -31,7 +31,7 @@ public class ToMainPageServlet extends HttpServlet {
         
 		// 더미 데이터 생성 - 미해결 게시판용
         List<Post1> unsolvedPosts = new ArrayList<>();
-        for(int i=1; i<=12; i++) {
+        for(int i=1; i<=10; i++) {
             // 각 게시글마다 5분씩 이전 시간으로 설정
             LocalDateTime postTime = now.minusMinutes(i * 5);
             
@@ -48,7 +48,7 @@ public class ToMainPageServlet extends HttpServlet {
         
         // 더미 데이터 생성 - 해결된 게시판용
         List<Post1> solvedPosts = new ArrayList<>();
-        for(int i=1; i<=12; i++) {
+        for(int i=1; i<=10; i++) {
             // 각 게시글마다 5분씩 이전 시간으로 설정
             LocalDateTime postTime = now.minusMinutes(i * 5);
             

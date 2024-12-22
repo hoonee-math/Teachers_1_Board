@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -28,6 +28,7 @@
 
 .board-header h2 {
 	margin: 0;
+	font-weight: 900;
 	/* font-size: 1.25rem; */ /* 제목 크기 */
 	/* color: #212529; */ /* 제목 색상 */
 }
@@ -59,7 +60,7 @@
     white-space: nowrap;             /* 줄바꿈 방지 */
     overflow: hidden;                /* 넘치는 텍스트 숨김 */
     text-overflow: ellipsis;         /* 말줄임(...) 표시 */
-    max-width: 360px;                /* 최대 너비 설정 */
+    max-width: 450px;                /* 최대 너비 설정 */
     display: inline-block;           /* 인라인 블록 요소로 변경 */
 }
 
@@ -84,7 +85,7 @@
 <section class="main-content col-9">
 	<!-- 2행: 2단 분할 (1:1) -->
 	<div class="row two-columns">
-		<div class="col-6">
+		<div style="width:550px; padding:0;">
 			<div class="video-container">
 				<div class="main-title board-header">
 					<h2>추천 동영상</h2>
@@ -105,7 +106,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-6">
+		<div style="width:550px; padding:0;">
 			<div class="mini-board">
 				<div class="main-title board-header">
 					<h2>추천글</h2>
@@ -121,31 +122,14 @@
 									<!-- 게시글 제목 -->
 									<a href="${path}/board/postview.do?postNo=${post.postNo}"
 										class="post-title"> ${post.postTitle} </a> 
+								</div>
+								<div class="post-info"> 
 					                <!-- 좋아요, 댓글 수 정보 -->
 					                <span class="post-stats">
 					                    <i class="bi bi-suit-heart-fill"></i> ${post.likeCount}
 					                    <i class="bi bi-chat-left-heart-fill"></i> ${post.commentCount+300}
 					                </span>
-								</div>
-								<div class="post-info"> 
-									<c:set var="postTime" value="${post.createdDate.time}" />
-									<c:set var="currentTime" value="${currentTime}" />
-									<c:set var="timeDiff" value="${(currentTime - postTime) / (1000 * 60)}" />
-									<c:choose>
-										<c:when test="${timeDiff < 6}">
-								            방금 전
-								        </c:when>
-										<c:when test="${timeDiff < 60}">
-											<fmt:parseNumber value="${timeDiff}" integerOnly="true" />분 전
-								        </c:when>
-										<c:when test="${timeDiff < 1440}">
-											<fmt:parseNumber value="${timeDiff/60}" integerOnly="true" />시간 전
-								        </c:when>
-										<c:otherwise>
-											<fmt:formatDate value="${post.createdDate}" pattern="MM/dd" />
-										</c:otherwise>
-									</c:choose>
-								</div>
+				                </div>
 							</div>
 						</div>
 					</c:forEach>
@@ -157,7 +141,7 @@
 
 	<div class="row two-columns">
 		<!-- 첫 번째 게시판 -->
-		<div class="col-6">
+		<div style="width:550px; padding:0;">
 			<div class="mini-board">
 				<div class="main-title board-header">
 					<h2>학년별(로그인한 정보)</h2>
@@ -173,31 +157,14 @@
 									<!-- 게시글 제목 -->
 									<a href="${path}/board/postview.do?postNo=${post.postNo}"
 										class="post-title"> ${post.postTitle} </a> 
+								</div>
+								<div class="post-info"> 
 					                <!-- 좋아요, 댓글 수 정보 -->
 					                <span class="post-stats">
 					                    <i class="bi bi-suit-heart-fill"></i> ${post.likeCount}
 					                    <i class="bi bi-chat-left-heart-fill"></i> ${post.commentCount+300}
 					                </span>
-								</div>
-								<div class="post-info"> 
-									<c:set var="postTime" value="${post.createdDate.time}" />
-									<c:set var="currentTime" value="${currentTime}" />
-									<c:set var="timeDiff" value="${(currentTime - postTime) / (1000 * 60)}" />
-									<c:choose>
-										<c:when test="${timeDiff < 6}">
-								            방금 전
-								        </c:when>
-										<c:when test="${timeDiff < 60}">
-											<fmt:parseNumber value="${timeDiff}" integerOnly="true" />분 전
-								        </c:when>
-										<c:when test="${timeDiff < 1440}">
-											<fmt:parseNumber value="${timeDiff/60}" integerOnly="true" />시간 전
-								        </c:when>
-										<c:otherwise>
-											<fmt:formatDate value="${post.createdDate}" pattern="MM/dd" />
-										</c:otherwise>
-									</c:choose>
-								</div>
+				                </div>
 							</div>
 						</div>
 					</c:forEach>
@@ -206,7 +173,7 @@
 			</div>
 		</div>
 		<!-- 두 번째 게시판 -->
-		<div class="col-6">
+		<div style="width:550px; padding:0;">
 			<div class="mini-board">
 				<div class="main-title board-header">
 					<h2>고민상담</h2>
@@ -222,33 +189,13 @@
 									<!-- 게시글 제목 -->
 									<a href="${path}/board/postview.do?postNo=${post.postNo}"
 										class="post-title"> ${post.postTitle} </a> 
+								</div>
+								<div class="post-info"> 
 					                <!-- 좋아요, 댓글 수 정보 -->
 					                <span class="post-stats">
 					                    <i class="bi bi-suit-heart-fill"></i> ${post.likeCount}
 					                    <i class="bi bi-chat-left-heart-fill"></i> ${post.commentCount+300}
 					                </span>
-								</div>
-								<div class="post-info"> 
-									<c:set var="postTime" value="${post.createdDate.time}" />
-									<c:set var="currentTime" value="${currentTime}" />
-									<c:set var="timeDiff" value="${(currentTime - postTime) / (1000 * 60)}" />
-									<c:choose>
-										<c:when test="${timeDiff < 6}">
-								            방금 전
-								        </c:when>
-										<c:when test="${timeDiff < 60}">
-											<fmt:parseNumber value="${timeDiff}" integerOnly="true" />분 전
-								        </c:when>
-										<c:when test="${timeDiff < 1440}">
-											<fmt:parseNumber value="${timeDiff/60}" integerOnly="true" />시간 전
-								        </c:when>
-										<c:when test="${timeDiff < 1440}">
-											<fmt:parseNumber value="${timeDiff/1440}" integerOnly="true" />일 전
-								        </c:when>
-										<c:otherwise>
-											<fmt:formatDate value="${post.createdDate}" pattern="MM/dd" />
-										</c:otherwise>
-									</c:choose>
 								</div>
 							</div>
 						</div>
