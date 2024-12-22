@@ -115,7 +115,7 @@
 
 				<!-- 게시판 테이블 대신 리스트 형태로 변경 -->
 				<div class="board-list">
-					<c:forEach var="post" items="${unsolvedPosts}">
+					<%-- <c:forEach var="post" items="${unsolvedPosts}">
 						<div class="post-row">
 							<div class="d-flex justify-content-between align-items-center">
 								<div>
@@ -132,7 +132,7 @@
 				                </div>
 							</div>
 						</div>
-					</c:forEach>
+					</c:forEach> --%>
 				</div>
 
 			</div>
@@ -150,7 +150,7 @@
 
 				<!-- 게시판 테이블 대신 리스트 형태로 변경 -->
 				<div class="board-list">
-					<c:forEach var="post" items="${unsolvedPosts}">
+					<%-- <c:forEach var="post" items="${unsolvedPosts}">
 						<div class="post-row">
 							<div class="d-flex justify-content-between align-items-center">
 								<div>
@@ -167,7 +167,7 @@
 				                </div>
 							</div>
 						</div>
-					</c:forEach>
+					</c:forEach> --%>
 				</div>
 
 			</div>
@@ -182,7 +182,7 @@
 
 				<!-- 게시판 테이블 대신 리스트 형태로 변경 -->
 				<div class="board-list">
-					<c:forEach var="post" items="${solvedPosts}">
+					<%-- <c:forEach var="post" items="${solvedPosts}">
 						<div class="post-row">
 							<div class="d-flex justify-content-between align-items-center">
 								<div>
@@ -199,12 +199,63 @@
 								</div>
 							</div>
 						</div>
-					</c:forEach>
+					</c:forEach> --%>
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
 <!-- 메인 콘텐츠 영역 종료 -->
-
+<script>
+	// 페이지 로드 시 데이터 호출
+	$(document).ready(function() {
+	    loadBoardData();
+	});
+	
+	function loadBoardData() {
+	    $.ajax({
+	        url: "${path}/home",
+	        type: "GET",
+	        dataType: "json",
+	        headers: {
+	            'Accept': 'application/json'
+	        },
+	        success: function(data) {
+	            // 추천글 게시판 데이터 적용
+	            updateBoard('.mini-board:eq(0) .board-list', data.unsolvedPosts);
+	            // 학년별 게시판 데이터 적용
+	            updateBoard('.mini-board:eq(1) .board-list', data.unsolvedPosts);
+	            // 고민상담 게시판 데이터 적용
+	            updateBoard('.mini-board:eq(2) .board-list', data.solvedPosts);
+	        },
+	        error: function(xhr, status, error) {
+	            console.error("Error loading data:", error);
+	        }
+	    });
+	}
+	
+	function updateBoard(selector, posts) {
+	    const boardList = $(selector);
+	    boardList.empty(); // 기존 내용 비우기
+	
+	    posts.forEach(post => {
+	        const postHtml = `
+	            <div class="post-row">
+	                <div class="d-flex justify-content-between align-items-center">
+	                    <div>
+	                        <a href="${path}/board/postview.do?postNo=\${post.postNo}" 
+	                           class="post-title">\${post.postTitle}</a>
+	                    </div>
+	                    <div class="post-info">
+	                        <span class="post-stats">
+	                            <i class="bi bi-suit-heart-fill"></i> \${post.likeCount}
+	                            <i class="bi bi-chat-left-heart-fill"></i> \${post.commentCount+300}
+	                        </span>
+	                    </div>
+	                </div>
+	            </div>`;
+	        boardList.append(postHtml);
+	    });
+	}
+</script>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
