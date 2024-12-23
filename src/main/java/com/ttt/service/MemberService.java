@@ -41,4 +41,9 @@ public class MemberService {
 		SqlSession session=getSession();
 		return dao.selectMemberByNameAndEmail(session, m);
 	}
+	
+	public int updatePassword(Member1 m) {
+		SqlSession session=getSession();
+		return dao.updatePassword(session,m);
+	}
 }
