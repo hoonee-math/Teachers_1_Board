@@ -48,7 +48,7 @@
 	</select>
 	
 	
-	<select id="selectBoardCountAll" parameterType="_int" resultMap="post.postMap">
+	<select id="selectBoardCountAll" resultType="_int">
 		SELECT COUNT(*)
 		FROM POST1
 		WHERE 
@@ -57,7 +57,7 @@
 	</select>
 	
 	
-	<select id="selectBoardCountByCategoryNo" parameterType="_int" resultMap="post.postMap">
+	<select id="selectBoardCountByCategoryNo" parameterType="_int" resultType="_int">
 		SELECT COUNT(*)
 		FROM POST1
 		WHERE 

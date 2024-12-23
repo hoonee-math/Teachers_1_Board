@@ -53,13 +53,12 @@ public class BoardListServlet extends HttpServlet {
 			totalData=new BoardService().selectBoardCountAll();
 		}
 		
-		//4. 아래는 게시판 페이징 처리를 위한 공통적인 변수 (복붙해서 계속 사용하기 때문에 template 또는 공통으로 쓰는 메소드 만들어서 사용할 수 있음!)
 		totalPage=(int)Math.ceil((double)totalData/numPerPage);
 		pageBarSize=5;
 		pageNo=((cPage-1)/pageBarSize)*pageBarSize+1;
 		pageEnd=pageNo+pageBarSize-1;
 		
-		//5. 페이징 처리 로직 복사 붙여넣기
+		//페이징 처리 로직
 		String pageBar="<ul class='pagination justify-content-center'>";
 		
 		if(pageNo==1) {
@@ -69,7 +68,7 @@ public class BoardListServlet extends HttpServlet {
 		} else {
 			pageBar+="<li class='page-item'>";
 			pageBar+="<a class='page-link' href='"
-					+request.getRequestURI() //현재 위치까지의 정보가 다 나오게됨! -> /HelloMVC2/admin/memberList2.do
+					+request.getRequestURI()
 					+"?cPage="+(pageNo-1)
 					+"&numPerPage="+numPerPage
 					+"'>이전</a>"; 
@@ -84,7 +83,7 @@ public class BoardListServlet extends HttpServlet {
 			} else {
 				pageBar+="<li class='page-item'>";
 				pageBar+="<a class='page-link' href='"
-						+request.getRequestURI() //현재 위치까지의 정보가 다 나오게됨! -> /HelloMVC2/admin/memberList2.do
+						+request.getRequestURI()
 						+"?cPage="+(pageNo)
 						+"&numPerPage="+numPerPage
 						+"'>"+pageNo+"</a>"; 
@@ -99,7 +98,7 @@ public class BoardListServlet extends HttpServlet {
 		} else {
 			pageBar+="<li class='page-item'>";
 			pageBar+="<a class='page-link' href='"
-					+request.getRequestURI() //현재 위치까지의 정보가 다 나오게됨! -> /HelloMVC2/admin/memberList2.do
+					+request.getRequestURI()
 					+"?cPage="+(pageNo)
 					+"&numPerPage="+numPerPage
 					+"'>다음</a>"; 
@@ -111,8 +110,8 @@ public class BoardListServlet extends HttpServlet {
 		request.setAttribute("boards", boards);
 		
 		// WEB-INF의 contextParameter에 만들어놓고 사용할 수 있음???? views 위치에 대해서 계속 똑같은거 사용하는데.. web.xml 을 이용할수 있음
-		// request.getRequestDispatcher("/WEB-INF/views/board/baordList.jsp").forward(request, response);
-		request.getRequestDispatcher(getServletContext().getInitParameter("viewpath")+"/board/boardList.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/views/board/allboard.jsp").forward(request, response);
+//		request.getRequestDispatcher(getServletContext().getInitParameter("viewpath")+"/board/allboard.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
