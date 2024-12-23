@@ -59,8 +59,9 @@ table td{
 	background-color: #FFF5F5;
 	width: 100%;
 }
-#post-container button,
-#comment-container button {
+#comment-container button,
+#content-container button,
+#recommnet-container button {
 	color: #D9776A;
 	display: inline-block;
 	border: 2px solid #FFE4E1;
@@ -68,5 +69,8 @@ table td{
 	padding: 5px 20px 5px 20px;
 	margin: 0px 0px 10px 10px !important;
 	background-color: #f9f9f9;
+}
+#comment-container button,
+#content-container button {
 	float: right;
 }
