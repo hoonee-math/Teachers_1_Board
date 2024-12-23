@@ -4,7 +4,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
-<script	src="${pageContext.request.contextPath }/resources/js/jquery-3.7.1.min.js"></script> <!-- header 에만 부여해도 되는 속성 -->
+<!-- jQuery 주소로 로드 / 파일로 로드시 현재 오류 발생 -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> <!-- header 에만 부여해도 되는 속성 -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,13 +36,14 @@
 				<h1 class="logo-text">맘스티쳐</h1>
 			</div>
 
+			<div class="flex-spacer"></div>
 			<!-- 네비게이션 섹션 -->
-			<nav class="nav-section">
+			<!-- <nav class="nav-section">
 				<button class="nav-button" id="grade-board">학년별 게시판</button>
 				<button class="nav-button">지역별 게시판</button>
 				<button class="nav-button">학교검색</button>
-			</nav>
-
+			</nav>-->
+			
 			<!-- 검색 섹션 -->
 			<div class="search-section">
 				<div class="search-box">
@@ -68,9 +70,9 @@
 			    <c:if test="${sessionScope.loginMember != null}">
 			        <!-- 로그인한 경우 -->
 			        <div class="user-info">
-			            <span class="welcome-message" style="font-size: calc(.7rem + .7vw) !important;">${loginMember.memberName}님 환영합니다</span>
-		                <i class="bi bi-person-heart" style="cursor:pointer; font-size: calc(1.325rem + .9vw) !important; color: #D9776A;" ></i>
-			        	<i class="bi bi-box-arrow-right" style="cursor:pointer; font-size: calc(1.325rem + .9vw) !important; color: #D9776A;"></i>
+			            <span class="welcome-message" style="font-size: calc(.6rem + .6vw) !important; color:#D9776A !important; font-weight:bold;">${loginMember.memberName}님 환영합니다</span>
+		                <i class="bi bi-person-heart" style="cursor:pointer; font-size: calc(.9rem + .5vw) !important; color: #D9776A; padding-left:10px;" ></i>
+			        	<i id="btn_logout" class="bi bi-box-arrow-right" style="cursor:pointer; font-size: calc(.9rem + .5vw) !important; color: #D9776A; padding-left:10px;"></i>
 			        </div>
 			    </c:if>
 			</div>
@@ -78,7 +80,7 @@
 	</header>
 	<main class="main-container"> <!-- main 끝 태그 : footer 제일 위에 위치 -->
 <script>
-    const gradeBoard = document.getElementById('grade-board');
+    /* const gradeBoard = document.getElementById('grade-board');
 
     gradeBoard.addEventListener('mouseover', () => {
       
@@ -86,7 +88,7 @@
 
     gradeBoard.addEventListener('mouseout', () => {
       
-    });
+    }); */
     
     $(".logo-text").click(function() {
         location.assign("${path}");
@@ -99,6 +101,11 @@
 	$("#btn_enroll").click(function() {
         location.assign("${path}/member/termsofservice");
 	});
+	//회원가입 버튼 연결 링크
+	$("#btn_logout").click(function() {
+        location.assign("${path}/member/logout.do");
+	});
+	
   </script>
   
   

@@ -5,7 +5,7 @@
 	<!-- school12 타입과 연결시켜주기 DB 컬럼명을 연결시켜주기 위한 resultMap. config에 type명 선언해서 사용 -->
 	<resultMap id="memberMap" type="member1">
 		<id column="member_no" property="memberNo"/>
-		<result column="memberName" property="memberName"/>
+		<result column="member_name" property="memberName"/>
 		<result column="email" property="email"/>
 		<result column="member_pw" property="memberPw"/>
 		<result column="member_nick" property="memberNick"/>
