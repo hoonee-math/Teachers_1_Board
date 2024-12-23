@@ -71,7 +71,7 @@
 			        <!-- 로그인한 경우 -->
 			        <div class="user-info">
 			            <span class="welcome-message" style="font-size: calc(.6rem + .6vw) !important; color:#D9776A !important; font-weight:bold;">${loginMember.memberName}님 환영합니다</span>
-		                <i class="bi bi-person-heart" style="cursor:pointer; font-size: calc(.9rem + .5vw) !important; color: #D9776A; padding-left:10px;" ></i>
+		                <i id="mypagego" class="bi bi-person-heart" style="cursor:pointer; font-size: calc(.9rem + .5vw) !important; color: #D9776A; padding-left:10px;" ></i>
 			        	<i id="btn_logout" class="bi bi-box-arrow-right" style="cursor:pointer; font-size: calc(.9rem + .5vw) !important; color: #D9776A; padding-left:10px;"></i>
 			        </div>
 			    </c:if>
@@ -105,6 +105,11 @@
 	$("#btn_logout").click(function() {
         location.assign("${path}/member/logout.do");
 	});
+	//마이페이지 클릭 연결 링크
+	$("#mypagego").click(function() {
+		location.assign("${path}/member/mypage");
+	})
+	
 	
   </script>
   
