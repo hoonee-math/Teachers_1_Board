@@ -45,20 +45,20 @@
 					<input type="hidden" name="level" value="1"/>
 					<input type="hidden" name="writer" value="${loginMember.memberNick }"/>
 					<input type="hidden" name="postCommentRef" value="0"/>
-					<textarea name="content" cols="70" rows="3"></textarea>
+					<textarea name="content" rows="3" style="width: 950px; resize:none;"></textarea>
 					<button type="submit" id="comment-btn">등록</button>
 				</form>
 			</div>
 			<table id="comment-tbl">
 				<tr class="level1">
-					<td class="comment-writer">${comment.postCommentWriter }</td>
-					<td class="comment-date">${comment.postCommentDate }</td>
+					<td class="comment-writer">댓글 작성자명 ${comment.postCommentWriter }</td>
+					<td class="comment-date">댓글 작성일 ${comment.postCommentDate }</td>
 				</tr>
 				<tr>
-					<td class="comment-content">${comment.postCommentContent }</td>
-					<button id="recomment-btn" value="${comment.postCommentNo }">대댓글 작성</button>
+					<td class="comment-content">댓글 내용 ${comment.postCommentContent }</td>
 				</tr>
 			</table>
+					<button id="recomment-btn" value="${comment.postCommentNo }">대댓글 작성</button>
 		</div>
 	</div>
 	
