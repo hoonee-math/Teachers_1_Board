@@ -34,4 +34,15 @@ public class BoardDao {
 		RowBounds rb=new RowBounds((cPage-1)*numPerPage,numPerPage);
 		return session.selectList("board.selectBoardListAllCategory",categoryNo,rb);
 	}
+
+	// 쿼리문을 실행키셔 totalData 값(int)을 받아오는 view
+	public int selectBoardCountAll(SqlSession session) {
+		return session.selectOne("board.selectBoardCountAll");
+	}
+		
+	// 쿼리문을 실행키셔 totalData 값(int)을 받아오는 view
+	public int selectBoardCountByCategoryNo(SqlSession session, int categoryNo) {
+		return session.selectOne("board.selectBoardCountByCategoryNo",categoryNo);
+	}
+	
 }

@@ -61,51 +61,51 @@ public class BoardListServlet extends HttpServlet {
 		
 		//5. 페이징 처리 로직 복사 붙여넣기
 		String pageBar="<ul class='pagination justify-content-center'>";
-//		
-//		if(pageNo==1) {
-//			pageBar+="<li class='page-item disabled'>";
-//			pageBar+="<a class='page-link' href='#'>이전</a>";
-//			pageBar+="</li>";
-//		} else {
-//			pageBar+="<li class='page-item'>";
-//			pageBar+="<a class='page-link' href='"
-//					+request.getRequestURI() //현재 위치까지의 정보가 다 나오게됨! -> /HelloMVC2/admin/memberList2.do
-//					+"?cPage="+(pageNo-1)
-//					+"&numPerPage="+numPerPage
-//					+"'>이전</a>"; 
-//			pageBar+="</li>";
-//		}
-////		while(pageNo<=pageEnd&&pageNo<=totalPage) {
-//		while(!(pageNo>pageEnd||pageNo>totalPage)) {
-//			if(pageNo==cPage) {
-//				pageBar+="<li class='page-item disabled'>";
-//				pageBar+="<a class='page-link' href='#'>"+pageNo+"</a>";
-//				pageBar+="</li>";
-//			} else {
-//				pageBar+="<li class='page-item'>";
-//				pageBar+="<a class='page-link' href='"
-//						+request.getRequestURI() //현재 위치까지의 정보가 다 나오게됨! -> /HelloMVC2/admin/memberList2.do
-//						+"?cPage="+(pageNo)
-//						+"&numPerPage="+numPerPage
-//						+"'>"+pageNo+"</a>"; 
-//				pageBar+="</li>";
-//			}
-//			pageNo++;
-//		}
-//		if(pageNo>totalPage) {
-//			pageBar+="<li class='page-item disabled'>";
-//			pageBar+="<a class='page-link' href='#'>다음</a>";
-//			pageBar+="</li>";
-//		} else {
-//			pageBar+="<li class='page-item'>";
-//			pageBar+="<a class='page-link' href='"
-//					+request.getRequestURI() //현재 위치까지의 정보가 다 나오게됨! -> /HelloMVC2/admin/memberList2.do
-//					+"?cPage="+(pageNo)
-//					+"&numPerPage="+numPerPage
-//					+"'>다음</a>"; 
-//			pageBar+="</li>";
-//		}
-//		pageBar+="</ul>";
+		
+		if(pageNo==1) {
+			pageBar+="<li class='page-item disabled'>";
+			pageBar+="<a class='page-link' href='#'>이전</a>";
+			pageBar+="</li>";
+		} else {
+			pageBar+="<li class='page-item'>";
+			pageBar+="<a class='page-link' href='"
+					+request.getRequestURI() //현재 위치까지의 정보가 다 나오게됨! -> /HelloMVC2/admin/memberList2.do
+					+"?cPage="+(pageNo-1)
+					+"&numPerPage="+numPerPage
+					+"'>이전</a>"; 
+			pageBar+="</li>";
+		}
+//		while(pageNo<=pageEnd&&pageNo<=totalPage) {
+		while(!(pageNo>pageEnd||pageNo>totalPage)) {
+			if(pageNo==cPage) {
+				pageBar+="<li class='page-item disabled'>";
+				pageBar+="<a class='page-link' href='#'>"+pageNo+"</a>";
+				pageBar+="</li>";
+			} else {
+				pageBar+="<li class='page-item'>";
+				pageBar+="<a class='page-link' href='"
+						+request.getRequestURI() //현재 위치까지의 정보가 다 나오게됨! -> /HelloMVC2/admin/memberList2.do
+						+"?cPage="+(pageNo)
+						+"&numPerPage="+numPerPage
+						+"'>"+pageNo+"</a>"; 
+				pageBar+="</li>";
+			}
+			pageNo++;
+		}
+		if(pageNo>totalPage) {
+			pageBar+="<li class='page-item disabled'>";
+			pageBar+="<a class='page-link' href='#'>다음</a>";
+			pageBar+="</li>";
+		} else {
+			pageBar+="<li class='page-item'>";
+			pageBar+="<a class='page-link' href='"
+					+request.getRequestURI() //현재 위치까지의 정보가 다 나오게됨! -> /HelloMVC2/admin/memberList2.do
+					+"?cPage="+(pageNo)
+					+"&numPerPage="+numPerPage
+					+"'>다음</a>"; 
+			pageBar+="</li>";
+		}
+		pageBar+="</ul>";
 		
 		request.setAttribute("pageBar", pageBar);
 		request.setAttribute("boards", boards);

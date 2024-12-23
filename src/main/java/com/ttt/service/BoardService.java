@@ -31,4 +31,16 @@ public class BoardService {
 		SqlSession session=getSession();
 		return dao.selectBoardListAllCategory(session, param);
 	}
+	
+	// (totalData) 카테고리별 게시글 수를 확인시켜주는 서비스
+	public int selectBoardCountAll() {
+		SqlSession session=getSession();
+		return dao.selectBoardCountAll(session);
+	}
+	
+	// (totalData) 전체 게시글 수를 확인시켜주는 서비스
+	public int selectBoardCountByCategoryNo(int categoryNo) {
+		SqlSession session=getSession();
+		return dao.selectBoardCountByCategoryNo(session, categoryNo);
+	}
 }
