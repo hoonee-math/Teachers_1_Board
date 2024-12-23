@@ -11,7 +11,7 @@
 
 <!-- 메인 콘텐츠 영역 시작 지검 -->
 <section class="main-content col-9">
-	<div id="post-container">
+	<section id="post-container">
 		<div id="update&delete">
 			<button type="submit" id="update-btn">수정</button>
 			<button type="submit" id="delete-btn">삭제</button>		
@@ -55,12 +55,14 @@
 					<td class="comment-date">댓글 작성일 ${comment.postCommentDate }</td>
 				</tr>
 				<tr>
-					<td class="comment-content">댓글 내용 ${comment.postCommentContent }</td>
+					<td class="comment-content">댓글 내용 ${comment.postCommentContent }</td>	
+					<td>				
+						<button id="recomment-btn" value="${comment.postCommentNo }">대댓글 작성</button>
+					</td>
 				</tr>
 			</table>
-					<button id="recomment-btn" value="${comment.postCommentNo }">대댓글 작성</button>
 		</div>
-	</div>
+	</section>
 	
 </section>
 <!-- 메인 콘텐츠 영역 종료 -->

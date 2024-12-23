@@ -59,3 +59,14 @@ table td{
 	background-color: #FFF5F5;
 	width: 100%;
 }
+#post-container button,
+#comment-container button {
+	color: #D9776A;
+	display: inline-block;
+	border: 2px solid #FFE4E1;
+	border-radius: 10px !important;
+	padding: 5px 20px 5px 20px;
+	margin: 0px 0px 10px 10px !important;
+	background-color: #f9f9f9;
+	float: right;
+}
