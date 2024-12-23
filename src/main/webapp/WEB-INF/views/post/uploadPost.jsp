@@ -91,7 +91,7 @@
 	    			<tr>
 	    				<th>첨부파일</th>
 	    				<td>
-	    					<input type="file" id="upfile" multiple accept="image/*"/>
+	    					<input type="file" id="upfile" name="upfile" multiple accept="image/*"/>
 	    					<div id="preview"></div>
 	    				</td>
 	    			</tr>
@@ -106,7 +106,7 @@
 	    </div>
 	    <div id="button-container">
 	    	<div class="right">
-	    		<input type="submit" value="저장"> <input type="submit" value="등록">
+	    		<input type="submit" name="save" value="저장"> <input type="submit" name="enroll-post" value="등록">
 		    </div>
 	    </div>
 	 </div>

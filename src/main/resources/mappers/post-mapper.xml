@@ -39,4 +39,8 @@
 		AND SCHOOL_NAME LIKE '%' || #{schoolName}
 		ORDER BY SCHOOL_NAME
 	</select>
+	
+	<select id="selectImgAll" resultMap="image.imageMap">
+		SELECT * FROM IMAGE1
+	</select>
 </mapper>
