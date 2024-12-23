@@ -41,12 +41,9 @@ public class ViewPostServlet extends HttpServlet {
 			response.addCookie(c);
 		}
 		
-		Post1 p = new PostService().selectPostJoinCommentByNo(postNo);
+		Post1 p = new PostService().selectBoardJoinCommentJoinMember(postNo);
 		
-		request.setAttribute("post", p);
-		request.getRequestDispatcher("WEB-INF/views/post/viewPost.jsp");
-		
-		
+		request.setAttribute("post", p);		
 		request.getRequestDispatcher("/WEB-INF/views/post/viewPost.jsp").forward(request, response);
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

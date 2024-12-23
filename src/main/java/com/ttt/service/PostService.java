@@ -37,10 +37,10 @@ public class PostService {
 		session.close();
 		return result;
 	}
-	public Post1 selectPostJoinCommentByNo (int postNo) {
+	public Post1 selectBoardJoinCommentJoinMember (int postNo) {
 		SqlSession session = getSession();
-		Post1 post = dao.selectPostJoinCommentByNo(session, postNo);
+		Post1 p = dao.selectBoardJoinCommentJoinMember(session, postNo);
 		session.close();
-		return post;
+		return p;
 	}
 }

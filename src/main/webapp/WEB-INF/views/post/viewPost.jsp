@@ -21,14 +21,14 @@
 				<td colspan="2">categoryName</td>
 			</tr>
 			<tr class="post-title">
-				<td colspan="2"><h3>postTitle</h3></td>
+				<td colspan="2"><h3>${post.postTitle }</h3></td>
 			</tr>
 			<tr class="info">
 				<td><img src="https://img.icons8.com/?size=100&id=30M9wv1iFkcH&format=png&color=000000" width="10px">  viewCount</td>
-				<td>createDate</td>
+				<td>${post.createDate }</td>
 			</tr>
 			<tr class="member-name">
-				<td colspan="2">memberName</td>
+				<td colspan="2">${post. }</td>
 			</tr>
 			<tr class="file">
 				<td colspan="2">if test orifile!=null -> file.png</td>
@@ -50,18 +50,39 @@
 				</form>
 			</div>
 			<table id="comment-tbl">
-				<tr class="level1">
-					<td class="comment-writer">댓글 작성자명 ${comment.postCommentWriter }</td>
-					<td class="comment-date">댓글 작성일 ${comment.postCommentDate }</td>
-				</tr>
-				<tr>
-					<td class="comment-content">댓글 내용 ${comment.postCommentContent }</td>	
-				</tr>
+			<c:if test="${not empty post1.comments }">
+				<c:forEach var="comment" items="${post1.comments }">
+					<c:if test="${comment1.level==1 }">
+						<tr class="level1">
+							<td class="comment-writer">댓글 작성자명 ${comment1.member }</td>
+							<td class="comment-date">댓글 작성일 ${comment.createDate }</td>
+						</tr>
+						<tr>
+							<td class="comment-content">댓글 내용 ${comment1.comment }</td>	
+							<td>
+								<button class="recomment-btn" value="${comment1.commentNo }">대댓글</button>
+							</td>
+						</tr>
+					</c:if>
+					<c:if test="${comment1.level==2 }">
+						<tr class="level2">
+							<td class="comment-writer">댓글 작성자명 ${comment1.member }</td>
+							<td class="comment-date">댓글 작성일 ${comment.createDate }</td>
+						</tr>
+						<tr>
+							<td class="comment-content">댓글 내용 ${comment1.comment }</td>	
+							<td>
+								<button class="recomment-btn" value="${comment1.commentNo }">대댓글</button>
+							</td>
+						</tr>
+					</c:if>
+				</c:forEach>
+			</c:if>
+				
+				
 			</table>
 		</div>
 		<div id="recommnet-container">
-			<button id="recomment-btn" value="${comment.postCommentNo }">대댓글 작성</button>
-			
 		</div>
 	</section>
 	

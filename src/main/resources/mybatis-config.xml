@@ -19,6 +19,7 @@
 		<typeAlias type="com.ttt.dto.School12" alias="school12"/>
 		<typeAlias type="com.ttt.dto.Member1" alias="member1"/>
 		<typeAlias type="com.ttt.dto.Image1" alias="image1"/>
+		<typeAlias type="com.ttt.dto.Comment1" alias="comment1"/>
 	</typeAliases>
 	
 	
