@@ -10,8 +10,8 @@
 <jsp:include page="/WEB-INF/views/common/sidebar.jsp"/>
 
 <!-- 메인 콘텐츠 영역 시작 지검 -->
-<section class="main-content col-10">
-	<section id="post-container">
+<section class="main-content col-9">
+	<div id="post-container">
 		<div id="update&delete">
 			<button type="submit" id="update-btn">수정</button>
 			<button type="submit" id="delete-btn">삭제</button>		
@@ -60,7 +60,7 @@
 				</tr>
 			</table>
 		</div>
-	</section>
+	</div>
 	
 </section>
 <!-- 메인 콘텐츠 영역 종료 -->
