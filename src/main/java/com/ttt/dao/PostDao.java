@@ -17,7 +17,7 @@ public class PostDao {
 	public int insertPost(SqlSession session, Post1 p) {
 		return session.insert("post.insertPost", p);
 	}
-	public Post1 selectBoardByNo(SqlSession session, int postNo) {
-		return session.selectOne("post.selectBoardByNo", postNo);
+	public Post1 selectBoardJoinCommentJoinMember(SqlSession session, int postNo) {
+		return session.selectOne("post.selectBoardJoinCommentJoinMember", postNo);
 	}
 }
