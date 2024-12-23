@@ -59,7 +59,7 @@
 			</div>
 			<div class="flex-spacer"></div>
 			<!-- 계정 섹션 -->
-			<div class="account-section">
+			<div class="account-section" style="gap:50px">
 				<c:if test="${sessionScope.loginMember == null}">
 	        		<!-- 로그인하지 않은 경우 -->
 					<button id="btn_login" class="account-button">로그인</button>
@@ -68,9 +68,9 @@
 			    <c:if test="${sessionScope.loginMember != null}">
 			        <!-- 로그인한 경우 -->
 			        <div class="user-info">
-			            <span class="welcome-message" style="font-size: calc(.7rem + .7vw) !important;">${loginMember.memberName}님 환영합니다</span>
-		                <i class="bi bi-person-heart" style="cursor:pointer; font-size: calc(1.325rem + .9vw) !important; color: #D9776A;" ></i>
-			        	<i class="bi bi-box-arrow-right" style="cursor:pointer; font-size: calc(1.325rem + .9vw) !important; color: #D9776A;"></i>
+			            <span class="welcome-message" style="font-size: calc(.6rem + .6vw) !important; color:#D9776A !important; font-weight:bold;">${loginMember.memberName}님 환영합니다</span>
+		                <i class="bi bi-person-heart" style="cursor:pointer; font-size: calc(.9rem + .5vw) !important; color: #D9776A; padding-left:10px;" ></i>
+			        	<i class="bi bi-box-arrow-right" style="cursor:pointer; font-size: calc(.9rem + .5vw) !important; color: #D9776A; padding-left:10px;"></i>
 			        </div>
 			    </c:if>
 			</div>
@@ -99,6 +99,7 @@
 	$("#btn_enroll").click(function() {
         location.assign("${path}/member/termsofservice");
 	});
+	
   </script>
   
   
