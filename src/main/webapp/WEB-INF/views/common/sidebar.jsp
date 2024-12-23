@@ -55,6 +55,9 @@
 		<div class="menu-item">예시 페이지 연결</div>
 		<div class="menu-item">temp 글쓰기</div>
 		<div class="menu-item">temp 글 확인</div>
+		<div class="menu-item">학년별 게시판</div>
+		<div class="menu-item">지역별 게시판</div>
+		<div class="menu-item">학교검색</div>
 	</section>
 
 

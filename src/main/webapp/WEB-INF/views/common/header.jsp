@@ -35,13 +35,14 @@
 				<h1 class="logo-text">맘스티쳐</h1>
 			</div>
 
+			<div class="flex-spacer"></div>
 			<!-- 네비게이션 섹션 -->
-			<nav class="nav-section">
+			<!-- <nav class="nav-section">
 				<button class="nav-button" id="grade-board">학년별 게시판</button>
 				<button class="nav-button">지역별 게시판</button>
 				<button class="nav-button">학교검색</button>
-			</nav>
-
+			</nav>-->
+			
 			<!-- 검색 섹션 -->
 			<div class="search-section">
 				<div class="search-box">
@@ -59,7 +60,7 @@
 			</div>
 			<div class="flex-spacer"></div>
 			<!-- 계정 섹션 -->
-			<div class="account-section" style="gap:50px">
+			<div class="account-section">
 				<c:if test="${sessionScope.loginMember == null}">
 	        		<!-- 로그인하지 않은 경우 -->
 					<button id="btn_login" class="account-button">로그인</button>
@@ -70,7 +71,7 @@
 			        <div class="user-info">
 			            <span class="welcome-message" style="font-size: calc(.6rem + .6vw) !important; color:#D9776A !important; font-weight:bold;">${loginMember.memberName}님 환영합니다</span>
 		                <i class="bi bi-person-heart" style="cursor:pointer; font-size: calc(.9rem + .5vw) !important; color: #D9776A; padding-left:10px;" ></i>
-			        	<i class="bi bi-box-arrow-right" style="cursor:pointer; font-size: calc(.9rem + .5vw) !important; color: #D9776A; padding-left:10px;"></i>
+			        	<i id="btn_logout" class="bi bi-box-arrow-right" style="cursor:pointer; font-size: calc(.9rem + .5vw) !important; color: #D9776A; padding-left:10px;"></i>
 			        </div>
 			    </c:if>
 			</div>
@@ -98,6 +99,10 @@
 	//회원가입 버튼 연결 링크
 	$("#btn_enroll").click(function() {
         location.assign("${path}/member/termsofservice");
+	});
+	//회원가입 버튼 연결 링크
+	$("#btn_logout").click(function() {
+        location.assign("${path}/member/logout.do");
 	});
 	
   </script>
