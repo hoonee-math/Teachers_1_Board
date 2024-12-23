@@ -107,7 +107,7 @@
 	<div id="terms-header">
 		<h2>회원 가입 약관</h2>
 	</div>
-	<%-- <form action="${path}/member/enroll" method="post" onsubmit="return fn_invalidate();"> --%>
+	<%-- <form action="${path}/member/enroll" method="post" onsubmit="return fn_invalidate();">  프론트에서 유효성 검사하는 방법--%>
 	<form action="${path}/member/enroll" method="post">
 	<div class="row full-width">
 		<div id="agree-header">
@@ -336,6 +336,7 @@
 </section>
 </main>
 <script>
+	//서블릿에서 유효성 검사 후 알람 띄우기
 	<c:if test="${errorMessage != null}">
 		alert('${errorMessage}');
 	</c:if>
@@ -349,19 +350,20 @@
 		location.assign("${path}/member/enroll");
 	}); */
 	
-	// 동의 항목 체크 여부 확인
+	// 프론트에서 동의 항목 체크 유효성검사 로직
 	/* function fn_invalidate() {
-        var sign1 = document.getElementsByName("sign");
-        var sign2 = document.getElementsByName("sign2");
-        var sign3 = document.getElementsByName("sign3");
-        console.log(sign1[0].checked);
+        var sign1 = document.getElementById("sign").checked;
+        var sign2 = document.getElementsByName("sign2").checked;
+        var sign3 = document.getElementsByName("sign3").checked;
         // 에러 메시지 표시
-        if (!sign1 || !sign2 || !sign3) {
-            var errorMessage = "모든 동의 항목에 동의해야 합니다.";
-            alert(errorMessage); // 브라우저 기본 알림창을 띄움
-            return false; // 폼 제출을 막음
-        } */
-/*         return false; // 모든 항목에 동의하면 폼 제출 허용
+        if (조건식) {
+        	return ture; // 모든 항목에 동의하면 폼 제출 허용
+        }else {
+        	var errorMessage = "모든 동의 항목에 동의해야 합니다.";
+        	 alert(errorMessage); // 브라우저 기본 알림창을 띄움
+             return false; // 폼 제출을 막음*/
+         /* }
+        
     } */
 </script>
 
