@@ -107,12 +107,13 @@
 	<div id="terms-header">
 		<h2>회원 가입 약관</h2>
 	</div>
-	<form action="${path}/member/enroll" method="post" onsubmit="return fn_invalidate();">
+	<%-- <form action="${path}/member/enroll" method="post" onsubmit="return fn_invalidate();"> --%>
+	<form action="${path}/member/enroll" method="post">
 	<div class="row full-width">
 		<div id="agree-header">
 			<div id="termsofagree">이용약관 동의</div>
 			<div id="agreecolor">(필수)</div>
-			<input type="checkbox" name="sign" id="termsofbtn" value="동의" required>동의
+			<input type="checkbox" name="sign" id="termsofbtn" value="동의" >동의
 		</div>
 		<div id="terms-content">
 			<pre id=terms-contentbox>
@@ -174,7 +175,7 @@
 		<div id="agree-header2">
 			<div id="termsofagree2">개인정보 수집 및 동의</div>
 			<div id="agreecolor2">(필수)</div>
-			<input type="checkbox" name="sign2" id="termsofbtn2" value="동의" required>동의
+			<input type="checkbox" name="sign2" id="termsofbtn2" value="동의" >동의
 		</div>
 		<div id="terms-content2">
 			<div id=terms-contentbox2>
@@ -318,12 +319,12 @@
 		<div id="agecheckcontainer">
 			<div id="askage">만 19세 이상인가요?</div>
 			<div id="agreecolor3">(필수)</div>
-			<input type="checkbox" name="sign3" id="agecheck" value="동의" required>동의
+			<input type="checkbox" name="sign3" id="agecheck" value="동의" >동의
 		</div>
 		<div class="row full-width">
 			<div id="agree-button">
 				<div id="canclediv">
-					<button id="cancle">메인으로</button>
+					<button type="button" id="cancle">메인으로</button>
 				</div>
 				<div id="joindiv">
 					<button id="join">회원가입</button>
@@ -335,6 +336,9 @@
 </section>
 </main>
 <script>
+	<c:if test="${errorMessage != null}">
+		alert('${errorMessage}');
+	</c:if>
 	//메인으로 버튼 클릭시 메인페이지로 이동
 	$("#cancle").click(function() {
 		location.assign("${path}/home");
@@ -346,19 +350,19 @@
 	}); */
 	
 	// 동의 항목 체크 여부 확인
-	function fn_invalidate() {
-        var sign1 = document.getElementByName("sign");
-        var sign2 = document.getElementByName("sign2");
-        var sign3 = document.getElementByName("sign3");
-        
+	/* function fn_invalidate() {
+        var sign1 = document.getElementsByName("sign");
+        var sign2 = document.getElementsByName("sign2");
+        var sign3 = document.getElementsByName("sign3");
+        console.log(sign1[0].checked);
         // 에러 메시지 표시
         if (!sign1 || !sign2 || !sign3) {
             var errorMessage = "모든 동의 항목에 동의해야 합니다.";
             alert(errorMessage); // 브라우저 기본 알림창을 띄움
             return false; // 폼 제출을 막음
-        }
-        return true; // 모든 항목에 동의하면 폼 제출 허용
-    }
+        } */
+/*         return false; // 모든 항목에 동의하면 폼 제출 허용
+    } */
 </script>
 
 
