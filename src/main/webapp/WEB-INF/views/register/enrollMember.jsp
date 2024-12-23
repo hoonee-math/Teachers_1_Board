@@ -50,7 +50,7 @@ input[type=search]::-webkit-search-cancel-button {
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<!-- path 변수 이용 -->
 	<c:set var="path" value="${pageContext.request.contextPath }" />
-	<script> const contextPath = "${pageContext.request.contextPath}";	</script>
+	<script> const contextPath = "${pageContext.request.contextPath}";	</script> <!-- EL -->
 	<!-- 사용자 정의 JS 파일 로드 -->
 	<script src="${pageContext.request.contextPath}/resources/js/enroll/enrollMember.js"></script>
 	

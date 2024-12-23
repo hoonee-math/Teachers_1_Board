@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="post">
+	
+	<resultMap id="postMap" type="Post1">
+	    <!-- 기본 필드 매핑 -->
+	    <id column="post_no" property="postNo" />
+	    <result column="category_no" property="categoryNo" />
+	    
+	    <result column="post_title" property="postTitle" />
+	    <result column="post_content" property="postContent" />
+	    <result column="view_count" property="viewCount" />
+	    <result column="like_count" property="likeCount" />
+	    <result column="created_date" property="createdDate" />
+	    <result column="update_date" property="updateDate" />
+	    <result column="status" property="status" />
+	    <result column="is_public" property="isPublic" />
+	    <result column="is_notice" property="isNotice" />
+	    <result column="comment_count" property="commentCount" />
+	
+	    <!-- 연관 객체: Member1 -->
+	    <association property="member" javaType="Member1" resultMap="member.memberMap" />
+	    
+	    <!-- 연관 객체: School12 -->
+	    <association property="school" javaType="School12">
+	        <id column="school_no" property="schoolNo" />
+	        <result column="school_name" property="schoolName" />
+	        <result column="region" property="region" />
+	    </association>
+	    
+	    <!-- 연관 객체: List<Image1> -->
+	    <collection property="images" javaType="ArrayList" ofType="Image1">
+	        <id column="image_no" property="imageNo" />
+	        <result column="image_url" property="imageUrl" />
+	        <result column="image_desc" property="imageDesc" />
+	    </collection>
+		
+	</resultMap>
+
+	
+	
+</mapper>
