@@ -19,11 +19,11 @@ import com.google.gson.Gson;
 import com.ttt.dto.Member1;
 import com.ttt.dto.Post1;
 
-@WebServlet(urlPatterns = {"/home", ""})
-public class ToMainPageServlet extends HttpServlet {
+@WebServlet(urlPatterns = {"/home2"})
+public class ToMainPageServlet2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public ToMainPageServlet() {
+    public ToMainPageServlet2() {
         super();
     }
 
@@ -37,10 +37,31 @@ public class ToMainPageServlet extends HttpServlet {
             
 			// 더미 데이터 생성 - 미해결 게시판용
 	        List<Post1> unsolvedPosts = new ArrayList<>();
-	        
+	        for(int i=1; i<=10; i++) {
+	            
+	            Post1 post = Post1.builder()
+	                .postNo(i)
+	                .postTitle("이것은 더미 데이터 미해결 게시글 dsafasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf" + i)
+	                .member(Member1.builder().memberNick("작성자"+i).build())
+	                .viewCount(10+i)
+	                .commentCount(i)
+	                .build();
+	            unsolvedPosts.add(post);
+	        }
 	        
 	        // 더미 데이터 생성 - 해결된 게시판용
 	        List<Post1> solvedPosts = new ArrayList<>();
+	        for(int i=1; i<=10; i++) {
+	            
+	            Post1 post = Post1.builder()
+	                .postNo(i)
+	                .postTitle("해결된 게시글 " + i)
+	                .member(Member1.builder().memberNick("작성자"+i).build())
+	                .viewCount(20+i)
+	                .commentCount(i*2)
+	                .build();
+	            solvedPosts.add(post);
+	        }
 	
 	        // JSON 응답 생성
 	        response.setContentType("application/json");
