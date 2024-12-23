@@ -45,4 +45,11 @@
 		SELECT * FROM MEMBER1 WHERE EMAIL=#{email} AND MEMBER_NAME=#{memberName}
 	</select>
 	
+	<update id="updatePassword" parameterType="member1">
+		UPDATE MEMBER1 SET 
+			member_pw=#{memberPw}
+			WHERE email=#{email}
+	
+	</update>
+	
 </mapper>
