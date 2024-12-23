@@ -24,9 +24,9 @@
 		<result column="is_public" property="isPublic"/>
 		<result column="is_Notice" property="isNotice"/>
 		<result column="comment_count" property="commentCount"/>
-		<association property="member" resultMap="member1.memberMap"/>
-		<association property="school" resultMap="school12.schoolMap"/>
-		<collection property="images" resultMap="image1.imageMap"/>
+		<association property="member" resultMap="member.memberMap"/>
+		<association property="school" resultMap="school.schoolMap"/>
+		<collection property="images" resultMap="image.imageMap"/>
 		<collection property="comments" resultMap="postCommentMap"/>
 	</resultMap>
 	
