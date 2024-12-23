@@ -14,7 +14,7 @@
 		<h2>게시글 작성</h2>
 	    
 	    <div id='board-container'>
-	    	<form action='${path }/post/uploadpostend' method="post" enctype="multipart/form-data" >
+	    	<form action='${path }/post/uploadpostend' id="mainForm" method="post" enctype="multipart/form-data" >
 	    		<table>
 	    			<tr id="category">
 	    				<th>카테고리</th>
@@ -119,22 +119,6 @@
 </main>
 
 <script>
-	/* 파일 업로드시, 프리뷰 사진 출력 */
-	$("#upfile").change(e=>{
-		$("preview").html('');
-		$.each($(e.target)[0].files,(i,file)=>{
-			const fileReader = new FileReader();
-			fileReader.readAsDataURL(file);
-			fileReader.onload=e=>{
-				const path = e.target.result;
-				const $img = $("<img>").attr({
-					src:path,
-					height:"400px",
-				});
-				$("#preview").append($img);
-			}
-		})
-	});
 	/* 전체지역 선택시 선택값에 맞는 구/군 출력 */
 	function districtSearch(e) {
 		const select = document.getElementById("district");
@@ -185,6 +169,22 @@
 			$("#region-container").addClass("hidden");
 			$("#school-container").addClass("hidden");
 		}
+	});
+	/* 파일 업로드시, 프리뷰 사진 출력 */
+	$("#upfile").change(e=>{
+		$("#preview").html('');
+		$.each($(e.target)[0].files,(i,file)=>{
+			const fileReader = new FileReader();
+			fileReader.readAsDataURL(file);
+			fileReader.onload=e=>{
+				const path = e.target.result;
+				const $img = $("<img>").attr({
+					src:path,
+					height:"400px",
+				});
+				$("#preview").append($img);
+			}
+		})
 	});
 	
 </script>

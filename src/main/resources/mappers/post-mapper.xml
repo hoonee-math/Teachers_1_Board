@@ -4,11 +4,20 @@
 	<resultMap id="postCommentMap" type="comment1">
 		<id column="comment_no" property="commentNo"/>
 		<result column="parent_no" property="parentNo"/>
-		<result column="comment" property="comment"/>
+		<result column="comment_contnet" property="comment"/>
 		<result column="create_date" property="createDate"/>
 		<result column="update_date" property="updateDate"/>
-		<result column="level" property="level"/>
-		<association property="member" resultMap="member1.memberMap"/>
+		<result column="comment_level" property="level"/>
+		<association property="member" javaType="member1">
+			<id column="member_no" property="memberNo"/>
+			<result column="member_name" property="memberName"/>
+			<result column="email" property="email"/>
+			<result column="member_pw" property="memberPw"/>
+			<result column="comment_member_nick" property="memberNick"/>
+			<result column="member_type" property="memberType"/>
+			<result column="school_no" property="childSchool.schoolNo"/> <!-- 현재 입력받는 정보는 학교 고유 코드를 저장하게 됨...-->
+			<result column="enroll_date" property="enrollDate"/>
+		</association>
 		<association property="post" resultMap="postMap"/>
 	</resultMap>
 	<resultMap id="postMap" type="post1">
@@ -24,7 +33,16 @@
 		<result column="is_public" property="isPublic"/>
 		<result column="is_Notice" property="isNotice"/>
 		<result column="comment_count" property="commentCount"/>
-		<association property="member" resultMap="member.memberMap"/>
+		<association property="member" javaType="member1">
+			<id column="member_no" property="memberNo"/>
+			<result column="member_name" property="memberName"/>
+			<result column="email" property="email"/>
+			<result column="member_pw" property="memberPw"/>
+			<result column="post_member_nick" property="memberNick"/>
+			<result column="member_type" property="memberType"/>
+			<result column="school_no" property="childSchool.schoolNo"/> <!-- 현재 입력받는 정보는 학교 고유 코드를 저장하게 됨...-->
+			<result column="enroll_date" property="enrollDate"/>
+		</association>
 		<association property="school" resultMap="school.schoolMap"/>
 		<collection property="images" resultMap="image.imageMap"/>
 		<collection property="comments" resultMap="postCommentMap"/>
@@ -91,12 +109,29 @@
 	</insert>
 	
 	<select id="selectBoardJoinCommentJoinMember" parameterType="_int" resultMap="postMap">
-		SELECT * FROM POST1
-		LEFT JOIN (SELECT * FROM COMMENT1
-			START WITH LEVEL=1
-			CONNECT BY PRIOR COMMENT_NO=PARENT_NO)
-		ON POST_NO=PARENT_NO
-		LEFT JOIN MEMBER1 USING (MEMBER_NO)
-		WHERE POST_NO=#{postNo}
+		SELECT 
+		    P.*,
+		    M1.MEMBER_NICK AS POST_MEMBER_NICK,
+		    C.COMMENT_NO,
+		    C.PARENT_NO,
+		    C.COMMENT_CONTENT,
+		    C.CREATE_DATE AS COMMENT_CREATE_DATE,
+		    C.UPDATE_DATE AS COMMENT_UPDATE_DATE,
+		    C.COMMENT_LEVEL,
+		    C.MEMBER_NO AS COMMENT_MEMBER_NO,
+		    C.POST_NO AS COMMENT_POST_NO,
+		    M2.MEMBER_NICK AS COMMENT_MEMBER_NICK
+		FROM 
+		    POST1 P
+		LEFT JOIN 
+		    MEMBER1 M1 ON P.MEMBER_NO = M1.MEMBER_NO
+		LEFT JOIN 
+		    COMMENT1 C ON P.POST_NO = C.POST_NO
+		LEFT JOIN 
+		    MEMBER1 M2 ON C.MEMBER_NO = M2.MEMBER_NO
+		WHERE 
+		    P.POST_NO = #{postNo}
+		ORDER BY 
+		    P.POST_NO, C.COMMENT_NO
 	</select>
 </mapper>

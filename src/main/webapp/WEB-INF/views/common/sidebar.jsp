@@ -64,7 +64,7 @@
 
 	<script>
 		$('.side-menu .menu-item:nth-child(1)').click(function() {
-	        location.assign("${path}/board/allboard?type=all");
+	        location.assign("${path}/board/list");
 		});
 		$('.side-menu .menu-item:nth-child(2)').click(function() {
 	        location.assign("${path}/board/allboard?type=recommend");
@@ -85,6 +85,6 @@
 	        location.assign("${path}/post/uploadpost");
 		});
 		$('.side-menu .menu-item:nth-child(8)').click(function() {
-	        location.assign("${path}/post/viewpost");
+	        location.assign("${path}/post/viewpost?postNo=72");
 		});
 	</script>

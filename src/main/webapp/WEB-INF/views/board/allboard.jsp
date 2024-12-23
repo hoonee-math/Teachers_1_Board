@@ -205,6 +205,44 @@ th {
 		<button class="pagebar-number">5</button>
 		<button class="pagebar-end">다음</button>
 	</div>
+	<div>
+			<button id="boardBtn" class="btn btn-outline-success">글쓰기</button>
+			<table id="tbl-board">
+				<tr>
+						<th>번호</th>
+						<th>카테고리</th>
+						<th>제목</th>
+						<th>작성자</th>
+						<th>조회수</th>
+						<th>시간</th>
+				</tr>
+				<c:if test="${empty boards }">
+	            	<tr>
+	            		<td>
+	            			죄회된 결과가 없습니다.
+	            		</td>
+	            	</tr>
+	            </c:if>
+				<c:if test="${not empty boards }">
+					<c:forEach var="p" items="${boards }">
+					<tr>
+						<td>${p.postNo }</td>
+						<td>${p.categoryNo }
+						<td><a href="${path }/post/viewpost?postNo=${p.postNo}">${p.postTitle}</a></td>
+						<td>${p.member.memberNick }</td>
+						<td>${p.viewCount }</td>
+						<td>
+							<fmt:formatDate value="${p.createDate }" pattern="yyyy년 MM월 dd일"/>
+						</td>
+					</tr>
+					</c:forEach>
+	            </c:if>
+			</table>
+	
+	        <div id="pageBar">
+	        	${pageBar }
+	        </div>
+	    </div>
 </section>
 <script>
 	$('#btn-post').click(function() {

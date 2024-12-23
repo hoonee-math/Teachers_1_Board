@@ -1,11 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="post">
+<mapper namespace="board">
 	
-
-
-	<select id="selectBoardByCategory" parameterType="_int" resultMap="post.postMap">
-		SELECT * FROM POST1 WHERE CATEGORY_NO=#{categoryNo}
+	<select id="selectIndexPageBoardListByCategoryNo" parameterType="_int" resultMap="post.postMap">
+		SELECT *
+		FROM (
+			SELECT POST_NO, POST_TITLE, LIKE_COUNT, COMMENT_COUNT
+			FROM POST1 
+			WHERE CATEGORY_NO=#{categoryNo}
+				AND IS_PUBLIC=1
+			ORDER BY CREATE_DATE DESC 
+		)
+		WHERE 10 >= ROWNUM
+	</select>
+	
+	<!-- 카테고리에 상관없이 모든 게시판 글 출력하기( -->
+	<select id="selectBoardListAllCategory" parameterType="_int" resultMap="post.postMap">
+		SELECT *
+		FROM (
+			SELECT POST_NO, CATEGORY_NO, POST_TITLE, LIKE_COUNT, M1.MEMBER_NICK AS POST_MEMBER_NICK, COMMENT_COUNT, VIEW_COUNT, CREATE_DATE
+			FROM 
+				POST1 P
+			LEFT JOIN
+				MEMBER1 M1 ON P.MEMBER_NO=M1.MEMBER_NO
+			WHERE 
+				IS_PUBLIC=1
+				AND CATEGORY_NO NOT IN (1,3)
+			ORDER BY CREATE_DATE DESC 
+		)
+		WHERE 10 >= ROWNUM
+	</select>
+	
+	<!-- param으로 DAO까지는 cPage값과 numPerPage 값을 받아온 후 mapper에는 categoryNo만 넘겨주기 -->
+	<select id="selectBoardListByCategoryNo" parameterType="_int" resultMap="post.postMap">
+		SELECT *
+		FROM (
+			SELECT POST_NO, POST_TITLE, LIKE_COUNT, M1.MEMBER_NICK AS POST_MEMBER_NICK, COMMENT_COUNT, VIEW_COUNT, CREATE_DATE
+			FROM 
+				POST1 P
+			LEFT JOIN
+				MEMBER1 M1 ON P.MEMBER_NO=M1.MEMBER_NO
+			WHERE 
+				IS_PUBLIC=1
+				AND CATEGORY_NO=#{categoryNo}
+			ORDER BY CREATE_DATE DESC 
+		)
+	</select>
+	
+	
+	<select id="selectBoardCountAll" resultType="_int">
+		SELECT COUNT(*)
+		FROM POST1
+		WHERE 
+			IS_PUBLIC=1
+			AND CATEGORY_NO NOT IN (1,3)
+	</select>
+	
+	
+	<select id="selectBoardCountByCategoryNo" parameterType="_int" resultType="_int">
+		SELECT COUNT(*)
+		FROM POST1
+		WHERE 
+			IS_PUBLIC=1
+			AND CATEGORY_NO=#{categoryNo}
 	</select>
 	
 </mapper>

@@ -92,7 +92,7 @@ public class ToMainPageServlet2 extends HttpServlet {
 	                .postTitle("이것은 더미 데이터 미해결 게시글 dsafasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf" + i)
 	                .member(Member1.builder().memberNick("작성자"+i).build())
 	                .viewCount(10+i)
-	                .createdDate(new Date(Timestamp.valueOf(postTime).getTime()))
+	                .createDate(new Date(Timestamp.valueOf(postTime).getTime()))
 	                .commentCount(i)
 	                .build();
 	            unsolvedPosts.add(post);
@@ -109,7 +109,7 @@ public class ToMainPageServlet2 extends HttpServlet {
 	                .postTitle("해결된 게시글 " + i)
 	                .member(Member1.builder().memberNick("작성자"+i).build())
 	                .viewCount(20+i)
-	                .createdDate(Date.valueOf(postTime.toLocalDate()))
+	                .createDate(Date.valueOf(postTime.toLocalDate()))
 	                .commentCount(i*2)
 	                .build();
 	            solvedPosts.add(post);

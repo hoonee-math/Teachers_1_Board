@@ -36,12 +36,15 @@ public class ToMainPageServlet extends HttpServlet {
         // Ajax 요청인 경우 (JSON 응답)
         if (acceptHeader != null && acceptHeader.contains("application/json")) {
             
-			// 더미 데이터 생성 - 미해결 게시판용
-	        List<Post1> unsolvedPosts = new BoardService().selectBoardByCategory(1);
-	        System.out.println(unsolvedPosts.toString());
-	        // 더미 데이터 생성 - 해결된 게시판용
-	        List<Post1> solvedPosts = new BoardService().selectBoardByCategory(2);
-	
+			// 추천글
+	        List<Post1> favoritePosts = new BoardService().selectIndexPageBoardListByCategoryNo(1);
+	        
+	        // 학년별 게시판(일단은 중등으로)
+	        List<Post1> middlePosts = new BoardService().selectIndexPageBoardListByCategoryNo(5);
+
+	        // 고민상담 미해결
+	        List<Post1> unsolvedPosts = new BoardService().selectIndexPageBoardListByCategoryNo(2);
+	        
 	        // JSON 응답 생성
 	        response.setContentType("application/json");
 	        response.setCharacterEncoding("UTF-8");
@@ -50,7 +53,8 @@ public class ToMainPageServlet extends HttpServlet {
 	        Gson gson = new Gson();
 	        Map<String, Object> jsonData = new HashMap<>();
 	        jsonData.put("unsolvedPosts", unsolvedPosts);
-	        jsonData.put("solvedPosts", solvedPosts);
+	        jsonData.put("middlePosts", middlePosts);
+	        jsonData.put("favoritePosts", favoritePosts);
 	        
 	        String jsonResponse = gson.toJson(jsonData);
 	        response.getWriter().write(jsonResponse);
@@ -71,7 +75,7 @@ public class ToMainPageServlet extends HttpServlet {
 	                .postTitle("이것은 더미 데이터 미해결 게시글 dsafasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf" + i)
 	                .member(Member1.builder().memberNick("작성자"+i).build())
 	                .viewCount(10+i)
-	                .createdDate(new Date(Timestamp.valueOf(postTime).getTime()))
+	                .createDate(new Date(Timestamp.valueOf(postTime).getTime()))
 	                .commentCount(i)
 	                .build();
 	            unsolvedPosts.add(post);
@@ -88,7 +92,7 @@ public class ToMainPageServlet extends HttpServlet {
 	                .postTitle("해결된 게시글 " + i)
 	                .member(Member1.builder().memberNick("작성자"+i).build())
 	                .viewCount(20+i)
-	                .createdDate(Date.valueOf(postTime.toLocalDate()))
+	                .createDate(Date.valueOf(postTime.toLocalDate()))
 	                .commentCount(i*2)
 	                .build();
 	            solvedPosts.add(post);

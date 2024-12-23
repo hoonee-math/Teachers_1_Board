@@ -28,13 +28,13 @@
 				<td>${post.createDate }</td>
 			</tr>
 			<tr class="member-name">
-				<td colspan="2">${post. }</td>
+				<td colspan="2">${post.member.memberNick }</td>
 			</tr>
 			<tr class="file">
 				<td colspan="2">if test orifile!=null -> file.png</td>
 			</tr>
 			<tr class="content">
-				<td colspan="2">postContent</td>
+				<td colspan="2">${post.postContent }</td>
 			</tr>
 		</table>
 		</div>
@@ -50,29 +50,29 @@
 				</form>
 			</div>
 			<table id="comment-tbl">
-			<c:if test="${not empty post1.comments }">
-				<c:forEach var="comment" items="${post1.comments }">
-					<c:if test="${comment1.level==1 }">
+			<c:if test="${not empty post.comments }">
+				<c:forEach var="comment" items="${post.comments }">
+					<c:if test="${comment.level==1 }">
 						<tr class="level1">
-							<td class="comment-writer">댓글 작성자명 ${comment1.member }</td>
+							<td class="comment-writer">댓글 작성자명 ${comment.member.memberNick }</td>
 							<td class="comment-date">댓글 작성일 ${comment.createDate }</td>
 						</tr>
 						<tr>
-							<td class="comment-content">댓글 내용 ${comment1.comment }</td>	
+							<td class="comment-content">댓글 내용 ${comment.comment }</td>	
 							<td>
-								<button class="recomment-btn" value="${comment1.commentNo }">대댓글</button>
+								<button class="recomment-btn" value="${comment.commentNo }">대댓글</button>
 							</td>
 						</tr>
 					</c:if>
 					<c:if test="${comment1.level==2 }">
 						<tr class="level2">
-							<td class="comment-writer">댓글 작성자명 ${comment1.member }</td>
+							<td class="comment-writer">댓글 작성자명 ${comment.member.memberNick }</td>
 							<td class="comment-date">댓글 작성일 ${comment.createDate }</td>
 						</tr>
 						<tr>
-							<td class="comment-content">댓글 내용 ${comment1.comment }</td>	
+							<td class="comment-content">댓글 내용 ${comment.comment }</td>	
 							<td>
-								<button class="recomment-btn" value="${comment1.commentNo }">대댓글</button>
+								<button class="recomment-btn" value="${comment.commentNo }">대댓글</button>
 							</td>
 						</tr>
 					</c:if>
