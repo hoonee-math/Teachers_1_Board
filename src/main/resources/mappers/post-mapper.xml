@@ -90,7 +90,13 @@
 		)
 	</insert>
 	
-	<select id="selectBoardByNo" parameterType="_int" resultMap="postMap">
-		SELECT * FROM POST_no=#{postNo}
+	<select id="selectBoardJoinCommentJoinMember" parameterType="_int" resultMap="postMap">
+		SELECT * FROM POST1
+		LEFT JOIN (SELECT * FROM COMMENT1
+			START WITH LEVEL=1
+			CONNECT BY PRIOR COMMENT_NO=PARENT_NO)
+		ON POST_NO=PARENT_NO
+		LEFT JOIN MEMBER1 USING (MEMBER_NO)
+		WHERE POST_NO=#{postNo}
 	</select>
 </mapper>

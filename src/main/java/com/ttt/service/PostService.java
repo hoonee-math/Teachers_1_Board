@@ -37,9 +37,9 @@ public class PostService {
 		session.close();
 		return result;
 	}
-	public Post1 selectBoardByNo (int postNo) {
+	public Post1 selectBoardJoinCommentJoinMember (int postNo) {
 		SqlSession session = getSession();
-		Post1 p = dao.selectBoardByNo(session, postNo);
+		Post1 p = dao.selectBoardJoinCommentJoinMember(session, postNo);
 		session.close();
 		return p;
 	}
