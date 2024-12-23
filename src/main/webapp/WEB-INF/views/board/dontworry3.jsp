@@ -130,7 +130,7 @@
 					                </span>
 								</div>
 								<div class="post-info"> 
-									<c:set var="postTime" value="${post.createdDate.time}" />
+									<c:set var="postTime" value="${post.createDate.time}" />
 									<c:set var="currentTime" value="${currentTime}" />
 									<c:set var="timeDiff" value="${(currentTime - postTime) / (1000 * 60)}" />
 									<c:choose>
@@ -144,7 +144,7 @@
 											<fmt:parseNumber value="${timeDiff/60}" integerOnly="true" />시간 전
 								        </c:when>
 										<c:otherwise>
-											<fmt:formatDate value="${post.createdDate}" pattern="MM/dd" />
+											<fmt:formatDate value="${post.createDate}" pattern="MM/dd" />
 										</c:otherwise>
 									</c:choose>
 								</div>
@@ -179,7 +179,7 @@
 					                </span>
 								</div>
 								<div class="post-info"> 
-									<c:set var="postTime" value="${post.createdDate.time}" />
+									<c:set var="postTime" value="${post.createDate.time}" />
 									<c:set var="currentTime" value="${currentTime}" />
 									<c:set var="timeDiff" value="${(currentTime - postTime) / (1000 * 60)}" />
 									<c:choose>
@@ -196,7 +196,7 @@
 											<fmt:parseNumber value="${timeDiff/1440}" integerOnly="true" />일 전
 								        </c:when>
 										<c:otherwise>
-											<fmt:formatDate value="${post.createdDate}" pattern="MM/dd" />
+											<fmt:formatDate value="${post.createDate}" pattern="MM/dd" />
 										</c:otherwise>
 									</c:choose>
 								</div>
