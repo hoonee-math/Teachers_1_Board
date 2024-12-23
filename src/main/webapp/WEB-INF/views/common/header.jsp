@@ -4,7 +4,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
-<script	src="${pageContext.request.contextPath }/resources/js/jquery-3.7.1.min.js"></script> <!-- header 에만 부여해도 되는 속성 -->
+<!-- jQuery 주소로 로드 / 파일로 로드시 현재 오류 발생 -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> <!-- header 에만 부여해도 되는 속성 -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -79,7 +80,7 @@
 	</header>
 	<main class="main-container"> <!-- main 끝 태그 : footer 제일 위에 위치 -->
 <script>
-    const gradeBoard = document.getElementById('grade-board');
+    /* const gradeBoard = document.getElementById('grade-board');
 
     gradeBoard.addEventListener('mouseover', () => {
       
@@ -87,7 +88,7 @@
 
     gradeBoard.addEventListener('mouseout', () => {
       
-    });
+    }); */
     
     $(".logo-text").click(function() {
         location.assign("${path}");
