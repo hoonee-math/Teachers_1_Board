@@ -12,10 +12,10 @@
 <!-- 메인 콘텐츠 영역 시작 지검 -->
 <section class="main-content col-9">
 	<section id="post-container">
-		<div id="update&delete">
+		<div id="content-container">
 			<button type="submit" id="update-btn">수정</button>
 			<button type="submit" id="delete-btn">삭제</button>		
-		</div>
+		
 		<table id="post-tbl">
 			<tr class="category-name">
 				<td colspan="2">categoryName</td>
@@ -37,7 +37,7 @@
 				<td colspan="2">postContent</td>
 			</tr>
 		</table>
-		
+		</div>
 		<div id="comment-container">
 			<div class="comment-editor">
 				<form action="${path }/post/postcomment.do" method="post">
@@ -56,11 +56,12 @@
 				</tr>
 				<tr>
 					<td class="comment-content">댓글 내용 ${comment.postCommentContent }</td>	
-					<td>				
-						<button id="recomment-btn" value="${comment.postCommentNo }">대댓글 작성</button>
-					</td>
 				</tr>
 			</table>
+		</div>
+		<div id="recommnet-container">
+			<button id="recomment-btn" value="${comment.postCommentNo }">대댓글 작성</button>
+			
 		</div>
 	</section>
 	
