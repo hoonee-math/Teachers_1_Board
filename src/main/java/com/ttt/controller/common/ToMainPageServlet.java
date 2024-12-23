@@ -37,13 +37,13 @@ public class ToMainPageServlet extends HttpServlet {
         if (acceptHeader != null && acceptHeader.contains("application/json")) {
             
 			// 추천글
-	        List<Post1> favoritePosts = new BoardService().selectBoardByCategory(1);
+	        List<Post1> favoritePosts = new BoardService().selectIndexPageBoardListByCategoryNo(1);
 	        
 	        // 학년별 게시판(일단은 중등으로)
-	        List<Post1> middlePosts = new BoardService().selectBoardByCategory(5);
+	        List<Post1> middlePosts = new BoardService().selectIndexPageBoardListByCategoryNo(5);
 
 	        // 고민상담 미해결
-	        List<Post1> unsolvedPosts = new BoardService().selectBoardByCategory(2);
+	        List<Post1> unsolvedPosts = new BoardService().selectIndexPageBoardListByCategoryNo(2);
 	        
 	        // JSON 응답 생성
 	        response.setContentType("application/json");

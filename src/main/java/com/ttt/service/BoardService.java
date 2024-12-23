@@ -13,7 +13,7 @@ public class BoardService {
 	
 	private BoardDao dao=new BoardDao();
 	
-	public List<Post1> selectBoardByCategory(int categoryNo){
+	public List<Post1> selectIndexPageBoardListByCategoryNo(int categoryNo){
 		SqlSession session=getSession();
 		return dao.selectBoardByCategory(session, categoryNo);
 	}

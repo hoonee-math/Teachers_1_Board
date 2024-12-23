@@ -2,10 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="board">
 	
-	<select id="selectBoardByCategory" parameterType="_int" resultMap="post.postMap">
+	<select id="selectIndexPageBoardListByCategoryNo" parameterType="_int" resultMap="post.postMap">
 		SELECT *
 		FROM (
-			SELECT POST_NO, CATEGORY_NO, POST_TITLE, LIKE_COUNT, COMMENT_COUNT
+			SELECT POST_NO, POST_TITLE, LIKE_COUNT, COMMENT_COUNT
 			FROM POST1 
 			WHERE CATEGORY_NO=#{categoryNo}
 				AND IS_PUBLIC=1
@@ -14,44 +14,4 @@
 		WHERE 10 >= ROWNUM
 	</select>
 	
-	<!--최근 100일 이내의 데이터-->
-	<!-- 최신순 10개 -->
-	<select id="selectBoardByCategoryNew" parameterType="_int" resultMap="post.postMap">
-		SELECT * 
-		FROM (
-		    SELECT POST_NO, CATEGORY_NO, POST_TITLE, LIKE_COUNT, COMMENT_COUNT, CREATE_DATE
-		    FROM POST1
-		    WHERE CATEGORY_NO = #{categoryNo}
-		      AND IS_PUBLIC = 1
-		      AND CREATE_DATE >= SYSDATE - 100 <!-- 최근 100일 이내 -->
-		    ORDER BY CREATE_DATE DESC	
-		)
-		WHERE 10>=ROWNUM
-	</select>
-	
-	<!-- 좋아요순 -->
-	<select id="selectBoardByCategoryHot" parameterType="_int" resultMap="post.postMap">
-		SELECT * 
-		FROM (
-		    SELECT POST_NO, CATEGORY_NO, POST_TITLE, LIKE_COUNT, COMMENT_COUNT, CREATE_DATE
-		    FROM POST1
-		    WHERE CATEGORY_NO = #{categoryNo}
-		      AND IS_PUBLIC = 1
-		      AND CREATE_DATE >= SYSDATE - 100 <!-- 최근 100일 이내 -->
-		    ORDER BY LIKE_COUNT DESC
-		)
-		WHERE 10>=ROWNUM
-	</select>
-	
-	<select id="selectBoardByAllCategory" parameterType="_int" resultMap="post.postMap">
-		SELECT *
-		FROM (
-			SELECT POST_NO, CATEGORY_NO, POST_TITLE, LIKE_COUNT, COMMENT_COUNT
-			FROM POST1 
-			WHERE CATEGORY_NO NOT IN (1,3) <!-- 1.맘스뉴스 3.공지사항 제외 전체 게시글 모아보기 -->
-				AND IS_PUBLIC=1
-			ORDER BY CREATE_DATE DESC
-		)
-		WHERE 10 >= ROWNUM
-	</select>
 </mapper>
