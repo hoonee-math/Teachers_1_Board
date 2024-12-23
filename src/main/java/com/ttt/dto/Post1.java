@@ -21,7 +21,7 @@ public class Post1 {
 	private String postContent;
 	private int viewCount;
 	private int likeCount;
-	private Date createdDate;
+	private Date createDate;
 	private Date updateDate;
 	private int status;
 	private int isPublic;
