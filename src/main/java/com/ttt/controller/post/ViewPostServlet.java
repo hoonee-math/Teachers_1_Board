@@ -41,7 +41,7 @@ public class ViewPostServlet extends HttpServlet {
 			response.addCookie(c);
 		}
 		
-		Post1 p = new PostService().selectPostJoinCommentByNo(postNo);
+		Post1 p = new PostService().selectBoardByNo(postNo);
 		
 		request.setAttribute("post", p);
 		request.getRequestDispatcher("WEB-INF/views/post/viewPost.jsp");
