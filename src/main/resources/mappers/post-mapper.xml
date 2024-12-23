@@ -61,4 +61,14 @@
 			#{categoryNo}
 		)
 	</insert>
+	
+	<select id="selectPostJoinCommentByNo" parameterType="_int" resultMap="postMap">
+		SELECT * FROM POST1
+			LEFT JOIN (SELECT * FROM COMMENT1
+						START WITH LEVEL=1
+						CONNECT BY PRIOR COMMENT_NO=PARENT_TO)
+			USING POST_NO
+			LEFT JOIN
+			)
+	</select>
 </mapper>

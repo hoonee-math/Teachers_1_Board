@@ -14,7 +14,7 @@
 		<h2>게시글 작성</h2>
 	    
 	    <div id='board-container'>
-	    	<form action='${path }/post/uploadpost' method="post" enctype="multipart/form-data" >
+	    	<form action='${path }/post/uploadpostend' method="post" enctype="multipart/form-data" >
 	    		<table>
 	    			<tr id="category">
 	    				<th>카테고리</th>
@@ -85,7 +85,11 @@
 	    				<th>작성자</th>
 	    				<td>
 	    					<input type="text" name="postWriter"
-									value="${sessionScope.loginMember.memberNick }" readOnly/>
+									value="${sessionScope.loginMember.memberName }" readOnly/>
+	    				</td>
+	    				<td>
+	    					<input type="text" name="memberNo" 
+	    							value="${sessionScope.loginMember.memberNo }" hidden/>
 	    				</td>
 	    			</tr>
 	    			<tr>
@@ -102,12 +106,12 @@
 	    				</td>
 	    			</tr>
 	    		</table>
+			    <div id="button-container">
+			    	<div class="right">
+			    		<input type="submit" name="save" value="저장"> <input type="submit" name="enroll-post" value="등록">
+				    </div>
+			    </div>
 	    	</form>
-	    </div>
-	    <div id="button-container">
-	    	<div class="right">
-	    		<input type="submit" name="save" value="저장"> <input type="submit" name="enroll-post" value="등록">
-		    </div>
 	    </div>
 	 </div>
 <section class="right-box col-1"></section>

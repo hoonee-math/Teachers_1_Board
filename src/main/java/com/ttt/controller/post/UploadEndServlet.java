@@ -19,7 +19,7 @@ import com.ttt.service.PostService;
 /**
  * Servlet implementation class UploadEndServlet
  */
-@WebServlet("/post/postuploadend")
+@WebServlet("/post/uploadpostend")
 public class UploadEndServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
