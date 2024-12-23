@@ -34,7 +34,7 @@
 				<td colspan="2">if test orifile!=null -> file.png</td>
 			</tr>
 			<tr class="content">
-				<td colspan="2">postContent</td>
+				<td colspan="2">${post.postContent }</td>
 			</tr>
 		</table>
 		</div>
@@ -54,7 +54,7 @@
 				<c:forEach var="comment" items="${post.comments }">
 					<c:if test="${comment.level==1 }">
 						<tr class="level1">
-							<td class="comment-writer">댓글 작성자명 ${comment.member }</td>
+							<td class="comment-writer">댓글 작성자명 ${comment.member.memberNick }</td>
 							<td class="comment-date">댓글 작성일 ${comment.createDate }</td>
 						</tr>
 						<tr>

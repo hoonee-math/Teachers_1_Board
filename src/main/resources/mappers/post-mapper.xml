@@ -8,7 +8,9 @@
 		<result column="create_date" property="createDate"/>
 		<result column="update_date" property="updateDate"/>
 		<result column="comment_level" property="level"/>
-		<association property="member" resultMap="member.memberMap"/>
+		<association property="member" resultMap="member.memberMap">
+			<result column="comment_member_nick" property="memberNick"/>
+		</association>
 		<association property="post" resultMap="postMap"/>
 	</resultMap>
 	<resultMap id="postMap" type="post1">
@@ -24,7 +26,9 @@
 		<result column="is_public" property="isPublic"/>
 		<result column="is_Notice" property="isNotice"/>
 		<result column="comment_count" property="commentCount"/>
-		<association property="member" resultMap="member.memberMap"/>
+		<association property="member" resultMap="member.memberMap">
+			<result column="post_member_nick" property="memberNick"/>
+		</association>
 		<association property="school" resultMap="school.schoolMap"/>
 		<collection property="images" resultMap="image.imageMap"/>
 		<collection property="comments" resultMap="postCommentMap"/>
