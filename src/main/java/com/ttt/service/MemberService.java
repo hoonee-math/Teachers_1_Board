@@ -44,6 +44,17 @@ public class MemberService {
 	
 	public int updatePassword(Member1 m) {
 		SqlSession session=getSession();
-		return dao.updatePassword(session,m);
+	    int result = 0;
+	    try {
+	        result = dao.updatePassword(session, m);
+	        if(result > 0) session.commit();
+	        else session.rollback();
+	    } catch(Exception e) {
+	        session.rollback();
+	        throw e;
+	    } finally {
+	        session.close();
+	    }
+	    return result;
 	}
 }

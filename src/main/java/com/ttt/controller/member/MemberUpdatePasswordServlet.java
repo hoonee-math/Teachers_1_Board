@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import com.ttt.dto.Member1;
 import com.ttt.service.MemberService;
 
-@WebServlet("/member/updatePassword.do")
+@WebServlet(name="updatePassword", urlPatterns="/member/updatePassword.do")
 public class MemberUpdatePasswordServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
