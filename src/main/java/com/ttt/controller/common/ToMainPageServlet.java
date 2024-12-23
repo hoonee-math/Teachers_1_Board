@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import com.ttt.dto.Member1;
 import com.ttt.dto.Post1;
+import com.ttt.service.BoardService;
 
 @WebServlet(urlPatterns = {"/home", ""})
 public class ToMainPageServlet extends HttpServlet {
@@ -36,11 +37,10 @@ public class ToMainPageServlet extends HttpServlet {
         if (acceptHeader != null && acceptHeader.contains("application/json")) {
             
 			// 더미 데이터 생성 - 미해결 게시판용
-	        List<Post1> unsolvedPosts = new ArrayList<>();
-	        
-	        
+	        List<Post1> unsolvedPosts = new BoardService().selectBoardByCategory(1);
+	        System.out.println(unsolvedPosts.toString());
 	        // 더미 데이터 생성 - 해결된 게시판용
-	        List<Post1> solvedPosts = new ArrayList<>();
+	        List<Post1> solvedPosts = new BoardService().selectBoardByCategory(2);
 	
 	        // JSON 응답 생성
 	        response.setContentType("application/json");
