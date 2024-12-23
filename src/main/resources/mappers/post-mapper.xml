@@ -43,4 +43,22 @@
 	<select id="selectImgAll" resultMap="image.imageMap">
 		SELECT * FROM IMAGE1
 	</select>
+	
+	<insert id="insertPost" parameterType="post1">
+		INSERT INTO POST1 (
+			POST_NO,
+			POST_TITLE,
+			POST_CONTENT,
+			CREATE_DATE,
+			MEMBNER_NO,
+			CATEGORY_NO
+		) VALUES (
+			SEQ_POST_NO.NEXTVAL, 
+			#{postTitle}, 
+			#{postContent},
+			SYSDATE,
+			#{childMember.memberNo},
+			#{categoryNo}
+		)
+	</insert>
 </mapper>

@@ -50,36 +50,31 @@ public class UploadEndServlet extends HttpServlet {
 		childPost.setPostNo(postNo);
 		
 		List<Image1> childImgs = new PostService().selectImgAll();
-		int imgNo = 0;
+		int imgOrder = 0;
 		try {
-			imgNo = Integer.parseInt(request.getParameter("imgNo"));
+			imgOrder = Integer.parseInt(request.getParameter("imgOrder"));
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
 		}
-//		childImgs.setImgNo(imgNo);
 		
 		MultipartRequest mr = new MultipartRequest(
-				request, path, 1024*1024*100, "utf-8", new CustomFileRenamePolicy(memberNo, postNo, imgNo)
-				);
+				request, path, 1024*1024*100, "utf-8", new CustomFileRenamePolicy(memberNo, postNo, imgOrder)
+			);
 		
-		String category = mr.getParameter("category");
+		int categoryNo = Integer.parseInt(mr.getParameter("categoryNo"));
 		//아래의 세 정보는 category에 따라 받는 정보라서 어떻게 전송해야할지 모르겠어요..
 		String region = mr.getParameter("region");
 		String district = mr.getParameter("district");
 		String schoolName = mr.getParameter("schoolName");
 		String postTitle = mr.getParameter("postTitle");
-		String postWriter = mr.getParameter("postWriter");
 		String postContent = mr.getParameter("postContent");
-		
-		String oriname = mr.getOriginalFileName("upfile");
-		String rename = mr.getFilesystemName("upfile");
 		
 		//객체로 저장되어있는 정보들을 가져오는 
 		Post1 p = Post1.builder()
-				.category(category)
-				.member(childMember)
 				.postTitle(postTitle)
 				.postContent(postContent)
+				.member(childMember)
+				.categoryNo(categoryNo)
 				.images(childImgs)
 				.build();
 		
