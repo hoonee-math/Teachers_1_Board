@@ -18,4 +18,8 @@ public class MemberDao {
 	public Member1 selectMemberByNameAndEmail(SqlSession session, Member1 m) {
 		return session.selectOne("member.selectMemberByNameAndEmail",m);
 	}
+	
+	public int updatePassword(SqlSession session, Member1 m) {
+		return session.update("member.updatePassword", m);
+	}
 }

@@ -202,7 +202,7 @@ input:focus {
 			                if(response.exists) {
 			                    // 회원이 존재하면 이메일 인증 창 오픈
 			                    window.open(
-		                            '${path}/check/email.do?email=' + encodeURIComponent(email),
+		                            '${path}/member/checkemailforfindpassword.do?email=' + encodeURIComponent(email),
 			                        "emailVerify",
 			                        "width=400,height=300,left=500,top=200"
 			                    );
