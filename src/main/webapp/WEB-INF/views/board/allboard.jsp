@@ -216,18 +216,6 @@ th {
 						<th>조회수</th>
 						<th>시간</th>
 				</tr>
-				<tr>
-					<td>번호</td>
-					<td>
-						타이틀을 누르면 상세화면으로 이동
-					</td>
-					<td></td>
-					<td></td>
-					<td>
-					첨부파일이 있으면 이미지출력 / 없으면 공란
-					</td>
-					<td></td>
-				</tr>
 				<c:if test="${empty boards }">
 	            	<tr>
 	            		<td>
