@@ -16,9 +16,12 @@
 			<h2>나의 정보</h2>
 			<p id="headercomment">회원님의 개인정보 및 보안강 그리고 이용 환경을 설정하실 수 있습니다.</p>
 		</div>
+		<div id="myinfobody">
+			<div id="email"> 이메일 <input type="text" value="가져온 이메일 고정" placeholder="가져온 이메일로 고정"></div>
+			<div id="nick"> 별명 <input type="text"></div>
+			<div id="nickcommentbox"><p id="nickcomment">별명은 </p></div>
+		</div>
 	</div>
-
-
 </section>
 </main>
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
