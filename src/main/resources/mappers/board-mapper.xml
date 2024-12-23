@@ -2,8 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="board">
 	
+	<!--최근 10일 이내의 데이터-->
+	<!-- 최근 10개 -->
 	<select id="selectBoardByCategory" parameterType="_int" resultMap="post.postMap">
-		SELECT * FROM POST1 WHERE CATEGORY_NO=#{categoryNo}
+		SELECT POST_NO, CATEGORY_NO, POST_TITLE, LIKE_COUNT, COMMENT_COUNT
+		FROM POST1 WHERE CATEGORY_NO=#{categoryNo} AND IS_PUBLIC=1 AND 10 >= ROWNUM
 	</select>
-	
 </mapper>

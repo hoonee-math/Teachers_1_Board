@@ -8,8 +8,15 @@
 		<result column="create_date" property="createDate"/>
 		<result column="update_date" property="updateDate"/>
 		<result column="comment_level" property="level"/>
-		<association property="member" resultMap="member.memberMap">
+		<association property="member" javaType="member1">
+			<id column="member_no" property="memberNo"/>
+			<result column="member_name" property="memberName"/>
+			<result column="email" property="email"/>
+			<result column="member_pw" property="memberPw"/>
 			<result column="comment_member_nick" property="memberNick"/>
+			<result column="member_type" property="memberType"/>
+			<result column="school_no" property="childSchool.schoolNo"/> <!-- 현재 입력받는 정보는 학교 고유 코드를 저장하게 됨...-->
+			<result column="enroll_date" property="enrollDate"/>
 		</association>
 		<association property="post" resultMap="postMap"/>
 	</resultMap>
@@ -26,8 +33,15 @@
 		<result column="is_public" property="isPublic"/>
 		<result column="is_Notice" property="isNotice"/>
 		<result column="comment_count" property="commentCount"/>
-		<association property="member" resultMap="member.memberMap">
+		<association property="member" javaType="member1">
+			<id column="member_no" property="memberNo"/>
+			<result column="member_name" property="memberName"/>
+			<result column="email" property="email"/>
+			<result column="member_pw" property="memberPw"/>
 			<result column="post_member_nick" property="memberNick"/>
+			<result column="member_type" property="memberType"/>
+			<result column="school_no" property="childSchool.schoolNo"/> <!-- 현재 입력받는 정보는 학교 고유 코드를 저장하게 됨...-->
+			<result column="enroll_date" property="enrollDate"/>
 		</association>
 		<association property="school" resultMap="school.schoolMap"/>
 		<collection property="images" resultMap="image.imageMap"/>

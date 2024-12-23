@@ -85,6 +85,6 @@
 	        location.assign("${path}/post/uploadpost");
 		});
 		$('.side-menu .menu-item:nth-child(8)').click(function() {
-	        location.assign("${path}/post/viewpost");
+	        location.assign("${path}/post/viewpost?postNo=72");
 		});
 	</script>

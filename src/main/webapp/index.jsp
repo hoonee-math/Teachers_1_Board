@@ -222,11 +222,11 @@
 	        },
 	        success: function(data) {
 	            // 추천글 게시판 데이터 적용
-	            updateBoard('.mini-board:eq(0) .board-list', data.unsolvedPosts);
+	            updateBoard('.mini-board:eq(0) .board-list', data.favoritePosts);
 	            // 학년별 게시판 데이터 적용
-	            updateBoard('.mini-board:eq(1) .board-list', data.unsolvedPosts);
+	            updateBoard('.mini-board:eq(1) .board-list', data.middlePosts);
 	            // 고민상담 게시판 데이터 적용
-	            updateBoard('.mini-board:eq(2) .board-list', data.solvedPosts);
+	            updateBoard('.mini-board:eq(2) .board-list', data.unsolvedPosts);
 	        },
 	        error: function(xhr, status, error) {
 	            console.error("Error loading data:", error);
