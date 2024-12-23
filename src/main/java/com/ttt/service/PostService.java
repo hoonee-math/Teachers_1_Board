@@ -2,9 +2,12 @@ package com.ttt.service;
 
 import static com.ttt.common.SqlSessionTemplate.getSession;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.ttt.dao.PostDao;
+import com.ttt.dto.Image1;
 import com.ttt.dto.Post1;
 
 public class PostService {
@@ -14,6 +17,21 @@ public class PostService {
 		SqlSession session = getSession();
 		int result = dao.uploadPost(session, p);
 		if (result>0) session.commit();
+		else session.rollback();
+		
+		session.close();
+		return result;
+	}
+	public List<Image1> selectImgAll() {
+		SqlSession session = getSession();
+		List<Image1> childImgs = dao.selectImgAll(session);
+		session.close();
+		return childImgs;
+	}
+	public int insertPost(Post1 p) {
+		SqlSession session = getSession();
+		int result = dao.insertPost(session, p) ;
+		if(result>0) session.commit();
 		else session.rollback();
 		
 		session.close();

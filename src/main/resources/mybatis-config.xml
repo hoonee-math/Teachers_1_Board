@@ -39,6 +39,7 @@
 		<mapper resource="/mappers/post-mapper.xml"/>
 		<mapper resource="/mappers/school-mapper.xml"/>
 		<mapper resource="/mappers/member-mapper.xml"/>
+		<mapper resource="/mappers/image-mapper.xml"/>
 	</mappers>
 	
 </configuration>
