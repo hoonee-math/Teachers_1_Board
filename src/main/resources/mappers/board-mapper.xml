@@ -4,7 +4,7 @@
 	
 
 
-	<select id="selectBoardByCategory" parameterType="_int" resultMap="postMap">
+	<select id="selectBoardByCategory" parameterType="_int" resultMap="post.postMap">
 		SELECT * FROM POST1 WHERE CATEGORY_NO=#{categoryNo}
 	</select>
 	
