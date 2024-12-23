@@ -6,26 +6,64 @@
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <style>
-#headercomment {
+#headercomment, #personalcomment, #mypostcomment {
+	margin-top : 20px;
 	color : grey;
 	margin-bottom: 10px;
 }
-#personalinfo {
-	border : 1px solid black;
+#personalbox, #mypostbox {
+	width : 90%;
+	height : 400px;
+	padding : 20px;
+	border: 1px solid brown;
+	border-radius: 15px;
+	color: #D9776A;
+	display : flex;
+	flex-direction: column;
+	align-items : center;
+	margon-top : 10px;
+}
+#mypostcomment, #personalcomment {
+	display : flex;
+	justify-content : center;
+}
+#personala, #myposta {
+	margin-top : 25px;
+}
+a {
+	color : brown;
 }
 </style>
 <section class="main-content col-9">
 	<div class="col-10" id="mypagecontainer">
 		<div id="mypageheader" class="main-title">
 			<h2>나의 정보실</h2>
-			<p id="headercomment">회원님의 개인정보 수정 및 나의 글에 대해 설정하실 수 있습니다:) </p>
+			<p id="headercomment">회원님의 개인정보 수정 및 나의 글에 대해 설정하실 수 있습니다:)</p>
 		</div>
 		<div id="menucontainer" class="row two-columns">
 			<div class="col-6">
-				<div id="personalinfo">개인정보</div>
+				<div id="personalbox">
+					<div id="personalinfo"><h3>개인정보</h3></div>
+					<div><img src="${path}/resources/images/personalshape.png"></div>
+					<div><p id="personalcomment">개인정보를 수정할 수 있는<p>
+						 <p id="personalcomment">내정보 페이지로 이동합니다.</p>
+					</div>
+					<div id="personala">
+						<a href="">개인정보 보러가기</a>
+					</div>
+				</div>
 			</div>
 			<div class="col-6">
-				<div id="mypost">나의 글</div>
+				<div id="mypostbox">
+					<div id="mypost"><h3>나의 글</h3></div>
+					<div><img src="${path}/resources/images/postshape.png"></div>
+					<div><p id="mypostcomment">회원님이 작성한 글의 내역을 확인하는</p>
+						 <p id="mypostcomment">페이지로 이동합니다.</p>
+					</div>
+					<div id="myposta">
+						<a href="">나의 글 보러가기</a>
+					</div>
+				</div>	
 			</div>
 		</div>
 	</div>
