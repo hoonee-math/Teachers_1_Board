@@ -85,7 +85,7 @@
 	    				<th>작성자</th>
 	    				<td>
 	    					<input type="text" name="postWriter"
-									value="${sessionScope.loginMember.userNick }" readOnly/>
+									value="${sessionScope.loginMember.memberNick }" readOnly/>
 	    				</td>
 	    			</tr>
 	    			<tr>
