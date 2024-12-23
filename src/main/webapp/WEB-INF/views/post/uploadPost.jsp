@@ -21,14 +21,14 @@
 	    				<td colspan="2">
 	    					<select name="category" id="selector">
 	    						<option value="">카테고리 선택</option>
-	    						<option value="news">맘스뉴스</option>
-	    						<option value="dontworry">고민상담소</option>
-	    						<option value="elementary">초등 게시판</option>
-	    						<option value="middle">중등 게시판</option>
-	    						<option value="high">고등 게시판</option>
-	    						<option value="senior">고3/n수생 게시판</option>
-	    						<option value="region">지역별 게시판</option>
-	    						<option value="school">학교별 게시판</option>
+	    						<option value="1">맘스뉴스</option>
+	    						<option value="2">고민상담소</option>
+	    						<option value="3">초등 게시판</option>
+	    						<option value="4">중등 게시판</option>
+	    						<option value="5">고등 게시판</option>
+	    						<option value="6">고3/n수생 게시판</option>
+	    						<option value="7">지역별 게시판</option>
+	    						<option value="8">학교별 게시판</option>
 	    					</select>
 	    				</td>
 	    			</tr>
@@ -147,7 +147,7 @@
 				});
 			})
 			.catch(error => console.error("Error : ",error));
-	}
+	};
 	/* 구/군 및 초중고 선택시, 선택값에 맞는 학교명 출력 */
 	function schoolSearch(e) {
 		const select = document.getElementById("school-name");
@@ -165,7 +165,7 @@
 				});
 			})
 			.catch(error => console.error("Error : ",error));
-	}
+	};
 	/* 카테고리 선택에 따라 지역,학교 선택칸 출력 */
 	const selector = document.getElementById("selector");
 	
@@ -181,6 +181,7 @@
 			$("#region-container").addClass("hidden");
 			$("#school-container").addClass("hidden");
 		}
-	})
+	});
+	
 </script>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
