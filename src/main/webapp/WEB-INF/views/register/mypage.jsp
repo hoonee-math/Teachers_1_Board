@@ -49,7 +49,7 @@ a {
 						 <p id="personalcomment">내정보 페이지로 이동합니다.</p>
 					</div>
 					<div id="personala">
-						<a href="">개인정보 보러가기</a>
+						<a href="${path}/member/myinfo">개인정보 보러가기</a>
 					</div>
 				</div>
 			</div>
