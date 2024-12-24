@@ -15,6 +15,18 @@ public class CustomFileRenamePolicy implements FileRenamePolicy {
 		this.imgSeq = imgSeq;
 	}
 	
+	public void setMemberNo(int memberNo) {
+        this.memberNo = memberNo;
+    }
+
+    public void setPostNo(int postNo) {
+        this.postNo = postNo;
+    }
+
+    public void setImgSeq(int imgSeq) {
+        this.imgSeq = imgSeq;
+    }
+	
 	@Override
 	public File rename(File file) {
 		//기존 파일 확장자 추출 

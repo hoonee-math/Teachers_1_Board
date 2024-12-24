@@ -31,14 +31,16 @@ public class UploadEndServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String path = getServletContext().getRealPath("/resources/upload/post");
 
+		CustomFileRenamePolicy renamePolicy = new CustomFileRenamePolicy(0, 0, 0); // 기본값 생성
+
 		MultipartRequest mr = new MultipartRequest(
-				request, path, 1024*1024*100, "utf-8", new CustomFileRenamePolicy(0, 0, 0)
+				request, path, 1024*1024*100, "utf-8",renamePolicy
 			);
 		
 		Member1 m = new Member1();
 		Post1 post = new Post1();
 		List<Image1> images = new ArrayList<>();
-		
+		int order = 0;
 		
 		try {
 			//1. 기본 데이터 처리
@@ -56,8 +58,6 @@ public class UploadEndServlet extends HttpServlet {
 		}
 		try { 
 			//2. 파일 처리
-	        int order = 0;
-
 			java.util.Enumeration<String> fileNames = mr.getFileNames();
 			while(fileNames.hasMoreElements()) {  // Enumeration 객체를 변수에 저장하여 사용
 			    String fileName = fileNames.nextElement();
@@ -78,6 +78,18 @@ public class UploadEndServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		int memberNo = Integer.parseInt(mr.getParameter("memberNo"));
+		int categoryNo = Integer.parseInt(mr.getParameter("categoryNo"));
+		System.out.println(mr.getParameter("postNo"));
+		int postNo = Integer.parseInt(mr.getParameter("postNo"));
+		String postTitle = mr.getParameter("postTitle");
+		String postContent = mr.getParameter("postContent");
+		
+		renamePolicy.setMemberNo(memberNo);
+		renamePolicy.setPostNo(postNo);
+		renamePolicy.setImgSeq(order);
+		
 		try {
 	        //4.  결과 처리
 	        String msg = "게시글 등록 성공 :)", loc = "/board/allboard";
@@ -99,10 +111,7 @@ public class UploadEndServlet extends HttpServlet {
 		}
 		
 		
-		int memberNo = Integer.parseInt(mr.getParameter("memberNo"));
-		int categoryNo = Integer.parseInt(mr.getParameter("categoryNo"));
-		String postTitle = mr.getParameter("postTitle");
-		String postContent = mr.getParameter("postContent");
+		
 		
 	}
 }
