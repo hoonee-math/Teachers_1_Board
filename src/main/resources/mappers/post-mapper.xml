@@ -90,23 +90,23 @@
 		SELECT * FROM IMAGE1
 	</select>
 	
-	<insert id="insertPost" parameterType="post1">
+<!-- 	<insert id="insertPost" parameterType="post1">
 		INSERT INTO POST1 (
 			POST_NO,
 			POST_TITLE,
 			POST_CONTENT,
 			CREATE_DATE,
-			MEMBNER_NO,
+			MEMBER_NO,
 			CATEGORY_NO
 		) VALUES (
-			SEQ_POST_NO.NEXTVAL, 
+			POST_SEQ.NEXTVAL, 
 			#{postTitle}, 
 			#{postContent},
 			SYSDATE,
-			#{childMember.memberNo},
+			#{m.memberNo},
 			#{categoryNo}
 		)
-	</insert>
+	</insert> -->
 	
 	<select id="selectBoardJoinCommentJoinMember" parameterType="_int" resultMap="postMap">
 		SELECT 
@@ -134,4 +134,41 @@
 		ORDER BY 
 		    P.POST_NO, C.COMMENT_NO
 	</select>
+	
+	<insert id="insertPost" parameterType="post1">
+		<selectKey keyProperty="postNo" resultType="int" order="BEFORE">
+			SELECT POST_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO POST1 (
+			POST_NO,
+			POST_TITLE,
+			POST_CONTENT,
+			MEMBER_NO,
+			CATEGORY_NO,
+			CREATE_DATE
+		) VALUES (
+			#{postNo},
+			#{postTitle},
+			#{postContent},
+			#{m.memberNo},
+			#{categoryNo},
+			SYSDATE
+		)
+	</insert>
+	
+	<insert id="insertPostImage" parameterType="image1">
+		INSERT INTO IMAGE1 (
+            IMG_NO,
+            IMG_ORDER,
+            ORINAME,
+            RENAME,
+            POST_NO
+        ) VALUES (
+            SEQ_IMAGE_NO.NEXTVAL,
+            #{imgOrder},
+            #{oriname},
+            #{rename},
+            #{postNo}
+        )
+	</insert>
 </mapper>

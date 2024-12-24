@@ -19,7 +19,7 @@
 	    			<tr id="category">
 	    				<th>카테고리</th>
 	    				<td colspan="2">
-	    					<select name="category" id="selector">
+	    					<select name="categoryNo" id="selector">
 	    						<option value="">카테고리 선택</option>
 	    						<option value="1">맘스뉴스</option>
 	    						<option value="2">고민상담소</option>
@@ -115,6 +115,8 @@
 	    	</form>
 	    </div>
 	 </div>
+	 <input type="hidden" name="postNo" value="0"/>
+	 <input type="hidden" name="imgOrder" value="0"/>
 </section>
 
 <script>

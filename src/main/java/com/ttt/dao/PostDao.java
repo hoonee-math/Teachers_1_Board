@@ -20,4 +20,14 @@ public class PostDao {
 	public Post1 selectBoardJoinCommentJoinMember(SqlSession session, int postNo) {
 		return session.selectOne("post.selectBoardJoinCommentJoinMember", postNo);
 	}
+	public int insertPostAndGetNo(SqlSession session, Post1 post) {
+		int result = session.insert("post.insertPost", post);
+		if(result>0) {
+			return post.getPostNo();
+		}
+		return 0;
+	}
+	public int insertPostImage(SqlSession session, Image1 image) {
+		return session.insert("post.insertPostImage", image);
+	}
 }
