@@ -4,7 +4,7 @@
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/resources/css/enroll/enrollMember.css">
-<jsp:include page="/WEB-INF/views/common/header.jsp" />
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/enroll/enrollHeader.css">
 <style>
 #agree-header {
 	display: flex;
@@ -103,6 +103,15 @@
 	margin-left : auto;
 }
 </style>
+<header>
+	<div class="menu">
+		<div class="logo-container">
+			<jsp:include page="/WEB-INF/views/common/logo2.jsp"/>
+			<span class="logo-text">맘스티쳐</span>
+			<jsp:include page="/WEB-INF/views/common/logo2.jsp"/>
+		</div>
+	</div>
+	</header>
 <section id="enroll-container">
 	<div id="terms-header">
 		<h2>회원 가입 약관</h2>
