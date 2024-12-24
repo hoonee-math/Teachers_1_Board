@@ -3,9 +3,9 @@
 <mapper namespace="image">
 	<resultMap id="imageMap" type="image1">
 		<id column="imgNo" property="imgNo"/>
-		<result column="img_order" property="imgOrder"/>
+		<result column="img_seq" property="imgSeq"/>
 		<result column="oriname" property="oriname"/>
-		<result column="rename" property="rename"/>
+		<result column="renamed" property="renamed"/>
 	</resultMap>
 
 

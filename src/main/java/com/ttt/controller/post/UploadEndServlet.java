@@ -138,22 +138,22 @@ public class UploadEndServlet extends HttpServlet {
 			//2. 파일 처리
 			List<Image1> images = new ArrayList<>();
 	        int order = 0;
-	        
-	        while(mr.getFileNames().hasMoreElements()) {
-	        	String fileName = (String)mr.getFileNames().nextElement();
-	        	String oriname = mr.getOriginalFileName(fileName);
-	        	String rename = mr.getFilesystemName(fileName);
-	        	
-	        	if (oriname != null) {
-	        		Image1 image = Image1.builder()
-	        				.imgOrder(order++)
-	        				.oriname(oriname)
-	        				.rename(rename)
-	        				.build();
-	        		images.add(image);
-	        	}
-	        }
-	        
+
+			java.util.Enumeration<String> fileNames = mr.getFileNames();
+			while(fileNames.hasMoreElements()) {  // Enumeration 객체를 변수에 저장하여 사용
+			    String fileName = fileNames.nextElement();
+			    String oriname = mr.getOriginalFileName(fileName);
+			    String renamed = mr.getFilesystemName(fileName);
+			    
+			    if (oriname != null) {
+			        Image1 image = Image1.builder()
+			                .imgSeq(order++)
+			                .oriname(oriname)
+			                .renamed(renamed)
+			                .build();
+			        images.add(image);
+			    }
+			}
 	        //3. 서비스 호출
 	        post = new PostService().insertPost(post, images);
 	        

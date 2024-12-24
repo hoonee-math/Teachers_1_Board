@@ -116,7 +116,7 @@
 	    </div>
 	 </div>
 	 <input type="hidden" name="postNo" value="0"/>
-	 <input type="hidden" name="imgOrder" value="0"/>
+	 <input type="hidden" name="imgSeq" value="0"/>
 </section>
 
 <script>
