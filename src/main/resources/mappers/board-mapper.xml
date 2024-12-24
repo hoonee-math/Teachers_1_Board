@@ -65,7 +65,7 @@
 			AND CATEGORY_NO=#{categoryNo}
 	</select>
 	
-	<select id="selectBoardListByMemberNo" parameterType="_int" resultType="post.postMap">
+	<select id="selectBoardListByMemberNo" parameterType="_int" resultMap="post.postMap">
 		SELECT *
 		FROM (
 			SELECT POST_NO, POST_TITLE, LIKE_COUNT, M1.MEMBER_NICK AS POST_MEMBER_NICK, COMMENT_COUNT, VIEW_COUNT, CREATE_DATE
