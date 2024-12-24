@@ -3,9 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 <jsp:include page="/WEB-INF/views/common/sidebar.jsp"/>
-<c:set var="path" value="${pageContext.request.contextPath}" />
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/enroll/enrollMember.css">
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <style>
 button, input, select, textarea {
     margin: 0;
@@ -40,11 +38,22 @@ input[type=search]::-webkit-search-cancel-button {
 	margin-left : 40px;
 }
 </style>
+
+	<!-- jQuery 주소로 로드 / 파일로 로드시 현재 오류 발생 -->
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+	<!-- 다음 우편번호 서비스 -->
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<!-- path 변수 이용 -->
+	<c:set var="path" value="${pageContext.request.contextPath }" />
+	<script> const contextPath = "${pageContext.request.contextPath}";	</script> <!-- EL -->
+	<!-- 사용자 정의 JS 파일 로드 -->
+	<script src="${pageContext.request.contextPath}/resources/js/enroll/enrollMember.js"></script>
+
 <section id=enroll-container>
 		<h2>개인정보 수정</h2>
 		<!-- onsubmit 발생했을 때 action 속성을 이용해 enrollmemberend.do 로 post 요청. onsubmit 속성을 통해 유효성검사 실시-->
 		<!-- onsubmit 값의 return 값이 true 일때 post 로 요청! -->
-		<form action="${path}/member/enrollend" method="post"
+		<form action="${path}/member/modify" method="post"
 			onsubmit="return fn_invalidate();">
 			<table>
 				<tr>

@@ -8,18 +8,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/member/myinfo")
-public class ToMemberMyInfoServlet extends HttpServlet {
+@WebServlet("/member/modify")
+public class MemberModifyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
-    public ToMemberMyInfoServlet() {
+    public MemberModifyServlet() {
         super();
     }
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/views/register/myInfo.jsp").forward(request, response);
 		
 		
 		
