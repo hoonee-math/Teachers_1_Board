@@ -86,7 +86,8 @@ input[type=search]::-webkit-search-cancel-button {
 				    <td>
 				        <div style="margin-bottom:10px">
 				            <select class="child_school" name="region" id="region" onchange="districtSearch(event);" style="width:108px">
-				                <option value=''>전체지역</option>
+				            	<c:if test="${loginMember.childSchool!=null}"> 
+				                <option value="${loginMember.childSchool.region}"></option></c:if>
 				                <option value="서울">서울</option>
 				                <option value="경기">경기</option>
 								<option value="인천">인천</option>
@@ -106,9 +107,13 @@ input[type=search]::-webkit-search-cancel-button {
 								<option value="제주">제주</option>
 				            </select>
 				            <select class="child_school" id="district" onchange="schoolSearch(event);" style="width:88px">
+				            	<c:if test="${loginMember.childSchool!=null}"> 
+				                <option value="${loginMember.childSchool.district}"></option></c:if>
 				                <option value=''>구/군</option>
 				            </select>
 				            <select class="child_school" id="school-type" onchange="schoolSearch({target:document.getElementById('district')});" style="width:108px">
+				                <c:if test="${loginMember.childSchool!=null}"> 
+				                <option value="${loginMember.childSchool.schoolType}"></option></c:if>
 				                <option value="">초중고</option>
 				                <option value="초등학교">초등학교</option>
 				                <option value="중학교">중학교</option>
@@ -117,6 +122,8 @@ input[type=search]::-webkit-search-cancel-button {
 				            </select>
 				            <!-- name에 standardCode 를 입력하여 회원정보에는 학교 코드가 저장되도록 설정 -->
 				            <select class="child_school" id="school-name" name="schoolNo" style="width:186px">
+				            	<c:if test="${loginMember.childSchool!=null}"> 
+				                <option value="${loginMember.childSchool.schoolName}"></option></c:if>
 				                <option value="">학교명</option>
 				            </select>
 				        </div>
