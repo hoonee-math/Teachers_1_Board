@@ -125,19 +125,18 @@ public class UploadEndServlet extends HttpServlet {
 		
 		try {
 			//1. 기본 데이터 처리
-			Member1 member = Member1.builder()
+			Member1 m = Member1.builder()
 					.memberNo(Integer.parseInt(mr.getParameter("memberNo")))
 					.build();
 			Post1 post = Post1.builder()
 					.postTitle(mr.getParameter("postTitle"))
 					.postContent(mr.getParameter("postContent"))
-					.member(member)
+					.member(m)
 					.categoryNo(Integer.parseInt(mr.getParameter("categoryNo")))
 					.build();
 			
 			//2. 파일 처리
 			List<Image1> images = new ArrayList<>();
-	        String[] fileNames;
 	        int order = 0;
 	        
 	        while(mr.getFileNames().hasMoreElements()) {

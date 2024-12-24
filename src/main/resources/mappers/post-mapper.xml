@@ -90,23 +90,23 @@
 		SELECT * FROM IMAGE1
 	</select>
 	
-	<insert id="insertPost" parameterType="post1">
+<!-- 	<insert id="insertPost" parameterType="post1">
 		INSERT INTO POST1 (
 			POST_NO,
 			POST_TITLE,
 			POST_CONTENT,
 			CREATE_DATE,
-			MEMBNER_NO,
+			MEMBER_NO,
 			CATEGORY_NO
 		) VALUES (
-			SEQ_POST_NO.NEXTVAL, 
+			POST_SEQ.NEXTVAL, 
 			#{postTitle}, 
 			#{postContent},
 			SYSDATE,
-			#{childMember.memberNo},
+			#{m.memberNo},
 			#{categoryNo}
 		)
-	</insert>
+	</insert> -->
 	
 	<select id="selectBoardJoinCommentJoinMember" parameterType="_int" resultMap="postMap">
 		SELECT 
@@ -137,7 +137,7 @@
 	
 	<insert id="insertPost" parameterType="post1">
 		<selectKey keyProperty="postNo" resultType="int" order="BEFORE">
-			SELECT SEQ_POST_NO.NEXTVAL FROM DUAL
+			SELECT POST_SEQ.NEXTVAL FROM DUAL
 		</selectKey>
 		INSERT INTO POST1 (
 			POST_NO,
@@ -150,7 +150,7 @@
 			#{postNo},
 			#{postTitle},
 			#{postContent},
-			#{member.memberNo},
+			#{m.memberNo},
 			#{categoryNo},
 			SYSDATE
 		)
