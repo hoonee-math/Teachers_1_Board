@@ -4,42 +4,135 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 <jsp:include page="/WEB-INF/views/common/sidebar.jsp"/>
 <c:set var="path" value="${pageContext.request.contextPath}" />
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/enroll/enrollMember.css">
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <style>
-#headercomment {
-	color : grey;
-	margin-bottom : 0px;
+button, input, select, textarea {
+    margin: 0;
+    padding: 0;
 }
-#myinfobody {
-	display : flex;
-	flex-direction : column;
-	gap : 20px;
-	 
+
+/* 입력 필드 텍스트 스타일 */
+button, input, select, td, textarea, th {
+    font-size: 14px;
+    line-height: 1.5;
+    font-family: 'Malgun Gothic','맑은 고딕',sans-serif;
+    color: #222;
 }
-#nickcomment, #passwordcaution {
-	margin-top : 5px;
-	padding : 0px;
+
+/* IE 브라우저 clear 버튼 숨김 */
+input[type=text]::-ms-clear {
+    display: none;
+}
+
+/* 입력 필드 검색 취소 버튼 숨김 */
+input[type=search]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+}
+
+/* 우편번호 입력 필드 */
+#sample4_postcode {
+    width: 100px;  /* 우편번호는 짧게 */
+}
+/*개인정보 수정 컨테이너의 위치*/
+#enroll-container {
+	margin-top : 20px;
+	margin-left : 40px;
 }
 </style>
-<section class="main-content col-9">
-	<div class="col-10">
-		<div id="myinfoheader" class="main-title">
-			<h2>나의 정보</h2>
-			<p id="headercomment">회원님의 개인정보 및 보안강화 그리고 이용 환경을 설정하실 수 있습니다.</p>
-		</div>
-		<div id="myinfobody">
-			<div id="email"> 이메일 <input type="text" value="가져온 이메일 고정" placeholder="가져온 이메일로 고정"></div>
-			<div id="nick"> 별명 <input type="text"></div>
-			<div id="nickcommentbox"><p id="nickcomment"> * 명예훼손, 비방, 욕설등의 별명은 피해주세요.</p></div>
-			<div id="password"> 비밀번호 <input type="password"></div>
-			<div id="passwordcaution"><p>* 최소 8글자 이상이며 영문자,숫자,특수기호를 혼합하여 작성해주세요.</p></div>
-			<div id="passwordcheck"> 비밀번호 확인 <input type="password"></div>
-		</div>
-		<div id="checkbutton">
-			<button id="save">저장</button>
-			<button id="cancle">취소</button>
-		</div>
-	</div>
-</section>
-</main>
+<section id=enroll-container>
+		<h2>개인정보 수정</h2>
+		<!-- onsubmit 발생했을 때 action 속성을 이용해 enrollmemberend.do 로 post 요청. onsubmit 속성을 통해 유효성검사 실시-->
+		<!-- onsubmit 값의 return 값이 true 일때 post 로 요청! -->
+		<form action="${path}/member/enrollend" method="post"
+			onsubmit="return fn_invalidate();">
+			<table>
+				<tr>
+					<th>이메일 *</th>
+					<td>
+						<input type="text" name="emailId" id="emailId" style="width: 325px;" readonly>
+					</td> 
+				<tr>
+					<th>패스워드 *</th>
+					<td><input type="password" name="memberPw" id="password_" placeholder="대소문자, 숫자, 특수문자 포함" required><br>
+					</td>
+				</tr>
+				<tr>
+					<th>패스워드확인 *</th>
+					<td><input type="password" id="password_2" required><br>
+						<span id="checkResult"></span></td>
+				</tr>
+				<tr>
+					<th>이름 *</th>
+					<td><input type="text" name="memberName" id="userName" readonly><br>
+					</td>
+				</tr>
+				<tr>
+					<th>닉네임</th>
+					<td><input type="text" name="memberNick" id="memberNick" placeholder="다른 사용자에게 보여줄 닉네임을 입력하세요."><br>
+					</td>
+				</tr>
+				<tr>
+					<th>주소</th>
+					<td>
+						<div style="margin-bottom:10px">
+						<input type="text" id="sample4_postcode" name="addressNo" placeholder="우편번호">
+						<input type="button" id="postcodeFindBtn" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
+						</div>
+						<div>
+						<input type="text" id="sample4_roadAddress" name="addressRoad" placeholder="도로명주소" style="width: 300px;">
+						<!-- <input type="text" id="sample4_jibunAddress" placeholder="지번주소" style="width: 300px;"> -->
+						<span id="guide" style="color:#999;display:none"></span>
+						<input type="text" id="sample4_detailAddress" name="addressDetail" placeholder="상세주소" style="width: 200px;">
+						<!-- <input type="text" id="sample4_extraAddress" placeholder="참고항목" style="width: 150px;"> -->
+						</div>
+					</td>
+				</tr>
+				<tr>
+				    <th>자녀 학교</th>
+				    <td>
+				        <div style="margin-bottom:10px">
+				            <select class="child_school" name="region" id="region" onchange="districtSearch(event);" style="width:108px">
+				                <option value=''>전체지역</option>
+				                <option value="서울">서울</option>
+				                <option value="경기">경기</option>
+								<option value="인천">인천</option>
+								<option value="부산">부산</option>
+								<option value="세종">세종</option>
+								<option value="광주">광주</option>
+								<option value="대구">대구</option>
+								<option value="대전">대전</option>
+								<option value="울산">울산</option>
+								<option value="강원">강원</option>
+								<option value="충남">충남</option>
+								<option value="충북">충북</option>
+								<option value="경남">경남</option>
+								<option value="경북">경북</option>
+								<option value="전남">전남</option>
+								<option value="전북">전북</option>
+								<option value="제주">제주</option>
+				            </select>
+				            <select class="child_school" id="district" onchange="schoolSearch(event);" style="width:88px">
+				                <option value=''>구/군</option>
+				            </select>
+				            <select class="child_school" id="school-type" onchange="schoolSearch({target:document.getElementById('district')});" style="width:108px">
+				                <option value="">초중고</option>
+				                <option value="초등학교">초등학교</option>
+				                <option value="중학교">중학교</option>
+				                <option value="고등학교">고등학교</option>
+				                <option value="고등학교">기타학교</option>
+				            </select>
+				            <!-- name에 standardCode 를 입력하여 회원정보에는 학교 코드가 저장되도록 설정 -->
+				            <select class="child_school" id="school-name" name="schoolNo" style="width:186px">
+				                <option value="">학교명</option>
+				            </select>
+				        </div>
+				    </td>
+				</tr>
+			</table>
+			<div class="enrollsubmit">
+				<input type="submit" value="저장"> <input type="reset" value="취소">
+			</div>
+		</form>
+	</section>
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
