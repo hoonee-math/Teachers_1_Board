@@ -181,7 +181,7 @@
 				const path = e.target.result;
 				const $img = $("<img>").attr({
 					src:path,
-					height:"400px",
+					height:"200px",
 				});
 				$("#preview").append($img);
 			}
