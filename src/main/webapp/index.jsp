@@ -79,6 +79,34 @@
 .post-stats i {
     margin: 0 2px 0 8px;             /* 아이콘 여백 */
 }
+
+/* 로딩 스피너 구현을 위한 CSS */
+.loader-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader {
+    border: 5px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 5px solid #D9776A;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
 </style>
 
 <!-- 메인 콘텐츠 영역 시작 지검 -->
@@ -112,7 +140,10 @@
 					<h2>추천글</h2>
 					<!-- <button id="btn-post" class="account-button">글쓰기</button> -->
 				</div>
-
+				<!-- 로딩 스피너 HTML -->
+				<div class="loader-container">
+				    <div class="loader"></div>
+				</div>
 				<!-- 게시판 테이블 대신 리스트 형태로 변경 -->
 				<div class="board-list">
 					<%-- <c:forEach var="post" items="${unsolvedPosts}">
@@ -213,10 +244,14 @@
 	});
 	
 	function loadBoardData() {
+	    // 로딩 스피너 표시
+	    $('.loader-container').css('display', 'flex');
+	    
 	    $.ajax({
 	        url: "${path}/home",
 	        type: "GET",
 	        dataType: "json",
+	        timeout: 8000, // 8초 타임아웃 설정
 	        headers: {
 	            'Accept': 'application/json'
 	        },
@@ -229,7 +264,15 @@
 	            updateBoard('.mini-board:eq(2) .board-list', data.unsolvedPosts);
 	        },
 	        error: function(xhr, status, error) {
+	            if(status === 'timeout') {
+	                alert('서버 응답이 지연되고 있습니다. 잠시 후 다시 시도해주세요.');
+	            } else {
 	            console.error("Error loading data:", error);
+	            }
+	        },
+	        complete: function() {
+	            // 로딩 스피너 숨김
+	            $('.loader-container').hide();
 	        }
 	    });
 	}
