@@ -120,93 +120,11 @@ th {
 			<p class="board-explain">맘스티쳐 전체 게시글 모음입니다 :)</p>
 			<button class="board-btn">등록일순</button>
 			<button id="btn-post" class="board-btn board-btn-write">글쓰기</button>
+			<!-- <button id="boardBtn" class="btn btn-outline-success">글쓰기</button> -->
 		</div>
 	</div>
-	<!-- 1행: 전체 너비 게시판 -->
-	<div class="row full-width">
+	
 	<div>
-		<table>
-			<thead>
-				<tr>
-					<th>번호</th>
-					<th>카테고리</th>
-					<th>제목</th>
-					<th>작성자</th>
-					<th>조회수</th>
-					<th>시간</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>1</td>
-					<td class="category">고민</td>
-					<td class="title"><a href="#">고민이 있어요 도와주세요</a> <span
-						class="highlight">2</span></td>
-					<td>알이랑</td>
-					<td class="view-count">870</td>
-					<td class="time">00:15</td>
-				</tr>
-				<tr>
-					<td>2</td>
-					<td class="category">고민</td>
-					<td class="title"><a href="#">우리아이 어쩌면 좋을까요..?</a> <span
-						class="highlight">2</span></td>
-					<td>newgooday</td>
-					<td class="view-count">412</td>
-					<td class="time">00:15</td>
-				</tr>
-				<tr>
-					<td>3</td>
-					<td class="category">일반</td>
-					<td class="title"><a href="#">상쾌한 아침산책</a> <span
-						class="highlight">1</span></td>
-					<td>Santorini</td>
-					<td class="view-count">59</td>
-					<td class="time">00:14</td>
-				</tr>
-				<tr>
-					<td>4</td>
-					<td class="category">일반</td>
-					<td class="title"><a href="#">패딩 추천부탁드립니다~</a> <span
-						class="highlight">4</span></td>
-					<td>t.t</td>
-					<td class="view-count">779</td>
-					<td class="time">00:13</td>
-				</tr>
-				<tr>
-					<td>5</td>
-					<td class="category">일반</td>
-					<td class="title"><a href="#">패딩 추천부탁드립니다~</a> <span
-						class="highlight">4</span></td>
-					<td>t.t</td>
-					<td class="view-count">779</td>
-					<td class="time">00:13</td>
-				</tr>
-				<tr>
-					<td>6</td>
-					<td class="category">일반</td>
-					<td class="title"><a href="#">패딩 추천부탁드립니다~</a> <span
-						class="highlight">4</span></td>
-					<td>t.t</td>
-					<td class="view-count">779</td>
-					<td class="time">00:13</td>
-				</tr>
-			</tbody>
-		</table>
-		</div>
-	</div>
-
-	<div class="pagebar">
-		<button class="pagebar-start">이전</button>
-		<button class="pagebar-number">1</button>
-		<button class="pagebar-number">2</button>
-		<button class="pagebar-number">3</button>
-		<button class="pagebar-number">4</button>
-		<button class="pagebar-number">5</button>
-		<button class="pagebar-end">다음</button>
-	</div>
-	<div>
-			<button id="boardBtn" class="btn btn-outline-success">글쓰기</button>
 			<table id="tbl-board">
 				<tr>
 						<th>번호</th>
@@ -227,28 +145,43 @@ th {
 					<c:forEach var="p" items="${boards }">
 					<tr>
 						<td>${p.postNo }</td>
+						<td class="category">
+							<c:set var="category" value="${p.categoryNo}"/>
+							<c:choose>
+							    <c:when test="${category == 1}"> 맘스뉴스</c:when>
+							    <c:when test="${category == 2}"> 고민상담</c:when>
+							    <c:when test="${category == 3}"> 공지사항</c:when>
+							    <c:when test="${category == 4}"> 초등</c:when>
+							    <c:when test="${category == 5}"> 중등</c:when>
+							    <c:when test="${category == 6}"> 고등</c:when>
+							    <c:when test="${category == 7}"> 고3/N수</c:when>
+							    <c:when test="${category == 8}"> 지역</c:when>
+							    <c:when test="${category == 9}"> 학교</c:when>
+							    <c:when test="${category == 10}"> 자유</c:when>
+							    <c:otherwise>기타</c:otherwise>
+							</c:choose>
+						</td>
 						
-						<c:set var="category" value="${p.categoryNo}"/>
-						<c:choose>
-						    <c:when test="${category == 1}"> <td>맘스뉴스</td></c:when>
-						    <c:when test="${category == 2}"> <td>고민상담</td></c:when>
-						    <c:when test="${category == 3}"> <td>공지사항</td></c:when>
-						    <c:when test="${category == 4}"> <td>초등</td></c:when>
-						    <c:when test="${category == 5}"> <td>중등</td></c:when>
-						    <c:when test="${category == 6}"> <td>고등</td></c:when>
-						    <c:when test="${category == 7}"> <td>고3/N수</td></c:when>
-						    <c:when test="${category == 8}"> <td>지역</td></c:when>
-						    <c:when test="${category == 9}"> <td>학교</td></c:when>
-						    <c:when test="${category == 10}"> <td>자유</td></c:when>
-						    <c:otherwise><td>[기타]</td></c:otherwise>
-						</c:choose>
-							
-						
-						<td class="title"><a href="${path }/post/viewpost?postNo=${p.postNo}">${p.postTitle}</a></td>
+						<td class="title">
+							<a href="${path }/post/viewpost?postNo=${p.postNo}">${p.postTitle}</a>
+							<span class="highlight">2</span></td>
+						</td>
 						<td>${p.member.memberNick }</td>
-						<td>${p.viewCount }</td>
-						<td>
-							<fmt:formatDate value="${p.createDate }" pattern="yyyy년 MM월 dd일"/>
+						<td class="view-count">${p.viewCount }</td>
+						<td class="time">
+							<jsp:useBean id="now" class="java.util.Date" />
+							<fmt:formatDate var="today" value="${now}" pattern="yyyyMMdd" />
+							<fmt:formatDate var="postDate" value="${p.createDate}" pattern="yyyyMMdd" />
+							
+							<!-- 오늘 작성한 글인 경우 시:분 으로 그 외의 경우에는 월/일 로 데이터 출력 -->
+							<c:choose>
+							    <c:when test="${today eq postDate}">
+							        <fmt:formatDate value="${p.createDate}" pattern="HH:mm"/>
+							    </c:when>
+							    <c:otherwise>
+							        <fmt:formatDate value="${p.createDate}" pattern="MM/dd"/>
+							    </c:otherwise>
+							</c:choose>
 						</td>
 					</tr>
 					</c:forEach>
