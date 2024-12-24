@@ -59,5 +59,8 @@
 		AND SCHOOL_TYPE = #{schoolType}
 	</select>
 	
+	<select id="selectSchoolInfoBySchoolNo" parameterType="_int" resultMap="schoolMap">
+		SELECT * FROM SCHOOL12 WHERE SCHOOL_NO=#{schoolNo}
+	</select>
 
 </mapper>

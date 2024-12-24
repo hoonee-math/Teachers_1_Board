@@ -14,4 +14,8 @@ public class SchoolDao {
 		System.out.println(inputSchoolInfo);
 		return session.selectList("school.selectNameAndCode",inputSchoolInfo);
 	}
+	
+	public School12 selectSchoolInfoBySchoolNo(SqlSession session, int schoolNo) {
+		return session.selectOne("school.selectSchoolInfoBySchoolNo",schoolNo);
+	}
 }

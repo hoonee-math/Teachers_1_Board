@@ -22,5 +22,11 @@ public class SchoolService {
 		return result;
 		
 	}
+	
+	public School12 selectSchoolInfoBySchoolNo(int schoolNo) {
+		SqlSession session=getSession();
+		return dao.selectSchoolInfoBySchoolNo(session,schoolNo);
+		
+	}
 
 }

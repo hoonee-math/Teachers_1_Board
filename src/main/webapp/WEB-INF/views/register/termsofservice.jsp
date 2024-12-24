@@ -5,6 +5,7 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/resources/css/enroll/enrollMember.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/enroll/enrollHeader.css">
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <style>
 #agree-header {
 	display: flex;
@@ -333,17 +334,16 @@
 		<div class="row full-width">
 			<div id="agree-button">
 				<div id="canclediv">
-					<button type="button" id="cancle">메인으로</button>
+					<button type="button" id="cancle" style="cursor: pointer">메인으로</button>
 				</div>
 				<div id="joindiv">
-					<button id="join">회원가입</button>
+					<button id="join" style="cursor: pointer">회원가입</button>
 				</div>
 			</div>
 		</div>
 	</div>
 	</form>
 </section>
-</main>
 <script>
 	//서블릿에서 유효성 검사 후 알람 띄우기
 	<c:if test="${errorMessage != null}">
