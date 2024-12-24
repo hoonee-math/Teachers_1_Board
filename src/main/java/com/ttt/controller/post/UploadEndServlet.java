@@ -92,7 +92,7 @@ public class UploadEndServlet extends HttpServlet {
 		
 		try {
 	        //4.  결과 처리
-	        String msg = "게시글 등록 성공 :)", loc = "/board/allboard";
+	        String msg = "게시글 등록 성공 :)", loc = "/board/list";
 	        if(post.getPostNo() == 0) {
 	        	msg = "게시글 등록 실패 :(";
 	        	loc = "/post/uploadpost";

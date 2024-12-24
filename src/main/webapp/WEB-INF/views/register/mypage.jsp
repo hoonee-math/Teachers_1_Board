@@ -27,7 +27,7 @@
 	display : flex;
 	justify-content : center;
 }
-#personala, #myposta {
+#personala, #mypost {
 	margin-top : 25px;
 }
 a {
@@ -60,8 +60,8 @@ a {
 					<div><p id="mypostcomment">회원님이 작성한 글의 내역을 확인하는</p>
 						 <p id="mypostcomment">페이지로 이동합니다.</p>
 					</div>
-					<div id="myposta">
-						<a href="">나의 글 보러가기</a>
+					<div id="mypost">
+						<a href="${path}/member/mypost">나의 글 보러가기</a> <%-- ?id=${sessionScope.loginMember.email } --%>
 					</div>
 				</div>	
 			</div>

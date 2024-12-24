@@ -65,4 +65,26 @@
 			AND CATEGORY_NO=#{categoryNo}
 	</select>
 	
+	<select id="selectBoardListByMemberNo" parameterType="_int" resultMap="post.postMap">
+		SELECT *
+		FROM (
+			SELECT POST_NO, POST_TITLE, LIKE_COUNT, M1.MEMBER_NICK AS POST_MEMBER_NICK, COMMENT_COUNT, VIEW_COUNT, CREATE_DATE
+			FROM 
+				POST1 P
+			LEFT JOIN
+				MEMBER1 M1 ON P.MEMBER_NO=M1.MEMBER_NO
+			WHERE 
+				MEMBER_NO=#{memberNo}
+				AND IS_PUBLIC=1
+			ORDER BY CREATE_DATE DESC 
+		)
+	</select>
+	<select id="selectBoardCountByMemberNo" parameterType="_int" resultType="_int">
+		SELECT COUNT(*)
+		FROM POST1
+		WHERE 
+			MEMBER_NO=#{memberNo}
+			AND IS_PUBLIC=1
+	</select>
+	
 </mapper>

@@ -43,4 +43,17 @@ public class BoardService {
 		SqlSession session=getSession();
 		return dao.selectBoardCountByCategoryNo(session, categoryNo);
 	}
+	
+	// 내가 작성한 글 리스트를 가져오기 위해 DB와 통신하는 서비스
+	public List<Post1> selectBoardListByMemberNo(Map<String,Integer> param){
+		SqlSession session=getSession();
+		return dao.selectBoardListByMemberNo(session, param);
+	}
+	// (totalData) 내가 작성한 글 전체 게시글 수 확인
+	public int selectBoardCountByMemberNo(int memberNo) {
+		SqlSession session=getSession();
+		return dao.selectBoardCountByMemberNo(session, memberNo);
+	}
+	
+	
 }
