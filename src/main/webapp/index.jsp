@@ -81,7 +81,21 @@
 }
 
 /* 로딩 스피너 구현을 위한 CSS */
-.loader-container {
+.board-loader {
+    display: none;
+    padding: 20px 0;
+    text-align: center;
+}
+.board-spinner {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border: 3px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 3px solid #D9776A;
+    animation: boardSpin 1s linear infinite;
+}
+/* .loader-container {
     display: none;
     position: fixed;
     top: 0;
@@ -101,9 +115,9 @@
     width: 50px;
     height: 50px;
     animation: spin 1s linear infinite;
-}
+} */
 
-@keyframes spin {
+@keyframes boardSpin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
@@ -140,10 +154,10 @@
 					<h2>추천글</h2>
 					<!-- <button id="btn-post" class="account-button">글쓰기</button> -->
 				</div>
-				<!-- 로딩 스피너 HTML -->
-				<div class="loader-container">
-				    <div class="loader"></div>
-				</div>
+				<!-- 개별 로딩 스피너 추가 -->
+			    <div class="board-loader">
+			        <div class="board-spinner"></div>
+			    </div>
 				<!-- 게시판 테이블 대신 리스트 형태로 변경 -->
 				<div class="board-list">
 					<%-- <c:forEach var="post" items="${unsolvedPosts}">
@@ -178,7 +192,10 @@
 					<h2>학년별(로그인한 정보)</h2>
 					<!-- <button id="btn-post" class="account-button">글쓰기</button> -->
 				</div>
-
+				<!-- 개별 로딩 스피너 추가 -->
+			    <div class="board-loader">
+			        <div class="board-spinner"></div>
+			    </div>
 				<!-- 게시판 테이블 대신 리스트 형태로 변경 -->
 				<div class="board-list">
 					<%-- <c:forEach var="post" items="${unsolvedPosts}">
@@ -210,7 +227,10 @@
 					<h2>고민상담</h2>
 					<!-- <button id="btn-post" class="account-button">글쓰기</button> -->
 				</div>
-
+				<!-- 개별 로딩 스피너 추가 -->
+			    <div class="board-loader">
+			        <div class="board-spinner"></div>
+			    </div>
 				<!-- 게시판 테이블 대신 리스트 형태로 변경 -->
 				<div class="board-list">
 					<%-- <c:forEach var="post" items="${solvedPosts}">
@@ -243,10 +263,13 @@
 	    loadBoardData();
 	});
 	
+	// 서버에서 데이터를 가져오는 함수
 	function loadBoardData() {
-	    // 로딩 스피너 표시
-	    $('.loader-container').css('display', 'flex');
+	    // 모든 스피너 표시
+	    $('.board-loader').show();
+	    $('.board-list').hide();
 	    
+	 	// Ajax를 통해 서버에 데이터 요청
 	    $.ajax({
 	        url: "${path}/home",
 	        type: "GET",
@@ -255,6 +278,7 @@
 	        headers: {
 	            'Accept': 'application/json'
 	        },
+	        // 가져온 데이터를 updateBoard()에 전달하여 각 게시판을 업데이트
 	        success: function(data) {
 	            // 추천글 게시판 데이터 적용
 	            updateBoard('.mini-board:eq(0) .board-list', data.favoritePosts);
@@ -271,16 +295,25 @@
 	            }
 	        },
 	        complete: function() {
-	            // 로딩 스피너 숨김
-	            $('.loader-container').hide();
+	            // 모든 스피너 숨김 & 컨텐츠 표시
+	            $('.board-loader').hide();
+	            $('.board-list').show();
 	        }
 	    });
 	}
 	
+	// 실제로 HTML을 구성하는 함수
 	function updateBoard(selector, posts) {
 	    const boardList = $(selector);
+	    const loader = boardList.siblings('.board-loader');
+	    
+	    // 해당 게시판의 로딩 스피너 표시
+	    loader.show();
+	    boardList.hide();
+	    
 	    boardList.empty(); // 기존 내용 비우기
-	
+
+	    // 받아온 게시글 데이터로 HTML 생성
 	    posts.forEach(post => {
 	        const postHtml = `
 	            <div class="post-row">
@@ -299,6 +332,10 @@
 	            </div>`;
 	        boardList.append(postHtml);
 	    });
+
+	    // 해당 게시판의 로딩 스피너 숨김 & 컨텐츠 표시
+	    loader.hide();
+	    boardList.show();
 	}
 </script>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

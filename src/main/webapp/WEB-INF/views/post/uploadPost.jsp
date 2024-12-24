@@ -19,16 +19,17 @@
 	    			<tr id="category">
 	    				<th>카테고리</th>
 	    				<td colspan="2">
-	    					<select name="category" id="selector">
+	    					<select name="categoryNo" id="selector">
 	    						<option value="">카테고리 선택</option>
 	    						<option value="1">맘스뉴스</option>
 	    						<option value="2">고민상담소</option>
-	    						<option value="3">초등 게시판</option>
-	    						<option value="4">중등 게시판</option>
-	    						<option value="5">고등 게시판</option>
-	    						<option value="6">고3/n수생 게시판</option>
-	    						<option value="7">지역별 게시판</option>
-	    						<option value="8">학교별 게시판</option>
+	    						<option value="4">초등 게시판</option>
+	    						<option value="5">중등 게시판</option>
+	    						<option value="6">고등 게시판</option>
+	    						<option value="7">고3/n수생 게시판</option>
+	    						<option value="8">지역별 게시판</option>
+	    						<option value="9">학교별 게시판</option>
+	    						<option value="10">자유게시판</option>
 	    					</select>
 	    				</td>
 	    			</tr>
@@ -88,8 +89,8 @@
 									value="${sessionScope.loginMember.memberName }" readOnly/>
 	    				</td>
 	    				<td>
-	    					<input type="text" name="memberNo" 
-	    							value="${sessionScope.loginMember.memberNo }" hidden/>
+	    					<input type="hidden" name="memberNo" 
+	    							value="${sessionScope.loginMember.memberNo }"/>
 	    				</td>
 	    			</tr>
 	    			<tr>
@@ -114,9 +115,9 @@
 	    	</form>
 	    </div>
 	 </div>
-<section class="right-box col-1"></section>
+	 <input type="hidden" name="postNo" value="0"/>
+	 <input type="hidden" name="imgOrder" value="0"/>
 </section>
-</main>
 
 <script>
 	/* 전체지역 선택시 선택값에 맞는 구/군 출력 */
