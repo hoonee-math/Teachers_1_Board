@@ -114,9 +114,7 @@
 	    	</form>
 	    </div>
 	 </div>
-<section class="right-box col-1"></section>
 </section>
-</main>
 
 <script>
 	/* 전체지역 선택시 선택값에 맞는 구/군 출력 */

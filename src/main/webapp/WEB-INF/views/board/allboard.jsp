@@ -227,8 +227,24 @@ th {
 					<c:forEach var="p" items="${boards }">
 					<tr>
 						<td>${p.postNo }</td>
-						<td>${p.categoryNo }
-						<td><a href="${path }/post/viewpost?postNo=${p.postNo}">${p.postTitle}</a></td>
+						
+						<c:set var="category" value="${p.categoryNo}"/>
+						<c:choose>
+						    <c:when test="${category == 1}"> <td>맘스뉴스</td></c:when>
+						    <c:when test="${category == 2}"> <td>고민상담</td></c:when>
+						    <c:when test="${category == 3}"> <td>공지사항</td></c:when>
+						    <c:when test="${category == 4}"> <td>초등</td></c:when>
+						    <c:when test="${category == 5}"> <td>중등</td></c:when>
+						    <c:when test="${category == 6}"> <td>고등</td></c:when>
+						    <c:when test="${category == 7}"> <td>고3/N수</td></c:when>
+						    <c:when test="${category == 8}"> <td>지역</td></c:when>
+						    <c:when test="${category == 9}"> <td>학교</td></c:when>
+						    <c:when test="${category == 10}"> <td>자유</td></c:when>
+						    <c:otherwise><td>[기타]</td></c:otherwise>
+						</c:choose>
+							
+						
+						<td class="title"><a href="${path }/post/viewpost?postNo=${p.postNo}">${p.postTitle}</a></td>
 						<td>${p.member.memberNick }</td>
 						<td>${p.viewCount }</td>
 						<td>
