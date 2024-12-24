@@ -7,13 +7,25 @@ import com.oreilly.servlet.multipart.FileRenamePolicy;
 public class CustomFileRenamePolicy implements FileRenamePolicy {
 	private int memberNo;
 	private int postNo;
-	private int imgOrder;
+	private int imgSeq;
 	
-	public CustomFileRenamePolicy (int memberNo, int postNo, int imgOrder) {
+	public CustomFileRenamePolicy (int memberNo, int postNo, int imgSeq) {
 		this.memberNo = memberNo;
 		this.postNo = postNo;
-		this.imgOrder = imgOrder;
+		this.imgSeq = imgSeq;
 	}
+	
+	public void setMemberNo(int memberNo) {
+        this.memberNo = memberNo;
+    }
+
+    public void setPostNo(int postNo) {
+        this.postNo = postNo;
+    }
+
+    public void setImgSeq(int imgSeq) {
+        this.imgSeq = imgSeq;
+    }
 	
 	@Override
 	public File rename(File file) {
@@ -27,7 +39,7 @@ public class CustomFileRenamePolicy implements FileRenamePolicy {
 		}
 		
 		//새로운 파일 이름 생성
-		String rename = memberNo+"_"+postNo+"_"+imgOrder+ext;
+		String rename = memberNo+"_"+postNo+"_"+imgSeq+ext;
 		
 		//파일 객체 생성
 		File newFile = new File(file.getParent(), rename);

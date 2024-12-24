@@ -58,9 +58,7 @@ public class ToMainPageServlet extends HttpServlet {
 	        
 	        String jsonResponse = gson.toJson(jsonData);
 	        response.getWriter().write(jsonResponse);
-	    }
-	    // 일반 요청인 경우 (페이지 로드)
-	    else {
+	    } else { // 일반 요청인 경우 (페이지 로드)
 	    	// 현재 시간 가져오기
 	        LocalDateTime now = LocalDateTime.now();
 	        
@@ -71,7 +69,7 @@ public class ToMainPageServlet extends HttpServlet {
 	            LocalDateTime postTime = now.minusMinutes(i * 5);
 	            
 	            Post1 post = Post1.builder()
-	                .postNo(i)
+                .postNo(i)
 	                .postTitle("이것은 더미 데이터 미해결 게시글 dsafasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf" + i)
 	                .member(Member1.builder().memberNick("작성자"+i).build())
 	                .viewCount(10+i)
@@ -80,7 +78,7 @@ public class ToMainPageServlet extends HttpServlet {
 	                .build();
 	            unsolvedPosts.add(post);
 	        }
-	        
+        
 	        // 더미 데이터 생성 - 해결된 게시판용
 	        List<Post1> solvedPosts = new ArrayList<>();
 	        for(int i=1; i<=10; i++) {

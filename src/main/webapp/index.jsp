@@ -319,7 +319,7 @@
 	            <div class="post-row">
 	                <div class="d-flex justify-content-between align-items-center">
 	                    <div>
-	                        <a href="${path}/board/postview.do?postNo=\${post.postNo}" 
+	                        <a href="${path}/post/viewpost?postNo=\${post.postNo}" 
 	                           class="post-title">\${post.postTitle}</a>
 	                    </div>
 	                    <div class="post-info">

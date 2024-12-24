@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Image1 {
 	private int imgNo;
-	private int imgOrder;
+	private int imgSeq;
 	private String oriname;
-	private String rename;
+	private String renamed;
 	private int postNo;
 }

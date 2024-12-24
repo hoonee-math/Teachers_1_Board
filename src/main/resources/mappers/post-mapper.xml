@@ -150,7 +150,7 @@
 			#{postNo},
 			#{postTitle},
 			#{postContent},
-			#{m.memberNo},
+			#{member.memberNo},
 			#{categoryNo},
 			SYSDATE
 		)
@@ -159,15 +159,15 @@
 	<insert id="insertPostImage" parameterType="image1">
 		INSERT INTO IMAGE1 (
             IMG_NO,
-            IMG_ORDER,
+            IMG_SEQ,
             ORINAME,
-            RENAME,
+            RENAMED,
             POST_NO
         ) VALUES (
             SEQ_IMAGE_NO.NEXTVAL,
-            #{imgOrder},
+            #{imgSeq},
             #{oriname},
-            #{rename},
+            #{renamed},
             #{postNo}
         )
 	</insert>

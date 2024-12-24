@@ -109,14 +109,23 @@
 	    		</table>
 			    <div id="button-container">
 			    	<div class="right">
-			    		<input type="submit" name="save" value="저장"> <input type="submit" name="enroll-post" value="등록">
+			    		<button name="save">
+			    			임시저장
+							<input type="hidden" name="saveStatus" value="1"/>
+							<input type="hidden" name="savePublic" value="0"/>
+			    		</button>
+			    		<button name="submit">
+			    			등록
+							<input type="hidden" name="submitStatus" value="1"/>
+							<input type="hidden" name="submitPublic" value="0"/>
+			    		</button>
 				    </div>
 			    </div>
+			    <input type="hidden" name="postNo" value="${post.postNo }"/>
 	    	</form>
 	    </div>
 	 </div>
-	 <input type="hidden" name="postNo" value="0"/>
-	 <input type="hidden" name="imgOrder" value="0"/>
+
 </section>
 
 <script>
@@ -181,7 +190,7 @@
 				const path = e.target.result;
 				const $img = $("<img>").attr({
 					src:path,
-					height:"400px",
+					height:"200px",
 				});
 				$("#preview").append($img);
 			}
