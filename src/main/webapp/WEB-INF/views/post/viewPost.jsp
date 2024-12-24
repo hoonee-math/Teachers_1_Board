@@ -31,13 +31,16 @@
 			<tr class="member-name">
 				<td colspan="2">${post.member.memberNick }</td>
 			</tr>
-			<c:if test="orifile!=null">
-				
+			<c:if test="${not empty post.images}">
+				<tr class="file">
+					<td colspan="2">
+						<c:forEach var="image" items="${images }">
+							<img src="${image }" style="max-width:200px; max-height:200px; margin:5px;">
+						</c:forEach>
+					</td>
+				</tr>
 			</c:if>
 			
-			<tr class="file">
-				<td colspan="2">if test orifile!=null -> file.png</td>
-			</tr>
 			<tr class="content">
 				<td colspan="2">${post.postContent }</td>
 			</tr>
@@ -46,6 +49,8 @@
 		<div id="comment-container">
 			<div class="comment-editor">
 				<form action="${path }/post/postcomment.do" method="post">
+					<input type="hidden" name="memberNo" value="${post.member.memberNo }"/>
+					<input type="hidden" name="postNo" value="${post.postNo }"/>
 					<input type="hidden" name="postRef" value="%{}"/>
 					<input type="hidden" name="level" value="1"/>
 					<input type="hidden" name="writer" value="${loginMember.memberNick }"/>
