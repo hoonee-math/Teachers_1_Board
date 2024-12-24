@@ -123,20 +123,27 @@ public class UploadEndServlet extends HttpServlet {
 				request, path, 1024*1024*100, "utf-8", new CustomFileRenamePolicy(0, 0, 0)
 			);
 		
+		Member1 m = new Member1();
+		Post1 post = new Post1();
+		List<Image1> images = new ArrayList<>();
+		
+		
 		try {
 			//1. 기본 데이터 처리
-			Member1 m = Member1.builder()
+			m = Member1.builder()
 					.memberNo(Integer.parseInt(mr.getParameter("memberNo")))
 					.build();
-			Post1 post = Post1.builder()
+			post = Post1.builder()
 					.postTitle(mr.getParameter("postTitle"))
 					.postContent(mr.getParameter("postContent"))
 					.member(m)
 					.categoryNo(Integer.parseInt(mr.getParameter("categoryNo")))
 					.build();
-			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		try { 
 			//2. 파일 처리
-			List<Image1> images = new ArrayList<>();
 	        int order = 0;
 	        
 	        while(mr.getFileNames().hasMoreElements()) {
@@ -153,10 +160,16 @@ public class UploadEndServlet extends HttpServlet {
 	        		images.add(image);
 	        	}
 	        }
-	        
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		try {
 	        //3. 서비스 호출
 	        post = new PostService().insertPost(post, images);
-	        
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		try {
 	        //4.  결과 처리
 	        String msg = "게시글 등록 성공 :)", loc = "/board/allboard";
 	        if(post.getPostNo() == 0) {
