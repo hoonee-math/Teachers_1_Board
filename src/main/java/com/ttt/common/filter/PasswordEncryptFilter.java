@@ -16,7 +16,7 @@ import com.ttt.common.PasswordEncoding;
 
 /* 회원가입 & 로그인 -> 비밀번호 인코딩처리 해주는 filter */
 @WebFilter(servletNames= {
-		"memberEnroll", "memberLoginServlet", "updatePassword"
+		"memberEnroll", "memberLoginServlet", "updatePassword", "memberUpdate",
 })
 public class PasswordEncryptFilter extends HttpFilter implements Filter {
        

@@ -57,4 +57,19 @@ public class MemberService {
 	    }
 	    return result;
 	}
+	public int updateMember(Member1 m) {
+		SqlSession session=getSession();
+		int result = 0;
+		try {
+			result = dao.updateMember(session, m);
+			if(result > 0) session.commit();
+			else session.rollback();
+		} catch(Exception e) {
+			session.rollback();
+			throw e;
+		} finally {
+			session.close();
+		}
+		return result;
+	}
 }

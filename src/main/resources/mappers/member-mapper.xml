@@ -51,5 +51,8 @@
 			WHERE email=#{email}
 	
 	</update>
-	
+	<update id="updateMember" parameterType="member1">
+		UPDATE MEMBER1 SET
+			MEMBER_NAME=#{memberName}, EMAIL=#{email}, MEMBER_PW=#{memberPw}, MEMBER_NICK=#{memberNick} WHERE EMAIL=#{email}			
+	</update>
 </mapper>

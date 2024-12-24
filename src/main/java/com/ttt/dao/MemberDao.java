@@ -22,4 +22,7 @@ public class MemberDao {
 	public int updatePassword(SqlSession session, Member1 m) {
 		return session.update("member.updatePassword", m);
 	}
+	public int updateMember(SqlSession session, Member1 m) {
+		return session.update("member.updateMember", m);
+	}
 }

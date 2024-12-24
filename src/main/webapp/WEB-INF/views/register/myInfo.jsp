@@ -53,13 +53,13 @@ input[type=search]::-webkit-search-cancel-button {
 		<h2>개인정보 수정</h2>
 		<!-- onsubmit 발생했을 때 action 속성을 이용해 enrollmemberend.do 로 post 요청. onsubmit 속성을 통해 유효성검사 실시-->
 		<!-- onsubmit 값의 return 값이 true 일때 post 로 요청! -->
-		<form action="${path}/member/modify" method="post"
+		<form action="${path}/member/update" method="post"
 			onsubmit="return fn_invalidate();">
 			<table>
 				<tr>
 					<th>이메일 *</th>
 					<td>
-						<input type="text" name="emailId" id="emailId" style="width: 325px;" readonly>
+						<input type="text" name="emailId" id="emailId" value="${loginMember.email}" style="width: 325px;" readonly>
 					</td> 
 				<tr>
 					<th>패스워드 *</th>
@@ -73,28 +73,12 @@ input[type=search]::-webkit-search-cancel-button {
 				</tr>
 				<tr>
 					<th>이름 *</th>
-					<td><input type="text" name="memberName" id="userName" readonly><br>
+					<td><input type="text" name="memberName" id="userName" value="${loginMember.memberName}" readonly><br>
 					</td>
 				</tr>
 				<tr>
 					<th>닉네임</th>
-					<td><input type="text" name="memberNick" id="memberNick" placeholder="다른 사용자에게 보여줄 닉네임을 입력하세요."><br>
-					</td>
-				</tr>
-				<tr>
-					<th>주소</th>
-					<td>
-						<div style="margin-bottom:10px">
-						<input type="text" id="sample4_postcode" name="addressNo" placeholder="우편번호">
-						<input type="button" id="postcodeFindBtn" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-						</div>
-						<div>
-						<input type="text" id="sample4_roadAddress" name="addressRoad" placeholder="도로명주소" style="width: 300px;">
-						<!-- <input type="text" id="sample4_jibunAddress" placeholder="지번주소" style="width: 300px;"> -->
-						<span id="guide" style="color:#999;display:none"></span>
-						<input type="text" id="sample4_detailAddress" name="addressDetail" placeholder="상세주소" style="width: 200px;">
-						<!-- <input type="text" id="sample4_extraAddress" placeholder="참고항목" style="width: 150px;"> -->
-						</div>
+					<td><input type="text" name="memberNick" id="memberNick" style="width:325px;" value="${loginMember.memberNick}"><br>
 					</td>
 				</tr>
 				<tr>
