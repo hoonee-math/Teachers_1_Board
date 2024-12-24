@@ -23,12 +23,13 @@
 	    						<option value="">카테고리 선택</option>
 	    						<option value="1">맘스뉴스</option>
 	    						<option value="2">고민상담소</option>
-	    						<option value="3">초등 게시판</option>
-	    						<option value="4">중등 게시판</option>
-	    						<option value="5">고등 게시판</option>
-	    						<option value="6">고3/n수생 게시판</option>
-	    						<option value="7">지역별 게시판</option>
-	    						<option value="8">학교별 게시판</option>
+	    						<option value="4">초등 게시판</option>
+	    						<option value="5">중등 게시판</option>
+	    						<option value="6">고등 게시판</option>
+	    						<option value="7">고3/n수생 게시판</option>
+	    						<option value="8">지역별 게시판</option>
+	    						<option value="9">학교별 게시판</option>
+	    						<option value="10">자유게시판</option>
 	    					</select>
 	    				</td>
 	    			</tr>
@@ -88,8 +89,8 @@
 									value="${sessionScope.loginMember.memberName }" readOnly/>
 	    				</td>
 	    				<td>
-	    					<input type="text" name="memberNo" 
-	    							value="${sessionScope.loginMember.memberNo }" hidden/>
+	    					<input type="hidden" name="memberNo" 
+	    							value="${sessionScope.loginMember.memberNo }"/>
 	    				</td>
 	    			</tr>
 	    			<tr>

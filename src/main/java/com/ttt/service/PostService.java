@@ -43,4 +43,22 @@ public class PostService {
 		session.close();
 		return p;
 	}
+	
+	public Post1 insertPostAndGetNo(Post1 post) {
+		SqlSession session = getSession();
+		try {
+			int result = dao.insertPost(session, post);
+			if(result > 0) {
+				int postNo = dao.selectLastPostNo(session);
+				post.setPostNo(postNo);
+				session.commit();
+			}
+			return post;
+		} catch(Exception e) {
+			session.rollback();
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+	}
 }
