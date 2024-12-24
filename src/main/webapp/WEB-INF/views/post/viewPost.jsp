@@ -13,9 +13,10 @@
 <section class="main-content col-9">
 	<section id="post-container">
 		<div id="content-container">
+		<c:if test="${post.member.memberNick==loginMember.memberNick }">
 			<button type="submit" id="update-btn">수정</button>
 			<button type="submit" id="delete-btn">삭제</button>		
-		
+		</c:if>
 		<table id="post-tbl">
 			<tr class="category-name">
 				<td colspan="2">categoryName</td>
@@ -30,6 +31,10 @@
 			<tr class="member-name">
 				<td colspan="2">${post.member.memberNick }</td>
 			</tr>
+			<c:if test="orifile!=null">
+				
+			</c:if>
+			
 			<tr class="file">
 				<td colspan="2">if test orifile!=null -> file.png</td>
 			</tr>
@@ -88,5 +93,7 @@
 	
 </section>
 <!-- 메인 콘텐츠 영역 종료 -->
-
+<script>
+	
+</script>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
