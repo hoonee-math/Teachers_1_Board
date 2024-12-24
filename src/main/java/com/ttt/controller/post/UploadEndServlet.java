@@ -14,6 +14,7 @@ import com.ttt.common.CustomFileRenamePolicy;
 import com.ttt.dto.Image1;
 import com.ttt.dto.Member1;
 import com.ttt.dto.Post1;
+import com.ttt.dto.School12;
 import com.ttt.service.PostService;
 
 /**
@@ -30,24 +31,34 @@ public class UploadEndServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String path = getServletContext().getRealPath("/resources/upload/post");
 		
+		Int memberNo = Integer.parseInt(request.getParameter("memberNo"));
 		//jsp 파일에서 hidden 처리해서 세 개 데이터 가져와야함 
-		Member1 childMember = new Member1();
-		int memberNo = 0;
-		try {
-			memberNo = Integer.parseInt(request.getParameter("memberNo"));
-		} catch (NumberFormatException e) {
-			e.printStackTrace();
-		}
-		childMember.setMemberNo(memberNo);
+//		Member1 childMember = new Member1();
+//		int memberNo = 0;
+//		try {
+//			memberNo = Integer.parseInt(request.getParameter("memberNo"));
+//		} catch (NumberFormatException e) {
+//			e.printStackTrace();
+//		}
+//		childMember.setMemberNo(memberNo);
 		
-		Post1 childPost = new Post1();
-		int postNo = 0;
+		School12 childSchool = new School12();
+		int schoolNo = 0;
 		try {
-			postNo = Integer.parseInt(request.getParameter("postNo"));
+			memberNo = Integer.parseInt(request.getParameter("schoolName"));
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
 		}
-		childPost.setPostNo(postNo);
+		childSchool.setSchoolNo(schoolNo);
+		
+//		Post1 childPost = new Post1();
+//		int postNo = 0;
+//		try {
+//			postNo = Integer.parseInt(request.getParameter("postNo"));
+//		} catch (NumberFormatException e) {
+//			e.printStackTrace();
+//		}
+//		childPost.setPostNo(postNo);
 		
 		List<Image1> childImgs = new PostService().selectImgAll();
 		int imgOrder = 0;
@@ -58,14 +69,25 @@ public class UploadEndServlet extends HttpServlet {
 		}
 		
 		MultipartRequest mr = new MultipartRequest(
-				request, path, 1024*1024*100, "utf-8", new CustomFileRenamePolicy(memberNo, postNo, imgOrder)
+				request, path, 1024*1024*100, "utf-8", new CustomFileRenamePolicy(memberNo, 0, 0)
 			);
 		
 		int categoryNo = Integer.parseInt(mr.getParameter("categoryNo"));
 		//아래의 세 정보는 category에 따라 받는 정보라서 어떻게 전송해야할지 모르겠어요..
-		String region = mr.getParameter("region");
-		String district = mr.getParameter("district");
-		String schoolName = mr.getParameter("schoolName");
+		String region = "";
+		String district = "";
+		String schoolName = "";
+		switch (categoryNo) {
+		case 8:
+			region = mr.getParameter("region");
+			district = mr.getParameter("district");
+			break;
+		case 9:
+			region = mr.getParameter("region");
+			district = mr.getParameter("district");
+			schoolName = mr.getParameter("schoolName");
+			break;
+		}
 		String postTitle = mr.getParameter("postTitle");
 		String postContent = mr.getParameter("postContent");
 		
@@ -75,6 +97,7 @@ public class UploadEndServlet extends HttpServlet {
 				.postContent(postContent)
 				.member(childMember)
 				.categoryNo(categoryNo)
+				.school(childSchool)
 				.images(childImgs)
 				.build();
 		
