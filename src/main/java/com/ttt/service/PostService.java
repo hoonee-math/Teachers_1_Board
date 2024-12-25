@@ -2,6 +2,7 @@ package com.ttt.service;
 
 import static com.ttt.common.SqlSessionTemplate.getSession;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -75,4 +76,48 @@ public class PostService {
 //			session.close();
 //		}
 //	}
+	
+	// Post1 과 Image1을 동시에 저장하기 위한 트랜잭션관리 (postNo를 받아와서 image 저장 관리)
+	public Post1 savePostWithImages(Post1 post, List<Image1> images) {
+        SqlSession session = null;
+        try {
+            session = getSession();
+            // 트랜잭션 시작 - autocommit false
+            session.getConnection().setAutoCommit(false);
+
+            // 1. 게시글 저장 및 번호 받아오기 
+            int postNo = dao.insertPostAndGetNo(session, post);
+            post.setPostNo(postNo);
+            
+            // 2. 이미지가 있으면 이미지 정보(객체)에 postNo set 해주기!
+            if(images != null && !images.isEmpty()) {
+                for(Image1 image : images) {
+                    image.setPostNo(postNo);
+                    int result = dao.insertPostImage(session, image);
+                    if(result <= 0) {
+                        throw new RuntimeException("이미지 저장 실패"); // (1) 여기서 예외 발생
+                    }
+                }
+            }
+            
+            // 모든 작업이 성공하면 커밋
+            session.commit();
+            return post;
+
+        } catch(Exception e) { // (2) 위에서 발생한 RuntimeException은 여기서 캐치
+            // 실패시 롤백
+            if(session != null) session.rollback(); // (3) 롤백 처리
+            throw new RuntimeException("게시글 저장 중 오류 발생", e); // (4) 새로운 예외로 감싸서 던짐 - 필요한지 검토해보기.
+        } finally {
+            // 세션 종료
+            if(session != null) {
+                try {
+                    session.getConnection().setAutoCommit(true); // autocommit 상태 복구
+                    session.close();
+                } catch(SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
 }
