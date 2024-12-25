@@ -52,7 +52,6 @@ public class ViewPostServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		
 		request.setAttribute("post", p);
 		request.setAttribute("images", imgs);
 		request.getRequestDispatcher("/WEB-INF/views/post/viewPost.jsp").forward(request, response);

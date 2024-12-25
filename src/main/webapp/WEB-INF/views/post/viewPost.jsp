@@ -33,9 +33,8 @@
 			</tr>
 			<tr class="file">
 				<td colspan="2">
-					<c:out value="${images }"/>
 					<c:forEach var="image" items="${images }">
-						<img src="${path }/resources/upload/post/${image.renamed }" style="max-width:200px; max-height:200px; margin:5px;">
+						<img src="${path }/resources/upload/post/${image.renamed }" style="max-width:400px; max-height:400px; margin:5px;">
 					</c:forEach>
 				</td>
 			</tr>
