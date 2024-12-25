@@ -145,14 +145,18 @@
 			POST_CONTENT,
 			MEMBER_NO,
 			CATEGORY_NO,
-			CREATE_DATE
+			CREATE_DATE,
+			STATUS,
+			IS_PUBLIC
 		) VALUES (
 			#{postNo}, <!-- /* selectKey에서 설정된 값 사용 */ -->
 			#{postTitle},
 			#{postContent},
 			#{member.memberNo},
 			#{categoryNo},
-			SYSDATE
+			SYSDATE,
+			#{status},
+			#{isPublic}
 		)
 	</insert>
 	

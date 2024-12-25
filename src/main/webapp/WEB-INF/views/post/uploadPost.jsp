@@ -118,16 +118,10 @@
 	    		</table>
 			    <div id="button-container">
 			    	<div class="right">
-			    		<button name="save">
-			    			임시저장
-							<input type="hidden" name="saveStatus" value="1"/>
-							<input type="hidden" name="savePublic" value="0"/>
-			    		</button>
-			    		<button name="submit">
-			    			등록
-							<input type="hidden" name="submitStatus" value="1"/>
-							<input type="hidden" name="submitPublic" value="0"/>
-			    		</button>
+						<input type="hidden" name="status" value=""/>
+						<input type="hidden" name="isPublic" value=""/>
+					    <button onclick="handleSubmit(event, '1', '0')">임시저장</button>
+					    <button onclick="handleSubmit(event, '1', '1')">등록</button>
 				    </div>
 			    </div>
 			    <input type="hidden" name="postNo" value="${post.postNo }"/>
@@ -239,6 +233,14 @@
 	        });
 	    });
 	});
-	
+	//임시저장, 등록 버튼 구분하여 전송
+	//임시저장 - status : 1 / is_public : 0
+	//등록 - status : 1 / is_public : 1
+	function handleSubmit(e, status, isPublic) {
+	    e.preventDefault(); // 기본 이벤트 중지
+	    document.querySelector('input[name="status"]').value = status;
+	    document.querySelector('input[name="isPublic"]').value = isPublic;
+	    document.getElementById('mainForm').submit();
+	}
 </script>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
