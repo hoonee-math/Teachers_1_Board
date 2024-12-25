@@ -154,6 +154,8 @@ public class UploadEndServlet extends HttpServlet {
                         .memberNo(Integer.parseInt(mr.getParameter("memberNo"))) // 여기서는 예외처리를.. 안해줘도 되겠니? 무조건 받아올 값이니까?
                         .build())
                 .categoryNo(Integer.parseInt(mr.getParameter("categoryNo")))
+                .status(Integer.parseInt(mr.getParameter("status")))
+                .isPublic(Integer.parseInt(mr.getParameter("isPublic")))
                 .build();
     }
 
