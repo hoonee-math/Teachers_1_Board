@@ -192,8 +192,7 @@
 	/* 파일 업로드시, 프리뷰 사진 출력 */
 	$("#upfile").change(e=>{
 	    const files = e.target.files;
-        // 3. 이미지 정보 처리
-        List<Image1> images = createImagesFromUpload(mr);
+	    console.log("선택된 파일 개수:", files.length);
 		$("#preview").html('');
 	    $("#file-inputs-container").html('');
 	    
@@ -206,36 +205,37 @@
 	        fileReader.onload = e => {
 	            const path = e.target.result;
 	            const $img = $("<img>").attr({
-	                src: path,
-	                height: "200px",
+	                src: path // 이미지 경로
+	            }).css({ // css는 새로 속성 부여
+	                "max-width": "300px",  // 가로 최대 크기
+	                "max-height": "200px", // 세로 최대 크기
+	                "width": "auto",       // 비율 유지
+	                "height": "auto",      // 비율 유지
 	            });
 	            $("#preview").append($img);
 	        }
-	        
-	        // 각 파일에 대한 개별 input 생성
-	        const formData = new FormData();
-	        formData.append(`upfile${i}`, file);
-	        
-	        const input = $("<input>").attr({
-	            type: "file",
-	            name: `upfile${i}`,
-	            class: "file-input-hidden"
-	        }).hide();
+
+	        // 새로운 input 파일 생성 및 추가
+	        const newInput = document.createElement('input');
+	        newInput.type = 'file';
+	        newInput.name = 'upfile' + i;
+	        newInput.className = 'file-input-hidden';
+	        newInput.style.display = 'none';
 	        
 	        // 파일 객체를 input에 할당
-	        const dataTransfer = new DataTransfer();
-	        dataTransfer.items.add(file);
-	        input[0].files = dataTransfer.files;
+	        const dt = new DataTransfer();
+	        dt.items.add(file);
+	        newInput.files = dt.files;
 	        
-	        $("#file-inputs-container").append(input);
-	        console.log(`input ${i} 생성 완료:`, input[0].name); // 생성된 input 확인
+	        $("#file-inputs-container").append(newInput);
+	        console.log(`파일 ${i} 추가됨:`, file.name);
 	    });
 
 	    // 폼 전송 직전에 전체 input 확인
 	    $("#mainForm").on('submit', function(e) {
-	        console.log("폼 전송 시 input 개수:", $("#file-inputs-container input").length);
-	        $("#file-inputs-container input").each(function(i, input) {
-	            console.log(`전송될 input ${i}:`, input.name, input.files[0]?.name);
+	        console.log("폼 전송 전 파일 input 수:", $('.file-input-hidden').length);
+	        $('.file-input-hidden').each(function(i, input) {
+	            console.log(`Input ${i}:`, input.name, input.files[0]?.name);
 	        });
 	    });
 	});
