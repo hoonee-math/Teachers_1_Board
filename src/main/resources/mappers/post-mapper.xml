@@ -140,14 +140,14 @@
 			SELECT POST_SEQ.NEXTVAL FROM DUAL
 		</selectKey>
 		INSERT INTO POST1 (
-			POST_NO,
+			POST_NO, <!-- /* 여기에 위에서 얻은 시퀀스 값이 들어감 */ -->
 			POST_TITLE,
 			POST_CONTENT,
 			MEMBER_NO,
 			CATEGORY_NO,
 			CREATE_DATE
 		) VALUES (
-			#{postNo},
+			#{postNo}, <!-- /* selectKey에서 설정된 값 사용 */ -->
 			#{postTitle},
 			#{postContent},
 			#{member.memberNo},

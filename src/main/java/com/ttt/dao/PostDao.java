@@ -20,12 +20,14 @@ public class PostDao {
 	public Post1 selectBoardJoinCommentJoinMember(SqlSession session, int postNo) {
 		return session.selectOne("post.selectBoardJoinCommentJoinMember", postNo);
 	}
+	
+	// savePostWithImages 서비스 이용을 위해 재사용
 	public int insertPostAndGetNo(SqlSession session, Post1 post) {
 		int result = session.insert("post.insertPost", post);
-		if(result>0) {
-			return post.getPostNo();
-		}
-		return 0;
+	    if(result <= 0) {
+	        throw new RuntimeException("게시글 저장 실패"); // 저장 실패한 경우를 처리해줘야함. 반환값이 0이되면 안됨.
+	    }
+	    return post.getPostNo();
 	}
 	public int insertPostImage(SqlSession session, Image1 image) {
 		return session.insert("post.insertPostImage", image);

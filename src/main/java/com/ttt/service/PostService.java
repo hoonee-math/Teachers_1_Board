@@ -86,7 +86,7 @@ public class PostService {
             session.getConnection().setAutoCommit(false);
 
             // 1. 게시글 저장 및 번호 받아오기 
-            int postNo = dao.insertPostAndGetNo(session, post);
+            int postNo = dao.insertPostAndGetNo(session, post);  // 실패시 예외 발생
             post.setPostNo(postNo);
             
             // 2. 이미지가 있으면 이미지 정보(객체)에 postNo set 해주기!
