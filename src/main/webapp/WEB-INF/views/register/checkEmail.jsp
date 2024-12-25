@@ -43,34 +43,45 @@
 
      <script>
      function closeVerifyWindow() {
-    	    try {
-    	        // 세션에 인증 완료 상태 저장을 위한 요청
-    	        fetch('${pageContext.request.contextPath}/member/verifyComplete.do', {
-    	            method: 'POST',
-    	            headers: {
-    	                'Content-Type': 'application/x-www-form-urlencoded',
-    	            },
-    	            body: 'email=' + encodeURIComponent('${param.email}')
-    	        })
-    	        .then(response => response.json())
-    	        .then(data => {
-    	            if(data.success) {
-    	                // 부모 창을 비밀번호 재설정 페이지로 리다이렉트하고 현재 창 닫기
-    	                opener.location.href = '${pageContext.request.contextPath}/member/resetpassword.do';
-    	                window.close();
-    	            } else {
-    	                alert('인증 처리 중 오류가 발생했습니다.');
-    	            }
-    	        })
-    	        .catch(error => {
-    	            console.error('인증 처리 중 오류 발생:', error);
-    	            alert('인증 처리 중 오류가 발생했습니다.');
-    	        });
-    	    } catch (error) {
-    	        console.error('인증 창 닫기 중 오류:', error);
-    	        alert('처리 중 오류가 발생했습니다.');
-    	    }
-    	}
+ 	    try {
+	        // 부모 창의 요소들에 접근
+	        const parentEmail = opener.document.getElementById("emailId");
+	        const parentDomain = opener.document.getElementById("emailDomain");
+	        const parentSelect = opener.document.getElementById("emailSelect");
+	        const emailBtn = opener.document.querySelector("input[value='이메일 인증']");
+	        
+	        // 이메일 입력란 읽기전용 및 비활성화
+	        parentEmail.readOnly = true;
+	        parentDomain.readOnly = true;
+	        parentSelect.disabled = true;  // readOnly 대신 disabled 사용
+	        
+	        // 스타일 적용
+	        const disabledColor = "#f0f0f0";
+	        parentEmail.style.backgroundColor = disabledColor;
+	        parentDomain.style.backgroundColor = disabledColor;
+	        
+	        // 이메일 인증 버튼 비활성화
+	        if(emailBtn) {
+	            emailBtn.disabled = true;
+	            emailBtn.style.backgroundColor = disabledColor;
+	        }
+	        
+	        // hidden input 처리 - 중복 방지
+	        const existingHidden = opener.document.querySelector("input[name='emailVerified']");
+	        if (!existingHidden) {
+	            const hiddenInput = opener.document.createElement("input");
+	            hiddenInput.type = "hidden";
+	            hiddenInput.name = "emailVerified";
+	            hiddenInput.value = "Y";
+	            opener.document.forms[0].appendChild(hiddenInput);
+	        }
+	        
+	        window.close();
+	    } catch (error) {
+	        console.error("이메일 인증 창 닫기 중 오류 발생:", error);
+	        alert("창을 닫는 중 오류가 발생했습니다.");
+	    }
+   	}
     </script> 
 </body>
 </html>

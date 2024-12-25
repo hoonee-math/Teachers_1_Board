@@ -79,14 +79,18 @@ public class EmailAuthenticationController extends HttpServlet {
         throws ServletException, IOException {
         
         String inputCode = request.getParameter("authCode");
+        String authType = request.getParameter("authType");
+        
         AuthenticationResult result = 
             authService.verifyAuthNumber(request.getSession(), inputCode);
         
         request.setAttribute("result", result.isSuccess());
         request.setAttribute("message", result.getMessage());
         
-        String returnPath = (String) request.getSession()
-            .getAttribute("returnPath");
+        // returnPath를 authType에 따라 분기처리
+        String returnPath = "/WEB-INF/views/register/" + 
+            (authType.equals("reset") ? "checkEmailForFindPassword.jsp" : "checkEmail.jsp");
+           
         request.getRequestDispatcher(returnPath).forward(request, response);
     }
     
