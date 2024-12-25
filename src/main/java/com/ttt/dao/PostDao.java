@@ -23,7 +23,9 @@ public class PostDao {
 	public List<Image1> selectImageNo(SqlSession session, int postNo) {
 		return session.selectList("post.selectImageNo", postNo);
 	}
-	
+	public int selectCategoryNo(SqlSession session, int postNo) {
+		return session.selectOne("post.selectCategoryNo", postNo);
+	}
 	// savePostWithImages 서비스 이용을 위해 재사용
 	public int insertPostAndGetNo(SqlSession session, Post1 post) {
 		int result = session.insert("post.insertPost", post);
@@ -34,5 +36,9 @@ public class PostDao {
 	}
 	public int insertPostImage(SqlSession session, Image1 image) {
 		return session.insert("post.insertPostImage", image);
+	}
+	//조회수 기능 구현
+	public int updatePostReadCount(SqlSession session, int postNo) {
+		return session.update("post.updatePostReadCount", postNo);
 	}
 }

@@ -52,9 +52,17 @@ public class PostService {
 			session.close();
 		}
 	}
-	public Post1 selectBoardJoinCommentJoinMember (int postNo) {
+	public Post1 selectBoardJoinCommentJoinMember (int postNo, boolean readResult) {
 		SqlSession session = getSession();
 		Post1 p = dao.selectBoardJoinCommentJoinMember(session, postNo);
+		if(p!=null && !readResult) {
+			int result = dao.updatePostReadCount(session, postNo);
+			if( result>0) {
+				session.commit();
+				p.setViewCount(p.getViewCount()+1);
+			}
+			else session.rollback();
+		}
 		session.close();
 		return p;
 	}
@@ -63,6 +71,12 @@ public class PostService {
 		List<Image1> img = dao.selectImageNo(session, postNo);
 		session.close();
 		return img;
+	}
+	public int selectCategoryNo(int postNo) {
+		SqlSession session = getSession();
+		int categoryNo = dao.selectCategoryNo(session, postNo);
+		session.close();
+		return categoryNo;
 	}
 //	public Post1 insertPostAndGetNo(Post1 post) {
 //		SqlSession session = getSession();

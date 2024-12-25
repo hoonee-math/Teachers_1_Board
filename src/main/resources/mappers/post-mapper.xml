@@ -175,4 +175,12 @@
             #{postNo}
         )
 	</insert>
+	
+	<update id="updatePostReadCount" parameterType="_int">
+		UPDATE POST1 SET VIEW_COUNT=NVL(VIEW_COUNT,0)+1 WHERE POST_NO=#{postNo}
+	</update>
+	
+	<select id="selectCategoryNo" parameterType="_int" resultType="int">
+		SELECT CATEGORY_NO FROM POST1 WHERE POST_NO=#{postNo}
+	</select>
 </mapper>

@@ -44,16 +44,32 @@ public class ViewPostServlet extends HttpServlet {
 			response.addCookie(c);
 		}
 		
-		Post1 p = new PostService().selectBoardJoinCommentJoinMember(postNo);
+		Post1 p = new PostService().selectBoardJoinCommentJoinMember(postNo, readResult);
 		List<Image1> imgs = new ArrayList<>();
 		try {
 			imgs = new PostService().selectImageNo(postNo);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		int categoryNo = new PostService().selectCategoryNo(postNo);
+		String categoryName = "";
+		switch(categoryNo) {
+			case 1: categoryName="맘스뉴스"; break;
+			case 2: categoryName="고민상담소"; break;
+			case 3: categoryName="공지사항"; break;
+			case 4: categoryName="초등 게시판"; break;
+			case 5: categoryName="중등 게시판"; break;
+			case 6: categoryName="고등 게시판"; break;
+			case 7: categoryName="고3/n수생"; break;
+			case 8: categoryName="지역별 게시판"; break;
+			case 9: categoryName="학교별 게시판"; break;
+			case 10: categoryName="자유 게시판"; break;
+		}
+		
 		
 		request.setAttribute("post", p);
 		request.setAttribute("images", imgs);
+		request.setAttribute("categoryName", categoryName);
 		request.getRequestDispatcher("/WEB-INF/views/post/viewPost.jsp").forward(request, response);
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

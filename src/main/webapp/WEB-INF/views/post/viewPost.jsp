@@ -19,13 +19,13 @@
 		</c:if>
 		<table id="post-tbl">
 			<tr class="category-name">
-				<td colspan="2">categoryName</td>
+				<td colspan="2">${categoryName }</td>
 			</tr>
 			<tr class="post-title">
 				<td colspan="2"><h3>${post.postTitle }</h3></td>
 			</tr>
 			<tr class="info">
-				<td><img src="https://img.icons8.com/?size=100&id=30M9wv1iFkcH&format=png&color=000000" width="10px">  viewCount</td>
+				<td><img src="https://img.icons8.com/?size=100&id=30M9wv1iFkcH&format=png&color=000000" width="10px">     ${post.viewCount }</td>
 				<td>${post.createDate }</td>
 			</tr>
 			<tr class="member-name">
