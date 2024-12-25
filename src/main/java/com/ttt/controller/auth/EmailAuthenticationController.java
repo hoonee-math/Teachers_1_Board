@@ -1,4 +1,4 @@
-package com.ttt.controller.member;
+package com.ttt.controller.auth;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,11 +7,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/member/passwordresetverify")
-public class MemberPasswordResetVerifyServlet extends HttpServlet {
+@WebServlet("/auth/*")
+public class EmailAuthenticationController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public MemberPasswordResetVerifyServlet() {
+    public EmailAuthenticationController() {
         super();
     }
 
