@@ -163,7 +163,10 @@ th {
 						</td>
 						
 						<td class="title">
-							<a href="${path }/post/viewpost?postNo=${p.postNo}">${p.postTitle}</a>
+							<a href="${path }/post/viewpost?postNo=${p.postNo}">
+								${p.postTitle}
+								<c:if test="${p.status==1 && p.isPublic==0 }"><span style="color:red">[임시저장됨]</span></c:if>
+							</a>
 							<span class="highlight">2</span></td>
 						</td>
 						<td>${p.member.memberNick }</td>

@@ -59,6 +59,7 @@
 		<hr style="margin-top:0px">
 		<div class="menu-item" data-post="uploadpost">temp 글쓰기</div>
 		<div class="menu-item" data-post="viewpost?postNo=72">temp 글 확인</div>
+		<div class="menu-item" data-path="/member/mypost">내가 작성한 글 목록 임시저장 포함</div>
 	</section>
 
 
@@ -68,13 +69,16 @@
 		$('.side-menu .menu-item').click(function() {
 		    var categoryNo = $(this).data('category');
 		    var post = $(this).data('post');
+		    var path = $(this).data('path');
 		    
-		    if(categoryNo){
+		    if(categoryNo>=0){
 			    // 페이지 이동
 			    location.href = "${path}/board/list?categoryNo=" + categoryNo;
 		    }
 		    else if(post){
 		    	location.href = "${path}/post/" + post;
+		    } else if(path){
+		    	location.href = "${path}" + path;
 		    }
 		});
 	</script>
