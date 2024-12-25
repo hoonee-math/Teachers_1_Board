@@ -11,8 +11,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
+import com.ttt.dto.Member1;
 import com.ttt.dto.Post1;
 import com.ttt.service.BoardService;
 
@@ -24,7 +26,7 @@ public class MemberMyPostServlet extends HttpServlet {
         super();
     }
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// 페이징 처리를 위한 변수 선언
 		int cPage, numPerPage, memberNo;
@@ -41,10 +43,13 @@ public class MemberMyPostServlet extends HttpServlet {
 		try {numPerPage=Integer.parseInt(request.getParameter("numPerPage"));}
 		catch(NumberFormatException e) {numPerPage=5;}
 		param.put("numPerPage", numPerPage);
+
+		HttpSession session=((HttpServletRequest)request).getSession();
+		Member1 loginMember=(Member1)session.getAttribute("loginMember");
 		
 		try {
 			// categoryNo 값이 있는 경우 해당 카테고리 게시글만 출력
-			memberNo=Integer.parseInt(request.getParameter("memberNo"));
+			memberNo=loginMember.getMemberNo();
 			param.put("memberNo",memberNo);
 			boards=new BoardService().selectBoardListByMemberNo(param);
 			totalData=new BoardService().selectBoardCountByMemberNo(memberNo);
@@ -111,6 +116,8 @@ public class MemberMyPostServlet extends HttpServlet {
 		
 		// WEB-INF의 contextParameter에 만들어놓고 사용할 수 있음???? views 위치에 대해서 계속 똑같은거 사용하는데.. web.xml 을 이용할수 있음
 		request.getRequestDispatcher("/WEB-INF/views/board/allboard.jsp").forward(request, response);
-
+	}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
 	}
 }
