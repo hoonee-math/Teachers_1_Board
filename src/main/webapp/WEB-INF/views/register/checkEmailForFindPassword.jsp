@@ -25,6 +25,7 @@
 	<div id="verify-container">
 		<form action="${pageContext.request.contextPath}/auth/verify" method="post">
 			<input type="hidden" name="email" value="${param.email}"> 
+    		<input type="hidden" name="authType" value="reset">
 			<input type="text" name="authCode" id="authCode" placeholder="인증번호 입력">
 			<input type="submit" value="확인">
 		</form>
