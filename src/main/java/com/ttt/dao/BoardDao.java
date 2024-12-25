@@ -32,7 +32,7 @@ public class BoardDao {
 		int categoryNo=param.get("categoryNo"); // mapper 에는 categoyNo 만 전달 
 
 		RowBounds rb=new RowBounds((cPage-1)*numPerPage,numPerPage);
-		return session.selectList("board.selectBoardListAllCategory",categoryNo,rb);
+		return session.selectList("board.selectBoardListByCategoryNo",categoryNo,rb);
 	}
 
 	// 쿼리문을 실행키셔 totalData 값(int)을 받아오는 view

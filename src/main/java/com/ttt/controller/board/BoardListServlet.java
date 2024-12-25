@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.ttt.dto.Post1;
 import com.ttt.service.BoardService;
@@ -41,16 +42,35 @@ public class BoardListServlet extends HttpServlet {
 		catch(NumberFormatException e) {numPerPage=5;}
 		param.put("numPerPage", numPerPage);
 		
+		HttpSession session = request.getSession();
+		String categoryNoParam = request.getParameter("categoryNo");
+
+		if (categoryNoParam != null && !categoryNoParam.isEmpty()) {
+		    categoryNo = Integer.parseInt(categoryNoParam);
+		    session.setAttribute("categoryNo", categoryNo); // 세션에 저장
+		} else {
+		    // 세션에서 값 가져오기
+		    categoryNo = session.getAttribute("categoryNo") != null 
+		                 ? (int) session.getAttribute("categoryNo") 
+		                 : 0; // 기본값
+		}
+		
 		try {
-			// categoryNo 값이 있는 경우 해당 카테고리 게시글만 출력
-			categoryNo=Integer.parseInt(request.getParameter("categoryNo"));
-			param.put("categoryNo",categoryNo);
-			boards=new BoardService().selectBoardListByCategoryNo(param);
-			totalData=new BoardService().selectBoardCountByCategoryNo(categoryNo);
-		} catch(NumberFormatException e) {
-			// categoryNo 값이 없는 경우 전체 게시글 출력 (공지, 뉴스 제외)
-			boards=new BoardService().selectBoardListAllCategory(param);
-			totalData=new BoardService().selectBoardCountAll();
+			if(categoryNo!=0) {
+				// categoryNo 값이 있는 경우 해당 카테고리 게시글만 출력
+				param.put("categoryNo",categoryNo);
+				boards=new BoardService().selectBoardListByCategoryNo(param);
+				totalData=new BoardService().selectBoardCountByCategoryNo(categoryNo);
+			} else if(categoryNo==0) {
+				// categoryNo 값이 없는 경우 전체 게시글 출력 (공지, 뉴스 제외)
+				boards=new BoardService().selectBoardListAllCategory(param);
+				totalData=new BoardService().selectBoardCountAll();
+			} else {
+				totalData=0;
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+			totalData=0;
 		}
 		
 		totalPage=(int)Math.ceil((double)totalData/numPerPage);

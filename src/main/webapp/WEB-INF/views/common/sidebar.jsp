@@ -52,12 +52,13 @@
 		<div class="menu-item">공지사항</div>
 		<div class="menu-item">맘스뉴스</div>
 		<div class="menu-item">고민상담소</div>
-		<div class="menu-item">예시 페이지 연결</div>
-		<div class="menu-item">temp 글쓰기</div>
-		<div class="menu-item">temp 글 확인</div>
-		<div class="menu-item">학년별 게시판</div>
+		<hr style="margin-top:0px">
+		<div class="menu-item">학년별 게시판(생각해보기)</div>
 		<div class="menu-item">지역별 게시판</div>
 		<div class="menu-item">학교검색</div>
+		<hr style="margin-top:0px">
+		<div class="menu-item">temp 글쓰기</div>
+		<div class="menu-item">temp 글 확인</div>
 	</section>
 
 
@@ -67,24 +68,35 @@
 	        location.assign("${path}/board/list");
 		});
 		$('.side-menu .menu-item:nth-child(2)').click(function() {
-	        location.assign("${path}/board/allboard?type=recommend");
+	        location.assign("${path}/board/list?categoryNo=1");
 		});
 		$('.side-menu .menu-item:nth-child(3)').click(function() {
 	        location.assign("${path}/home");
 		});
 		$('.side-menu .menu-item:nth-child(4)').click(function() {
-	        location.assign("${path}/board/allboard?type=news");
+	        location.assign("${path}/board/list?categoryNo=1");
 		});
 		$('.side-menu .menu-item:nth-child(5)').click(function() {
 	        location.assign("${path}/board/dontworry?type=dontworry");
+	        /* location.assign("${path}/board/list?categoryNo=2"); */
 		});
-		$('.side-menu .menu-item:nth-child(6)').click(function() {
-	        location.assign("${path}/common/maincontents.show");
-		});
+		
+		
 		$('.side-menu .menu-item:nth-child(7)').click(function() {
-	        location.assign("${path}/post/uploadpost");
+	        location.assign("${path}/board/list?categoryNo=4");
 		});
 		$('.side-menu .menu-item:nth-child(8)').click(function() {
+	        location.assign("${path}/board/list?categoryNo=8");
+		});
+		$('.side-menu .menu-item:nth-child(9)').click(function() {
+	        location.assign("${path}/board/list?categoryNo=9");
+		});
+		
+		
+		$('.side-menu .menu-item:nth-child(11)').click(function() {
+	        location.assign("${path}/post/uploadpost");
+		});
+		$('.side-menu .menu-item:nth-child(12)').click(function() {
 	        location.assign("${path}/post/viewpost?postNo=72");
 		});
 	</script>

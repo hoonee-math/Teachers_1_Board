@@ -29,7 +29,7 @@ public class BoardService {
 	// categotyNo, cPage, numPerPage 값을 받아서 해당 카테고리에 맞는 글 목록을 view 해주는 서비스
 	public List<Post1> selectBoardListByCategoryNo(Map<String, Integer> param){
 		SqlSession session=getSession();
-		return dao.selectBoardListAllCategory(session, param);
+		return dao.selectBoardListByCategoryNo(session, param);
 	}
 	
 	// (totalData) 카테고리별 게시글 수를 확인시켜주는 서비스
