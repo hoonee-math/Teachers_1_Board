@@ -29,6 +29,8 @@ public class BoardListServlet extends HttpServlet {
 		// 페이징 처리를 위한 변수 선언
 		int cPage, numPerPage, categoryNo;
 		int totalData, totalPage, pageBarSize, pageNo, pageEnd;
+		String categoryTitle;
+		
 		// 받아온 변수를 service 로 전달할 map 선언
 		Map<String, Integer> param = new HashMap<>();
 		// service 로 부터 return 받을 List<Post1> 선언
@@ -54,22 +56,39 @@ public class BoardListServlet extends HttpServlet {
 		                 ? (int) session.getAttribute("categoryNo") 
 		                 : 0; // 기본값
 		}
-		
+		System.out.println(categoryNo);
 		try {
 			if(categoryNo!=0) {
 				// categoryNo 값이 있는 경우 해당 카테고리 게시글만 출력
 				param.put("categoryNo",categoryNo);
 				boards=new BoardService().selectBoardListByCategoryNo(param);
 				totalData=new BoardService().selectBoardCountByCategoryNo(categoryNo);
+				switch(categoryNo) {
+					case 1: categoryTitle="맘스뉴스"; break;
+					case 2: categoryTitle="고민상담소"; break;
+					case 3: categoryTitle="공지사항"; break;
+					case 4: categoryTitle="초등 게시판"; break;
+					case 5: categoryTitle="중등 게시판"; break;
+					case 6: categoryTitle="고등 게시판"; break;
+					case 7: categoryTitle="고3/N수 게시판"; break;
+					case 8: categoryTitle="지역 게시판"; break;
+					case 9: categoryTitle="학교 게시판"; break;
+					case 10: categoryTitle="자유게시판"; break;
+					case 20: categoryTitle="추천글 게시판"; break;
+					default: categoryTitle="error"; break;
+				}
 			} else if(categoryNo==0) {
 				// categoryNo 값이 없는 경우 전체 게시글 출력 (공지, 뉴스 제외)
 				boards=new BoardService().selectBoardListAllCategory(param);
 				totalData=new BoardService().selectBoardCountAll();
+				categoryTitle="전체글 게시판";
 			} else {
+				categoryTitle="error";
 				totalData=0;
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
+			categoryTitle="error";
 			totalData=0;
 		}
 		
@@ -126,6 +145,7 @@ public class BoardListServlet extends HttpServlet {
 		}
 		pageBar+="</ul>";
 		
+		request.setAttribute("categoryTitle", categoryTitle);
 		request.setAttribute("pageBar", pageBar);
 		request.setAttribute("boards", boards);
 		

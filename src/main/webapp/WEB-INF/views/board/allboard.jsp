@@ -112,7 +112,7 @@ th {
 }
 </style>
 <section class="main-content col-9">
-	<h2 class="main-title">전체글 게시판</h2>
+	<h2 class="main-title">${categoryTitle }</h2>
 
 	<!-- 1행: 전체 너비 게시판 -->
 	<div class="row full-width">
