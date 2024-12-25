@@ -104,35 +104,52 @@ function checkEmail() {
         return;
     }
 
-	const form = document.createElement('form');
-	form.method = 'POST';
-	form.action = `${contextPath}/auth/sendEmail`;
-	form.target = 'emailVerify';
-
-	const emailInput = document.createElement('input');
-	emailInput.type = 'hidden';
-	emailInput.name = 'email';
-	emailInput.value = email;
-
-	const typeInput = document.createElement('input');
-	typeInput.type = 'hidden';
-	typeInput.name = 'authType';
-	typeInput.value = 'signup';
-
-	form.appendChild(emailInput);
-	form.appendChild(typeInput);
-
-    window.open(
-        '', // post 방식으로 변경하면서 제거
-        "emailVerify",
-        "width=400,height=300,left=500,top=200"
-    );
-
-	document.body.appendChild(form);
-	form.submit();
-	document.body.removeChild(form);
+	// 이메일 중복 체크
+	$.ajax({
+	    url: `${contextPath}/auth/checkEmailDuplicate.do`,
+	    method: "POST",
+	    data: { email: email, serachType: 'emailDuplicate'},
+	    success: function(response) {
+	        if(response.exists) {
+	            alert("이미 사용중인 이메일입니다.");
+	            return;
+	        } else {
+	            // 중복이 아닌 경우에만 인증 이메일 발송
+	            sendVerificationEmail(email);
+	        }
+	    },
+	    error: function() {
+	        alert("이미 사용중인 이메일 입니다.");
+	    }
+	});
 }
 
+// 인증 이메일 발송 함수 분리
+function sendVerificationEmail(email) {
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = `${contextPath}/auth/sendEmail`;
+    form.target = 'emailVerify';
+    
+    const emailInput = document.createElement('input');
+    emailInput.type = 'hidden';
+    emailInput.name = 'email';
+    emailInput.value = email;
+    
+    const typeInput = document.createElement('input');
+    typeInput.type = 'hidden';
+    typeInput.name = 'authType';
+    typeInput.value = 'signup';
+    
+    form.appendChild(emailInput);
+    form.appendChild(typeInput);
+    
+    window.open('', 'emailVerify', 'width=400,height=300,left=500,top=200');
+    
+    document.body.appendChild(form);
+    form.submit();
+    document.body.removeChild(form);
+}
 
 // 이메일 관련 입력값이 변경될 때마다 인증 상태 초기화
 $("#emailId, #emailDomain, #emailSelect").on("change", function() {

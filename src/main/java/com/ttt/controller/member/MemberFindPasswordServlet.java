@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.ttt.dto.Member1;
 import com.ttt.service.MemberService;
 
-@WebServlet("/member/findpassword.do")
+@WebServlet("/auth/checkEmailDuplicate.do")
 public class MemberFindPasswordServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -24,13 +24,16 @@ public class MemberFindPasswordServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String searchType=request.getParameter("searchType");
 		String email=request.getParameter("email");
 		String memberName=request.getParameter("memberName");
 		
-		Member1 m= Member1.builder()
-				.email(email)
-				.memberName(memberName)
-				.build();
+		Member1 m= new Member1();
+		switch(searchType) {
+		case "emailDuplicate" : m.builder().email(email).build(); break;
+		case "searchPassword" : m.builder().email(email).memberName(memberName).build(); break;
+		}
+		
 		
 		Member1 result=new MemberService().selectMemberByNameAndEmail(m);
 
