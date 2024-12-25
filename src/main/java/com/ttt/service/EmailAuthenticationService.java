@@ -52,7 +52,7 @@ public class EmailAuthenticationService {
         String hashedAuthNumber) {
         session.setAttribute("hashedAuthNumber", hashedAuthNumber);
         session.setAttribute("authCreateTime", System.currentTimeMillis());
-        session.setAttribute("userEmail", email);
+        session.setAttribute("email", email);
         session.setAttribute("failCount", 0);
         session.setMaxInactiveInterval(EXPIRY_MINUTES * 60);
     }
@@ -97,7 +97,7 @@ public class EmailAuthenticationService {
         session.removeAttribute("hashedAuthNumber");
         session.removeAttribute("authCreateTime");
         session.removeAttribute("failCount");
-        session.removeAttribute("userEmail");
+        session.removeAttribute("email");
     }
 
 }

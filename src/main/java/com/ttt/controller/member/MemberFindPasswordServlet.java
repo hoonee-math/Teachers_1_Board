@@ -28,10 +28,12 @@ public class MemberFindPasswordServlet extends HttpServlet {
 		String email=request.getParameter("email");
 		String memberName=request.getParameter("memberName");
 		
+		System.out.println(searchType + "," + email + ","+ memberName);
+		
 		Member1 m= new Member1();
 		switch(searchType) {
-		case "emailDuplicate" : m.builder().email(email).build(); break;
-		case "searchPassword" : m.builder().email(email).memberName(memberName).build(); break;
+		case "emailDuplicate" : m.setEmail(email); System.out.println(m); break;
+		case "searchPassword" : m.setEmail(email); m.setMemberName(memberName);; System.out.println(m); break;
 		}
 		
 		

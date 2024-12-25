@@ -48,7 +48,7 @@
     <div class="password-reset-container">
         <h2>비밀번호 재설정</h2>
         <form id="resetPasswordForm" action="${path}/member/updatePassword.do" method="POST">
-            <input type="hidden" name="email" value="${sessionScope.userEmail}">
+            <input type="hidden" name="email" value="${sessionScope.email}">
             <div class="form-group">
                 <label for="newPassword">새 비밀번호</label>
                 <input type="password" id="newPassword" name="memberPw" required>

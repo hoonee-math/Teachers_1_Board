@@ -99,16 +99,17 @@ public class EmailAuthenticationController extends HttpServlet {
         throws ServletException, IOException {
         
         HttpSession session = request.getSession();
-        boolean isPasswordReset = Boolean.parseBoolean(
-            request.getParameter("isPasswordReset"));
+        boolean isPasswordReset = Boolean.parseBoolean(request.getParameter("isPasswordReset"));
+        String email = request.getParameter("email");  // 이메일 파라미터 받기
         
         try {
             if (isPasswordReset) {
                 session.setAttribute("passwordResetAuthorized", true);
+                session.setAttribute("email", email);  // 이메일도 세션에 저장
                 response.setContentType("application/json");
                 response.getWriter().write("{\"success\": true}");
             }
-            authService.clearAuthenticationInfo(session);
+			/* authService.clearAuthenticationInfo(session); */
             
         } catch (Exception e) {
             response.setContentType("application/json");

@@ -25,7 +25,7 @@ public class MemberVerifyCompleteServlet extends HttpServlet {
         try {
             // 비밀번호 재설정을 위한 인증 상태를 세션에 저장
             session.setAttribute("passwordResetAuthorized", true);
-            session.setAttribute("userEmail", email);
+            session.setAttribute("email", email);
             
             // 세션 유효시간 설정 (10분)
             session.setMaxInactiveInterval(600);

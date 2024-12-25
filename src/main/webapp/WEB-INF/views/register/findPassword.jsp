@@ -189,8 +189,8 @@ input:focus {
 			            type: "POST",
 			            data: {
 			                memberName: memberName,
-			                email: email
-			                searchType: 'searchPassword';
+			                email: email,
+			                searchType: 'searchPassword'
 			            },
 			            success: function(response) {
 			                if(response.exists) {

@@ -46,26 +46,26 @@
 	<script>
 	function closeVerifyWindow() {
 	    try {
-	        // 세션에 인증 완료 상태 저장을 위한 요청
-	        fetch('${pageContext.request.contextPath}/auth/complete', {
+	    	// 세션에 인증 완료 상태 저장을 위한 요청
+	        $.ajax({
+	            url: '${pageContext.request.contextPath}/auth/complete',
 	            method: 'POST',
-	            headers: {
-	                'Content-Type': 'application/x-www-form-urlencoded',
+	            data: {
+	                email: '${param.email}',
+	                isPasswordReset: true
 	            },
-	            body: 'email=' + encodeURIComponent('${param.email}') + '&isPasswordReset=true'
-	        })
-	        .then(response => response.json())
-	        .then(data => {
-	            if(data.success) {
-	                opener.location.href = '${pageContext.request.contextPath}/member/resetpassword.do';
-	                window.close();
-	            } else {
+	            success: function(data) {
+	                if(data.success) {
+	                    opener.location.href = '${pageContext.request.contextPath}/member/resetpassword.do';
+	                    window.close();
+	                } else {
+	                    alert('인증 처리 중 오류가 발생했습니다.');
+	                }
+	            },
+	            error: function(xhr, status, error) {
+	                console.error('인증 처리 중 오류 발생:', error);
 	                alert('인증 처리 중 오류가 발생했습니다.');
 	            }
-	        })
-	        .catch(error => {
-	            console.error('인증 처리 중 오류 발생:', error);
-	            alert('인증 처리 중 오류가 발생했습니다.');
 	        });
 	    } catch (error) {
 	        console.error("창 닫기 중 오류 발생:", error);

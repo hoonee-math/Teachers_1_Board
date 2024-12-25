@@ -25,14 +25,14 @@ public class MemberUpdatePasswordServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(false);
-        if (session == null || session.getAttribute("userEmail") == null 
+        if (session == null || session.getAttribute("email") == null 
             || session.getAttribute("passwordResetAuthorized") == null) {
             // 인증되지 않은 접근
             response.sendRedirect(request.getContextPath() + "/member/login");
             return;
         }
 
-        String email = (String) session.getAttribute("userEmail");
+        String email = (String) session.getAttribute("email");
         String memberPw = request.getParameter("memberPw");
         
         Member1 m=Member1.builder()
@@ -45,7 +45,7 @@ public class MemberUpdatePasswordServlet extends HttpServlet {
             new MemberService().updatePassword(m);
             
             // 세션 정리
-            session.removeAttribute("userEmail");
+            session.removeAttribute("email");
             session.removeAttribute("passwordResetAuthorized");
             
             // 성공 메시지와 함께 로그인 페이지로 리다이렉트

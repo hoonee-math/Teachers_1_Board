@@ -25,7 +25,7 @@ public class ToMemberResetPasswordServlet extends HttpServlet {
         // 인증 상태 확인
         if (session == null || 
             session.getAttribute("passwordResetAuthorized") == null || 
-            session.getAttribute("userEmail") == null) {
+            session.getAttribute("email") == null) {
             
             // 인증되지 않은 접근 시 로그인 페이지로 리다이렉트
             response.setContentType("text/html;charset=UTF-8");

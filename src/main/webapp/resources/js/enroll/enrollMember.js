@@ -108,7 +108,7 @@ function checkEmail() {
 	$.ajax({
 	    url: `${contextPath}/auth/checkEmailDuplicate.do`,
 	    method: "POST",
-	    data: { email: email, serachType: 'emailDuplicate'},
+	    data: { email: email, searchType: 'emailDuplicate'},
 	    success: function(response) {
 	        if(response.exists) {
 	            alert("이미 사용중인 이메일입니다.");
