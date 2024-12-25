@@ -9,6 +9,12 @@
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 <jsp:include page="/WEB-INF/views/common/sidebar.jsp"/>
+<style>
+.file-input-hidden {
+    position: absolute;
+    visibility: hidden;
+}
+</style>
 <section class="main-content col-9">
 	<div id="post-container" class="col-12">
 		<h2>게시글 작성</h2>
@@ -96,8 +102,11 @@
 	    			<tr>
 	    				<th>첨부파일</th>
 	    				<td>
-	    					<input type="file" id="upfile" name="upfile" multiple accept="image/*"/>
-	    					<div id="preview"></div>
+	    					<div class="file-upload-wrapper">
+							    <input type="file" id="upfile" multiple accept="image/*"/>
+							    <div id="preview"></div>
+							    <div id="file-inputs-container"></div> <!-- 실제 파일 input들이 들어갈 컨테이너 -->
+							</div>
 	    				</td>
 	    			</tr>
 	    			<tr>
@@ -182,19 +191,53 @@
 	});
 	/* 파일 업로드시, 프리뷰 사진 출력 */
 	$("#upfile").change(e=>{
+	    const files = e.target.files;
+        // 3. 이미지 정보 처리
+        List<Image1> images = createImagesFromUpload(mr);
 		$("#preview").html('');
-		$.each($(e.target)[0].files,(i,file)=>{
-			const fileReader = new FileReader();
-			fileReader.readAsDataURL(file);
-			fileReader.onload=e=>{
-				const path = e.target.result;
-				const $img = $("<img>").attr({
-					src:path,
-					height:"200px",
-				});
-				$("#preview").append($img);
-			}
-		})
+	    $("#file-inputs-container").html('');
+	    
+	    // 파일별 preview 생성 및 hidden input 추가
+	    $.each(files, (i, file) => {
+	        console.log(`파일 ${i} 정보:`, file.name); // 각 파일 이름 출력
+	        // 프리뷰 생성
+	        const fileReader = new FileReader();
+	        fileReader.readAsDataURL(file);
+	        fileReader.onload = e => {
+	            const path = e.target.result;
+	            const $img = $("<img>").attr({
+	                src: path,
+	                height: "200px",
+	            });
+	            $("#preview").append($img);
+	        }
+	        
+	        // 각 파일에 대한 개별 input 생성
+	        const formData = new FormData();
+	        formData.append(`upfile${i}`, file);
+	        
+	        const input = $("<input>").attr({
+	            type: "file",
+	            name: `upfile${i}`,
+	            class: "file-input-hidden"
+	        }).hide();
+	        
+	        // 파일 객체를 input에 할당
+	        const dataTransfer = new DataTransfer();
+	        dataTransfer.items.add(file);
+	        input[0].files = dataTransfer.files;
+	        
+	        $("#file-inputs-container").append(input);
+	        console.log(`input ${i} 생성 완료:`, input[0].name); // 생성된 input 확인
+	    });
+
+	    // 폼 전송 직전에 전체 input 확인
+	    $("#mainForm").on('submit', function(e) {
+	        console.log("폼 전송 시 input 개수:", $("#file-inputs-container input").length);
+	        $("#file-inputs-container input").each(function(i, input) {
+	            console.log(`전송될 input ${i}:`, input.name, input.files[0]?.name);
+	        });
+	    });
 	});
 	
 </script>

@@ -16,7 +16,6 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.ttt.dto.Image1;
 import com.ttt.dto.Member1;
 import com.ttt.dto.Post1;
-import com.ttt.dto.PostUploadMultiPartRequestDTO;
 import com.ttt.service.PostService;
 
 /**
@@ -124,7 +123,7 @@ public class UploadEndServlet extends HttpServlet {
             
             // 3. 이미지 정보 처리
             List<Image1> images = createImagesFromUpload(mr);
-            
+            System.out.println("1."+images);
             // 4. 서비스 호출하여 저장
             Post1 savedPost = postService.savePostWithImages(post, images);
             
@@ -164,19 +163,39 @@ public class UploadEndServlet extends HttpServlet {
         
         @SuppressWarnings("unchecked")
         Enumeration<String> fileNames = mr.getFileNames();  // MultipartRequest의 메서드 사용
+        System.out.println("==== 파일 처리 시작 ====");
+
+        // fileNames 목록 먼저 확인
+        List<String> namesList = new ArrayList<>();
+        while(fileNames.hasMoreElements()) {
+            namesList.add(fileNames.nextElement());
+        }
+        System.out.println("전체 파일 name 속성들: " + namesList);
+
+        // 다시 enumeration 얻기 (위에서 소진했으므로)
+        fileNames = mr.getFileNames();
+        
         while(fileNames.hasMoreElements()) {
             String fileName = fileNames.nextElement();
-            String oriname = mr.getOriginalFileName(fileName);
-            String renamed = mr.getFilesystemName(fileName);
             
-            if (oriname != null) {
-                images.add(Image1.builder()
-                        .imgSeq(order++)
-                        .oriname(oriname)
-                        .renamed(renamed)
-                        .build());
+            // upfile로 시작하는 name attribute만 처리
+            if(fileName.startsWith("upfile")) {
+                String oriname = mr.getOriginalFileName(fileName);
+                String renamed = mr.getFilesystemName(fileName);
+            
+	            if (oriname != null) {
+	                Image1 image = Image1.builder()
+	                        .imgSeq(order++)
+	                        .oriname(oriname)
+	                        .renamed(renamed)
+	                        .build();
+	                images.add(image);
+	                System.out.println("이미지 추가됨: " + image);
+	            }
             }
         }
+        System.out.println("최종 이미지 목록 크기: " + images.size());
+        System.out.println("==== 파일 처리 완료 ====");
         return images;
     }
 
