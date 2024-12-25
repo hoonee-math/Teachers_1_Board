@@ -23,10 +23,9 @@
 </head>
 <body>
 	<div id="verify-container">
-		<form action="${pageContext.request.contextPath}/check/emailVerify.do"
-			method="post">
-			<input type="hidden" name="email" value="${param.email}"> <input
-				type="text" name="authCode" id="authCode" placeholder="인증번호 입력">
+		<form action="${pageContext.request.contextPath}/auth/verify" method="post">
+			<input type="hidden" name="email" value="${param.email}"> 
+			<input type="text" name="authCode" id="authCode" placeholder="인증번호 입력">
 			<input type="submit" value="확인">
 		</form>
 

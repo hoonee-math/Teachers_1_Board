@@ -31,12 +31,20 @@ function handleEmailSelect() {
 
 // 회원가입 폼 유효성 검사
 function fn_invalidate() {
-    const userId = $("#userId_").val();
+	/*해당 페이지에서는 아이디 사용 x*/
+    /*const userId = $("#userId_").val();
     if(userId.length < 4) {
         alert("아이디는 4글자 이상 입력해 주세요.");
         $("#userId_").focus();
         return false;
-    }
+    }*/
+
+	/*이메일 인증 여부 확인*/
+	const emailVerified = $("input[name='emailVerified']").val();
+	if(emailVerified !== "Y") {
+	    alert("이메일 인증이 필요합니다.");
+	    return false;
+	}
     
     const passwordReg = /(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*()]).{8,}/;
     const password = $("#password_").val();
@@ -75,37 +83,74 @@ function checkDuplicate() {
 }
 
 // 이메일 유효성 검사
-function validateEmail() {
-    const emailId = $("#emailId").val();
-    const emailDomain = $("#emailDomain").val();
-    const fullEmail = emailId + '@' + emailDomain;
-    
+function validateEmail(email) {
     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-    return emailPattern.test(fullEmail);
+    return emailPattern.test(email);
 }
 
 // 이메일 인증 처리
 function checkEmail() {
     const emailId = $("#emailId").val();
     const emailDomain = $("#emailDomain").val();
-    const email = encodeURIComponent(emailId + '@' + emailDomain);
+	const email = emailId + '@' + emailDomain;
     
     if(!emailId || !emailDomain) {
         alert("이메일을 입력해주세요.");
         return;
     }
     
-    if(!validateEmail()) {
+    if(!validateEmail(email)) {
         alert("유효한 이메일 형식이 아닙니다.");
         return;
     }
-    
+
+	const form = document.createElement('form');
+	form.method = 'POST';
+	form.action = `${contextPath}/auth/sendEmail`;
+	form.target = 'emailVerify';
+
+	const emailInput = document.createElement('input');
+	emailInput.type = 'hidden';
+	emailInput.name = 'email';
+	emailInput.value = email;
+
+	const typeInput = document.createElement('input');
+	typeInput.type = 'hidden';
+	typeInput.name = 'authType';
+	typeInput.value = 'signup';
+
+	form.appendChild(emailInput);
+	form.appendChild(typeInput);
+
     window.open(
-        `${contextPath}/check/email.do?email=${email}`,
+        '', // post 방식으로 변경하면서 제거
         "emailVerify",
         "width=400,height=300,left=500,top=200"
     );
+
+	document.body.appendChild(form);
+	form.submit();
+	document.body.removeChild(form);
 }
+
+
+// 이메일 관련 입력값이 변경될 때마다 인증 상태 초기화
+$("#emailId, #emailDomain, #emailSelect").on("change", function() {
+    const existingHidden = $("input[name='emailVerified']");
+    if(existingHidden.length > 0) {
+        existingHidden.val("N");
+        
+        // 입력 필드 잠금 해제
+        $("#emailId").prop("readonly", false);
+        $("#emailDomain").prop("readonly", false);
+        $("#emailSelect").prop("disabled", false);
+        
+        // 스타일 원복
+        $("#emailId, #emailDomain").css("backgroundColor", "");
+        $("input[value='이메일 인증']").prop("disabled", false)
+            .css("backgroundColor", "");
+    }
+});
 
 // 우편번호 검색
 function sample4_execDaumPostcode() {

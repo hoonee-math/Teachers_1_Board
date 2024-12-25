@@ -189,7 +189,11 @@ input:focus {
 			        
 			        const memberName = $("#memberName").val();
 			        const email = $("#email").val();
-			        
+
+			        if(!email || !memberName) {
+			            alert("이름과 이메일을 모두 입력해주세요.");
+			            return;
+			        }
 			        // 회원 존재 여부 확인
 			        $.ajax({
 			            url: '${path}/member/findpassword.do',
@@ -200,12 +204,34 @@ input:focus {
 			            },
 			            success: function(response) {
 			                if(response.exists) {
-			                    // 회원이 존재하면 이메일 인증 창 오픈
+			                    // 회원이 존재하면 이메일 인증 프로세스 시작
+			                    const form = document.createElement('form');
+			                    form.method = 'POST';
+			                    form.action = `${contextPath}/auth/sendEmail`;
+			                    form.target = 'emailVerify';
+			                    
+			                    const emailInput = document.createElement('input');
+			                    emailInput.type = 'hidden';
+			                    emailInput.name = 'email';
+			                    emailInput.value = email;
+			                    
+			                    const typeInput = document.createElement('input');
+			                    typeInput.type = 'hidden';
+			                    typeInput.name = 'authType';
+			                    typeInput.value = 'reset';
+			                    
+			                    form.appendChild(emailInput);
+			                    form.appendChild(typeInput);
+			                    
 			                    window.open(
-		                            '${path}/member/checkemailforfindpassword.do?email=' + encodeURIComponent(email),
+		                            '',
 			                        "emailVerify",
 			                        "width=400,height=300,left=500,top=200"
 			                    );
+			                    
+			                    document.body.appendChild(form);
+			                    form.submit();
+			                    document.body.removeChild(form);
 			                } else {
 			                    alert("일치하는 회원 정보가 없습니다.");
 			                }
