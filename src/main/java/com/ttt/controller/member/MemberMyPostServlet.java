@@ -18,7 +18,7 @@ import com.ttt.dto.Member1;
 import com.ttt.dto.Post1;
 import com.ttt.service.BoardService;
 
-@WebServlet("/member/mypost")
+@WebServlet(name="memberMypost", urlPatterns = "/member/mypost")
 public class MemberMyPostServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -31,6 +31,7 @@ public class MemberMyPostServlet extends HttpServlet {
 		// 페이징 처리를 위한 변수 선언
 		int cPage, numPerPage, memberNo;
 		int totalData, totalPage, pageBarSize, pageNo, pageEnd;
+		String categoryTitle="내가 작성한 게시글";
 		// 받아온 변수를 service 로 전달할 map 선언
 		Map<String, Integer> param = new HashMap<>();
 		// service 로 부터 return 받을 List<Post1> 선언
@@ -110,7 +111,8 @@ public class MemberMyPostServlet extends HttpServlet {
 			pageBar+="</li>";
 		}
 		pageBar+="</ul>";
-		
+
+		request.setAttribute("categoryTitle", categoryTitle);
 		request.setAttribute("pageBar", pageBar);
 		request.setAttribute("boards", boards);
 		

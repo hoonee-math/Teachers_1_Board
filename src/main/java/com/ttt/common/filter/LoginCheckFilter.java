@@ -20,7 +20,7 @@ import com.ttt.dto.Member1;
 /* 로그인 여부 확인하는 서블릿 */
 @WebFilter( servletNames= {
 		/* 로그인을 체크할 서블릿에 네이밍 후 서블릿네임 선언하기 */
-		"updateMember", "memberInfo", "uploadPost"
+		"updateMember", "memberInfo", "uploadPost", "memberMypost"
 })
 public class LoginCheckFilter extends HttpFilter implements Filter {
        
