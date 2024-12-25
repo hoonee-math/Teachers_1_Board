@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /* 비밀번호 재설정 페이지로 이동하는 서블릿 */
-@WebServlet("/member/resetpassword.do")
+@WebServlet(name="resetPassword", urlPatterns = "/member/resetpassword.do")
 public class ToMemberResetPasswordServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
