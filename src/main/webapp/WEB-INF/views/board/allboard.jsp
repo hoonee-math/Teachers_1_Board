@@ -112,7 +112,7 @@ th {
 }
 </style>
 <section class="main-content col-9">
-	<h2 class="main-title">전체글 게시판</h2>
+	<h2 class="main-title">${categoryTitle }</h2>
 
 	<!-- 1행: 전체 너비 게시판 -->
 	<div class="row full-width">
@@ -163,7 +163,10 @@ th {
 						</td>
 						
 						<td class="title">
-							<a href="${path }/post/viewpost?postNo=${p.postNo}">${p.postTitle}</a>
+							<a href="${path }/post/viewpost?postNo=${p.postNo}">
+								${p.postTitle}
+								<c:if test="${p.status==1 && p.isPublic==0 }"><span style="color:red">[임시저장됨]</span></c:if>
+							</a>
 							<span class="highlight">2</span></td>
 						</td>
 						<td>${p.member.memberNick }</td>

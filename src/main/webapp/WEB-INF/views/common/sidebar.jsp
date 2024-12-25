@@ -47,56 +47,38 @@
 
 	<!-- 사이드 메뉴 영역 -->
 	<section class="side-menu col-2">
-		<div class="menu-item">전체글 게시판</div>
-		<div class="menu-item">추천글 게시판</div>
-		<div class="menu-item">공지사항</div>
-		<div class="menu-item">맘스뉴스</div>
-		<div class="menu-item">고민상담소</div>
+		<div class="menu-item" data-category="0">전체글 게시판</div>
+		<div class="menu-item" data-category="20">추천글 게시판</div>
+		<div class="menu-item" data-category="3">공지사항</div>
+		<div class="menu-item" data-category="1">맘스뉴스</div>
+		<div class="menu-item" data-category="2">고민상담소</div>
 		<hr style="margin-top:0px">
-		<div class="menu-item">학년별 게시판(생각해보기)</div>
-		<div class="menu-item">지역별 게시판</div>
-		<div class="menu-item">학교검색</div>
+		<div class="menu-item" data-category="5">학년별 게시판(생각해보기)</div>
+		<div class="menu-item" data-category="8">지역별 게시판</div>
+		<div class="menu-item" data-category="9">학교검색</div>
 		<hr style="margin-top:0px">
-		<div class="menu-item">temp 글쓰기</div>
-		<div class="menu-item">temp 글 확인</div>
+		<div class="menu-item" data-post="uploadpost">temp 글쓰기</div>
+		<div class="menu-item" data-post="viewpost?postNo=72">temp 글 확인</div>
+		<div class="menu-item" data-path="/member/mypost">내가 작성한 글 목록 임시저장 포함</div>
 	</section>
 
 
 
 	<script>
-		$('.side-menu .menu-item:nth-child(1)').click(function() {
-	        location.assign("${path}/board/list");
-		});
-		$('.side-menu .menu-item:nth-child(2)').click(function() {
-	        location.assign("${path}/board/list?categoryNo=1");
-		});
-		$('.side-menu .menu-item:nth-child(3)').click(function() {
-	        location.assign("${path}/home");
-		});
-		$('.side-menu .menu-item:nth-child(4)').click(function() {
-	        location.assign("${path}/board/list?categoryNo=1");
-		});
-		$('.side-menu .menu-item:nth-child(5)').click(function() {
-	        location.assign("${path}/board/dontworry?type=dontworry");
-	        /* location.assign("${path}/board/list?categoryNo=2"); */
-		});
-		
-		
-		$('.side-menu .menu-item:nth-child(7)').click(function() {
-	        location.assign("${path}/board/list?categoryNo=4");
-		});
-		$('.side-menu .menu-item:nth-child(8)').click(function() {
-	        location.assign("${path}/board/list?categoryNo=8");
-		});
-		$('.side-menu .menu-item:nth-child(9)').click(function() {
-	        location.assign("${path}/board/list?categoryNo=9");
-		});
-		
-		
-		$('.side-menu .menu-item:nth-child(11)').click(function() {
-	        location.assign("${path}/post/uploadpost");
-		});
-		$('.side-menu .menu-item:nth-child(12)').click(function() {
-	        location.assign("${path}/post/viewpost?postNo=72");
+	    // HTML5 History API를 사용한 URL 변경
+		$('.side-menu .menu-item').click(function() {
+		    var categoryNo = $(this).data('category');
+		    var post = $(this).data('post');
+		    var path = $(this).data('path');
+		    
+		    if(categoryNo>=0){
+			    // 페이지 이동
+			    location.href = "${path}/board/list?categoryNo=" + categoryNo;
+		    }
+		    else if(post){
+		    	location.href = "${path}/post/" + post;
+		    } else if(path){
+		    	location.href = "${path}" + path;
+		    }
 		});
 	</script>
