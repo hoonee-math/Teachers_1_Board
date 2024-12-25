@@ -86,8 +86,8 @@
 		ORDER BY SCHOOL_NAME
 	</select>
 	
-	<select id="selectImgAll" resultMap="image.imageMap">
-		SELECT * FROM IMAGE1
+	<select id="selectImageNo" parameterType="_int" resultMap="image.imageMap">
+		SELECT * FROM IMAGE1 WHERE POST_NO=#{postNo}
 	</select>
 	
 <!-- 	<insert id="insertPost" parameterType="post1">
@@ -107,7 +107,7 @@
 			#{categoryNo}
 		)
 	</insert> -->
-	
+
 	<select id="selectBoardJoinCommentJoinMember" parameterType="_int" resultMap="postMap">
 		SELECT 
 		    P.*,

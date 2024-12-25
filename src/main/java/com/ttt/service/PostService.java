@@ -58,7 +58,12 @@ public class PostService {
 		session.close();
 		return p;
 	}
-	
+	public List<Image1> selectImageNo(int postNo) {
+		SqlSession session = getSession();
+		List<Image1> img = dao.selectImageNo(session, postNo);
+		session.close();
+		return img;
+	}
 //	public Post1 insertPostAndGetNo(Post1 post) {
 //		SqlSession session = getSession();
 //		try {
