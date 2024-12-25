@@ -195,7 +195,7 @@ th {
 </section>
 <script>
 	$('#btn-post').click(function() {
-	    location.assign("${path}/common/temp/post");
+	    location.assign("${path}/post/uploadpost");
 	});
 </script>
 
