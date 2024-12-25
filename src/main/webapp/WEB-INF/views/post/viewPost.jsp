@@ -31,16 +31,14 @@
 			<tr class="member-name">
 				<td colspan="2">${post.member.memberNick }</td>
 			</tr>
-			<c:if test="${not empty post.images}">
-				<tr class="file">
-					<td colspan="2">
-						<c:forEach var="image" items="${images }">
-							<img src="${image }" style="max-width:200px; max-height:200px; margin:5px;">
-						</c:forEach>
-					</td>
-				</tr>
-			</c:if>
-			
+			<tr class="file">
+				<td colspan="2">
+					<c:out value="${images }"/>
+					<c:forEach var="image" items="${images }">
+						<img src="${path }/resources/upload/post/${image.renamed }" style="max-width:200px; max-height:200px; margin:5px;">
+					</c:forEach>
+				</td>
+			</tr>
 			<tr class="content">
 				<td colspan="2">${post.postContent }</td>
 			</tr>

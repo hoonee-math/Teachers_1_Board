@@ -20,6 +20,9 @@ public class PostDao {
 	public Post1 selectBoardJoinCommentJoinMember(SqlSession session, int postNo) {
 		return session.selectOne("post.selectBoardJoinCommentJoinMember", postNo);
 	}
+	public List<Image1> selectImageNo(SqlSession session, int postNo) {
+		return session.selectList("post.selectImageNo");
+	}
 	
 	// savePostWithImages 서비스 이용을 위해 재사용
 	public int insertPostAndGetNo(SqlSession session, Post1 post) {

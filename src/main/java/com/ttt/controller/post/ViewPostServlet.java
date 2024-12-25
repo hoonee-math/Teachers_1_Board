@@ -1,6 +1,5 @@
 package com.ttt.controller.post;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ttt.dto.Image1;
 import com.ttt.dto.Post1;
 import com.ttt.service.PostService;
 
@@ -45,8 +45,16 @@ public class ViewPostServlet extends HttpServlet {
 		}
 		
 		Post1 p = new PostService().selectBoardJoinCommentJoinMember(postNo);
+		List<Image1> imgs = new ArrayList<>();
+		try {
+			imgs = new PostService().selectImageNo(postNo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		
 		request.setAttribute("post", p);
+		request.setAttribute("images", imgs);
 		request.getRequestDispatcher("/WEB-INF/views/post/viewPost.jsp").forward(request, response);
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
