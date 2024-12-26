@@ -11,8 +11,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
 import com.ttt.dto.Post1;
 import com.ttt.service.BoardService;
 
@@ -101,7 +101,7 @@ public class BoardListServlet extends HttpServlet {
 		
 		if(pageNo==1) {
 			pageBar+="<li class='page-item disabled'>";
-			pageBar+="<a class='page-link' href='#'>이전</a>";
+			pageBar+="<a class='page-link' data-page='"+(pageNo)+"' href='#'>"+pageNo+"</a>";
 			pageBar+="</li>";
 		} else {
 			pageBar+="<li class='page-item'>";
@@ -147,8 +147,27 @@ public class BoardListServlet extends HttpServlet {
 		request.setAttribute("categoryTitle", categoryTitle);
 		request.setAttribute("pageBar", pageBar);
 		request.setAttribute("boards", boards);
-		
-		request.getRequestDispatcher("/WEB-INF/views/board/allboard.jsp").forward(request, response);
+
+		// Ajax 요청과 일반 요청 구분
+		if("XMLHttpRequest".equals(request.getHeader("X-Requested-With"))) {
+		    // Ajax 요청인 경우 JSON 응답
+		    response.setContentType("application/json;charset=utf-8");
+		    Map<String, Object> result = new HashMap<>();
+		    result.put("boards", boards);
+		    result.put("pageBar", pageBar);
+		    result.put("categoryTitle", categoryTitle);
+		    
+		    // categoryNo 파라미터가 있으면 포함
+		    if(categoryNo != 0) {
+		        result.put("categoryNo", categoryNo);
+		    }
+		    
+		    // JSON 응답 전송
+		    response.getWriter().write(new Gson().toJson(result));
+		} else {
+		    // 일반 요청인 경우 JSP로 포워딩
+		    request.getRequestDispatcher("/WEB-INF/views/board/allboard.jsp").forward(request, response);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
