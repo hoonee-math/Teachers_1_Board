@@ -190,4 +190,23 @@
 	<select id="selectSchoolName" parameterType="_int" resultType="string">
 		SELECT SCHOOL_NAME FROM MEMBER1 JOIN SCHOOL12 USING(SCHOOL_NO) WHERE MEMBER_NO=#{memberNo}
 	</select>
+	
+	<!-- 댓글 입력 쿼리문 -->
+	<insert id="insertPostComment" parameterType="comment1"> <!-- mybatis-config 가서 클래스 타입의 별칭 부여하기 -->
+		INSERT INTO COMMENT1 VALUES(
+			SEQ_COMMENT_NO.NEXTVAL, <!-- 기호가 들어가거나 다른 문구와 함께 쓸 경우에는 || 와 SEQ를 같이 쓰면 됨 -->
+			#{parentNo},
+			#{c.commetnContent},
+			SYSDATE,
+			SYSDATE,
+			#{level},
+			#{m.memberNo},
+			#{p.postNo}
+		)
+	</insert>
+	
+	
+	
+	
+	
 </mapper>

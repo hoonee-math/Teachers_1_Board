@@ -198,9 +198,10 @@ public class PostService {
 			return dao.insertPostComment(session, c);
 		} catch(Exception e) {
 			e.printStackTrace();
+			return 0;
+		} finally {
 			session.close();
 		}
-		session.close();
 	}
 	
 	

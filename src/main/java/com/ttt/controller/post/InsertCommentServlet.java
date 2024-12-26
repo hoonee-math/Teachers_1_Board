@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.ttt.dto.Comment1;
 import com.ttt.dto.Member1;
 import com.ttt.dto.Post1;
+import com.ttt.service.PostService;
 
 @WebServlet("/post/insertcomment.do")
 public class InsertCommentServlet extends HttpServlet {
@@ -41,7 +42,7 @@ public class InsertCommentServlet extends HttpServlet {
 				.commentContent(commentContent)
 				.build();
 		
-		int result=new Comment1().insertPostComment(c);
+		int result=new PostService().insertPostComment(c);
 		
 		String msg,loc="/board/boardview.do?boardNo="+postNo;
 		if(result>0) {
