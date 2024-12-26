@@ -7,110 +7,8 @@
 <jsp:include page="/WEB-INF/views/common/sidebar.jsp" />
 <c:set var="path" value="${pageContext.request.contextPath}" />
 
-<style>
-.pagebar-number {
-	margin-left: 1px;
-	margin-right: 1px;
-	width: 2%
-}
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/board/allboard.css">
 
-.pagebar {
-	display: flex;
-	text-align: center;
-	justify-content: center;
-	margin-top: 15px;
-}
-
-.board-btn {
-	padding: 8px 16px;
-	background-color: #D9776A;
-	border: none;
-	border-radius: 6px;
-	font-weight: 600;
-	cursor: pointer;
-	transition: background-color 0.2s ease;
-	color: white;
-}
-
-.board-btn:hover {
-	background-color: #C0655D;
-	font-weight: 900;
-}
-
-.board-btn-write {
-	float: right; /* 오른쪽으로 위치 */
-	margin-right: 10px; /* 오른쪽 여백 */
-	/* padding: 8px 16px; */  /* header의 account-btn 과 통일시키기 */
-	/* background-color: #D9776A; */  /* header의 account-btn 과 통일시키기 */
-	/* border: none;  */ /* header의 account-btn 과 통일시키기 */
-	/* border-radius: 6px; */  /* header의 account-btn 과 통일시키기 */
-	/* color: white; */  /* header의 account-btn 과 통일시키기 */
-	/* font-weight: 600; */ /* header의 account-btn 과 통일시키기 */
-	/* cursor: pointer; */ /* header의 account-btn 과 통일시키기 */
-	/* transition: background-color 0.2s ease; */ /* header의 account-btn 과 통일시키기 */
-}
-
-.board-explain {
-	color: black;
-}
-
-.board-header {
-	padding: 20px;
-	margin-left: 0px;
-	color: #D9776A;
-	/* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */ /* 쉐도우 효과 */
-}
-
-table {
-	width: 100%;
-	border-collapse: collapse;
-}
-
-th, td {
-	border: 1px solid #ddd;
-	padding: 8px;
-	text-align: center;
-}
-
-th {
-	background-color: #f4f4f4;
-	font-weight: bold;
-}
-
-.category {
-	font-size: 12px;
-	color: #888;
-	font-weight: bold;
-}
-
-.title {
-	text-align: left;
-	color: #333;
-}
-
-.title a {
-	text-decoration: none;
-	color: inherit;
-}
-
-.title a:hover {
-	color: #007bff;
-}
-
-.highlight {
-	font-weight: bold;
-	color: #D9776A;
-}
-
-.view-count {
-	color: gray;
-}
-
-.time {
-	font-size: 12px;
-	color: #888;
-}
-</style>
 <section class="main-content col-9">
 	<h2 class="main-title">${categoryTitle }</h2>
 
@@ -128,7 +26,18 @@ th {
 			<table id="tbl-board">
 				<tr>
 						<th>번호</th>
-						<th>카테고리</th>
+						<c:choose>
+							<c:when test="${categoryNo == 8 }">
+								<th>전체지역</th>
+								<!-- <th>시/군/구</th> -->
+							</c:when>
+							<c:when test="${categoryNo == 2 }">
+								<th>상태</th>
+							</c:when>
+							<c:otherwise>
+								<th>카테고리</th>
+							</c:otherwise>
+						</c:choose>
 						<th>제목</th>
 						<th>작성자</th>
 						<th>조회수</th>
@@ -146,18 +55,17 @@ th {
 					<tr>
 						<td>${p.postNo }</td>
 						<td class="category">
-							<c:set var="category" value="${p.categoryNo}"/>
 							<c:choose>
-							    <c:when test="${category == 1}"> 맘스뉴스</c:when>
-							    <c:when test="${category == 2}"> 고민상담</c:when>
-							    <c:when test="${category == 3}"> 공지사항</c:when>
-							    <c:when test="${category == 4}"> 초등</c:when>
-							    <c:when test="${category == 5}"> 중등</c:when>
-							    <c:when test="${category == 6}"> 고등</c:when>
-							    <c:when test="${category == 7}"> 고3/N수</c:when>
-							    <c:when test="${category == 8}"> 지역</c:when>
-							    <c:when test="${category == 9}"> 학교</c:when>
-							    <c:when test="${category == 10}"> 자유</c:when>
+							    <c:when test="${categoryNo == 1}"> 맘스뉴스</c:when>
+							    <c:when test="${categoryNo == 2}"> 고민상담</c:when>
+							    <c:when test="${categoryNo == 3}"> 공지사항</c:when>
+							    <c:when test="${categoryNo == 4}"> 초등</c:when>
+							    <c:when test="${categoryNo == 5}"> 중등</c:when>
+							    <c:when test="${categoryNo == 6}"> 고등</c:when>
+							    <c:when test="${categoryNo == 7}"> 고3/N수</c:when>
+							    <c:when test="${categoryNo == 8}"> 지역</c:when>
+							    <c:when test="${categoryNo == 9}"> ${sessionScope.loginMember.childSchool.schoolName }</c:when>
+							    <c:when test="${categoryNo == 10}"> 자유</c:when>
 							    <c:otherwise>기타</c:otherwise>
 							</c:choose>
 						</td>

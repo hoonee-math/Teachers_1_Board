@@ -34,7 +34,7 @@
 	    						<option value="6">고등 게시판</option>
 	    						<option value="7">고3/n수생 게시판</option>
 	    						<option value="8">지역별 게시판</option>
-	    						<option value="9">학교별 게시판</option>
+	    						<option value="9">${schoolName} 게시판</option>
 	    						<option value="10">자유게시판</option>
 	    					</select>
 	    				</td>
@@ -64,11 +64,11 @@
 	    				</td>
 	    				<td>
 	    					<select name="district" id="district" onchange="schoolSearch(event);">
-	          					<option value=''>구/군</option>
+	          					<option value=''>시/군/구</option>
 	        				</select>
 	    				</td>
 	    			</tr>
-	    			<tr id="school-container" class="hidden">
+	    			<!-- <tr id="school-container" class="hidden">
 	    				<td>
 	    					<select id="school-type" onchange="schoolSearch({target:document.getElementById('district')});">
 	    						<option value="">초중고</option>
@@ -81,7 +81,7 @@
 	          					<option value="">학교명</option>
 	        				</select>
 	    				</td>
-	    			</tr>
+	    			</tr> -->
 	    			<tr>
 	    				<th>제목</th>
 	    				<td>
@@ -92,7 +92,7 @@
 	    				<th>작성자</th>
 	    				<td>
 	    					<input type="text" name="postWriter"
-									value="${sessionScope.loginMember.memberName }" readOnly/>
+									value="${sessionScope.loginMember.memberNick }" readOnly/>
 	    				</td>
 	    				<td>
 	    					<input type="hidden" name="memberNo" 
@@ -150,7 +150,7 @@
 			.catch(error => console.error("Error : ",error));
 	};
 	/* 구/군 및 초중고 선택시, 선택값에 맞는 학교명 출력 */
-	function schoolSearch(e) {
+	/* function schoolSearch(e) {
 		const select = document.getElementById("school-name");
 		select.innerHTML="<option value=''>학교명</option>";
 		const district = e.target.value;
@@ -166,21 +166,16 @@
 				});
 			})
 			.catch(error => console.error("Error : ",error));
-	};
+	}; */
 	/* 카테고리 선택에 따라 지역,학교 선택칸 출력 */
 	const selector = document.getElementById("selector");
 	
 	selector.addEventListener("change", function() {
 		const val = selector.value;
-		if(val==="region") {
-			$("#region-container").removeClass("hidden");
-			$("#school-container").addClass("hidden");
-		} else if (val==="school") {
-			$("#school-container").removeClass("hidden");
+		if(val==="8") {
 			$("#region-container").removeClass("hidden");
 		} else {
 			$("#region-container").addClass("hidden");
-			$("#school-container").addClass("hidden");
 		}
 	});
 	/* 파일 업로드시, 프리뷰 사진 출력 */

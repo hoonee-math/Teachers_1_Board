@@ -78,6 +78,12 @@ public class PostService {
 		session.close();
 		return categoryNo;
 	}
+	public String selectSchoolName(int memberNo) {
+		SqlSession session = getSession();
+		String schoolName = dao.selectSchoolName(session, memberNo);
+		session.close();
+		return schoolName;
+	}
 //	public Post1 insertPostAndGetNo(Post1 post) {
 //		SqlSession session = getSession();
 //		try {

@@ -41,4 +41,8 @@ public class PostDao {
 	public int updatePostReadCount(SqlSession session, int postNo) {
 		return session.update("post.updatePostReadCount", postNo);
 	}
+	//memberNo로 schoolName 가져오기
+	public String selectSchoolName(SqlSession session, int memberNo) {
+		return session.selectOne("post.selectSchoolName", memberNo);
+	}
 }

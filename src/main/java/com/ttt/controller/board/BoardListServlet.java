@@ -44,16 +44,15 @@ public class BoardListServlet extends HttpServlet {
 		catch(NumberFormatException e) {numPerPage=5;}
 		param.put("numPerPage", numPerPage);
 		
-		HttpSession session = request.getSession();
 		String categoryNoParam = request.getParameter("categoryNo");
 
 		if (categoryNoParam != null && !categoryNoParam.isEmpty()) {
 		    categoryNo = Integer.parseInt(categoryNoParam);
-		    session.setAttribute("categoryNo", categoryNo); // 세션에 저장
+		    request.setAttribute("categoryNo", categoryNo); // 세션에 저장
 		} else {
 		    // 세션에서 값 가져오기
-		    categoryNo = session.getAttribute("categoryNo") != null 
-		                 ? (int) session.getAttribute("categoryNo") 
+		    categoryNo = request.getAttribute("categoryNo") != null 
+		                 ? (int) request.getAttribute("categoryNo") 
 		                 : 0; // 기본값
 		}
 		System.out.println(categoryNo);
@@ -149,9 +148,7 @@ public class BoardListServlet extends HttpServlet {
 		request.setAttribute("pageBar", pageBar);
 		request.setAttribute("boards", boards);
 		
-		// WEB-INF의 contextParameter에 만들어놓고 사용할 수 있음???? views 위치에 대해서 계속 똑같은거 사용하는데.. web.xml 을 이용할수 있음
 		request.getRequestDispatcher("/WEB-INF/views/board/allboard.jsp").forward(request, response);
-//		request.getRequestDispatcher(getServletContext().getInitParameter("viewpath")+"/board/allboard.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
