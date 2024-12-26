@@ -195,7 +195,7 @@ input:focus {
 
 		//로고에 메인 홈으로 이동하는 링크 추가
 		$(".logo-container").click(function() {
-			location.assign("${path}/main");
+			location.assign("${path}");
 		});
 	</script>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />

@@ -2,92 +2,13 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/resources/css/enroll/enrollMember.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/enroll/enrollHeader.css">
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<style>
-#agree-header {
-	display: flex;
-	align-items: center;
-	justify-content: flex-start;
-	margin-top: 20px;
-}
 
-#termsofbtn {
-	margin-left: auto;
-}
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/enroll/termsofservice.css">
 
-#agreecolor, #agreecolor2, #agreecolor3 {
-	color: red;
-}
-
-#terms-contentbox {
-	max-width: 550px;
-	max-height: 300px;
-	color: grey;
-	font-size: 12px;
-}
-
-#terms-content>pre {
-	overflow-y: scroll;
-}
-
-#terms-content {
-	margin-top: 20px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 100%;
-}
-
-#agree-header2 {
-	margin-top: 30px;
-	display: flex;
-	align-items: center;
-	justify-content: flex-start;
-}
-
-#termsofbtn2 {
-	margin-left: auto;
-}
-
-#termsofbtn2 {
-	margin-left: auto;
-}
-
-#terms-content2 {
-	margin-top: 20px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 100%;
-}
-
-#terms-contentbox2 {
-	max-width: 525px;
-	max-height: 300px;
-	color: grey;
-	font-size: 12px;
-	white-space: pre-line;
-	overflow: auto;
-}
-
-#agree-button {
-	display: flex;
-	justify-content: center;
-	margin-top: 20px;
-	padding: 20px;
-	gap: 30px;
-}
-#agecheckcontainer {
-	margin-top : 40px;
-	display : flex;
-}
-#agecheck {
-	margin-left : auto;
-}
-</style>
 <header>
 	<div class="menu">
 		<div class="logo-container">
@@ -337,27 +258,10 @@
 	$("#cancle").click(function() {
 		location.assign("${path}/home");
 	});
-	
-	//회원가입 정보입력 창으로 이동
-	/* $("#join").click(function() {
-		location.assign("${path}/member/enroll");
-	}); */
-	
-	// 프론트에서 동의 항목 체크 유효성검사 로직
-	/* function fn_invalidate() {
-        var sign1 = document.getElementById("sign").checked;
-        var sign2 = document.getElementsByName("sign2").checked;
-        var sign3 = document.getElementsByName("sign3").checked;
-        // 에러 메시지 표시
-        if (조건식) {
-        	return ture; // 모든 항목에 동의하면 폼 제출 허용
-        }else {
-        	var errorMessage = "모든 동의 항목에 동의해야 합니다.";
-        	 alert(errorMessage); // 브라우저 기본 알림창을 띄움
-             return false; // 폼 제출을 막음*/
-         /* }
-        
-    } */
+	//메인으로 버튼 클릭시 메인페이지로 이동
+	$(".logo-container").click(function() {
+		location.assign("${path}");
+	});
 </script>
 
 
