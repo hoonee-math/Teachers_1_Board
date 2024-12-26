@@ -23,7 +23,7 @@
 		<h2>회원 가입 약관</h2>
 	</div>
 	<%-- <form action="${path}/member/enroll" method="post" onsubmit="return fn_invalidate();">  프론트에서 유효성 검사하는 방법--%>
-	<form action="${path}/member/enroll" method="post">
+	<form action="${path}/member/check" method="post">
 	<div class="row full-width">
 		<div id="agree-header">
 			<div id="termsofagree">이용약관 동의</div>
