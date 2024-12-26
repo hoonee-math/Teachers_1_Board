@@ -56,7 +56,7 @@
 		<div id="comment-container">
 			<div class="comment-editor">
 				<form action="${path }/post/insertcomment.do" method="post">
-					<input type="hidden" name="memberNo" value="${post.member.memberNo }"/>
+					<input type="hidden" name="memberNo" value="${sessionScope.loginMember.memberNo }"/>
 					<input type="hidden" name="postNo" value="${post.postNo }"/>
 					<input type="hidden" name="level" value="1" />
 					<input type="hidden" name="parentNo" value="0"/>
