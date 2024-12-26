@@ -12,8 +12,9 @@
 <!-- 메인 콘텐츠 영역 시작 지검 -->
 <section class="main-content col-9">
 	<section id="post-container">
-		<div id="content-container">
+		<div id="content-container" style="min-height:550px;">
 		<c:if test="${post.member.memberNick==loginMember.memberNick }">
+			<button type="submit" id="clear-btn">고민해결</button>
 			<button type="submit" id="update-btn">수정</button>
 			<button type="submit" id="delete-btn">삭제</button>		
 		</c:if>
@@ -42,6 +43,7 @@
 				<td colspan="2">${post.postContent }</td>
 			</tr>
 		</table>
+		<div id="likebox" style="display:flex; justify-content:center; align-items:end; height:250px;"><button id="like-btn" style="border:2px solid borwn;"><img src="${path}/resources/images/like.png"></button></div>
 		</div>
 		<div id="comment-container">
 			<div class="comment-editor">
@@ -49,7 +51,7 @@
 					<input type="hidden" name="memberNo" value="${post.member.memberNo }"/>
 					<input type="hidden" name="postNo" value="${post.postNo }"/>
 					<input type="hidden" name="postRef" value="%{}"/>
-					<input type="hidden" name="level" value="1"/>
+					<input type="hidden" name="level" value="1" />
 					<input type="hidden" name="writer" value="${loginMember.memberNick }"/>
 					<input type="hidden" name="postCommentRef" value="0"/>
 					<textarea name="content" rows="3" style="width: 950px; resize:none;"></textarea>
@@ -96,6 +98,17 @@
 </section>
 <!-- 메인 콘텐츠 영역 종료 -->
 <script>
-	
+//하트(좋아요) 눌렀을 때 변화를 출력해주는 기능
+$("#like-btn").ready(function() {
+    let isLiked = false;
+    $('#like-btn').click(function() {
+        if(!isLiked) {
+            $(this).css('background-color', 'rgba(217,119,106,0.3)'); // 클릭했을 때 연갈색으로
+        } else {
+            $(this).css('background-color', '#f9f9f9'); // 다시 클릭하면 배경색으로
+        }
+        isLiked = !isLiked;
+    });
+});
 </script>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
