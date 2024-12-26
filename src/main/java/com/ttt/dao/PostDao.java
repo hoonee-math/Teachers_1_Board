@@ -38,6 +38,9 @@ public class PostDao {
 		return session.insert("post.insertPostImage", image);
 	}
 	//조회수 기능 구현
+	public Post1 selectPostByNo(SqlSession session, int postNo) {
+		return session.selectOne("post.selectPostByNo",postNo);
+	}
 	public int updatePostReadCount(SqlSession session, int postNo) {
 		return session.update("post.updatePostReadCount", postNo);
 	}

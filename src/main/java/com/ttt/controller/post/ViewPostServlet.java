@@ -44,7 +44,7 @@ public class ViewPostServlet extends HttpServlet {
 			response.addCookie(c);
 		}
 		
-		Post1 p = new PostService().selectBoardJoinCommentJoinMember(postNo, readResult);
+		Post1 p = new PostService().selectPostByNo(postNo, readResult);
 		List<Image1> imgs = new ArrayList<>();
 		try {
 			imgs = new PostService().selectImageNo(postNo);
