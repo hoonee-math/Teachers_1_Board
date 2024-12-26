@@ -69,24 +69,24 @@ public class ViewPostServlet extends HttpServlet {
 			case 10: categoryName="자유 게시판"; break;
 		}
 		
-		Post1 p1 = new PostService().selectBoardJoinCommentJoinMember(postNo, readResult);
+		int likeCount = new PostService().countLikes(postNo);
+		p.setLikeCount(likeCount);
+		
 		// 현재 사용자의 좋아요 상태 확인
 		boolean isLiked = false;
-		if(request.getSession().getAttribute("loginMember") != null) {
-		    Member1 loginMember = (Member1)request.getSession().getAttribute("loginMember");
-		    Like1 like = Like1.builder()
-		            .member(loginMember)
-		            .post(Post1.builder().postNo(postNo).build())
-		            .build();
-		    isLiked = new PostService().checkLikeStatus(like) > 0;
-		}
-		request.setAttribute("isLiked", isLiked);
-		
-		
-		
+		Member1 loginMember = (Member1)request.getSession().getAttribute("loginMember");
+	    if(loginMember != null) {
+	        Like1 like = Like1.builder()
+	                .member(loginMember)
+	                .post(Post1.builder().postNo(postNo).build())
+	                .build();
+	        isLiked = new PostService().checkLikeStatus(like) > 0;
+	    }
+	    
 		request.setAttribute("post", p);
 		request.setAttribute("images", imgs);
 		request.setAttribute("categoryName", categoryName);
+	    request.setAttribute("isLiked", isLiked);
 		request.getRequestDispatcher("/WEB-INF/views/post/viewPost.jsp").forward(request, response);
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

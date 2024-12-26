@@ -54,49 +54,47 @@
 		</div>
 		<div id="comment-container">
 			<div class="comment-editor">
-				<form action="${path }/post/postcomment.do" method="post">
+				<form action="${path }/post/insertcomment.do" method="post">
 					<input type="hidden" name="memberNo" value="${post.member.memberNo }"/>
 					<input type="hidden" name="postNo" value="${post.postNo }"/>
-					<input type="hidden" name="postRef" value="%{}"/>
 					<input type="hidden" name="level" value="1" />
-					<input type="hidden" name="writer" value="${loginMember.memberNick }"/>
-					<input type="hidden" name="postCommentRef" value="0"/>
-					<textarea name="content" rows="3" style="width: 950px; resize:none;"></textarea>
+					<textarea name="commentContent" rows="3" style="width: 950px; resize:none;"></textarea>
 					<button type="submit" id="comment-btn">등록</button>
 				</form>
 			</div>
 			<table id="comment-tbl">
-			<c:if test="${not empty post.comments }">
-				<c:forEach var="comment" items="${post.comments }">
-					<c:if test="${comment.level==1 }">
-						<tr class="level1">
-							<td class="comment-writer">댓글 작성자명 ${comment.member.memberNick }</td>
-							<td class="comment-date">댓글 작성일 ${comment.createDate }</td>
-						</tr>
-						<tr>
-							<td class="c
-							omment-content">댓글 내용 ${comment.comment }</td>	
-							<td>
-								<button class="recomment-btn" value="${comment.commentNo }">대댓글</button>
-							</td>
-						</tr>
-					</c:if>
-					<c:if test="${comment1.level==2 }">
-						<tr class="level2">
-							<td class="comment-writer">댓글 작성자명 ${comment.member.memberNick }</td>
-							<td class="comment-date">댓글 작성일 ${comment.createDate }</td>
-						</tr>
-						<tr>
-							<td class="comment-content">댓글 내용 ${comment.comment }</td>	
-							<td>
-								<button class="recomment-btn" value="${comment.commentNo }">대댓글</button>
-							</td>
-						</tr>
-					</c:if>
-				</c:forEach>
-			</c:if>
-				
-				
+				<c:if test="${not empty post.comments }">
+				    <c:forEach var="comment" items="${post.comments }">
+				        <c:if test="${comment.level==1 }">
+				            <tr class="level1">
+				                <td>
+				                    <div class="comment-info">
+				                        <span class="comment-writer">${comment.member.memberNick}</span>
+				                        <span class="comment-date">${comment.createDate}</span>
+				                    </div>
+				                    <div class="comment-content">
+				                        ${comment.commentContent}
+										<button type="button" class="recomment-btn" onclick="addComment()" value="${comment.commentNo }">답글</button>
+				                    </div>
+				                </td>
+				            </tr>
+				        </c:if>
+				        <c:if test="${comment.level==2 }">
+				            <tr class="level2">
+				                <td>
+				                    <div class="comment-info">
+				                        <span class="comment-writer">${comment.member.memberNick}</span>
+				                        <span class="comment-date">${comment.createDate}</span>
+				                    </div>
+				                    <div class="comment-content">
+				                        ${comment.commentContent}
+										<button type="button" class="recomment-btn" onclick="addComment()" value="${comment.commentNo }">답글</button>
+				                    </div>
+				                </td>
+				            </tr>
+				        </c:if>
+				    </c:forEach>
+				</c:if>
 			</table>
 		</div>
 		<div id="recommnet-container">
@@ -142,5 +140,28 @@ $("#like-btn").ready(function() {
     	});
     });
 });
+
+	
+//jQuery로 이벤트 주기
+$(".recomment-btn").click(e=>{
+	console.log($(e.target).parents("tr"));
+	
+	const $parent=$(e.target).parents("tr");
+	const $tr=$("<tr>");
+	const $td=$("<td>").attr("colspan","2");
+	const $form=$(".comment-editor>form").clone();
+	
+	$form.find("textarea").attr({"cols":"50","rows":"1"});
+	$form.find("button").removeAttr("id").addClass("btn-insert2");
+	$form.find("input[name='level']").val('2');
+	$form.find("input[name='boardCommentRef']").val($(e.target).val());
+	
+	$td.append($form).appendTo($tr);
+	$parent.after($tr);
+	
+	// 이벤트 제거하는 로직
+	$(e.target).off("click");
+
+})
 </script>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

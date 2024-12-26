@@ -35,12 +35,12 @@ public class BoardDao {
 		return session.selectList("board.selectBoardListByCategoryNo",categoryNo,rb);
 	}
 
-	// 쿼리문을 실행키셔 totalData 값(int)을 받아오는 view
+	// 쿼리문을 실행시켜 totalData 값(int)을 받아오는 view
 	public int selectBoardCountAll(SqlSession session) {
 		return session.selectOne("board.selectBoardCountAll");
 	}
 		
-	// 쿼리문을 실행키셔 totalData 값(int)을 받아오는 view
+	// 쿼리문을 실행시켜 totalData 값(int)을 받아오는 view
 	public int selectBoardCountByCategoryNo(SqlSession session, int categoryNo) {
 		return session.selectOne("board.selectBoardCountByCategoryNo",categoryNo);
 	}

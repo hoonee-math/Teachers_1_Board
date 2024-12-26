@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class Comment1 {
 	private int commentNo;
 	private int parentNo;
-	private String comment;
+	private String commentContent;
 	private Date createDate;
 	private Date updateDate;
 	private int level;
