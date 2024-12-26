@@ -53,7 +53,7 @@ public class MemberUpdateServlet extends HttpServlet {
 		request.setAttribute("msg", msg);
 		request.setAttribute("loc", loc);
 		
-		request.getRequestDispatcher("WEB-INF/views/register/myInfo.jsp");
+		request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp").forward(request, response);
 		
 		
 		
