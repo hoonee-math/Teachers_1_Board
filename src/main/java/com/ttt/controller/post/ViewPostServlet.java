@@ -52,6 +52,7 @@ public class ViewPostServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		int categoryNo = new PostService().selectCategoryNo(postNo);
+		if (categoryNo>80000) categoryNo=8;
 		String categoryName = "";
 		switch(categoryNo) {
 			case 1: categoryName="맘스뉴스"; break;
