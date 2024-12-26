@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ttt.dto.Image1;
+import com.ttt.dto.Like1;
+import com.ttt.dto.Member1;
 import com.ttt.dto.Post1;
 import com.ttt.service.PostService;
 
@@ -44,7 +46,7 @@ public class ViewPostServlet extends HttpServlet {
 			response.addCookie(c);
 		}
 		
-		Post1 p = new PostService().selectBoardJoinCommentJoinMember(postNo, readResult);
+		Post1 p = new PostService().selectPostByNo(postNo, readResult);
 		List<Image1> imgs = new ArrayList<>();
 		try {
 			imgs = new PostService().selectImageNo(postNo);
@@ -66,6 +68,20 @@ public class ViewPostServlet extends HttpServlet {
 			case 9: categoryName="학교별 게시판"; break;
 			case 10: categoryName="자유 게시판"; break;
 		}
+		
+		Post1 p1 = new PostService().selectBoardJoinCommentJoinMember(postNo, readResult);
+		// 현재 사용자의 좋아요 상태 확인
+		boolean isLiked = false;
+		if(request.getSession().getAttribute("loginMember") != null) {
+		    Member1 loginMember = (Member1)request.getSession().getAttribute("loginMember");
+		    Like1 like = Like1.builder()
+		            .member(loginMember)
+		            .post(Post1.builder().postNo(postNo).build())
+		            .build();
+		    isLiked = new PostService().checkLikeStatus(like) > 0;
+		}
+		request.setAttribute("isLiked", isLiked);
+		
 		
 		
 		request.setAttribute("post", p);

@@ -42,8 +42,15 @@
 			<tr class="content">
 				<td colspan="2">${post.postContent }</td>
 			</tr>
+			<tr id="like-container">
+				<td>
+					<button id="like-btn">
+						<img id="like" width="40px" src="${path }/resources/images/emptyHeart.png">
+					</button>
+					<span class="like-count">${post.likeCount}</span>
+				</td>
+			</tr>
 		</table>
-		<div id="likebox" style="display:flex; justify-content:center; align-items:end; height:250px;"><button id="like-btn" style="border:2px solid borwn;"><img src="${path}/resources/images/like.png"></button></div>
 		</div>
 		<div id="comment-container">
 			<div class="comment-editor">
@@ -64,10 +71,10 @@
 							<td class="comment-date">댓글 작성일 ${comment.createDate }</td>
 						</tr>	
 						<tr>
-							<td class="comment-content">댓글 내용 ${comment.commentContent }</td>	
-							<td>
+							<td class="comment-content">
+								댓글 내용 ${comment.commentContent }
 								<button class="recomment-btn" value="${comment.commentNo }">대댓글</button>
-							</td>
+							</td>	
 						</tr>
 					</c:if>
 					<c:if test="${comment.level==2 }">
@@ -154,14 +161,38 @@
 <script>
 //하트(좋아요) 눌렀을 때 변화를 출력해주는 기능
 $("#like-btn").ready(function() {
-    let isLiked = false;
+    let isLiked = ${isLiked != null ? isLiked : false};
+    
+    if(isLiked) {
+    	$('#like').attr('src','${path }/resources/images/fullHeart.png')
+    }
     $('#like-btn').click(function() {
-        if(!isLiked) {
-            $(this).css('background-color', 'rgba(217,119,106,0.3)'); // 클릭했을 때 연갈색으로
-        } else {
-            $(this).css('background-color', '#f9f9f9'); // 다시 클릭하면 배경색으로
-        }
-        isLiked = !isLiked;
+    	$.ajax({
+    		url: '${path}/post/like',
+    		method: 'POST',
+    		data: {
+    			postNo: ${post.postNo}
+    		},
+    		success: function(data) {
+    			console.log('서버 응답: ', data);
+    			if(data.isLiked) {
+    				// 클릭했을 때 채워진 하트 
+    	            $('#like').attr('src', '${path }/resources/images/fullHeart.png');
+    				
+    	        } else {
+    	            //다시 클릭하면 빈 하트
+    	        	$('#like').attr('src', '${path }/resources/images/emptyHeart.png');
+    	        }
+    			//좋아요 수 업데이트
+    			$('.like-count').text(data.likeCount);
+    		},
+    		error: function(xhr, status, error) {
+    			console.log("에러 발생", error);
+    			console.log("상태", status);
+    			console.log("xhr:", xhr.responseText);
+    		}
+    		
+    	});
     });
 });
 

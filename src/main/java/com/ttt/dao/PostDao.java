@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.ttt.dto.Image1;
+import com.ttt.dto.Like1;
 import com.ttt.dto.Post1;
 
 public class PostDao {
@@ -38,6 +39,9 @@ public class PostDao {
 		return session.insert("post.insertPostImage", image);
 	}
 	//조회수 기능 구현
+	public Post1 selectPostByNo(SqlSession session, int postNo) {
+		return session.selectOne("post.selectPostByNo",postNo);
+	}
 	public int updatePostReadCount(SqlSession session, int postNo) {
 		return session.update("post.updatePostReadCount", postNo);
 	}
@@ -45,4 +49,19 @@ public class PostDao {
 	public String selectSchoolName(SqlSession session, int memberNo) {
 		return session.selectOne("post.selectSchoolName", memberNo);
 	}
+	
+	//좋아요 기능 구현
+	public int checkLikeStatus(SqlSession session, Like1 like) {
+		return session.selectOne("like.checkLikeStatus", like);
+	}
+	public int deleteLike(SqlSession session, Like1 like) {
+		return session.delete("like.deleteLike", like);
+	}
+	public int insertLike(SqlSession session, Like1 like) {
+		return session.insert("like.insertLike", like);
+	}
+	public int countLikes(SqlSession session, int postNo) {
+		return session.selectOne("like.countLikes", postNo);
+	}
+
 }
