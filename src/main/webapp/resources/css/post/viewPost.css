@@ -21,7 +21,9 @@
 .col-8 {
 	flex: 0 0 66.666%;
 }
-
+.hidden {
+	display: none;
+}
 #post-container {
 	width: 1000px;
 	padding: 20px;
