@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.ttt.dao.PostDao;
 import com.ttt.dto.Image1;
+import com.ttt.dto.Like1;
 import com.ttt.dto.Post1;
 
 public class PostService {
@@ -159,4 +160,51 @@ public class PostService {
             }
         }
     }
+	
+	//좋아요 기능 구현 
+		// 1. 좋아요 상태를 확인하는 메소드
+	public int checkLikeStatus(Like1 like) {
+	    SqlSession session = getSession();
+	    try {
+	        return dao.checkLikeStatus(session, like);
+	    } finally {
+	        session.close();
+	    }
+	}
+	
+		// 2. 좋아요를 토글(추가/삭제)하는 메소드
+	public boolean toggleLike(Like1 like) {
+	    SqlSession session = getSession();
+	    try {
+	        // 이미 좋아요 했는지 확인
+	        int count = dao.checkLikeStatus(session, like);
+	        
+	        if(count > 0) {
+	            // 좋아요가 이미 있으면 삭제하고 false 반환
+	        	dao.deleteLike(session, like);
+	            session.commit();
+	            return false;
+	        } else {
+	            // 좋아요가 없으면 추가하고 true 반환
+	        	dao.insertLike(session, like);
+	            session.commit();
+	            return true;
+	        }
+	    } catch(Exception e) {
+	        session.rollback();
+	        throw e;
+	    } finally {
+	        session.close();
+	    }
+	}
+
+		// 3. 특정 게시글의 전체 좋아요 수를 조회하는 메소드
+	public int countLikes(int postNo) {
+	    SqlSession session = getSession();
+	    try {
+	        return dao.countLikes(session, postNo);
+	    } finally {
+	        session.close();
+	    }
+	}
 }

@@ -20,6 +20,7 @@
 		<typeAlias type="com.ttt.dto.Member1" alias="member1"/>
 		<typeAlias type="com.ttt.dto.Image1" alias="image1"/>
 		<typeAlias type="com.ttt.dto.Comment1" alias="comment1"/>
+		<typeAlias type="com.ttt.dto.Like1" alias="like1"/>
 	</typeAliases>
 	
 	
@@ -43,6 +44,7 @@
 		<mapper resource="/mappers/member-mapper.xml"/>
 		<mapper resource="/mappers/image-mapper.xml"/>
 		<mapper resource="/mappers/board-mapper.xml"/>
+		<mapper resource="/mappers/like-mapper.xml"/>
 	</mappers>
 	
 </configuration>
