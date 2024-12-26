@@ -141,15 +141,6 @@ $("#like-btn").ready(function() {
     });
 });
 
-
-
-
-const comment_content_area=(userId)=>{
-	if(userId==""){
-		alert("로그인 하세요");
-		$("#userId").focus();
-	}
-}
 	
 //jQuery로 이벤트 주기
 $(".recomment-btn").click(e=>{
@@ -165,17 +156,11 @@ $(".recomment-btn").click(e=>{
 	$form.find("input[name='level']").val('2');
 	$form.find("input[name='boardCommentRef']").val($(e.target).val());
 	
-	// $td.append($form);
-	// $tr.append($td);
-	// $parent.after($tr);
 	$td.append($form).appendTo($tr);
 	$parent.after($tr);
 	
 	// 이벤트 제거하는 로직
 	$(e.target).off("click");
-	
-	// form onsubmit 이벤트를 주면 로그인 했을때만
-	// 로그인정보가 없으면 등록 버튼을 disabled
 
 })
 </script>
