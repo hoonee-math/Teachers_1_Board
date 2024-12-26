@@ -26,7 +26,18 @@
 			<table id="tbl-board">
 				<tr>
 						<th>번호</th>
-						<th>카테고리</th>
+						<c:choose>
+							<c:when test="${categoryNo == 8 }">
+								<th>전체지역</th>
+								<!-- <th>시/군/구</th> -->
+							</c:when>
+							<c:when test="${categoryNo == 2 }">
+								<th>상태</th>
+							</c:when>
+							<c:otherwise>
+								<th>카테고리</th>
+							</c:otherwise>
+						</c:choose>
 						<th>제목</th>
 						<th>작성자</th>
 						<th>조회수</th>
@@ -44,18 +55,17 @@
 					<tr>
 						<td>${p.postNo }</td>
 						<td class="category">
-							<c:set var="category" value="${p.categoryNo}"/>
 							<c:choose>
-							    <c:when test="${category == 1}"> 맘스뉴스</c:when>
-							    <c:when test="${category == 2}"> 고민상담</c:when>
-							    <c:when test="${category == 3}"> 공지사항</c:when>
-							    <c:when test="${category == 4}"> 초등</c:when>
-							    <c:when test="${category == 5}"> 중등</c:when>
-							    <c:when test="${category == 6}"> 고등</c:when>
-							    <c:when test="${category == 7}"> 고3/N수</c:when>
-							    <c:when test="${category == 8}"> 지역</c:when>
-							    <c:when test="${category == 9}"> 학교</c:when>
-							    <c:when test="${category == 10}"> 자유</c:when>
+							    <c:when test="${categoryNo == 1}"> 맘스뉴스</c:when>
+							    <c:when test="${categoryNo == 2}"> 고민상담</c:when>
+							    <c:when test="${categoryNo == 3}"> 공지사항</c:when>
+							    <c:when test="${categoryNo == 4}"> 초등</c:when>
+							    <c:when test="${categoryNo == 5}"> 중등</c:when>
+							    <c:when test="${categoryNo == 6}"> 고등</c:when>
+							    <c:when test="${categoryNo == 7}"> 고3/N수</c:when>
+							    <c:when test="${categoryNo == 8}"> 지역</c:when>
+							    <c:when test="${categoryNo == 9}"> ${sessionScope.loginMember.childSchool.schoolName }</c:when>
+							    <c:when test="${categoryNo == 10}"> 자유</c:when>
 							    <c:otherwise>기타</c:otherwise>
 							</c:choose>
 						</td>
