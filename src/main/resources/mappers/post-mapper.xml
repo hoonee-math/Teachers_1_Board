@@ -183,4 +183,8 @@
 	<select id="selectCategoryNo" parameterType="_int" resultType="int">
 		SELECT CATEGORY_NO FROM POST1 WHERE POST_NO=#{postNo}
 	</select>
+	
+	<select id="selectSchoolName" parameterType="_int" resultType="string">
+		SELECT SCHOOL_NAME FROM MEMBER1 JOIN SCHOOL12 USING(SCHOOL_NO) WHERE MEMBER_NO=#{memberNo}
+	</select>
 </mapper>

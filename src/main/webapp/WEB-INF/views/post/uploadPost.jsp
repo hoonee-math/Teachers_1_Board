@@ -34,7 +34,7 @@
 	    						<option value="6">고등 게시판</option>
 	    						<option value="7">고3/n수생 게시판</option>
 	    						<option value="8">지역별 게시판</option>
-	    						<option value="9">학교별 게시판</option>
+	    						<option value="9">${schoolName} 게시판</option>
 	    						<option value="10">자유게시판</option>
 	    					</select>
 	    				</td>
@@ -64,7 +64,7 @@
 	    				</td>
 	    				<td>
 	    					<select name="district" id="district" onchange="schoolSearch(event);">
-	          					<option value=''>구/군</option>
+	          					<option value=''>시/군/구</option>
 	        				</select>
 	    				</td>
 	    			</tr>
@@ -92,7 +92,7 @@
 	    				<th>작성자</th>
 	    				<td>
 	    					<input type="text" name="postWriter"
-									value="${sessionScope.loginMember.memberName }" readOnly/>
+									value="${ç }" readOnly/>
 	    				</td>
 	    				<td>
 	    					<input type="hidden" name="memberNo" 
