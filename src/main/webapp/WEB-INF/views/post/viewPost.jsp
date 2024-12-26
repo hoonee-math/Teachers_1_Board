@@ -42,8 +42,14 @@
 			<tr class="content">
 				<td colspan="2">${post.postContent }</td>
 			</tr>
+			<tr id="like-container">
+				<td>
+					<button id="like-btn">
+						<img id="like" width="40px" src="${path }/resources/images/emptyHeart.png">
+					</button>
+				</td>
+			</tr>
 		</table>
-		<div id="likebox" style="display:flex; justify-content:center; align-items:end; height:250px;"><button id="like-btn" style="border:2px solid borwn;"><img src="${path}/resources/images/like.png"></button></div>
 		</div>
 		<div id="comment-container">
 			<div class="comment-editor">
@@ -67,7 +73,8 @@
 							<td class="comment-date">댓글 작성일 ${comment.createDate }</td>
 						</tr>
 						<tr>
-							<td class="comment-content">댓글 내용 ${comment.comment }</td>	
+							<td class="c
+							omment-content">댓글 내용 ${comment.comment }</td>	
 							<td>
 								<button class="recomment-btn" value="${comment.commentNo }">대댓글</button>
 							</td>
@@ -103,9 +110,12 @@ $("#like-btn").ready(function() {
     let isLiked = false;
     $('#like-btn').click(function() {
         if(!isLiked) {
-            $(this).css('background-color', 'rgba(217,119,106,0.3)'); // 클릭했을 때 연갈색으로
+            $('#like').attr('src', '${path }/resources/images/fullHeart.png');
+
+            //$(this).css('background-color', 'rgba(217,119,106,0.3)'); // 클릭했을 때 연갈색으로
         } else {
-            $(this).css('background-color', '#f9f9f9'); // 다시 클릭하면 배경색으로
+        	$('#like').attr('src', '${path }/resources/images/emptyHeart.png');
+            //$(this).css('background-color', '#f9f9f9'); // 다시 클릭하면 배경색으로
         }
         isLiked = !isLiked;
     });

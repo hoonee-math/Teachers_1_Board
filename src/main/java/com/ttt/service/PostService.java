@@ -66,6 +66,20 @@ public class PostService {
 		session.close();
 		return p;
 	}
+	public Post1 selectPostByNo(int postNo, boolean readResult) {
+		SqlSession session = getSession();
+		Post1 p = dao.selectPostByNo(session, postNo);
+		if(p!=null && !readResult) {
+			int result = dao.updatePostReadCount(session, postNo);
+			if( result>0) {
+				session.commit();
+				p.setViewCount(p.getViewCount()+1);
+			}
+			else session.rollback();
+		}
+		session.close();
+		return p;
+	}
 	public List<Image1> selectImageNo(int postNo) {
 		SqlSession session = getSession();
 		List<Image1> img = dao.selectImageNo(session, postNo);
