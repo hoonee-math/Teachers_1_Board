@@ -14,6 +14,30 @@
     position: absolute;
     visibility: hidden;
 }
+#store {
+	border : none;
+	width: 120px;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0 10px;
+    background-color: #D9776A;
+    color: white;
+}
+#temporary {
+	border : none;
+	width: 120px;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0 10px;
+    background-color: #F9F9F9;
+    border: 1px solid #ddd;
+}
 </style>
 <section class="main-content col-9">
 	<div id="post-container" class="col-12">
@@ -24,7 +48,7 @@
 	    		<table>
 	    			<tr id="category">
 	    				<th>카테고리</th>
-	    				<td colspan="2">
+	    				<td>
 	    					<select name="categoryNo" id="selector">
 	    						<option value="">카테고리 선택</option>
 	    						<option value="1">맘스뉴스</option>
@@ -103,7 +127,7 @@
 	    				<th>첨부파일</th>
 	    				<td>
 	    					<div class="file-upload-wrapper">
-							    <input type="file" id="upfile" multiple accept="image/*"/>
+							    <input type="file" id="upfile" multiple accept="image/*" style="width:100%;"/>
 							    <div id="preview"></div>
 							    <div id="file-inputs-container"></div> <!-- 실제 파일 input들이 들어갈 컨테이너 -->
 							</div>
@@ -120,8 +144,8 @@
 			    	<div class="right">
 						<input type="hidden" name="status" value=""/>
 						<input type="hidden" name="isPublic" value=""/>
-					    <button onclick="handleSubmit(event, '1', '0')">임시저장</button>
-					    <button onclick="handleSubmit(event, '1', '1')">등록</button>
+					    <button id="temporary" onclick="handleSubmit(event, '1', '0')">임시저장</button>
+					    <button id="store" onclick="handleSubmit(event, '1', '1')">등록</button>
 				    </div>
 			    </div>
 			    <input type="hidden" name="postNo" value="${post.postNo }"/>

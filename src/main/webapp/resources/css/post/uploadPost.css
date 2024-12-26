@@ -81,4 +81,10 @@ div>input {
 	padding: 8px;
 	background-color: #f9f9f9;
 }
+#store {
+	border : none;
+}
+#temporary {
+	border : none;
+}
         
