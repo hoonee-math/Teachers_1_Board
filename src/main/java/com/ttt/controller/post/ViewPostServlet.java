@@ -82,10 +82,7 @@ public class ViewPostServlet extends HttpServlet {
 	                .build();
 	        isLiked = new PostService().checkLikeStatus(like) > 0;
 	    }
-		request.setAttribute("isLiked", isLiked);
-		
-		
-		
+	    
 		request.setAttribute("post", p);
 		request.setAttribute("images", imgs);
 		request.setAttribute("categoryName", categoryName);
