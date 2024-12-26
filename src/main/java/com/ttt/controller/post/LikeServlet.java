@@ -28,6 +28,10 @@ public class LikeServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    }
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // JSON 응답을 위한 설정
         response.setContentType("application/json;charset=utf-8");
         
@@ -50,10 +54,7 @@ public class LikeServlet extends HttpServlet {
             result.put("likeCount", likeCount);
         }
         
-        new Gson().toJson(result, response.getWriter());	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+        new Gson().toJson(result, response.getWriter());
 	}
 
 }
