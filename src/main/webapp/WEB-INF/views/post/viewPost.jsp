@@ -59,6 +59,7 @@
 					<input type="hidden" name="memberNo" value="${post.member.memberNo }"/>
 					<input type="hidden" name="postNo" value="${post.postNo }"/>
 					<input type="hidden" name="level" value="1" />
+					<input type="hidden" name="parentNo" value="0"/>
 					<textarea name="commentContent" rows="3" style="width: 950px; resize:none;"></textarea>
 					<button type="submit" id="comment-btn">등록</button>
 				</form>
@@ -153,9 +154,9 @@ $(".recomment-btn").click(e=>{
 	const $form=$(".comment-editor>form").clone();
 	
 	$form.find("textarea").attr({"cols":"50","rows":"1"});
-	$form.find("button").removeAttr("id").addClass("btn-insert2");
+	$form.find("button").removeAttr("id").addClass("recomment-btn");
 	$form.find("input[name='level']").val('2');
-	$form.find("input[name='boardCommentRef']").val($(e.target).val());
+	$form.find("input[name='parentNo']").val($(e.target).val());
 	
 	$td.append($form).appendTo($tr);
 	$parent.after($tr);
