@@ -92,7 +92,7 @@
 	    				<th>작성자</th>
 	    				<td>
 	    					<input type="text" name="postWriter"
-									value="${ç }" readOnly/>
+									value="${sessionScope.loginMember.memberNick }" readOnly/>
 	    				</td>
 	    				<td>
 	    					<input type="hidden" name="memberNo" 
