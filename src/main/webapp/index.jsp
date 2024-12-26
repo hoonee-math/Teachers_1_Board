@@ -1,4 +1,4 @@
-	<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -95,27 +95,6 @@
     border-top: 3px solid #D9776A;
     animation: boardSpin 1s linear infinite;
 }
-/* .loader-container {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.8);
-    z-index: 9999;
-    justify-content: center;
-    align-items: center;
-}
-
-.loader {
-    border: 5px solid #f3f3f3;
-    border-radius: 50%;
-    border-top: 5px solid #D9776A;
-    width: 50px;
-    height: 50px;
-    animation: spin 1s linear infinite;
-} */
 
 @keyframes boardSpin {
     0% { transform: rotate(0deg); }
@@ -160,24 +139,6 @@
 			    </div>
 				<!-- 게시판 테이블 대신 리스트 형태로 변경 -->
 				<div class="board-list">
-					<%-- <c:forEach var="post" items="${unsolvedPosts}">
-						<div class="post-row">
-							<div class="d-flex justify-content-between align-items-center">
-								<div>
-									<!-- 게시글 제목 -->
-									<a href="${path}/board/postview.do?postNo=${post.postNo}"
-										class="post-title"> ${post.postTitle} </a> 
-								</div>
-								<div class="post-info"> 
-					                <!-- 좋아요, 댓글 수 정보 -->
-					                <span class="post-stats">
-					                    <i class="bi bi-suit-heart-fill"></i> ${post.likeCount}
-					                    <i class="bi bi-chat-left-heart-fill"></i> ${post.commentCount+300}
-					                </span>
-				                </div>
-							</div>
-						</div>
-					</c:forEach> --%>
 				</div>
 
 			</div>
@@ -198,24 +159,6 @@
 			    </div>
 				<!-- 게시판 테이블 대신 리스트 형태로 변경 -->
 				<div class="board-list">
-					<%-- <c:forEach var="post" items="${unsolvedPosts}">
-						<div class="post-row">
-							<div class="d-flex justify-content-between align-items-center">
-								<div>
-									<!-- 게시글 제목 -->
-									<a href="${path}/board/postview.do?postNo=${post.postNo}"
-										class="post-title"> ${post.postTitle} </a> 
-								</div>
-								<div class="post-info"> 
-					                <!-- 좋아요, 댓글 수 정보 -->
-					                <span class="post-stats">
-					                    <i class="bi bi-suit-heart-fill"></i> ${post.likeCount}
-					                    <i class="bi bi-chat-left-heart-fill"></i> ${post.commentCount+300}
-					                </span>
-				                </div>
-							</div>
-						</div>
-					</c:forEach> --%>
 				</div>
 
 			</div>
@@ -233,24 +176,6 @@
 			    </div>
 				<!-- 게시판 테이블 대신 리스트 형태로 변경 -->
 				<div class="board-list">
-					<%-- <c:forEach var="post" items="${solvedPosts}">
-						<div class="post-row">
-							<div class="d-flex justify-content-between align-items-center">
-								<div>
-									<!-- 게시글 제목 -->
-									<a href="${path}/board/postview.do?postNo=${post.postNo}"
-										class="post-title"> ${post.postTitle} </a> 
-								</div>
-								<div class="post-info"> 
-					                <!-- 좋아요, 댓글 수 정보 -->
-					                <span class="post-stats">
-					                    <i class="bi bi-suit-heart-fill"></i> ${post.likeCount}
-					                    <i class="bi bi-chat-left-heart-fill"></i> ${post.commentCount+300}
-					                </span>
-								</div>
-							</div>
-						</div>
-					</c:forEach> --%>
 				</div>
 			</div>
 		</div>
