@@ -34,18 +34,21 @@ public class MemberMyInfoServlet extends HttpServlet {
 		if (session != null) {
 		    m = (Member1) session.getAttribute("loginMember"); // 세션에서 사용자 정보 가져오기
 		    System.out.println("추가전:"+m);
-		}
 		
+		try {
 		int schoolNo=m.getChildSchool().getSchoolNo();
 		School12 schoolInfo=new SchoolService().selectSchoolInfoBySchoolNo(schoolNo);
 		m.setChildSchool(schoolInfo);
+		}catch(NullPointerException e) {
+			e.printStackTrace();
+		}
 	    System.out.println("추가후:"+m);
 		session.setAttribute("loginMember", m);
 		
 		request.getRequestDispatcher("/WEB-INF/views/register/myInfo.jsp").forward(request, response);
 		
 		
-		
+		}
 	}
 
 

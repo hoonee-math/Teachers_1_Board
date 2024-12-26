@@ -54,7 +54,25 @@ function fn_invalidate() {
     }
     return true;
 }
-
+// 회원수정 폼 유효성 검사
+function fn_invalidate2() {
+	/*해당 페이지에서는 아이디 사용 x*/
+    /*const userId = $("#userId_").val();
+    if(userId.length < 4) {
+        alert("아이디는 4글자 이상 입력해 주세요.");
+        $("#userId_").focus();
+        return false;
+    }*/
+	
+    const passwordReg = /(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*()]).{8,}/;
+    const password = $("#password_").val();
+    if(!passwordReg.test(password)) {
+        alert("비밀번호는 영문자,숫자,특수기호(!@#$%^&*())를 포함한 8글자 이상으로 입력해 주세요");
+        return false;
+    }
+    return true;
+	
+}
 // 비밀번호 일치 확인
 function validatePasswordMatch(e) {
     const password = $("#password_").val();

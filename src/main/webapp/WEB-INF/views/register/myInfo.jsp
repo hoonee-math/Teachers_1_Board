@@ -54,12 +54,12 @@ input[type=search]::-webkit-search-cancel-button {
 		<!-- onsubmit 발생했을 때 action 속성을 이용해 enrollmemberend.do 로 post 요청. onsubmit 속성을 통해 유효성검사 실시-->
 		<!-- onsubmit 값의 return 값이 true 일때 post 로 요청! -->
 		<form action="${path}/member/update" method="post"
-			onsubmit="return fn_invalidate();">
+			onsubmit="return fn_invalidate2();">
 			<table>
 				<tr>
 					<th>이메일 *</th>
 					<td>
-						<input type="text" name="emailId" id="emailId" value="${loginMember.email}" style="width: 325px;" readonly>
+						<input type="text" name="emailId" id="emailId2" value="${loginMember.email}" style="width: 325px;" readonly>
 					</td> 
 				<tr>
 					<th>패스워드 *</th>
@@ -131,8 +131,14 @@ input[type=search]::-webkit-search-cancel-button {
 				</tr>
 			</table>
 			<div class="enrollsubmit">
-				<input type="submit" value="저장"> <input type="reset" value="취소">
+				<input type="submit" id="save" value="저장"> <input type="button" id="cancle" value="취소">
 			</div>
 		</form>
 	</section>
+	<script>
+	//취소 누를시 메인으로 가는 기능
+	$("#cancle").click(function() {
+		location.assign("${path}/home");
+	});
+	</script>
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
