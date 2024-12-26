@@ -44,7 +44,7 @@
 				<td colspan="2">${post.postContent }</td>
 			</tr>
 			<tr id="like-container">
-				<td>
+				<td style="display: flex; justify-content:end; align-items: center;">
 					<button id="like-btn" style="border:none;">
 						<img id="like" width="40px" src="${path }/resources/images/emptyHeart.png">
 					</button>
