@@ -39,3 +39,4 @@ Servers/
 
 # 민감 정보 저장 위치
 driver.properties
+src/main/webapp/resources/upload/post/
