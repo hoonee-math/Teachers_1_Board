@@ -4,7 +4,7 @@
 	<resultMap id="postCommentMap" type="comment1">
 		<id column="comment_no" property="commentNo"/>
 		<result column="parent_no" property="parentNo"/>
-		<result column="comment_contnet" property="comment"/>
+		<result column="comment_contnet" property="commentContent"/>
 		<result column="create_date" property="createDate"/>
 		<result column="update_date" property="updateDate"/>
 		<result column="comment_level" property="level"/>

@@ -41,8 +41,9 @@ BEGIN
 END;
 /
 
-DECLARE 
-    v_category NUMBER;
+
+
+
 BEGIN
     FOR i IN 1..100 LOOP
         v_category := FLOOR(DBMS_RANDOM.VALUE(1,11));
@@ -86,4 +87,3 @@ BEGIN
     END LOOP;
     COMMIT;
 END;
-/
