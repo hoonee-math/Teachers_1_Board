@@ -194,14 +194,26 @@ public class PostService {
 	
 	public int insertPostComment(Comment1 c) {
 		SqlSession session = getSession();
+		int result=0;
 		try {
 			System.out.println("서비스에서 댓글 객체"+c);
-			return dao.insertPostComment(session, c);
+			result=dao.insertPostComment(session, c);
+
+	        // 댓글 등록 성공시 커밋
+	        if(result > 0) {
+	            session.commit();
+	        } else {
+	            session.rollback();
+	        }
+	        
+	        return result;
 		} catch(Exception e) {
-			e.printStackTrace();
-			return 0;
+	        // 예외 발생시 롤백
+	        session.rollback();
+	        e.printStackTrace();
+	        return 0;
 		} finally {
-			session.close();
+	        session.close();
 		}
 	}
 	

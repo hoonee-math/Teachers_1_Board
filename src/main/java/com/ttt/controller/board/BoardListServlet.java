@@ -41,7 +41,7 @@ public class BoardListServlet extends HttpServlet {
 		param.put("cPage", cPage);
 		
 		try {numPerPage=Integer.parseInt(request.getParameter("numPerPage"));}
-		catch(NumberFormatException e) {numPerPage=5;}
+		catch(NumberFormatException e) {numPerPage=10;}
 		param.put("numPerPage", numPerPage);
 		
 		String categoryNoParam = request.getParameter("categoryNo");
