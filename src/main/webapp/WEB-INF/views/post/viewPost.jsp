@@ -14,7 +14,8 @@
 	<section id="post-container">
 		<div id="content-container" style="min-height:550px;">
 		<c:if test="${post.member.memberNick==loginMember.memberNick }">
-			<button type="submit" id="clear-btn">고민해결</button>
+			<c:if test="${categoriName == '2' }">
+			<button type="submit" id="clear-btn">고민해결</button></c:if>
 			<button type="submit" id="update-btn">수정</button>
 			<button type="submit" id="delete-btn">삭제</button>		
 		</c:if>
@@ -43,8 +44,8 @@
 				<td colspan="2">${post.postContent }</td>
 			</tr>
 			<tr id="like-container">
-				<td>
-					<button id="like-btn">
+				<td style="display: flex; justify-content:end; align-items: center;">
+					<button id="like-btn" style="border:none;">
 						<img id="like" width="40px" src="${path }/resources/images/emptyHeart.png">
 					</button>
 					<span class="like-count">${post.likeCount}</span>
