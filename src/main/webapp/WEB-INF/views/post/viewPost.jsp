@@ -54,14 +54,11 @@
 		</div>
 		<div id="comment-container">
 			<div class="comment-editor">
-				<form action="${path }/post/postcomment.do" method="post">
+				<form action="${path }/post/insertcomment.do" method="post">
 					<input type="hidden" name="memberNo" value="${post.member.memberNo }"/>
 					<input type="hidden" name="postNo" value="${post.postNo }"/>
-					<input type="hidden" name="postRef" value="%{}"/>
 					<input type="hidden" name="level" value="1" />
-					<input type="hidden" name="writer" value="${loginMember.memberNick }"/>
-					<input type="hidden" name="postCommentRef" value="0"/>
-					<textarea name="content" rows="3" style="width: 950px; resize:none;"></textarea>
+					<textarea name="commentContent" rows="3" style="width: 950px; resize:none;"></textarea>
 					<button type="submit" id="comment-btn">등록</button>
 				</form>
 			</div>
@@ -72,22 +69,21 @@
 						<tr class="level1">
 							<td class="comment-writer">댓글 작성자명 ${comment.member.memberNick }</td>
 							<td class="comment-date">댓글 작성일 ${comment.createDate }</td>
-						</tr>
+						</tr>	
 						<tr>
-							<td class="c
-							omment-content">댓글 내용 ${comment.comment }</td>	
-							<td>
+							<td class="comment-content">
+								댓글 내용 ${comment.commentContent }
 								<button class="recomment-btn" value="${comment.commentNo }">대댓글</button>
-							</td>
+							</td>	
 						</tr>
 					</c:if>
-					<c:if test="${comment1.level==2 }">
+					<c:if test="${comment.level==2 }">
 						<tr class="level2">
 							<td class="comment-writer">댓글 작성자명 ${comment.member.memberNick }</td>
 							<td class="comment-date">댓글 작성일 ${comment.createDate }</td>
 						</tr>
 						<tr>
-							<td class="comment-content">댓글 내용 ${comment.comment }</td>	
+							<td class="comment-content">댓글 내용 ${comment.commentContent }</td>	
 							<td>
 								<button class="recomment-btn" value="${comment.commentNo }">대댓글</button>
 							</td>
@@ -95,9 +91,66 @@
 					</c:if>
 				</c:forEach>
 			</c:if>
-				
-				
 			</table>
+			
+			
+					
+			</table>
+			<div id="comment-container">
+				<div class="comment-editor">
+					<form action="${path }/post/insertcomment.do" method="post">
+						<!-- 숨겨서 함께 보낼 데이터 -->
+						<input type="hidden" name="postNo" value="${post.postNo }"/>
+						<input type="hidden" name="level" value="1"/>
+						<input type="hidden" name="memberNo" value="${post.member.memberNo }"/>
+						<input type="hidden" name="boardCommentRef" value="0"/>
+						<textarea rows="3" cols="55" name="content"  onclick="comment_content_area('${loginMember.memberNo}')"></textarea>
+						<button type="submit" id="btn-insert">등록</button>
+					</form>
+				</div>
+				<table id="tbl-comment">
+				<c:if test="${not empty post.comments }"> <!-- 이제는 board에 저장된 정보를 가져옴 -->
+					<c:forEach var="comment" items="${post.comments }">
+						<c:if test="${comment.level==1 }">
+							<tr class="level1">
+								
+								<td>
+									<sub class="comment-writer">
+										${comment.member.memberNick }
+									</sub>
+									<sub class="comment-date">
+										${comment.createDate }
+									</sub>
+									<br>
+									${comment.commentContent }
+								</td>
+								<td>
+									<button type="button" class="btn-insert2" onclick="addComment()" value="${comment.commentNo }">답글</button>
+								</td>
+							</tr>
+						</c:if>
+						<c:if test="${comment.level==2 }">
+							<tr class="level2">
+								
+								<td>
+									<sub class="comment-writer">
+										${comment.member.memberNick }
+									</sub>
+									<sub class="comment-date">
+										${comment.createDate }
+									</sub>
+									<br>
+									${comment.commentContent }
+								</td>
+								<td>
+								</td>
+							</tr>
+						</c:if>
+					</c:forEach>
+				</c:if>
+				</table>
+			
+			
 		</div>
 		<div id="recommnet-container">
 		</div>
@@ -142,5 +195,48 @@ $("#like-btn").ready(function() {
     	});
     });
 });
+
+
+
+
+const comment_content_area=(userId)=>{
+	if(userId==""){
+		alert("로그인 하세요");
+		$("#userId").focus();
+	}
+}
+	
+/*   	const addComment=(e)=>{
+	alert("클릭함");
+} */
+
+//jQuery로 이벤트 주기
+$(".btn-insert2").click(e=>{
+	alert("클릭함 로그 찍힘");
+	console.log($(e.target).parents("tr"));
+	
+	const $parent=$(e.target).parents("tr");
+	const $tr=$("<tr>");
+	const $td=$("<td>").attr("colspan","2");
+	const $form=$(".comment-editor>form").clone();
+	
+	$form.find("textarea").attr({"cols":"50","rows":"1"});
+	$form.find("button").removeAttr("id").addClass("btn-insert2");
+	$form.find("input[name='level']").val('2');
+	$form.find("input[name='boardCommentRef']").val($(e.target).val());
+	
+	// $td.append($form);
+	// $tr.append($td);
+	// $parent.after($tr);
+	$td.append($form).appendTo($tr);
+	$parent.after($tr);
+	
+	// 이벤트 제거하는 로직
+	$(e.target).off("click");
+	
+	// form onsubmit 이벤트를 주면 로그인 했을때만
+	// 로그인정보가 없으면 등록 버튼을 disabled
+
+})
 </script>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
