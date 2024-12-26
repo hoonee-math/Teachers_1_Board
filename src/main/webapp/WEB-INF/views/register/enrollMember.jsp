@@ -126,16 +126,19 @@ input[type=search]::-webkit-search-cancel-button {
 					</td>
 				</tr>
 				<tr>
-					<th>회원구분 *</th>
-					<td>
-						<input type="radio" name="memberType" id="parents" value="1" required>
-						<label for="parents">학부모</label>
-						<input type="radio" name="memberType" id="teacher" value="2">
-						<label for="teacher">교사</label>
-					</td>
+				    <th><!-- 회원 구분 * --></th>
+				    <td>
+				        <input type="hidden" name="memberType" id="parents" value="1" ${memberType == '1' ? 'checked' : ''}>
+				        <label for="parents"></label>
+				        <input type="hidden" name="memberType" id="teacher" value="2" ${memberType == '2' ? 'checked' : ''}>
+				        <label for="teacher"></label>
+				    </td>
 				</tr>
 				<tr>
-				    <th>자녀 학교</th>
+					<c:if test="${memberType == '1'}">
+				    <th>자녀 학교</th></c:if>
+				    <c:if test="${memberType == '2'}">
+				    <th>소속 학교</th></c:if>
 				    <td>
 				        <div style="margin-bottom:10px">
 				            <select class="child_school" name="region" id="region" onchange="districtSearch(event);" style="width:108px">
