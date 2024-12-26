@@ -31,7 +31,7 @@
 				<td>${post.createDate }</td>
 			</tr>
 			<tr class="member-name">
-				<td colspan="2">${post.member.memberNick }</td>
+				<td colspan="2" style="background-color:#FFF9F4;">${post.member.memberNick }</td>
 			</tr>
 			<tr class="file">
 				<td colspan="2">
