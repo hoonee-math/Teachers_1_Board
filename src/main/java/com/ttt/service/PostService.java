@@ -69,7 +69,7 @@ public class PostService {
 	}
 	public Post1 selectPostByNo(int postNo, boolean readResult) {
 		SqlSession session = getSession();
-		Post1 p = dao.selectPostByNo(session, postNo);
+		Post1 p = dao.selectBoardJoinCommentJoinMember(session, postNo);
 		if(p!=null && !readResult) {
 			int result = dao.updatePostReadCount(session, postNo);
 			if( result>0) {

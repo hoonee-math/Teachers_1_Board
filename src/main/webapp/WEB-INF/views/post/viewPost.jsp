@@ -63,94 +63,39 @@
 				</form>
 			</div>
 			<table id="comment-tbl">
-			<c:if test="${not empty post.comments }">
-				<c:forEach var="comment" items="${post.comments }">
-					<c:if test="${comment.level==1 }">
-						<tr class="level1">
-							<td class="comment-writer">댓글 작성자명 ${comment.member.memberNick }</td>
-							<td class="comment-date">댓글 작성일 ${comment.createDate }</td>
-						</tr>	
-						<tr>
-							<td class="comment-content">
-								댓글 내용 ${comment.commentContent }
-								<button class="recomment-btn" value="${comment.commentNo }">대댓글</button>
-							</td>	
-						</tr>
-					</c:if>
-					<c:if test="${comment.level==2 }">
-						<tr class="level2">
-							<td class="comment-writer">댓글 작성자명 ${comment.member.memberNick }</td>
-							<td class="comment-date">댓글 작성일 ${comment.createDate }</td>
-						</tr>
-						<tr>
-							<td class="comment-content">댓글 내용 ${comment.commentContent }</td>	
-							<td>
-								<button class="recomment-btn" value="${comment.commentNo }">대댓글</button>
-							</td>
-						</tr>
-					</c:if>
-				</c:forEach>
-			</c:if>
-			</table>
-			
-			
-					
-			</table>
-			<div id="comment-container">
-				<div class="comment-editor">
-					<form action="${path }/post/insertcomment.do" method="post">
-						<!-- 숨겨서 함께 보낼 데이터 -->
-						<input type="hidden" name="postNo" value="${post.postNo }"/>
-						<input type="hidden" name="level" value="1"/>
-						<input type="hidden" name="memberNo" value="${post.member.memberNo }"/>
-						<input type="hidden" name="boardCommentRef" value="0"/>
-						<textarea rows="3" cols="55" name="content"  onclick="comment_content_area('${loginMember.memberNo}')"></textarea>
-						<button type="submit" id="btn-insert">등록</button>
-					</form>
-				</div>
-				<table id="tbl-comment">
-				<c:if test="${not empty post.comments }"> <!-- 이제는 board에 저장된 정보를 가져옴 -->
-					<c:forEach var="comment" items="${post.comments }">
-						<c:if test="${comment.level==1 }">
-							<tr class="level1">
-								
-								<td>
-									<sub class="comment-writer">
-										${comment.member.memberNick }
-									</sub>
-									<sub class="comment-date">
-										${comment.createDate }
-									</sub>
-									<br>
-									${comment.commentContent }
-								</td>
-								<td>
-									<button type="button" class="btn-insert2" onclick="addComment()" value="${comment.commentNo }">답글</button>
-								</td>
-							</tr>
-						</c:if>
-						<c:if test="${comment.level==2 }">
-							<tr class="level2">
-								
-								<td>
-									<sub class="comment-writer">
-										${comment.member.memberNick }
-									</sub>
-									<sub class="comment-date">
-										${comment.createDate }
-									</sub>
-									<br>
-									${comment.commentContent }
-								</td>
-								<td>
-								</td>
-							</tr>
-						</c:if>
-					</c:forEach>
+				<c:if test="${not empty post.comments }">
+				    <c:forEach var="comment" items="${post.comments }">
+				        <c:if test="${comment.level==1 }">
+				            <tr class="level1">
+				                <td>
+				                    <div class="comment-info">
+				                        <span class="comment-writer">${comment.member.memberNick}</span>
+				                        <span class="comment-date">${comment.createDate}</span>
+				                    </div>
+				                    <div class="comment-content">
+				                        ${comment.commentContent}
+										<button type="button" class="recomment-btn" onclick="addComment()" value="${comment.commentNo }">답글</button>
+				                    </div>
+				                </td>
+				            </tr>
+				        </c:if>
+				        <c:if test="${comment.level==2 }">
+				            <tr class="level2">
+				                <td>
+				                    <div class="comment-info">
+				                        <span class="comment-writer">${comment.member.memberNick}</span>
+				                        <span class="comment-date">${comment.createDate}</span>
+				                    </div>
+				                    <div class="comment-content">
+				                        ${comment.commentContent}
+										<button type="button" class="recomment-btn" onclick="addComment()" value="${comment.commentNo }">답글</button>
+				                    </div>
+				                </td>
+				            </tr>
+				        </c:if>
+				    </c:forEach>
 				</c:if>
-				</table>
-			
-			
+			</table>
 		</div>
 		<div id="recommnet-container">
 		</div>
@@ -206,13 +151,8 @@ const comment_content_area=(userId)=>{
 	}
 }
 	
-/*   	const addComment=(e)=>{
-	alert("클릭함");
-} */
-
 //jQuery로 이벤트 주기
-$(".btn-insert2").click(e=>{
-	alert("클릭함 로그 찍힘");
+$(".recomment-btn").click(e=>{
 	console.log($(e.target).parents("tr"));
 	
 	const $parent=$(e.target).parents("tr");
