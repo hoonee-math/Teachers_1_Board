@@ -177,7 +177,7 @@ input[type=search]::-webkit-search-cancel-button {
 				</tr>
 			</table>
 			<div class="enrollsubmit">
-				<input type="submit" value="가입"> <input type="reset" value="취소">
+				<input type="reset" value="취소">	<input type="submit" value="가입">
 			</div>
 		</form>
 	</section>

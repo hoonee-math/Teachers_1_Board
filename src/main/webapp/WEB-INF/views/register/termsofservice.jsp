@@ -80,22 +80,6 @@
 	padding: 20px;
 	gap: 30px;
 }
-
-#cancle, #join {
-	padding: 20px;
-	font-size: 20px;
-	background-color: lightbrown;
-	border-radius: 5px;
-	border: none;
-}
-
-#join:hover {
-	background-color: #D9776A;
-}
-
-#cancle:hover {
-	background-color: #D9776A;
-}
 #agecheckcontainer {
 	margin-top : 40px;
 	display : flex;
@@ -334,10 +318,10 @@
 		<div class="row full-width">
 			<div id="agree-button">
 				<div id="canclediv">
-					<button type="button" id="cancle" style="cursor: pointer">메인으로</button>
+					<input type="reset" id="cancle" style="cursor: pointer; height:50px;" value="메인으로">
 				</div>
 				<div id="joindiv">
-					<button id="join" style="cursor: pointer">회원가입</button>
+					<input type="submit" style="cursor: pointer; height:50px;" value="회원가입">
 				</div>
 			</div>
 		</div>
