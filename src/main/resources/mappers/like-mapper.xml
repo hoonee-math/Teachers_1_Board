@@ -2,8 +2,8 @@
 <mapper namespace="like">
     <!-- 좋아요 추가 -->
     <insert id="insertLike" parameterType="like1">
-        INSERT INTO LIKE1 (MEMBER_NO, POST_NO) 
-        VALUES (#{member.memberNo}, #{post.postNo})
+        INSERT INTO LIKE1 (LIKE_NO, MEMBER_NO, POST_NO) 
+        VALUES (SEQ_LIKE_NO.NEXTVAL, #{member.memberNo}, #{post.postNo})
     </insert>
     
     <!-- 좋아요 삭제 -->
