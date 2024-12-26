@@ -133,8 +133,8 @@
 					<h2>추천 동영상</h2>
 					<!-- <button id="btn-post" class="account-button">글쓰기</button> -->
 				</div>
-				<div class="video-content"><img alt="moms" src="${path }/resources/images/momsTeacher.png" style="width:100%"></div>
-				<div class="video-content">
+				<div class="video-content" style="border:none;"><img alt="moms" src="${path }/resources/images/momsTeacher.png" style="width:100%;"></div>
+				<div class="video-content" style="border:none;">
 					<iframe 
 					    width="100%" 
 					    height="100%" 
