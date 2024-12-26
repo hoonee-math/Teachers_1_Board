@@ -33,6 +33,8 @@ public class InsertCommentServlet extends HttpServlet {
 		p.setPostNo(postNo);
 		Member1 m= new Member1();
 		m.setMemberNo(memberNo);
+		System.out.println("서블릿 post 객체:" + p);
+		System.out.println("서블릿 멤버 객체 :"+ m);
 		
 		Comment1 c=Comment1.builder()
 				.post(p)
@@ -41,10 +43,10 @@ public class InsertCommentServlet extends HttpServlet {
 				.parentNo(parentNo)
 				.commentContent(commentContent)
 				.build();
-		
+		System.out.println("서블릿 댓글 객체"+c);
 		int result=new PostService().insertPostComment(c);
 		
-		String msg,loc="/board/boardview.do?boardNo="+postNo;
+		String msg,loc="/post/viewpost?postNo="+postNo;
 		if(result>0) {
 			msg="댓글 등록 성공";
 		} else {
@@ -52,7 +54,7 @@ public class InsertCommentServlet extends HttpServlet {
 		}
 		request.setAttribute("msg",msg);
 		request.setAttribute("loc", loc);
-		request.getRequestDispatcher(getServletContext().getInitParameter("viewpath")+"/common/msg.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp").forward(request, response);
 		
 	}
 

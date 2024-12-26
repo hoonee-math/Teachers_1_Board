@@ -65,6 +65,7 @@ public class PostDao {
 		return session.selectOne("like.countLikes", postNo);
 	}
 	public int insertPostComment(SqlSession session, Comment1 c) {
+		System.out.println("DAO 에서 댓글 객체"+c);
 		return session.insert("post.insertPostComment",c);
 	}
 }

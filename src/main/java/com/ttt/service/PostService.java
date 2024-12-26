@@ -195,6 +195,7 @@ public class PostService {
 	public int insertPostComment(Comment1 c) {
 		SqlSession session = getSession();
 		try {
+			System.out.println("서비스에서 댓글 객체"+c);
 			return dao.insertPostComment(session, c);
 		} catch(Exception e) {
 			e.printStackTrace();

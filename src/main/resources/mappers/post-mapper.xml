@@ -196,12 +196,12 @@
 		INSERT INTO COMMENT1 VALUES(
 			SEQ_COMMENT_NO.NEXTVAL, <!-- 기호가 들어가거나 다른 문구와 함께 쓸 경우에는 || 와 SEQ를 같이 쓰면 됨 -->
 			#{parentNo},
-			#{c.commetnContent},
+			#{commentContent},
 			SYSDATE,
 			SYSDATE,
 			#{level},
-			#{m.memberNo},
-			#{p.postNo}
+			#{member.memberNo},
+			#{post.postNo}
 		)
 	</insert>
 	
