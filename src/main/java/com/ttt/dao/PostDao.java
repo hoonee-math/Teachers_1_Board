@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.ttt.dto.Comment1;
 import com.ttt.dto.Image1;
 import com.ttt.dto.Like1;
 import com.ttt.dto.Post1;
@@ -63,5 +64,7 @@ public class PostDao {
 	public int countLikes(SqlSession session, int postNo) {
 		return session.selectOne("like.countLikes", postNo);
 	}
-
+	public int insertPostComment(SqlSession session, Comment1 c) {
+		return session.insert("post.insertPostComment",c);
+	}
 }

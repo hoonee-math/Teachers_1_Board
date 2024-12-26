@@ -8,6 +8,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.ttt.dao.PostDao;
+import com.ttt.dto.Comment1;
 import com.ttt.dto.Image1;
 import com.ttt.dto.Like1;
 import com.ttt.dto.Post1;
@@ -99,23 +100,6 @@ public class PostService {
 		session.close();
 		return schoolName;
 	}
-//	public Post1 insertPostAndGetNo(Post1 post) {
-//		SqlSession session = getSession();
-//		try {
-//			int result = dao.insertPost(session, post);
-//			if(result > 0) {
-//				int postNo = dao.selectLastPostNo(session);
-//				post.setPostNo(postNo);
-//				session.commit();
-//			}
-//			return post;
-//		} catch(Exception e) {
-//			session.rollback();
-//			e.printStackTrace();
-//		} finally {
-//			session.close();
-//		}
-//	}
 	
 	// Post1 과 Image1을 동시에 저장하기 위한 트랜잭션관리 (postNo를 받아와서 image 저장 관리)
 	public Post1 savePostWithImages(Post1 post, List<Image1> images) {
@@ -207,4 +191,17 @@ public class PostService {
 	        session.close();
 	    }
 	}
+	
+	public int insertPostComment(Comment1 c) {
+		SqlSession session = getSession();
+		try {
+			return dao.insertPostComment(session, c);
+		} catch(Exception e) {
+			e.printStackTrace();
+			session.close();
+		}
+		session.close();
+	}
+	
+	
 }
