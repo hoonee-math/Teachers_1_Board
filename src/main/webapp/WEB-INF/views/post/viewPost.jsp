@@ -14,7 +14,7 @@
 	<section id="post-container">
 		<div id="content-container" style="min-height:550px;">
 		<c:if test="${post.member.memberNick==loginMember.memberNick }">
-			<c:if test="${categoriName == '2' }">
+			<c:if test="${categoryName eq '고민상담소'}">
 			<button type="submit" id="clear-btn">고민해결</button></c:if>
 			<button type="submit" id="update-btn">수정</button>
 			<button type="submit" id="delete-btn">삭제</button>		
