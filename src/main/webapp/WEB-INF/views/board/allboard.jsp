@@ -197,19 +197,19 @@
 	        
 	        const row = `
 	            <tr>
-		            <td>${post.postNo}</td>
-		            <td class="category">${categoryName}</td>
+		            <td>\${post.postNo}</td>
+		            <td class="category">\${categoryName}</td>
 		            <td class="title">
-		                <a href="${path}/post/viewpost?postNo=${post.postNo}">
-		                    ${post.postTitle}
-		                    ${post.status == 1 && post.isPublic == 0 ? 
+		                <a href="${path}/post/viewpost?postNo=\${post.postNo}">
+		                    \${post.postTitle}
+		                    \${post.status == 1 && post.isPublic == 0 ? 
 		                      '<span style="color:red">[임시저장됨]</span>' : ''}
 		                </a>
-		                <span class="highlight">${post.commentCount || '0'}</span>
+		                <span class="highlight">\${post.commentCount || '0'}</span>
 		            </td>
-	                <td>${post.member.memberNick}</td>
-	                <td class="view-count">${post.viewCount}</td>
-	                <td class="time">${formatDate(post.createDate)}</td>
+	                <td>\${post.member.memberNick}</td>
+	                <td class="view-count">\${post.viewCount}</td>
+	                <td class="time">\${formatDate(post.createDate)}</td>
 	            </tr>
 	        `;
 	        tableBody.append(row);
@@ -226,9 +226,9 @@
 	    const postDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
 	    
 	    if(postDate.getTime() === today.getTime()) {
-	        return `${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`;
+	        return `\${String(date.getHours()).padStart(2, '0')}:\${String(date.getMinutes()).padStart(2, '0')}`;
 	    } else {
-	        return `${String(date.getMonth() + 1).padStart(2, '0')}/${String(date.getDate()).padStart(2, '0')}`;
+	        return `\${String(date.getMonth() + 1).padStart(2, '0')}/\${String(date.getDate()).padStart(2, '0')}`;
 	    }
 	}
 
