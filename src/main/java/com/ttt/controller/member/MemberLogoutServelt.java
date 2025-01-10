@@ -18,7 +18,7 @@ public class MemberLogoutServelt extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession(false); // 기존에 부여된 session 객체가 있으면 가져오고, 없으면 생성 true
+		HttpSession session = request.getSession(false); // 기존에 부여된 session 객체가 있으면 가져오고, 없으면 생성 하지 않음(없으면 생성하고 싶으면 ture)
 		session.invalidate();
 		request.getRequestDispatcher("/").forward(request, response);
 	}

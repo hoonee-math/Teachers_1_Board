@@ -91,7 +91,7 @@ input[type=search]::-webkit-search-cancel-button {
 				</tr>
 				<tr>
 					<th>패스워드 *</th>
-					<td><input type="password" name="memberPw" id="password_" placeholder="대소문자, 숫자, 특수문자 포함" required><br>
+					<td><input type="password" name="memberPw" id="password_" placeholder="8글자 이상, 대소문자, 숫자, 특수문자 포함" required><br>
 					</td>
 				</tr>
 				<tr>
